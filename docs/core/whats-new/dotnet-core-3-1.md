@@ -6,12 +6,12 @@ dev_langs:
 author: adegeo
 ms.author: adegeo
 ms.date: 12/04/2019
-ms.openlocfilehash: 42d4f7e8800bf2d13d584084f8a41bad2ada534f
-ms.sourcegitcommit: cbb19e56d48cf88375d35d0c27554d4722761e0d
+ms.openlocfilehash: 9caecdcc3516db2bd71420184fbd21f7837552a7
+ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608120"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437928"
 ---
 # <a name="whats-new-in-net-core-31"></a>Co nowego w programie .NET Core 3.1
 
@@ -39,7 +39,7 @@ Aby uzyskać więcej informacji, zobacz [zasady obsługi .NET Core](https://dotn
 
 ## <a name="macos-apphost-and-notarization"></a>macOS appHost i notarization
 
-*tylko macOS*
+*Tylko macOS*
 
 Począwszy od zestaw .NET Core SDK 3,1 dla macOS, ustawienie appHost jest domyślnie wyłączone. Aby uzyskać więcej informacji, zobacz [MacOS Catalina Notarization i wpływ na pobieranie i projekty platformy .NET Core](../install/macos-notarization-issues.md).
 
@@ -99,5 +99,5 @@ Aby dodać obsługę języka C++/CLI w programie Visual Studio 2019 w wersji 16,
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Zapoznaj się z istotnymi zmianami między programem .NET Core 3,0 i 3,1.](../compatibility/3.0-3.1.md)
+- [Zapoznaj się z istotnymi zmianami między programem .NET Core 3,0 i 3,1.](../compatibility/3.1.md)
 - [Zapoznaj się z istotnymi zmianami w programie .NET Core 3,1 dla aplikacji Windows Forms.](../compatibility/winforms.md#net-core-31)

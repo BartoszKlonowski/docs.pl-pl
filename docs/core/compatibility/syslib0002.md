@@ -3,12 +3,12 @@ title: Błąd SYSLIB0002
 description: Dowiedz się więcej o obsoletion, który generuje błąd czasu kompilowania SYSLIB0002.
 ms.topic: reference
 ms.date: 10/20/2020
-ms.openlocfilehash: 53eb51d5e525c463e5698710bdb6fa0c0907e43c
-ms.sourcegitcommit: 30a686fd4377fe6472aa04e215c0de711bc1c322
+ms.openlocfilehash: 36ecde3c52845a6594c4d04e167df48142038654
+ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94440780"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437498"
 ---
 # <a name="syslib0002-principalpermissionattribute-is-obsolete"></a>SYSLIB0002: PrincipalPermissionAttribute jest przestarzała
 
@@ -62,6 +62,6 @@ W przeciwieństwie do innych ostrzeżeń obsoletion nie można pominąć tego b�
 
 [!INCLUDE [suppress-syslib-warning](../../../includes/suppress-syslib-warning.md)]
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
-- [PrincipalPermissionAttribute jest przestarzały jako błąd](3.1-5.0.md#principalpermissionattribute-is-obsolete-as-error)
+- [PrincipalPermissionAttribute jest przestarzały jako błąd](core-libraries/5.0/principalpermissionattribute-obsolete.md)

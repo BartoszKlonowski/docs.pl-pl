@@ -3,12 +3,12 @@ title: Mierzenie wydajności za pomocą EventCounters w programie .NET Core
 description: W tym samouczku dowiesz się, jak zmierzyć wydajność przy użyciu EventCounters.
 ms.date: 08/07/2020
 ms.topic: tutorial
-ms.openlocfilehash: db9a0889d46cc4db02baac60cbed6f6e0ba6856b
-ms.sourcegitcommit: 27a15a55019f6b5f2733961738babe94aec0def3
+ms.openlocfilehash: 75f6f1469c87eb1fe8a3064a815ec72943771f88
+ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90538569"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437457"
 ---
 # <a name="tutorial-measure-performance-using-eventcounters-in-net-core"></a>Samouczek: pomiar wydajności przy użyciu EventCounters w programie .NET Core
 
@@ -49,7 +49,7 @@ Poniżej przedstawiono przykład sposobu implementacji <xref:System.Diagnostics.
 
 ## <a name="add-an-action-filter"></a>Dodawanie filtru akcji
 
-Przykładowy kod źródłowy jest projektem ASP.NET Core. Można dodać [Filtr akcji](/aspnet/core/mvc/controllers/filters#action-filters) globalnie, który będzie rejestrował łączny czas żądania. Utwórz nowy plik o nazwie *LogRequestTimeFilterAttribute.cs*i użyj następującego kodu:
+Przykładowy kod źródłowy jest projektem ASP.NET Core. Można dodać [Filtr akcji](/aspnet/core/mvc/controllers/filters#action-filters) globalnie, który będzie rejestrował łączny czas żądania. Utwórz nowy plik o nazwie *LogRequestTimeFilterAttribute.cs* i użyj następującego kodu:
 
 ```csharp
 using System.Diagnostics;
@@ -97,7 +97,7 @@ dotnet-counters ps
 Korzystając z identyfikatora procesu z danych wyjściowych `dotnet-counters ps` polecenia, można rozpocząć monitorowanie licznika zdarzeń za pomocą następującego `dotnet-counters monitor` polecenia:
 
 ```console
-dotnet-counters monitor --process-id 2196 Sample.EventCounter.Minimal Microsoft.AspNetCore.Hosting[total-requests,requests-per-second] System.Runtime[cpu-usage]
+dotnet-counters monitor --process-id 2196 --counters Sample.EventCounter.Minimal,Microsoft.AspNetCore.Hosting[total-requests,requests-per-second],System.Runtime[cpu-usage]
 ```
 
 Gdy `dotnet-counters monitor` polecenie jest uruchomione, przytrzymaj klawisz <kbd>F5</kbd> , aby rozpocząć generowanie żądań ciągłych do `https://localhost:5001/api/values` punktu końcowego. Po upływie kilku sekund Zatrzymaj, naciskając klawisz <kbd>q</kbd>
@@ -118,7 +118,7 @@ Press p to pause, r to resume, q to quit.
 `dotnet-counters monitor`Polecenie jest doskonałe do aktywnego monitorowania. Można jednak zebrać te metryki diagnostyczne na potrzeby przetwarzania i analizy. W tym celu należy użyć `dotnet-counters collect` polecenia. `collect`Polecenie Switch jest podobne do `monitor` polecenia, ale akceptuje kilka dodatkowych parametrów. Można określić żądaną nazwę i format pliku wyjściowego. W przypadku pliku JSON o nazwie *diagnostics.jsprzy* użyciu następującego polecenia:
 
 ```console
-dotnet-counters collect --process-id 2196 --format json -o diagnostics.json Sample.EventCounter.Minimal Microsoft.AspNetCore.Hosting[total-requests,requests-per-second] System.Runtime[cpu-usage]
+dotnet-counters collect --process-id 2196 --format json -o diagnostics.json --counters Sample.EventCounter.Minimal,Microsoft.AspNetCore.Hosting[total-requests,requests-per-second],System.Runtime[cpu-usage]
 ```
 
 Gdy polecenie jest uruchomione, przytrzymaj klawisz <kbd>F5</kbd> w przeglądarce, aby zacząć wystawiać ciągłe żądania do `https://localhost:5001/api/values` punktu końcowego. Po zakończeniu kilku sekund Zatrzymaj, naciskając klawisz <kbd>q</kbd>. *diagnostics.jsw* pliku jest zapisywana. Plik JSON, który jest pisany, nie jest jednak wcięty; Aby uzyskać czytelność, należy zrobić to w tym miejscu.

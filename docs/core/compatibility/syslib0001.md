@@ -3,12 +3,12 @@ title: Ostrzeżenie SYSLIB0001
 description: Dowiedz się więcej o Obsoletions, które generują ostrzeżenie SYSLIB0001 w czasie kompilacji.
 ms.topic: reference
 ms.date: 10/20/2020
-ms.openlocfilehash: d38d915e902d3c37cc461452f805e8349f11deeb
-ms.sourcegitcommit: 30a686fd4377fe6472aa04e215c0de711bc1c322
+ms.openlocfilehash: d275717e22b260d9ceff4fe94993e9a0e6996cf0
+ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94439992"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437847"
 ---
 # <a name="syslib0001-the-utf-7-encoding-is-insecure"></a>SYSLIB0001: kodowanie UTF-7 jest niezabezpieczone
 
@@ -51,4 +51,4 @@ W związku z tym następujące interfejsy API są oznaczone jako przestarzałe, 
 
 ## <a name="see-also"></a>Zobacz też
 
-- [Ścieżki kodu UTF-7 są przestarzałe](3.1-5.0.md#utf-7-code-paths-are-obsolete)
+- [Ścieżki kodu UTF-7 są przestarzałe](core-libraries/5.0/utf-7-code-paths-obsolete.md)

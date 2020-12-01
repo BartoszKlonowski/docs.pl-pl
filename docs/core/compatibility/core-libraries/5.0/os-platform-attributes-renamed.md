@@ -2,14 +2,14 @@
 title: 'Zmiana istotna: atrybuty OSPlatform zostały zmienione lub usunięte'
 description: Dowiedz się więcej na temat istotnej zmiany w programie .NET 5,0 w bibliotekach podstawowych platformy .NET, w których usunięto atrybuty platformy systemu operacyjnego wprowadzone w wersji zapoznawczej lub zmieniono ich nazwy.
 ms.date: 11/01/2020
-ms.openlocfilehash: 7e709b84005a7b807e390e12d9f36d8b4f73a9df
-ms.sourcegitcommit: d8020797a6657d0fbbdff362b80300815f682f94
+ms.openlocfilehash: 80eba790a607a01e0588c067cdc6105d5f3b20a7
+ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95761468"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437879"
 ---
-# <a name="osplatform-attributes-renamed-or-removed"></a>Atrybuty OSPlatform zostały zmienione lub usunięte
+# <a name="osplatform-attributes-renamed-or-removed"></a>Nazwa atrybutów OSPlatform została zmieniona lub zostały usunięte
 
 Następujące atrybuty wprowadzone w programie .NET 5,0 Preview 8 zostały usunięte lub zmieniono ich nazwy: `MinimumOSPlatformAttribute` , `RemovedInOSPlatformAttribute` , i `ObsoletedInOSPlatformAttribute` .
 
@@ -34,7 +34,7 @@ W programie .NET 5,0 w wersji RC1 lub nowszej, gdy projekt jest przeznaczony dla
 
 ## <a name="reason-for-change"></a>Przyczyna zmiany
 
-Program .NET 5,0 w wersji zapoznawczej 8 wprowadza atrybuty w <xref:System.Runtime.Versioning> celu określenia obsługiwanych platform dla interfejsów API. Atrybuty są używane przez [analizatora zgodności platformy](../../../../core/compatibility/code-analysis.md#ca1416-platform-compatibility) do tworzenia ostrzeżeń kompilacji, gdy interfejsy API specyficzne dla platformy są używane na platformach, które nie obsługują tych interfejsów API.
+Program .NET 5,0 w wersji zapoznawczej 8 wprowadza atrybuty w <xref:System.Runtime.Versioning> celu określenia obsługiwanych platform dla interfejsów API. Atrybuty są używane przez [analizatora zgodności platformy](../../code-analysis/5.0/ca1416-platform-compatibility-analyzer.md) do tworzenia ostrzeżeń kompilacji, gdy interfejsy API specyficzne dla platformy są używane na platformach, które nie obsługują tych interfejsów API.
 
 W przypadku platformy .NET 5,0 RC1 dodano do analizatora zgodności platformy dodatkową funkcję umożliwiającą wykluczenie platformy. Funkcja umożliwia oznaczenie interfejsów API jako całkowicie nieobsługiwanych na platformach systemu operacyjnego. Ta funkcja monituje o wprowadzenie zmian w atrybutach, w tym przy użyciu bardziej odpowiednich nazw. `ObsoletedInOSPlatformAttribute`Zostało usunięte, ponieważ nie było już potrzebne.
 

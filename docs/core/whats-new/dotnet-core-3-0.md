@@ -6,12 +6,12 @@ dev_langs:
 author: adegeo
 ms.author: adegeo
 ms.date: 01/27/2020
-ms.openlocfilehash: 42d60f919cb6ae0dab262ef9056a7c33c312a911
-ms.sourcegitcommit: d8020797a6657d0fbbdff362b80300815f682f94
+ms.openlocfilehash: 1e48f2f83b65ef934c7c460d42f05e2f8de04cbd
+ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95726668"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437905"
 ---
 # <a name="whats-new-in-net-core-30"></a>Co nowego w programie .NET Core 3.0
 
@@ -520,7 +520,7 @@ Aby uzyskać więcej informacji, zobacz [.net Platform-Dependent wewnętrznie](h
 
 ### <a name="improved-net-core-version-apis"></a>Ulepszone interfejsy API wersji platformy .NET Core
 
-Począwszy od platformy .NET Core 3,0, interfejsy API wersji dostarczone z platformą .NET Core teraz zwracają oczekiwane informacje. Na przykład:
+Począwszy od platformy .NET Core 3,0, interfejsy API wersji dostarczone z platformą .NET Core teraz zwracają oczekiwane informacje. Przykład:
 
 ```csharp
 System.Console.WriteLine($"Environment.Version: {System.Environment.Version}");
@@ -573,5 +573,5 @@ W wielu przypadkach podczas tworzenia aplikacji chcesz użyć nieszyfrowanego po
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Zapoznaj się z istotnymi zmianami między programem .NET Core 2,2 i 3,0.](../compatibility/2.2-3.0.md)
+- [Zapoznaj się z istotnymi zmianami między programem .NET Core 2,2 i 3,0.](../compatibility/3.0.md)
 - [Zapoznaj się z istotnymi zmianami w programie .NET Core 3,0 dla aplikacji Windows Forms.](../compatibility/winforms.md#net-core-30)

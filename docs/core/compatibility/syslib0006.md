@@ -3,12 +3,12 @@ title: Ostrzeżenie SYSLIB0006
 description: Dowiedz się więcej o Obsoletions, które generują ostrzeżenie SYSLIB0006 w czasie kompilacji.
 ms.topic: reference
 ms.date: 10/20/2020
-ms.openlocfilehash: 222b669a8a0260713e85721e6031144bb7bda5cc
-ms.sourcegitcommit: 30a686fd4377fe6472aa04e215c0de711bc1c322
+ms.openlocfilehash: a5ab4fe4576bd336cb7de0a91b889fa48ac5650a
+ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94440663"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437468"
 ---
 # <a name="syslib0006-threadabort-is-not-supported"></a>SYSLIB0006: Thread. Abort nie jest obsługiwana
 
@@ -38,7 +38,7 @@ void ProcessPendingWorkItemsNew(CancellationToken cancellationToken)
 
 [!INCLUDE [suppress-syslib-warning](../../../includes/suppress-syslib-warning.md)]
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
-- [Wątek. Abort jest przestarzały — zmiana zostanie przerwana](3.1-5.0.md#threadabort-is-obsolete)
+- [Element Thread.Abort jest przestarzały](core-libraries/5.0/thread-abort-obsolete.md)
 - [Anulowanie w zarządzanych wątkach](../../standard/threading/cancellation-in-managed-threads.md)

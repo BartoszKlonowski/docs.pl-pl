@@ -4,12 +4,12 @@ description: Dowiedz się, w jaki sposób biblioteki zapewniają implementacje d
 author: richlander
 ms.date: 06/20/2016
 ms.assetid: 7b77b6c1-8367-4602-bff3-91e4c05ac643
-ms.openlocfilehash: e59f53f2a16dc84709e0b815d3e2b710c903ff60
-ms.sourcegitcommit: 965a5af7918acb0a3fd3baf342e15d511ef75188
+ms.openlocfilehash: 4e71f81b0dd72f4569d8b6b319b9e97491533d28
+ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94827935"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96438205"
 ---
 # <a name="framework-libraries"></a>Biblioteki platformy
 
@@ -39,7 +39,7 @@ Platforma .NET zawiera zestaw typów pierwotnych, które są używane (w różny
 
 Platforma .NET zawiera zestaw struktur danych, które są workhorsesą prawie wszystkich aplikacji platformy .NET. Są to najczęściej kolekcje, ale również zawierają inne typy.
 
-* <xref:System.Array> -Reprezentuje tablicę obiektów silnie typach, do których można uzyskać dostęp za pomocą indeksu. Ma stały rozmiar dla swojej konstrukcji.
+* <xref:System.Array> -Reprezentuje tablicę obiektów o jednoznacznie określonym typie, do których można uzyskać dostęp za pomocą indeksu. Ma stały rozmiar dla swojej konstrukcji.
 * <xref:System.Collections.Generic.List%601> -Reprezentuje silnie wpisaną listę obiektów, do których można uzyskać dostęp za pomocą indeksu. Rozmiar jest zmieniany automatycznie zgodnie z wymaganiami.
 * <xref:System.Collections.Generic.Dictionary%602> -Reprezentuje kolekcję wartości, które są indeksowane przez klucz. Do wartości można uzyskać dostęp za pośrednictwem klucza. Rozmiar jest zmieniany automatycznie zgodnie z wymaganiami.
 * <xref:System.Uri> — Oferuje reprezentację obiektu o jednolitym identyfikatorze zasobów (URI) i łatwy dostęp do części identyfikatora URI.

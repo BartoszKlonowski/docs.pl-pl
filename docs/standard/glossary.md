@@ -2,12 +2,12 @@
 title: Słownik platformy .NET
 description: Sprawdź znaczenie wybranych terminów używanych w dokumentacji programu .NET.
 ms.date: 11/16/2020
-ms.openlocfilehash: 143657b4ec360640c0a43099ca5c1c0d9c863453
-ms.sourcegitcommit: 34968a61e9bac0f6be23ed6ffb837f52d2390c85
+ms.openlocfilehash: 77ed506fb1c5bd4018b5fe0c14cc0bf37cb08113
+ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687782"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96438190"
 ---
 # <a name="net-glossary"></a>Słownik platformy .NET
 
@@ -63,7 +63,7 @@ Kod źródłowy BCL dla [programu .NET 5 (i .NET Core) i nowszych wersji](#net-5
 
 Poniższe terminy często odnoszą się do tej samej kolekcji interfejsów API, do których odnosi się BCL:
 
-- [podstawowe biblioteki .NET](../core/compatibility/3.1-5.0.md#core-net-libraries)
+- [podstawowe biblioteki .NET](../core/compatibility/corefx.md)
 - [biblioteki struktury](#framework-libraries)
 - [biblioteki środowiska uruchomieniowego](#runtime)
 - [współdzielona architektura](#shared-framework)
@@ -243,7 +243,7 @@ Generowanie natywne (obraz).
 
 Tę technologię można traktować jako trwały kompilator [JIT](#jit) . Zwykle kompiluje kod na komputerze, na którym wykonywany jest kod, ale kompilacja zwykle występuje w czasie instalacji.
 
-## <a name="package"></a>Package
+## <a name="package"></a>package
 
 Pakiet NuGet &mdash; lub tylko pakiet &mdash; to plik *. zip* z co najmniej jednym zestawem o tej samej nazwie wraz z dodatkowymi metadanymi, takimi jak nazwa autora.
 
@@ -335,7 +335,7 @@ Typ kogoś, kto kompiluje aplikację. Bardziej ogólny niż [model aplikacji](#a
 
 W niektórych kontekstach *obciążenie* dotyczy kolekcji funkcji programu Visual Studio, które można zainstalować w celu obsługi określonego typu aplikacji. Aby zapoznać się z przykładem, zobacz [Wybieranie obciążenia](../core/install/windows.md#select-a-workload).
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Podstawy programu .NET](../fundamentals/index.yml)
 - [Przewodnik programu .NET Framework](../framework/index.yml)

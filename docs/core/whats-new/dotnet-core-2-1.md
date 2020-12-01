@@ -5,12 +5,12 @@ dev_langs:
 - csharp
 - vb
 ms.date: 10/10/2018
-ms.openlocfilehash: f125a6a8d9287cb515478a10c2679c07817ae9a6
-ms.sourcegitcommit: bf5c5850654187705bc94cc40ebfb62fe346ab02
+ms.openlocfilehash: 5c15b663cf69de334771e83c1a14db8d66d30458
+ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2020
-ms.locfileid: "91087365"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437915"
 ---
 # <a name="whats-new-in-net-core-21"></a>Co nowego w programie .NET Core 2.1
 
@@ -67,7 +67,7 @@ Liczba narzędzi, które były dostępne tylko dla poszczególnych projektów, p
 
 Program .NET Core 2,1 obsługuje *Narzędzia globalne* — czyli narzędzia niestandardowe, które są dostępne globalnie w wierszu polecenia. Model rozszerzalności we wcześniejszych wersjach programu .NET Core udostępnia niestandardowe narzędzia dostępne dla każdego projektu, tylko przy użyciu `DotnetCliToolReference` .
 
-Aby zainstalować narzędzie globalne, należy użyć polecenia [Narzędzia dotnet Install](../tools/dotnet-tool-install.md) . Na przykład:
+Aby zainstalować narzędzie globalne, należy użyć polecenia [Narzędzia dotnet Install](../tools/dotnet-tool-install.md) . Przykład:
 
 ```dotnetcli
 dotnet tool install -g dotnetsay
@@ -214,7 +214,7 @@ Program .NET Core 2,1 zawiera liczne ulepszenia interfejsów API kryptografii:
 
 - <xref:System.Security.Cryptography.Pkcs.EnvelopedCms?displayProperty=nameWithType>Jest teraz obsługiwana w systemach Linux i macOS.
 
-- Krzywa eliptyczna — Diffie-Hellmana (ECDH) jest teraz dostępna w <xref:System.Security.Cryptography.ECDiffieHellman?displayProperty=nameWithType> rodzinie klas. Powierzchnia obszaru jest taka sama jak w .NET Framework.
+- Elliptic-Curve Diffie-Hellman (ECDH) jest teraz dostępny w <xref:System.Security.Cryptography.ECDiffieHellman?displayProperty=nameWithType> rodzinie klas. Powierzchnia obszaru jest taka sama jak w .NET Framework.
 
 - Wystąpienie zwrócone przez <xref:System.Security.Cryptography.RSA.Create%2A?displayProperty=nameWithType> program umożliwia szyfrowanie lub odszyfrowywanie za pomocą OAEP przy użyciu skrótu SHA-2, a także generowanie lub weryfikowanie podpisów przy użyciu RSA-PSS.
 
@@ -248,7 +248,7 @@ W systemach Linux i macOS można konfigurować tylko <xref:System.Net.Http.HttpC
 
 ### <a name="breaking-changes"></a>Zmiany powodujące niezgodność
 
-Aby uzyskać informacje o istotnych zmianach, zobacz istotne [zmiany dotyczące migracji z wersji 2,0 do 2,1](../compatibility/2.0-2.1.md).
+Aby uzyskać informacje o istotnych zmianach, zobacz istotne [zmiany dotyczące migracji z wersji 2,0 do 2,1](../compatibility/2.1.md).
 
 ## <a name="see-also"></a>Zobacz także
 

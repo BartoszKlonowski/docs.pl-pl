@@ -1,16 +1,16 @@
 ---
 title: Co nowego w wersji .NET 5
 description: Dowiedz się więcej na temat platformy .NET 5 — platformy deweloperskiej obejmującej wiele platform i typu "open source", która jest kolejną ewolucją platformy .NET Core.
-ms.date: 11/18/2020
+ms.date: 11/30/2020
 ms.topic: overview
 ms.author: dapine
 author: IEvangelist
-ms.openlocfilehash: 1101e218f225eed2a2013ed9e19b60f4ece57738
-ms.sourcegitcommit: 6d1ae17e60384f3b5953ca7b45ac859ec6d4c3a0
+ms.openlocfilehash: d0b8533dd63dd7d24f49e11093770b52d7daea89
+ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94982301"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437864"
 ---
 # <a name="whats-new-in-net-5"></a>Co nowego w wersji .NET 5
 
@@ -141,19 +141,19 @@ Aby uzyskać więcej informacji na temat szablonów projektów z interfejsu wier
 
 W [ systemach iSystem.Text.Js](../standard/serialization/system-text-json-overview.md)są dostępne nowe funkcje:
 
-- [Zachowaj odwołania i dojścia cykliczne odwołania](../standard/serialization/system-text-json-how-to.md#preserve-references-and-handle-circular-references)
+- [Zachowaj odwołania i dojścia cykliczne odwołania](../standard/serialization/system-text-json-preserve-references.md)
 - [Metody rozszerzenia HttpClient i HttpContent](../standard/serialization/system-text-json-how-to.md#httpclient-and-httpcontent-extension-methods)
-- [Zezwalaj lub zapisuj liczby w cudzysłowach](../standard/serialization/system-text-json-how-to.md#allow-or-write-numbers-in-quotes)
-- [Obsługa niemodyfikowalnych typów i rekordów C# 9](../standard/serialization/system-text-json-how-to.md#immutable-types-and-records)
-- [Obsługa metod dostępu do właściwości niepublicznych](../standard/serialization/system-text-json-how-to.md#non-public-property-accessors)
-- [pola pomocy technicznej](../standard/serialization/system-text-json-how-to.md#include-fields)
-- [Ignoruj warunkowo właściwości](../standard/serialization/system-text-json-how-to.md#ignore-properties)
+- [Zezwalaj lub zapisuj liczby w cudzysłowach](../standard/serialization/system-text-json-invalid-json.md#allow-or-write-numbers-in-quotes)
+- [Obsługa niemodyfikowalnych typów i rekordów C# 9](../standard/serialization/system-text-json-immutability.md)
+- [Obsługa metod dostępu do właściwości niepublicznych](../standard/serialization/system-text-json-immutability.md)
+- [Pola pomocy technicznej](../standard/serialization/system-text-json-how-to.md#include-fields)
+- [Ignoruj warunkowo właściwości](../standard/serialization/system-text-json-ignore-properties.md)
 - [Obsługa słowników z kluczami niebędącymi ciągami](../standard/serialization/system-text-json-migrate-from-newtonsoft-how-to.md#dictionary-with-non-string-key)
 - [Zezwalaj na obsługę niestandardowych konwerterów o wartości null](../standard/serialization/system-text-json-converters-how-to.md#handle-null-values)
-- [Kopiuj JsonSerializerOptions](../standard/serialization/system-text-json-how-to.md#copy-jsonserializeroptions)
-- [Tworzenie JsonSerializerOptions przy użyciu ustawień domyślnych sieci Web](../standard/serialization/system-text-json-how-to.md#web-defaults-for-jsonserializeroptions)
+- [Kopiuj JsonSerializerOptions](../standard/serialization/system-text-json-configure-options.md#copy-jsonserializeroptions)
+- [Tworzenie JsonSerializerOptions przy użyciu ustawień domyślnych sieci Web](../standard/serialization/system-text-json-configure-options.md#web-defaults-for-jsonserializeroptions)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Podróż do jednego programu .NET](https://channel9.msdn.com/Events/Build/2020/BOD106)
 - [Ulepszenia wydajności w programie .NET 5](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-5)
