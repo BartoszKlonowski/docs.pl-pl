@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: c8f017084fc1ec1eca636ef0178a40559e15b2c5
-ms.sourcegitcommit: cbacb5d2cebbf044547f6af6e74a9de866800985
+ms.openlocfilehash: f6553444e13416850a398ae5bcb6574f2a69bd2d
+ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2020
-ms.locfileid: "89497342"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96478486"
 ---
 ### <a name="improved-wcf-chain-trust-certificate-validation-for-nettcp-certificate-authentication"></a>Ulepszono weryfikację certyfikatu zaufania łańcucha WCF dla uwierzytelniania certyfikatu net. TCP
 
@@ -14,7 +14,7 @@ ms.locfileid: "89497342"
 
 #### <a name="suggestion"></a>Sugestia
 
-<ul><li>Sprawdź, czy certyfikat serwera i klienta ma wymagany identyfikator OID EKU. W przeciwnym razie zaktualizuj certyfikat.</li><li>Sprawdź, czy certyfikat główny jest nieprawidłowy. W takim przypadku należy zaktualizować certyfikat główny.</li><li>Jak zrezygnować z zmiany: Jeśli nie możesz zaktualizować certyfikatu, możesz obejść problem z nieprzerwaną zmianą tymczasowo przy użyciu poniższego ustawienia konfiguracji, jednak rezygnacja z zmiany spowoduje, że system zostanie narażony na problemy z zabezpieczeniami.</li></ul><pre><code class="lang-xml">&lt;appSettings&gt;&#13;&#10;&lt;add key=&quot;wcf:useLegacyCertificateUsagePolicy&quot; value=&quot;true&quot; /&gt;&#13;&#10;&lt;/appSettings&gt;&#13;&#10;</code></pre>
+<ul><li>Sprawdź, czy certyfikat serwera i klienta ma wymagany identyfikator OID EKU. W przeciwnym razie zaktualizuj certyfikat.</li><li>Sprawdź, czy certyfikat główny jest nieprawidłowy. W takim przypadku należy zaktualizować certyfikat główny.</li><li>Jak zrezygnować z zmiany: Jeśli nie możesz zaktualizować certyfikatu, możesz obejść zmiany w sposób tymczasowy, korzystając z następującego ustawienia konfiguracji, jednak rezygnacja z zmiany spowoduje, że system będzie narażony na problem z zabezpieczeniami.</li></ul><pre><code class="lang-xml">&lt;appSettings&gt;&#13;&#10;&lt;add key=&quot;wcf:useLegacyCertificateUsagePolicy&quot; value=&quot;true&quot; /&gt;&#13;&#10;&lt;/appSettings&gt;&#13;&#10;</code></pre>
 
 | Nazwa    | Wartość       |
 |:--------|:------------|
