@@ -1,15 +1,15 @@
 ---
 title: Informacje o F# Interactive (dotnet)
 description: 'Dowiedz się, jak F# Interactive (dotnet FSI) służy do interaktywnego uruchamiania kodu F # za pomocą konsoli programu lub wykonywania skryptów języka F #.'
-ms.date: 10/31/2020
+ms.date: 11/29/2020
 f1_keywords:
 - VS.ToolsOptionsPages.F#_Tools.F#_Interactive
-ms.openlocfilehash: b535cb03d76909043ca192ed5a9d2078f9343795
-ms.sourcegitcommit: 30e9e11dfd90112b8eec6406186ba3533f21eba1
+ms.openlocfilehash: 92177c41dc6b31d9186bae8176f85787e2fb89e0
+ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95099478"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96438041"
 ---
 # <a name="interactive-programming-with-f"></a>Programowanie interaktywne przy użyciu języka F\#
 
@@ -117,6 +117,17 @@ let f (x: Tensor) = sin (sqrt x)
 
 printfn "%A" (f (dsharp.tensor 1.2))
 ```
+
+### <a name="specifying-a-package-source"></a>Określanie źródła pakietu
+
+Możesz również określić źródło pakietu przy użyciu `#i` polecenia. W poniższym przykładzie określono Źródło zdalne i lokalne:
+
+```fsharp
+#i "nuget:https://my-remote-package-source/index.json
+#i @"path-to-my-local-source"
+```
+
+Poinformuje aparat rozpoznawania w obszarze okładek, aby uwzględnić również źródła zdalne i/lub lokalne dodane do skryptu.
 
 Można określić dowolną liczbę odwołań do pakietów w skrypcie.
 

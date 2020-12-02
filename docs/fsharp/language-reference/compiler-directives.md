@@ -4,12 +4,12 @@ description: 'Poznaj dyrektywy preprocesora języka F #, dyrektywy warunkowej ko
 ms.date: 12/10/2018
 f1_keywords:
 - '#endif_FS'
-ms.openlocfilehash: c3e1a07e0e09b5ae090c550368f8a9f8ee575bfb
-ms.sourcegitcommit: 27a15a55019f6b5f2733961738babe94aec0def3
+ms.openlocfilehash: ff106339478c3413dc6458b12f12e1d3f9cd1fe5
+ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90557323"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96438177"
 ---
 # <a name="compiler-directives"></a>Dyrektywy kompilatora
 
@@ -23,11 +23,11 @@ W poniższej tabeli wymieniono dyrektywy preprocesora, które są dostępne w j�
 
 |Dyrektywę|Opis|
 |---------|-----------|
-|`#if` * — symbol*|Obsługuje kompilację warunkową. Kod w sekcji po `#if` zostanie uwzględniony, jeśli *symbol* jest zdefiniowany. Symbol może być również negacją `!` .|
+|`#if`*symbol*|Obsługuje kompilację warunkową. Kod w sekcji po `#if` zostanie uwzględniony, jeśli *symbol* jest zdefiniowany. Symbol może być również negacją `!` .|
 |`#else`|Obsługuje kompilację warunkową. Oznacza sekcję kodu do dołączenia, jeśli symbol używany z poprzednim `#if` nie został zdefiniowany.|
 |`#endif`|Obsługuje kompilację warunkową. Oznacza koniec sekcji warunkowej kodu.|
-|`#`liniow *int*,<br/>`#`liniow *int* *ciąg*int,<br/>`#`liniow *int* *Verbatim — ciąg*|Wskazuje pierwotny wiersz kodu źródłowego i nazwę pliku na potrzeby debugowania. Ta funkcja jest dostępna dla narzędzi generujących kod źródłowy języka F #.|
-|`#nowarn`*WarningCode*|Wyłącza ostrzeżenie lub ostrzeżenia kompilatora. Aby wyłączyć ostrzeżenie, Znajdź jego numer z danych wyjściowych kompilatora i umieść go w cudzysłowie. Pomiń prefiks "FS". Aby wyłączyć wiele numerów ostrzeżeń w tym samym wierszu, należy uwzględnić każdą liczbę w cudzysłowie i oddzielić każdy ciąg znaków spacją. Na przykład:
+|`#`liniow *int*,<br/>`#`liniow *int* *ciąg* int,<br/>`#`liniow *int* *Verbatim — ciąg*|Wskazuje pierwotny wiersz kodu źródłowego i nazwę pliku na potrzeby debugowania. Ta funkcja jest dostępna dla narzędzi generujących kod źródłowy języka F #.|
+|`#nowarn`*WarningCode*|Wyłącza ostrzeżenie lub ostrzeżenia kompilatora. Aby wyłączyć ostrzeżenie, Znajdź jego numer z danych wyjściowych kompilatora i umieść go w cudzysłowie. Pomiń prefiks "FS". Aby wyłączyć wiele numerów ostrzeżeń w tym samym wierszu, należy uwzględnić każdą liczbę w cudzysłowie i oddzielić każdy ciąg znaków spacją. Przykład:
 
 `#nowarn "9" "40"`
 
@@ -78,9 +78,9 @@ W poniższej tabeli wymieniono dyrektywy kompilatora, które są dostępne w ję
 |---------|-----------|
 |`#light` ["on" &#124; "off"]|Włącza lub wyłącza uproszczoną składnię w celu zapewnienia zgodności z innymi wersjami ML. Domyślnie uproszczona składnia jest włączona. Pełna składnia jest zawsze włączona. W związku z tym można użyć składni uproszczonej i pełnej składni. Sama dyrektywa `#light` jest równoważna z `#light "on"` . Jeśli określisz `#light "off"` , musisz użyć pełnej składni dla wszystkich konstrukcji językowych. Składnia w dokumentacji języka F # jest prezentowana z założeniem, że używana jest składnia uproszczona. Aby uzyskać więcej informacji, zobacz [verbose Syntax](verbose-syntax.md).|
 
-Aby poznać dyrektywy interpretera (fsi.exe), zobacz [programowanie interaktywne przy użyciu języka F #](../tutorials/fsharp-interactive/index.md).
+Aby poznać dyrektywy interpretera (fsi.exe), zobacz [programowanie interaktywne przy użyciu języka F #](../tools/fsharp-interactive/index.md).
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Dokumentacja języka F #](index.md)
 - [Opcje kompilatora](compiler-options.md)

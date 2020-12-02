@@ -2,12 +2,12 @@
 title: 'Co nowego w języku F # 5,0 — Przewodnik po języku f #'
 description: 'Zapoznaj się z omówieniem nowych funkcji dostępnych w języku F # 5,0.'
 ms.date: 11/06/2020
-ms.openlocfilehash: 29b5b110379dec476d7c0aa51540984acb25f26e
-ms.sourcegitcommit: 30e9e11dfd90112b8eec6406186ba3533f21eba1
+ms.openlocfilehash: dd954fac31b008beab37cd6c1f06b1d41c5d5004
+ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95098700"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96438009"
 ---
 # <a name="whats-new-in-f-50"></a>Co nowego w języku F # 5,0
 
@@ -15,7 +15,7 @@ F # 5,0 dodaje kilka ulepszeń języka F # i F# Interactive. Jest on publikowany
 
 Najnowszą wersję zestawu SDK platformy .NET można pobrać ze [strony plików do pobrania platformy .NET](https://dotnet.microsoft.com/download).
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Wprowadzenie
 
 Język F # 5,0 jest dostępny we wszystkich dystrybucjach .NET Core i narzędziach programu Visual Studio. Aby uzyskać więcej informacji, zobacz [wprowadzenie do języka F #](../get-started/index.md) , aby dowiedzieć się więcej.
 
@@ -56,7 +56,7 @@ let test p str =
 test pfloat "1.234"
 ```
 
-Ta funkcja implementuje [Narzędzia języka F # RFC FST —-1027](https://github.com/fsharp/fslang-design/blob/master/tooling/FST-1027-fsi-references.md). Aby uzyskać więcej informacji na temat odwołań do pakietów, zobacz samouczek [F# Interactive](../tutorials/fsharp-interactive/index.md) .
+Ta funkcja implementuje [Narzędzia języka F # RFC FST —-1027](https://github.com/fsharp/fslang-design/blob/master/tooling/FST-1027-fsi-references.md). Aby uzyskać więcej informacji na temat odwołań do pakietów, zobacz samouczek [F# Interactive](../tools/fsharp-interactive/index.md) .
 
 ## <a name="string-interpolation"></a>Interpolacja ciągów
 
