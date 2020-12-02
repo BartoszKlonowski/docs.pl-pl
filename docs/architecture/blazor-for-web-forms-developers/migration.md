@@ -6,13 +6,13 @@ ms.author: tasou
 no-loc:
 - Blazor
 - WebAssembly
-ms.date: 09/19/2019
-ms.openlocfilehash: 853358fbf534ee7501412259c61efe054b4757a7
-ms.sourcegitcommit: 5b475c1855b32cf78d2d1bbb4295e4c236f39464
+ms.date: 11/20/2020
+ms.openlocfilehash: 893b6f851681ec540629fe160749b2622b6d5440
+ms.sourcegitcommit: 2f485e721f7f34b87856a51181b5b56624b31fd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91161207"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509835"
 ---
 # <a name="migrate-from-aspnet-web-forms-to-no-locblazor"></a>Migrowanie z formularzy sieci Web ASP.NET do Blazor
 
@@ -33,7 +33,7 @@ Jeśli te lub inne nowe funkcje są wystarczająco atrakcyjne, może wystąpić 
 
 Zgodnie z opisem w rozdziale [hosting modeli hostingu](hosting-models.md) Blazor aplikacja może być hostowana na dwa różne sposoby: po stronie serwera i po stronie klienta. Model po stronie serwera korzysta z połączeń ASP.NET Core sygnalizujących, aby zarządzać aktualizacjami modelu DOM podczas uruchamiania dowolnego rzeczywistego kodu na serwerze. Model po stronie klienta działa jak WebAssembly w przeglądarce i nie wymaga połączeń z serwerem. Istnieje wiele różnic, które mogą mieć wpływ na to, co jest najlepsze dla określonej aplikacji:
 
-- Uruchamianie jako WebAssembly nadal trwa opracowywanie i może nie obsługiwać wszystkich funkcji (takich jak wątkowość) w bieżącym czasie
+- Uruchamianie jako WebAssembly nie obsługuje wszystkich funkcji (takich jak wątkowość) w bieżącym czasie
 - Komunikacja między klientem a serwerem może powodować problemy z opóźnieniami w trybie po stronie serwera
 - Dostęp do baz danych i wewnętrznych lub chronionych usług wymaga oddzielnej usługi z hostingiem po stronie klienta
 
@@ -41,11 +41,11 @@ W momencie pisania model po stronie serwera bardziej przypomina formularze sieci
 
 ## <a name="create-a-new-project"></a>Tworzenie nowego projektu
 
-Ten krok początkowej migracji polega na utworzeniu nowego projektu. Ten typ projektu jest oparty na projektach w stylu zestawu SDK platformy .NET Core i upraszcza wiele standardowych, które były używane w poprzednich formatach projektu. Aby uzyskać więcej informacji, zobacz rozdział dotyczący [struktury projektu](project-structure.md).
+Ten krok początkowej migracji polega na utworzeniu nowego projektu. Ten typ projektu jest oparty na projektach w stylu zestawu SDK platformy .NET i upraszcza wiele standardowych, które były używane w poprzednich formatach projektu. Aby uzyskać więcej informacji, zobacz rozdział dotyczący [struktury projektu](project-structure.md).
 
 Po utworzeniu projektu Zainstaluj biblioteki, które były używane w poprzednim projekcie. W starszych projektach formularzy sieci Web może zostać użyty plik *packages.config* , aby wyświetlić listę wymaganych pakietów NuGet. W nowym projekcie w stylu zestawu SDK *packages.config* został zastąpiony `<PackageReference>` elementami w pliku projektu. Zaletą tego podejścia jest to, że wszystkie zależności są instalowane w sposób przechodni. Można wyświetlić tylko te zależności najwyższego poziomu.
 
-Wiele zależności, z których korzystasz, jest dostępnych dla platformy .NET Core, w tym Entity Framework 6 i log4net. W przypadku braku dostępnej wersji programu .NET Core lub .NET Standard wersja .NET Framework może być często używana. Przebieg może się różnić. Każdy używany interfejs API, który nie jest dostępny w środowisku .NET Core powoduje błąd czasu wykonywania. Program Visual Studio powiadamia o takich pakietach. Żółta ikona pojawia się w węźle **odwołania** projektu w **Eksplorator rozwiązań**.
+Wiele zależności, z których korzystasz, jest dostępnych dla platformy .NET, w tym Entity Framework 6 i log4net. Jeśli nie ma dostępnej wersji platformy .NET lub .NET Standard, można często użyć wersji .NET Framework. Przebieg może się różnić. Każdy używany interfejs API, który nie jest dostępny w środowisku .NET, powoduje błąd w czasie wykonywania. Program Visual Studio powiadamia o takich pakietach. Żółta ikona pojawia się w węźle **odwołania** projektu w **Eksplorator rozwiązań**.
 
 W Blazor projekcie eshop opartym na programie można zobaczyć zainstalowane pakiety. Wcześniej plik *packages.config* wystawiony na każdy pakiet użyty w projekcie, co spowodowało niemal 50 wierszy. Fragment *packages.config* jest następujący:
 
@@ -80,12 +80,13 @@ BlazorProjekt zawiera listę zależności, które są wymagane w `<ItemGroup>` e
 ```xml
 <ItemGroup>
     <PackageReference Include="Autofac" Version="4.9.3" />
-    <PackageReference Include="EntityFramework" Version="6.3.0-preview9-19423-04" />
-    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="log4net" Version="2.0.12" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="2.2.12" />
 </ItemGroup>
 ```
 
-Jednym pakietem NuGet, który upraszcza życie deweloperów formularzy sieci Web, jest [pakiet zgodności systemu Windows](../../core/porting/windows-compat-pack.md). Mimo że platforma .NET Core jest międzyplatformowa, niektóre funkcje są dostępne tylko w systemie Windows. Funkcje specyficzne dla systemu Windows są udostępniane przez zainstalowanie pakietu zgodności. Przykłady takich funkcji obejmują rejestr, WMI i usługi katalogowe. Pakiet dodaje około 20 000 interfejsów API i aktywuje wiele usług, za pomocą których użytkownik może już znać. Projekt eShop nie wymaga pakietu zgodności. ale jeśli projekty korzystają z funkcji specyficznych dla systemu Windows, pakiet ułatwia pracę z migracją.
+Jednym pakietem NuGet, który upraszcza życie deweloperów formularzy sieci Web, jest [pakiet zgodności systemu Windows](../../core/porting/windows-compat-pack.md). Chociaż platforma .NET działa na wielu platformach, niektóre funkcje są dostępne tylko w systemie Windows. Funkcje specyficzne dla systemu Windows są udostępniane przez zainstalowanie pakietu zgodności. Przykłady takich funkcji obejmują rejestr, WMI i usługi katalogowe. Pakiet dodaje około 20 000 interfejsów API i aktywuje wiele usług, za pomocą których użytkownik może już znać. Projekt eShop nie wymaga pakietu zgodności. ale jeśli projekty korzystają z funkcji specyficznych dla systemu Windows, pakiet ułatwia pracę z migracją.
 
 ## <a name="enable-startup-process"></a>Włącz proces uruchamiania
 
@@ -245,7 +246,7 @@ public class Startup
 }
 ```
 
-Jedną z znaczących zmian, które można zauważyć w formularzach sieci Web, jest wyeksponowanie DI. DI ma regułę identyfikatora GUID w projekcie ASP.NET Core. Obsługuje on dostosowanie niemal wszystkich aspektów ASP.NET Core Framework. Istnieje nawet wbudowany dostawca usług, który może być używany w wielu scenariuszach. Jeśli wymagane jest dalsze dostosowanie, może ono być obsługiwane przez wiele projektów społeczności. Na przykład możesz przenieść swoją inwestycję w inną firmę.
+Jedną z znaczących zmian, które można zauważyć w formularzach sieci Web, jest wyeksponowanie DI. DI ma regułę identyfikatora GUID w projekcie ASP.NET Core. Obsługuje on dostosowanie niemal wszystkich aspektów ASP.NET Core Framework. Istnieje nawet wbudowany dostawca usług, który może być używany w wielu scenariuszach. Jeśli wymagane jest dalsze dostosowanie, może ono być obsługiwane przez wiele projektów społecznościowych. Na przykład możesz przenieść swoją inwestycję w inną firmę.
 
 W oryginalnej aplikacji eShop istnieje pewna Konfiguracja zarządzania sesją. Ze względu na to, że po stronie serwera Blazor ASP.NET Core sygnalizujący komunikację, stan sesji nie jest obsługiwany, ponieważ połączenia mogą wystąpić niezależnie od kontekstu http. Aplikacja, która używa stanu sesji, wymaga ponownej architektury przed uruchomieniem Blazor aplikacji.
 
@@ -286,7 +287,7 @@ Aby uzyskać więcej informacji na temat grupowania i minifikacja, zobacz [zesta
 
 Strona w aplikacji formularzy sieci Web jest plikiem z rozszerzeniem *. aspx* . Strona formularzy sieci Web może być często mapowana na składnik programu Blazor . BlazorSkładnik jest tworzony w pliku z rozszerzeniem *. Razor* . W przypadku projektu eShop pięć stron jest konwertowanych na stronę Razor.
 
-Na przykład widok szczegółów składa się z trzech plików w projekcie formularzy sieci Web: *details. aspx*, *details.aspx.cs*i *details.aspx.Designer.cs*. Podczas konwertowania do Blazor , kod źródłowy i znaczniki są łączone do *details. Razor*. Kompilacja Razor (równoważna z plikami *Designer.cs* ) jest przechowywana w katalogu *obj* i nie jest domyślnie wyświetlana w **Eksplorator rozwiązań**. Strona formularzy sieci Web składa się z następujących oznaczeń:
+Na przykład widok szczegółów składa się z trzech plików w projekcie formularzy sieci Web: *details. aspx*, *details.aspx.cs* i *details.aspx.Designer.cs*. Podczas konwertowania do Blazor , kod źródłowy i znaczniki są łączone do *details. Razor*. Kompilacja Razor (równoważna z plikami *Designer.cs* ) jest przechowywana w katalogu *obj* i nie jest domyślnie wyświetlana w **Eksplorator rozwiązań**. Strona formularzy sieci Web składa się z następujących oznaczeń:
 
 ```aspx-csharp
 <%@ Page Title="Details" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Details.aspx.cs" Inherits="eShopLegacyWebForms.Catalog.Details" %>
@@ -558,11 +559,11 @@ W programie Blazor równoważne znaczniki są podane w pliku *Create. Razor* :
 </EditForm>
 ```
 
-`EditForm`Kontekst zawiera obsługę walidacji i może być zawijany wokół danych wejściowych. Adnotacje danych są typowym sposobem dodawania walidacji. Takie wsparcie sprawdzania poprawności można dodać za pośrednictwem `DataAnnotationsValidator` składnika. Aby uzyskać więcej informacji na temat tego mechanizmu, zobacz [ASP.NET Core Blazor formularzy i walidacji](/aspnet/core/blazor/forms-validation).
+`EditForm`Kontekst zawiera obsługę walidacji i może być opakowany wokół danych wejściowych. Adnotacje danych są typowym sposobem dodawania walidacji. Takie wsparcie sprawdzania poprawności można dodać za pośrednictwem `DataAnnotationsValidator` składnika. Aby uzyskać więcej informacji na temat tego mechanizmu, zobacz [ASP.NET Core Blazor formularzy i walidacji](/aspnet/core/blazor/forms-validation).
 
 ## <a name="migrate-configuration"></a>Migruj konfigurację
 
-W projekcie formularzy sieci Web dane konfiguracyjne są najczęściej przechowywane w pliku *web.config* . Dostęp do danych konfiguracyjnych z programu `ConfigurationManager` . Usługi były często wymagane do analizowania obiektów. Dzięki .NET Framework 4.7.2 można redagować do konfiguracji za pośrednictwem `ConfigurationBuilders` . Ci deweloperzy mogą dodawać różne źródła do konfiguracji, która następnie została złożona w czasie wykonywania w celu pobrania niezbędnych wartości.
+W projekcie formularzy sieci Web dane konfiguracyjne są najczęściej przechowywane w pliku *web.config* . Dostęp do danych konfiguracyjnych z programu `ConfigurationManager` . Usługi były często wymagane do analizowania obiektów. W przypadku .NET Framework 4.7.2, możliwość tworzenia została dodana do konfiguracji za pośrednictwem `ConfigurationBuilders` . Ci deweloperzy mogą dodawać różne źródła dla konfiguracji, która następnie została złożona w czasie wykonywania w celu pobrania niezbędnych wartości.
 
 ASP.NET Core wprowadzono elastyczny system konfiguracji, który pozwala zdefiniować źródło lub źródła konfiguracji używane przez aplikację i wdrożenie. `ConfigurationBuilder`Infrastruktura, która może być używana w aplikacji formularzy sieci Web, została modelowana po pojęciach używanych w systemie konfiguracji ASP.NET Core.
 
@@ -616,7 +617,7 @@ Domyślnie zmienne środowiskowe, pliki JSON (*appsettings.json* i *appSettings.
 
 ## <a name="migrate-data-access"></a>Migrowanie dostępu do danych
 
-Dostęp do danych jest ważnym aspektem każdej aplikacji. Projekt eShop przechowuje informacje o katalogu w bazie danych i pobiera dane z Entity Framework (EF) 6. Ponieważ program Dr 6 jest obsługiwany w środowisku .NET Core 3,0, nadal można z niego korzystać.
+Dostęp do danych jest ważnym aspektem każdej aplikacji. Projekt eShop przechowuje informacje o katalogu w bazie danych i pobiera dane z Entity Framework (EF) 6. Ponieważ program Dr 6 jest obsługiwany w programie .NET 5,0, nadal można z niego korzystać.
 
 Następujące zmiany związane z EF były niezbędne do eShop:
 

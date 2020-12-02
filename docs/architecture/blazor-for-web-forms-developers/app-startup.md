@@ -3,13 +3,13 @@ title: Uruchamianie aplikacji
 description: Dowiedz się, jak zdefiniować logikę uruchamiania dla aplikacji.
 author: csharpfritz
 ms.author: jefritz
-ms.date: 02/25/2020
-ms.openlocfilehash: 883f9a3fbe2d52cb7d0fbc5dfc94ce829a5d2bf3
-ms.sourcegitcommit: 5b475c1855b32cf78d2d1bbb4295e4c236f39464
+ms.date: 11/20/2020
+ms.openlocfilehash: d812079f84f67409334d07c4c10c5577446503be
+ms.sourcegitcommit: 2f485e721f7f34b87856a51181b5b56624b31fd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91158191"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509705"
 ---
 # <a name="app-startup"></a>Uruchamianie aplikacji
 
@@ -28,7 +28,7 @@ W przypadku ASP.NET Core i Blazor te metody są uproszczone i skonsolidowane w `
 
 ## <a name="blazor-server-startup-structure"></a>Struktura uruchamiania serwera Blazor
 
-Aplikacje serwera Blazor znajdują się na ASP.NET Core aplikacji 3,0 lub nowszej.  ASP.NET Core aplikacje sieci Web są konfigurowane za pomocą pary metod w `Startup.cs` klasie w folderze głównym aplikacji.  Domyślna zawartość klasy startowej jest wymieniona poniżej
+Aplikacje serwera Blazor znajdują się na ASP.NET Core w wersji 3,0 lub nowszej.  ASP.NET Core aplikacje sieci Web są konfigurowane za pomocą pary metod w `Startup.cs` klasie w folderze głównym aplikacji.  Domyślna zawartość klasy startowej jest wymieniona poniżej
 
 ```csharp
 public class Startup
@@ -89,7 +89,7 @@ Następnie zostanie wyświetlona nieoczekiwana Metoda konfiguracji `UseStaticFil
 
 Następnym wierszem jest pierwsza, która replikuje jedną z opcji konfiguracji z formularzy sieci Web: `UseRouting` .  Ta metoda dodaje router ASP.NET Core do potoku i można go skonfigurować w tym miejscu lub w poszczególnych plikach, do których może rozważyć Routing.  Więcej informacji na temat konfiguracji routingu można znaleźć w [sekcji Routing](pages-routing-layouts.md).
 
-Końcowa instrukcja w tej metodzie definiuje punkty końcowe, na których nasłuchuje ASP.NET Core.  Są to lokalizacje dostępne w sieci Web, do których można uzyskać dostęp na serwerze sieci Web i które odbierają zawartość obsłużoną przez platformę .NET i zwracają do Ciebie.  Pierwszy wpis `MapBlazorHub` umożliwia skonfigurowanie centrum sygnałów do użycia w czasie rzeczywistym i trwałego połączenia z serwerem, w którym jest obsługiwany stan i renderowanie składników Blazor.  `MapFallbackToPage`Wywołanie metody wskazuje lokalizację dostępną do sieci Web strony, która uruchamia aplikację Blazor, a także konfiguruje aplikację do obsługi żądań z głębokością konsolidacji po stronie klienta.  Ta funkcja zostanie wyświetlona w pracy, jeśli otworzysz przeglądarkę i nawiguj bezpośrednio do Blazor obsłużonej trasy w aplikacji, na przykład `/counter` w domyślnym szablonie projektu. Żądanie jest obsługiwane przez stronę rezerwową *_Host. cshtml* , która następnie uruchamia router Blazor i renderuje stronę licznika.
+Końcowa instrukcja w tej metodzie definiuje punkty końcowe, na których nasłuchuje ASP.NET Core.  Te trasy to lokalizacje dostępne w sieci Web, do których można uzyskać dostęp na serwerze sieci Web i które odbierają zawartość obsłużoną przez platformę .NET i zwracają do Ciebie.  Pierwszy wpis `MapBlazorHub` umożliwia skonfigurowanie centrum sygnałów do użycia w czasie rzeczywistym i trwałego połączenia z serwerem, w którym jest obsługiwany stan i renderowanie składników Blazor.  `MapFallbackToPage`Wywołanie metody wskazuje lokalizację dostępną do sieci Web strony, która uruchamia aplikację Blazor, a także konfiguruje aplikację do obsługi żądań z głębokością konsolidacji po stronie klienta.  Ta funkcja zostanie wyświetlona w pracy, jeśli otworzysz przeglądarkę i nawiguj bezpośrednio do Blazor obsłużonej trasy w aplikacji, na przykład `/counter` w domyślnym szablonie projektu. Żądanie jest obsługiwane przez stronę rezerwową *_Host. cshtml* , która następnie uruchamia router Blazor i renderuje stronę licznika.
 
 ## <a name="upgrading-the-bundleconfig-process"></a>Uaktualnianie procesu BundleConfig
 

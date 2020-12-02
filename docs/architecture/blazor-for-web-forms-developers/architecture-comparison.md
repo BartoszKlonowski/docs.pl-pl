@@ -5,13 +5,13 @@ author: danroth27
 ms.author: daroth
 no-loc:
 - Blazor
-ms.date: 09/11/2019
-ms.openlocfilehash: 9a8e78338aff53002647a10ed9007296e4682b5a
-ms.sourcegitcommit: 0100be20fcf23f61dab672deced70059ed71bb2e
+ms.date: 11/20/2020
+ms.openlocfilehash: afb5d4025b81c2ddef782c462c94d32edc872a21
+ms.sourcegitcommit: 2f485e721f7f34b87856a51181b5b56624b31fd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88267714"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509731"
 ---
 # <a name="architecture-comparison-of-aspnet-web-forms-and-no-locblazor"></a>Porównanie architektury formularzy sieci Web ASP.NET i Blazor
 

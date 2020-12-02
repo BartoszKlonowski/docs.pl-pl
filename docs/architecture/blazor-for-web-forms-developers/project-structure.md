@@ -6,13 +6,13 @@ ms.author: daroth
 no-loc:
 - Blazor
 - WebAssembly
-ms.date: 09/11/2019
-ms.openlocfilehash: 225ebbdd5e23516ae7d5465371e95c73c440c82b
-ms.sourcegitcommit: 0100be20fcf23f61dab672deced70059ed71bb2e
+ms.date: 11/20/2020
+ms.openlocfilehash: d91430eb654ee16934408bf064803b34ca700640
+ms.sourcegitcommit: 2f485e721f7f34b87856a51181b5b56624b31fd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88267779"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509809"
 ---
 # <a name="project-structure-for-no-locblazor-apps"></a>Struktura projektu dla Blazor aplikacji
 
@@ -22,13 +22,13 @@ Aby utworzyć swoją pierwszą Blazor aplikację, postępuj zgodnie z instrukcja
 
 ## <a name="project-file"></a>Plik projektu
 
-Blazor Aplikacje serwera to projekty platformy .NET Core. Plik projektu dla Blazor aplikacji serwerowej jest bardzo prosty, ponieważ może uzyskać następujące informacje:
+Blazor Aplikacje serwera to projekty platformy .NET. Plik projektu dla Blazor aplikacji serwerowej jest bardzo prosty, ponieważ może uzyskać następujące informacje:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
 </Project>
@@ -37,32 +37,26 @@ Blazor Aplikacje serwera to projekty platformy .NET Core. Plik projektu dla Blaz
 Plik projektu Blazor WebAssembly aplikacji wygląda nieco więcej (dokładne numery wersji mogą się różnić):
 
 ```xml
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RazorLangVersion>3.0</RazorLangVersion>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="3.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="3.1.0" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.DevServer" Version="3.1.0" PrivateAssets="all" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Shared\BlazorWebAssemblyApp1.Shared.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.0" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
   </ItemGroup>
 
 </Project>
 ```
 
-BlazorWebAssemblyprojekty docelowe .NET standard zamiast .NET Core, ponieważ działają w przeglądarce w WebAssembly środowisku uruchomieniowym .NET opartym na architekturze. Nie można zainstalować programu .NET w przeglądarce internetowej, na przykład na serwerze lub na komputerze dewelopera. W związku z tym projekt odwołuje się do Blazor struktury przy użyciu poszczególnych odwołań do pakietu.
+BlazorWebAssemblyelementy docelowe projektu `Microsoft.NET.Sdk.BlazorWebAssembly` zamiast `Microsoft.NET.Sdk.Web` zestawu SDK, ponieważ działają w przeglądarce w WebAssembly środowisku uruchomieniowym .NET opartym na architekturze. Nie można zainstalować programu .NET w przeglądarce internetowej, na przykład na serwerze lub na komputerze dewelopera. W związku z tym projekt odwołuje się do Blazor struktury przy użyciu poszczególnych odwołań do pakietu.
 
-Porównując, domyślny projekt formularzy sieci Web ASP.NET zawiera niemal 300 wierszy XML w pliku *. csproj* , z których większość jest jawnie wyświetlona w projekcie różnego kodu i plików zawartości. Wiele uproszczeń w projektach opartych na architekturze .NET Core i .NET Standard pochodzi z domyślnych obiektów docelowych i właściwości zaimportowanych przez odwołanie do `Microsoft.NET.Sdk.Web` zestawu SDK, często nazywanego po prostu zestawem SDK sieci Web. Zestaw SDK sieci Web zawiera symbole wieloznaczne i inne wygody upraszczające dołączanie kodu i plików zawartości w projekcie. Pliki nie muszą być jawnie wyświetlane. W przypadku określania platformy .NET Core zestaw SDK sieci Web dodaje również odwołania do struktur platformy .NET Core i ASP.NET Core wspólnych. Struktury są widoczne w **Dependencies**  >  węźle**struktury** zależności w oknie **Eksplorator rozwiązań** . Struktury udostępnione to kolekcje zestawów, które zostały zainstalowane na komputerze podczas instalacji programu .NET Core.
+Porównując, domyślny projekt formularzy sieci Web ASP.NET zawiera niemal 300 wierszy XML w pliku *. csproj* , z których większość jest jawnie wyświetlona w projekcie różnego kodu i plików zawartości. Dzięki wydaniu `.NET 5` obu programów `Blazor Server` i `Blazor WebAssembly` aplikacji można łatwo współdzielić jedno ujednolicone środowisko uruchomieniowe.
 
-Chociaż są one obsługiwane, poszczególne odwołania do zestawów są rzadziej używane w projektach .NET Core. Większość zależności projektu jest obsługiwana jako odwołania do pakietu NuGet. Musisz tylko odwoływać się do zależności pakietów najwyższego poziomu w projektach .NET Core. Zależności przechodnie są włączane automatycznie. Zamiast korzystać z pliku *packages.config* często znalezionego w projektach formularzy sieci Web ASP.NET do pakietów referencyjnych, odwołania do pakietów są dodawane do pliku projektu przy użyciu `<PackageReference>` elementu.
+Chociaż są one obsługiwane, poszczególne odwołania do zestawów są rzadziej używane w projektach .NET. Większość zależności projektu jest obsługiwana jako odwołania do pakietu NuGet. Musisz tylko odwoływać się do zależności pakietów najwyższego poziomu w projektach .NET. Zależności przechodnie są włączane automatycznie. Zamiast korzystać z pliku *packages.config* często znalezionego w projektach formularzy sieci Web ASP.NET do pakietów referencyjnych, odwołania do pakietów są dodawane do pliku projektu przy użyciu `<PackageReference>` elementu.
 
 ```xml
 <ItemGroup>
@@ -138,7 +132,7 @@ Pliki *_Imports. Razor* nie są plikami składników Razor. Zamiast tego definiu
 @using BlazorApp1.Shared
 ```
 
-## <a name="pages"></a>Strony
+## <a name="pages"></a>Pages
 
 Gdzie znajdują się strony w Blazor aplikacjach? Blazor nie definiuje oddzielnego rozszerzenia pliku dla stron adresowanych, takich jak pliki *aspx* w aplikacjach ASP.NET Web Forms. Zamiast tego strony są definiowane przez przypisanie tras do składników programu. Trasa jest zwykle przypisana przy użyciu `@page` dyrektywy Razor. Na przykład `Counter` składnik utworzony w pliku *Pages/Counter. Razor* definiuje następującą trasę:
 
@@ -152,9 +146,9 @@ Trasy składników nie są obecnie wywnioskowane przez lokalizację pliku skład
 
 Więcej szczegółów na temat routingu znajduje się w Blazor sekcji [strony, Routing i układy](./pages-routing-layouts.md) .
 
-## <a name="layout"></a>Układ
+## <a name="layout"></a>Layout
 
-W aplikacjach formularzy sieci Web ASP.NET wspólny układ strony jest obsługiwany przy użyciu stron wzorcowych (*site. Master*). W obszarze Blazor aplikacje układ strony jest obsługiwany przy użyciu składników układu (*Shared/MainLayout. Razor*). Składniki układu zostaną omówione bardziej szczegółowo w sekcji [strony, routingu i układów](./pages-routing-layouts.md) .
+W aplikacjach ASP.NET Web Forms typowy układ strony jest obsługiwany przy użyciu stron wzorcowych (*site. Master*). W Blazor aplikacjach układ strony jest obsługiwany przy użyciu składników układu (*Shared/MainLayout. Razor*). Składniki układu zostaną omówione bardziej szczegółowo w sekcji [strony, routingu i układów](./pages-routing-layouts.md) .
 
 ## <a name="bootstrap-no-locblazor"></a>Bootstrap Blazor
 
@@ -198,39 +192,49 @@ Odwołanie do skryptu do *_framework/blazor.server.js* nawiązuje połączenie w
 </html>
 ```
 
-W Blazor WebAssembly aplikacji strona hosta to prosty statyczny plik HTML w katalogu *wwwroot/index.html*. `<app>`Element służy do wskazywania, gdzie ma być renderowany składnik główny.
+W Blazor WebAssembly aplikacji strona hosta to prosty statyczny plik HTML w katalogu *wwwroot/index.html*. `<div>`Element o identyfikatorze nazwa `app` jest używany do wskazania, gdzie ma być renderowany składnik główny.
 
 ```html
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>BlazorApp2</title>
     <base href="/" />
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/site.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="blazor-web.styles.css" rel="stylesheet" />
 </head>
-<body>
-    <app>Loading...</app>
 
+<body>
+    <div id="app">Loading...</div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
     <script src="_framework/blazor.webassembly.js"></script>
 </body>
+
 </html>
+
 ```
 
-Określony składnik do renderowania jest skonfigurowany w `Startup.Configure` metodzie aplikacji przy użyciu odpowiedniego selektora CSS wskazującego, gdzie składnik powinien być renderowany.
+Składnik główny do renderowania jest skonfigurowany w `Program.Main` metodzie aplikacji z elastycznością do rejestrowania różnych usług przy użyciu iniekcji zależności. Dodawanie usług do aplikacji można znaleźć w [ Blazor WebAssembly ](https://docs.microsoft.com/aspnet/core/blazor/fundamentals/dependency-injection?view=aspnetcore-5.0#blazor-webassembly) temacie
 
 ```csharp
-public class Startup
+public class Program
 {
-    public void ConfigureServices(IServiceCollection services)
+    public static async Task Main(string[] args)
     {
-    }
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        builder.RootComponents.Add<App>("#app");
 
-    public void Configure(IComponentsApplicationBuilder app)
-    {
-        app.AddComponent<App>("app");
+        ....
+        ....
     }
 }
 ```
@@ -248,7 +252,7 @@ Aby uruchomić Blazor WebAssembly aplikację, wybierz jedną z następujących m
 - Uruchom projekt klienta bezpośrednio przy użyciu serwera deweloperskiego.
 - Uruchom projekt serwera podczas hostowania aplikacji przy użyciu ASP.NET Core.
 
-BlazorWebAssemblyaplikacje nie obsługują debugowania przy użyciu programu Visual Studio. Aby uruchomić aplikację, użyj `Ctrl+F5` zamiast `F5` . Zamiast tego można debugować Blazor WebAssembly aplikacje bezpośrednio w przeglądarce. Aby uzyskać szczegółowe informacje, zobacz [ASP.NET Core Blazor debugowania](/aspnet/core/blazor/debug) .
+BlazorWebAssemblyaplikacje mogą być debugowane w przeglądarce i w programie Visual Studio. zobacz [ASP.NET Core Blazor WebAssembly debugowania](/aspnet/core/blazor/debug) , aby uzyskać szczegółowe informacje.
 
 >[!div class="step-by-step"]
 >[Poprzedni](hosting-models.md) 

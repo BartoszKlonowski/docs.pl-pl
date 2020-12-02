@@ -6,19 +6,23 @@ ms.author: daroth
 no-loc:
 - Blazor
 - WebAssembly
-ms.date: 09/11/2019
-ms.openlocfilehash: 3ac9a02a2f5c93cbfd9377a9f6fff4b6c5f45e93
-ms.sourcegitcommit: 5b475c1855b32cf78d2d1bbb4295e4c236f39464
+ms.date: 12/01/2020
+ms.openlocfilehash: 47f684e1b48ca95b8d999e6f1429840eb5f541de
+ms.sourcegitcommit: 2f485e721f7f34b87856a51181b5b56624b31fd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91158178"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509770"
 ---
 # <a name="no-locblazor-for-aspnet-web-forms-developers"></a>Blazor dla deweloperów ASP.NET Web Forms
 
 ![Zrzut ekranu przedstawiający centrum poczty elektronicznej aplikacji bezserwerowych.](./media/index/blazor-for-aspnet-web-forms-developers.png)
 
 > Pobieranie dostępne o: <https://aka.ms/blazor-ebook>
+
+**Wersja 1.0**
+
+Odwołaj się do [dziennika zmian](https://aka.ms/blazor-ebook-changelog) dotyczących aktualizacji książki i wkładów społecznościowych.
 
 OPUBLIKOWANA PRZEZ
 
@@ -60,7 +64,7 @@ Autorów
 
 Platforma .NET ma długotrwałe Programowanie aplikacji sieci Web za pomocą ASP.NET, kompleksowego zestawu Platform i narzędzi do tworzenia dowolnego rodzaju aplikacji sieci Web. ASP.NET ma własne elementy platformy sieci Web i technologii, które zaczynają cały sposób z klasycznymi Active Server stronami (ASP). Struktury, takie jak ASP.NET Web Forms, ASP.NET MVC, ASP.NET Web Pages i ostatnio ASP.NET Core, zapewniają wydajny i wydajny sposób kompilowania aplikacji sieci Web *renderowanych na serwerze* , w przypadku których zawartość interfejsu użytkownika jest generowana dynamicznie na serwerze w odpowiedzi na żądania HTTP. Każdy ASP.NET Framework jest przeznaczony dla różnych grup odbiorców i tworzenia aplikacji. ASP.NET formularze sieci Web dostarczane z oryginalną wersją .NET Framework i obsługują programowanie w sieci Web przy użyciu wielu wzorców, które są znane dla deweloperów komputerów, takich jak kontrolki interfejsu użytkownika wielokrotnego użytku z prostą obsługą zdarzeń. Żadna z ofert ASP.NET nie umożliwia jednak uruchamiania kodu, który jest wykonywany w przeglądarce użytkownika. Aby to zrobić, należy napisać kod JavaScript i korzystać z dowolnej z wielu platform i narzędzi języka JavaScript, które są stopniowane i niepopularne w latach: jQuery, odcinania, kątowy, reagowanie i tak dalej.
 
-[Blazor](https://blazor.net) to nowa platforma sieci Web, która zmienia możliwości podczas kompilowania aplikacji sieci Web za pomocą platformy .NET. Blazor to struktura interfejsu użytkownika sieci Web po stronie klienta oparta na języku C# zamiast języka JavaScript. Za pomocą Blazor programu można napisać składniki logiki i interfejsu użytkownika po stronie klienta w języku C#, skompilować je do normalnych zestawów .NET, a następnie uruchomić je bezpośrednio w przeglądarce przy użyciu nowego otwartego standardu sieci Web o nazwie WebAssembly . Program może również Blazor uruchamiać składniki interfejsu użytkownika platformy .NET na serwerze i obsługiwać wszystkie interakcje interfejsu użytkownika w czasie rzeczywistym za pośrednictwem przeglądarki. W przypadku sparowania z platformą .NET działającą na serwerze program Blazor umożliwia tworzenie aplikacji sieci Web na całym stosie przy użyciu platformy .NET. BlazorUdziały wielu commonalities z formularzami ASP.NET sieci Web, takimi jak posiadanie modelu składników wielokrotnego użytku, i prosty sposób obsługi zdarzeń użytkowników, również kompilują się z podstaw platformy .NET Core, aby zapewnić nowoczesne i wysoce wydajne środowisko programistyczne dla sieci Web.
+[Blazor](https://blazor.net) to nowa platforma sieci Web, która zmienia możliwości podczas kompilowania aplikacji sieci Web za pomocą platformy .NET. Blazor to struktura interfejsu użytkownika sieci Web po stronie klienta oparta na języku C# zamiast języka JavaScript. Za pomocą Blazor programu można napisać składniki logiki i interfejsu użytkownika po stronie klienta w języku C#, skompilować je do normalnych zestawów .NET, a następnie uruchomić je bezpośrednio w przeglądarce przy użyciu nowego otwartego standardu sieci Web o nazwie WebAssembly . Program może również Blazor uruchamiać składniki interfejsu użytkownika platformy .NET na serwerze i obsługiwać wszystkie interakcje interfejsu użytkownika w czasie rzeczywistym za pośrednictwem przeglądarki. W przypadku sparowania z platformą .NET działającą na serwerze program Blazor umożliwia tworzenie aplikacji sieci Web na całym stosie przy użyciu platformy .NET. BlazorUdziały wielu commonalities z formularzami ASP.NET sieci Web, takimi jak posiadanie modelu składników wielokrotnego użytku, i prosty sposób obsługi zdarzeń użytkowników, również kompilują się z podstaw platformy .NET, aby zapewnić nowoczesne i wysoce wydajne środowisko programistyczne dla sieci Web.
 
 W tej książce wprowadzono ASP.NET deweloperów formularzy sieci Web Blazor w sposób, który jest znany i wygodny. Wprowadzają one Blazor koncepcje równolegle z podobnymi koncepcjami w formularzach sieci Web ASP.NET, a także objaśniają nowe koncepcje, które mogą być mniej znane. Obejmuje szeroki zakres tematów i problemów, w tym Tworzenie składników, kierowanie, układ, konfigurację i zabezpieczenia. Natomiast zawartość tej książki jest przede wszystkim przeznaczona do włączenia nowego opracowywania, a także zawiera wytyczne i strategie dotyczące migrowania istniejących formularzy sieci Web ASP.NET do Blazor programu, gdy użytkownik chce przeprowadzić modernizację istniejącej aplikacji.
 
@@ -76,7 +80,7 @@ Pierwsza część tej książki obejmuje co Blazor to jest i porównuje ją z pr
 
 Ta książka stanowi wprowadzenie do Blazor , a nie kompleksowego przewodnika migracji. Chociaż zawiera ona wskazówki dotyczące sposobu podejścia do migracji projektu z formularzy sieci Web ASP.NET do programu Blazor , nie jest podejmowana próba pozyskania wszystkich Nuance i szczegółów. Aby uzyskać bardziej ogólne wskazówki dotyczące migracji z programu ASP.NET do ASP.NET Core, zapoznaj się ze [wskazówkami](/aspnet/core/migration/proper-to-2x/) dotyczącymi migracji w dokumentacji ASP.NET Core.
 
-### <a name="additional-resources"></a>Zasoby dodatkowe
+### <a name="additional-resources"></a>Dodatkowe zasoby
 
 Oficjalną Blazor stronę główną i dokumentację można znaleźć pod adresem <https://blazor.net> .
 

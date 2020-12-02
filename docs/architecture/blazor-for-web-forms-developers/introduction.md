@@ -6,13 +6,13 @@ ms.author: daroth
 no-loc:
 - Blazor
 - WebAssembly
-ms.date: 09/11/2019
-ms.openlocfilehash: a5aae6cf02ccec84ac8642b6ce8d9c919755e868
-ms.sourcegitcommit: 0100be20fcf23f61dab672deced70059ed71bb2e
+ms.date: 11/20/2020
+ms.openlocfilehash: f1967dac0f46ba7cfefab62c5528dd1db8029514
+ms.sourcegitcommit: 2f485e721f7f34b87856a51181b5b56624b31fd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88267571"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509718"
 ---
 # <a name="an-introduction-to-no-locblazor-for-aspnet-web-forms-developers"></a>Wprowadzenie do usługi Blazor ASP.NET Web Forms Developers
 
@@ -33,7 +33,7 @@ Po pierwszym wysłaniu formularzy sieci Web platformy .NET i ASP.NET, ekosystem 
 
 Większość nowoczesnych platform sieci Web jest teraz również typu open source, który ma wiele korzyści. Użytkownicy nie beheld się do jednego właściciela projektu, aby naprawić błędy i dodać funkcje. Projekty open source zapewniają lepszą przejrzystość w zakresie postępu tworzenia i nadchodzących zmian. Projekty typu open source korzystają z wkładów z całej społeczności i wspierają ekosystem typu "open source". Pomimo ryzyka dotyczącego typu "open source", wielu odbiorców i współautorów znalazły odpowiednie środki zaradcze, które umożliwiają im korzystanie z zalet ekosystemu typu "open source" w bezpieczny i racjonalny sposób. Przykłady takich środków zaradczych dotyczą umów licencyjnych współautora, przyjaznych licencji, skanowania rodowodowego i obsługi.
 
-Społeczność .NET wykorzystuje zarówno obsługę międzyplatformową, jak i open-source. .NET Core to wieloplatformowa implementacja programu .NET, która działa na mnóstwo platform, w tym Windows, macOS i różnych dystrybucji systemu Linux. Środowisko Xamarin zapewnia wersję platformy .NET typu open source. Mono działa w systemach Android, iOS i różnych innych, takich jak zegarki i inteligentne telewizory. Firma Microsoft ogłosiła, że [.NET 5](https://devblogs.microsoft.com/dotnet/introducing-net-5/) rozwiąże się z platformą .NET Core i mono do "pojedynczego środowiska uruchomieniowego platformy .NET i platformy, których można użyć wszędzie i które mają ujednolicone zachowania środowiska uruchomieniowego i środowiska deweloperskie".
+Społeczność .NET wykorzystuje zarówno obsługę międzyplatformową, jak i open-source. .NET Core to wieloplatformowa implementacja programu .NET, która działa na mnóstwo platform, w tym Windows, macOS i różnych dystrybucji systemu Linux. Środowisko Xamarin zapewnia wersję platformy .NET typu open source. Mono działa w systemach Android, iOS i różnych innych, takich jak zegarki i inteligentne telewizory. Firma Microsoft wyłączyła [platformę .NET 5](https://devblogs.microsoft.com/dotnet/announcing-net-5-0/) uzgodnioną z platformą .NET Core i mono do "pojedynczego środowiska uruchomieniowego platformy .NET i platformy, które mogą być używane wszędzie i które mają ujednolicone zachowania środowiska uruchomieniowego i środowiska deweloperskie".
 
 Czy program będzie ASP.NET korzystanie z formularzy sieci Web od przejścia do usługi Open Source i dla wielu platform? Odpowiedź, niestety, nie jest ani co najmniej w tym samym zakresie, jak reszta platformy. Zespół .NET [niedawno wyczyścił](https://devblogs.microsoft.com/dotnet/net-core-is-the-future-of-net/) , że ASP.NET formularzy sieci Web nie będzie można przenieść do platformy .NET Core lub .NET 5. Dlaczego?
 
@@ -55,11 +55,11 @@ Mostkowanie obejmuje dwie różne platformy i ekosystemy (.NET i JavaScript). Wi
 
 W 2015, głównym dostawcom przeglądarki przyłączono siły w grupie społeczność W3C, aby utworzyć nowy otwarty standard sieci Web o nazwie WebAssembly . WebAssembly jest kodem bajtowym dla sieci Web. Jeśli możesz skompilować swój kod do WebAssembly programu, można go uruchomić w dowolnej przeglądarce na dowolnej platformie, w niemal większej szybkości. Początkowe wysiłki skupiające się na C/C++. Wynikiem jest znaczną prezentację uruchamiania natywnych aparatów graficznych 3W bezpośrednio w przeglądarce bez wtyczek. WebAssembly czy zostały ustandaryzowane i zaimplementowane przez wszystkie główne przeglądarki.
 
-Działanie na uruchomionej platformie .NET WebAssembly zostało ogłoszone w późnej 2017 i oczekuje się, że jest on dostarczany w 2020, włącznie z wsparciem z platformy .NET 5. Możliwość uruchamiania kodu platformy .NET bezpośrednio w przeglądarce umożliwia tworzenie aplikacji sieci Web na całym stosie przy użyciu platformy .NET.
+Działanie na uruchomionym platformie .NET WebAssembly zostało ogłoszone w późnej 2017 i wydane w 2020, w tym na pomoc techniczną z platformy .NET 5. Możliwość uruchamiania kodu platformy .NET bezpośrednio w przeglądarce umożliwia tworzenie aplikacji sieci Web na całym stosie przy użyciu platformy .NET.
 
 ## <a name="no-locblazor-full-stack-web-development-with-net"></a>Blazor: Programowanie aplikacji sieci Web w pełnym stosie przy użyciu platformy .NET
 
-Ponadto możliwość uruchamiania kodu platformy .NET w przeglądarce nie zapewnia kompleksowego środowiska tworzenia aplikacji sieci Web po stronie klienta. Jest to miejsce, w którym się Blazor znajduje. Blazor to struktura interfejsu użytkownika sieci Web po stronie klienta oparta na języku C# zamiast języka JavaScript. Blazor można uruchamiać bezpośrednio w przeglądarce za pośrednictwem programu WebAssembly . Nie są wymagane żadne wtyczki przeglądarki. Alternatywnie Blazor aplikacje mogą uruchamiać serwer w środowisku .NET Core i obsługiwać wszystkie interakcje użytkowników w czasie rzeczywistym z przeglądarką.
+Ponadto możliwość uruchamiania kodu platformy .NET w przeglądarce nie zapewnia kompleksowego środowiska tworzenia aplikacji sieci Web po stronie klienta. Jest to miejsce, w którym się Blazor znajduje. Blazor to struktura interfejsu użytkownika sieci Web po stronie klienta oparta na języku C# zamiast języka JavaScript. Blazor można uruchamiać bezpośrednio w przeglądarce za pośrednictwem programu WebAssembly . Nie są wymagane żadne wtyczki przeglądarki. Alternatywnie Blazor aplikacje mogą uruchamiać serwer w programie .NET i obsługiwać wszystkie interakcje użytkowników w czasie rzeczywistym z przeglądarką.
 
 Blazor ma wspaniałe narzędzia obsługiwane w programie Visual Studio i Visual Studio Code. Struktura zawiera również pełny model składników interfejsu użytkownika i oferuje wbudowane funkcje programu:
 
@@ -76,12 +76,12 @@ Ta książka zawiera wprowadzenie do programu Blazor , który jest przeznaczony 
 
 - Jak tworzyć Blazor aplikacje.
 - Jak Blazor działa.
-- BlazorOdnosi się do programu .NET Core.
+- BlazorOdnosi się do programu .NET.
 - Rozsądne strategie migracji istniejących aplikacji ASP.NET Web Forms do Blazor odpowiednich potrzeb.
 
 ## <a name="get-started-with-no-locblazor"></a>Wprowadzenie do Blazor
 
-Wprowadzenie do programu Blazor jest proste. Przejdź do <https://blazor.net> i postępuj zgodnie z linkami, aby zainstalować odpowiednie zestaw .NET Core SDK i Blazor Szablony projektów. Znajdziesz również instrukcje dotyczące konfigurowania Blazor narzędzi w programie Visual Studio lub Visual Studio Code.
+Wprowadzenie do programu Blazor jest proste. Przejdź do <https://blazor.net> i postępuj zgodnie z linkami, aby zainstalować odpowiedni zestaw .NET SDK i Blazor Szablony projektów. Znajdziesz również instrukcje dotyczące konfigurowania Blazor narzędzi w programie Visual Studio lub Visual Studio Code.
 
 >[!div class="step-by-step"]
 >[Poprzedni](index.md) 

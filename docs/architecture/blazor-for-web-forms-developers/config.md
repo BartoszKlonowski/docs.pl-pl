@@ -5,13 +5,13 @@ author: csharpfritz
 ms.author: jefritz
 no-loc:
 - Blazor
-ms.date: 04/01/2020
-ms.openlocfilehash: 6154b4f8c7a5bff42e603b12d5ef85468b80224e
-ms.sourcegitcommit: 0100be20fcf23f61dab672deced70059ed71bb2e
+ms.date: 11/20/2020
+ms.openlocfilehash: 360d9077bc981a2e9875bb1f86b49c0029424d6e
+ms.sourcegitcommit: 2f485e721f7f34b87856a51181b5b56624b31fd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88267506"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509796"
 ---
 # <a name="app-configuration"></a>Konfiguracja aplikacji
 
@@ -28,7 +28,7 @@ W przypadku ASP.NET Core i po stronie serwera Blazor *web.config* plik może by�
 
 ASP.NET Core rozpoznaje istnieje wiele źródeł konfiguracji, które mogą być używane w aplikacji. Platforma próbuje domyślnie oferować najlepsze z tych funkcji. Konfiguracja jest odczytywana i agregowana z tych różnych źródeł przez ASP.NET Core. Późniejsze wartości załadowane dla tego samego klucza konfiguracji mają pierwszeństwo przed wcześniejszymi wartościami.
 
-ASP.NET Core zaprojektowano tak, aby była oparta na chmurze, a konfiguracja aplikacji była łatwiejsza dla operatorów i deweloperów. ASP.NET Core jest oparta na środowisku i wie, że jest uruchomiona w `Production` środowisku lub `Development` . Wskaźnik środowiska jest ustawiany w `ASPNETCORE_ENVIRONMENT` zmiennej środowiskowej system. Jeśli żadna wartość nie jest skonfigurowana, domyślnie działa w `Production` środowisku.
+ASP.NET Core została zaprojektowana tak, aby była oparta na chmurze, a konfiguracja aplikacji była łatwiejsza dla operatorów i deweloperów. ASP.NET Core jest oparta na środowisku i wie, że jest uruchomiona w `Production` środowisku lub `Development` . Wskaźnik środowiska jest ustawiany w `ASPNETCORE_ENVIRONMENT` zmiennej środowiskowej system. Jeśli żadna wartość nie jest skonfigurowana, domyślnie działa w `Production` środowisku.
 
 Aplikacja może wyzwolić konfigurację i dodać ją z kilku źródeł na podstawie nazwy środowiska. Domyślnie konfiguracja jest ładowana z następujących zasobów w podanej kolejności:
 
@@ -64,7 +64,7 @@ Wpisy tajne użytkownika:
 * Wartości konfiguracyjne przechowywane w pliku JSON na stacji roboczej dewelopera poza folderem tworzenia aplikacji.
 * Ładowany tylko w `Development` środowisku.
 * Skojarzone z określoną aplikacją.
-* Zarządzane za pomocą polecenia interfejs wiersza polecenia platformy .NET Core `user-secrets` .
+* Zarządzana za pomocą polecenia interfejsu CLI platformy .NET `user-secrets` .
 
 Skonfiguruj aplikację do przechowywania wpisów tajnych, wykonując `user-secrets` polecenie:
 

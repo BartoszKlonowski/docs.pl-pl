@@ -5,33 +5,33 @@ author: ardalis
 ms.author: daroth
 no-loc:
 - Blazor
-ms.date: 09/11/2019
-ms.openlocfilehash: 690e559617e4961c3cf3262a6d2d48a6bfac67cd
-ms.sourcegitcommit: 5b475c1855b32cf78d2d1bbb4295e4c236f39464
+ms.date: 11/20/2020
+ms.openlocfilehash: 0344960237a5d9da61eb0d85987c44e136f1be48
+ms.sourcegitcommit: 2f485e721f7f34b87856a51181b5b56624b31fd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91161298"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509848"
 ---
 # <a name="security-authentication-and-authorization-in-aspnet-web-forms-and-no-locblazor"></a>Zabezpieczenia: uwierzytelnianie i autoryzacja w ASP.NET Web Forms i Blazor
 
-Migrowanie z aplikacji ASP.NET Web Forms do programu Blazor niemal z pewnością wymaga aktualizacji sposobu uwierzytelniania i autoryzacji, przy założeniu, że aplikacja ma skonfigurowane uwierzytelnianie. W tym rozdziale zawarto informacje na temat migracji z modelu uniwersalnego dostawcy formularzy sieci Web ASP.NET (dla członkostwa, ról i profilów użytkowników) oraz sposobu pracy z tożsamością ASP.NET Core z Blazor aplikacji. W tym rozdziale omówiono kroki i zagadnienia dotyczące wysokiego poziomu, ale szczegółowe instrukcje i skrypty można znaleźć w dokumentacji, do której się odwołuje.
+Migrowanie z aplikacji ASP.NET Web Forms do programu Blazor niemal z pewnością wymaga aktualizacji sposobu uwierzytelniania i autoryzacji, przy założeniu, że aplikacja ma skonfigurowane uwierzytelnianie. W tym rozdziale zawarto informacje na temat migracji z modelu uniwersalnego dostawcy formularzy sieci Web ASP.NET (dla członkostwa, ról i profilów użytkowników) oraz sposobu pracy z tożsamością ASP.NET Core z Blazor aplikacji. Ten rozdział będzie obejmować ogólne kroki i zagadnienia, ale szczegółowe instrukcje i skrypty można znaleźć w dokumentacji, do której się odwołuje.
 
 ## <a name="aspnet-universal-providers"></a>ASP.NET dostawcy uniwersalnego
 
 Od ASP.NET 2,0 platforma formularzy sieci Web ASP.NET obsługuje model dostawcy dla różnych funkcji, w tym do członkostwa. Uniwersalny dostawca członkostwa wraz z opcjonalnym dostawcą roli jest często wdrażany przy użyciu aplikacji formularzy sieci Web ASP.NET. Oferuje ona niezawodny i bezpieczny sposób zarządzania uwierzytelnianiem i autoryzacją, które w dalszym ciągu działają prawidłowo. Najnowsza oferta tych dostawców uniwersalnych jest dostępna jako pakiet NuGet, [Microsoft. ASPNET. Providers](https://www.nuget.org/packages/Microsoft.AspNet.Providers).
 
-Dostawcy Uniwersalni pracują ze schematem bazy danych SQL, który zawiera tabele takie jak `aspnet_Applications` ,, `aspnet_Membership` `aspnet_Roles` i `aspnet_Users` . W przypadku skonfigurowania programu za pomocą [ poleceniaaspnet_regsql.exe](/previous-versions/ms229862(v=vs.140))dostawcy instalują tabele i procedury składowane, które zawierają wszystkie wymagane zapytania i polecenia niezbędne do pracy z danymi źródłowymi. Schemat bazy danych i te procedury składowane nie są zgodne z nowszymi ASP.NET Identity i ASP.NET Core systemami tożsamości, dlatego istniejące dane muszą zostać zmigrowane do nowego systemu. Rysunek 1 przedstawia przykładowy schemat tabeli skonfigurowany dla dostawców uniwersalnych.
+Dostawcy Uniwersalni pracują ze schematem bazy danych SQL, który zawiera tabele takie jak `aspnet_Applications` ,, `aspnet_Membership` `aspnet_Roles` i `aspnet_Users` . Po skonfigurowaniu [ poleceniaaspnet_regsql.exe](/previous-versions/ms229862(v=vs.140))dostawcy instalują tabele i procedury składowane, które zawierają wszystkie niezbędne zapytania i polecenia do pracy z danymi źródłowymi. Schemat bazy danych i te procedury składowane nie są zgodne z nowszymi ASP.NET Identity i ASP.NET Core systemami tożsamości, dlatego istniejące dane muszą zostać zmigrowane do nowego systemu. Rysunek 1 przedstawia przykładowy schemat tabeli skonfigurowany dla dostawców uniwersalnych.
 
 ![Schemat dostawców uniwersalnych](./media/security/membership-tables.png)
 
-Dostawca uniwersalny obsługuje użytkowników, członkostwo, role i profile. Użytkownicy są przypisani globalnie unikatowymi identyfikatorami i bardzo podstawowe informacje (userId, userName) są przechowywane w `aspnet_Users` tabeli. Informacje o uwierzytelnianiu, takie jak hasło, format hasła, sól hasła, liczniki i szczegóły blokady itp., są przechowywane w `aspnet_Membership` tabeli. Role składają się po prostu z nazw i unikatowych identyfikatorów, które są przypisane do użytkowników za pośrednictwem `aspnet_UsersInRoles` tabeli skojarzenia, zapewniając relację wiele-do-wielu.
+Dostawca uniwersalny obsługuje użytkowników, członkostwo, role i profile. Użytkownicy są przypisani globalnie unikatowymi identyfikatorami i podstawowymi informacjami, takimi jak userId, userName itp., są przechowywane w `aspnet_Users` tabeli. Informacje o uwierzytelnianiu, takie jak hasło, format hasła, sól hasła, liczniki i szczegóły blokady itp., są przechowywane w `aspnet_Membership` tabeli. Role składają się po prostu z nazw i unikatowych identyfikatorów, które są przypisane do użytkowników za pośrednictwem `aspnet_UsersInRoles` tabeli skojarzenia, zapewniając relację wiele-do-wielu.
 
 Jeśli istniejący system korzysta z ról oprócz przynależności do członkostwa, należy przeprowadzić migrację kont użytkowników, skojarzonych haseł, ról i członkostwa w roli do ASP.NET Core tożsamość. Najprawdopodobniej trzeba będzie zaktualizować kod, w którym obecnie wykonywane są operacje sprawdzania ról przy użyciu instrukcji if, aby zamiast tego użyć filtrów deklaratywnych, atrybutów i/lub pomocników tagów. Na końcu tego rozdziału będziemy szczegółowo zapoznać się z zagadnieniami dotyczącymi migracji.
 
 ### <a name="authorization-configuration-in-web-forms"></a>Konfiguracja autoryzacji w formularzach sieci Web
 
-Aby skonfigurować autoryzowany dostęp do niektórych stron w aplikacji ASP.NET Web Forms, zazwyczaj należy określić, że niektóre strony lub foldery są niedostępne dla użytkowników anonimowych. Jest to wykonywane w pliku web.config:
+Aby skonfigurować autoryzowany dostęp do niektórych stron w aplikacji ASP.NET Web Forms, zazwyczaj należy określić, że niektóre strony lub foldery są niedostępne dla użytkowników anonimowych. Ta konfiguracja jest wykonywana w pliku web.config:
 
 ```xml
 <?xml version="1.0"?>
@@ -74,13 +74,13 @@ Powyższa konfiguracja, w połączeniu z pierwszym, zezwoli anonimowym użytkown
 </location>
 ```
 
-Powyższa konfiguracja, w połączeniu z innymi, ogranicza dostęp do `/admin` folderu i wszystkich znajdujących się w nim zasobów do członków roli "Administratorzy". Można to również zastosować, umieszczając oddzielny `web.config` plik w `/admin` katalogu głównym folderu.
+Powyższa konfiguracja, w połączeniu z innymi, ogranicza dostęp do `/admin` folderu i wszystkich znajdujących się w nim zasobów do członków roli "Administratorzy". To ograniczenie można również zastosować, umieszczając oddzielny `web.config` plik w `/admin` katalogu głównym folderu.
 
 ### <a name="authorization-code-in-web-forms"></a>Kod autoryzacji w formularzach sieci Web
 
 Oprócz konfigurowania dostępu przy użyciu programu `web.config` można również programowo skonfigurować dostęp i zachowanie w aplikacji formularzy sieci Web. Na przykład można ograniczyć możliwość wykonywania określonych operacji lub wyświetlania określonych danych w oparciu o rolę użytkownika.
 
-Ten kod może być używany zarówno w logice CodeBehind, jak i na samej stronie:
+Ten kod może być używany zarówno w logice związanej z kodem, jak i na samej stronie:
 
 ```html
 <% if (HttpContext.Current.User.IsInRole("Administrators")) { %>
@@ -107,7 +107,7 @@ protected void Page_Load(object sender, EventArgs e)
 
 W powyższym kodzie kontrola dostępu oparta na rolach (RBAC) służy do określenia, czy pewne elementy strony, takie jak `SecretPanel` , są widoczne w oparciu o rolę bieżącego użytkownika.
 
-Zazwyczaj aplikacje formularzy sieci Web ASP.NET konfigurują zabezpieczenia w `web.config` pliku, a następnie dodają dodatkowe sprawdzenia, jeśli są one używane na `.aspx` stronach i związanych z nimi `.aspx.cs` plikach Codebehind. Większość aplikacji korzysta z uniwersalnego dostawcy członkostwa, często z dodatkowym dostawcą roli.
+Zazwyczaj aplikacje formularzy sieci Web ASP.NET konfigurują zabezpieczenia w `web.config` pliku, a następnie dodają dodatkowe sprawdzenia, w razie konieczności na `.aspx` stronach i związanych z nimi plikami związanymi z `.aspx.cs` kodem. Większość aplikacji korzysta z uniwersalnego dostawcy członkostwa, często z dodatkowym dostawcą roli.
 
 ## <a name="aspnet-core-identity"></a>ASP.NET Core tożsamość
 
@@ -119,9 +119,9 @@ Zarówno dostawcy Uniwersalni, jak i tożsamość ASP.NET Core obsługują konce
 
 Oprócz ról ASP.NET Core tożsamość obsługuje koncepcje oświadczeń i zasad. Mimo że rola powinna być zgodna z zestawem zasobów, użytkownik w tej roli powinien mieć dostęp do żądania, a po prostu jest częścią tożsamości użytkownika. Jest to para wartości Nazwa, która reprezentuje temat, a nie co może zrobić.
 
-Możliwe jest bezpośrednie sprawdzenie oświadczeń użytkownika i określenie, czy użytkownik powinien mieć dostęp do zasobu. Jednak takie sprawdzenia są często powtarzane i rozpraszane w całym systemie. Lepszym rozwiązaniem jest zdefiniowanie *zasad*.
+Można bezpośrednio sprawdzić oświadczenia użytkownika i określić na podstawie tych wartości, czy użytkownik powinien mieć dostęp do zasobu. Jednak takie sprawdzenia są często powtarzane i rozpraszane w całym systemie. Lepszym rozwiązaniem jest zdefiniowanie *zasad*.
 
-Zasady autoryzacji składają się z co najmniej jednego wymagania. Zasady są rejestrowane w ramach konfiguracji usługi autoryzacji w `ConfigureServices` metodzie `Startup.cs` . Na przykład poniższy fragment kodu konfiguruje zasady o nazwie "CanadiansOnly", które mają wymaganie, aby użytkownik miał żądanie dotyczące kraju o wartości "Kanada".
+Zasady autoryzacji składają się z co najmniej jednego wymagania. Zasady są rejestrowane w ramach konfiguracji usługi autoryzacji w `ConfigureServices` metodzie `Startup.cs` . Na przykład poniższy fragment kodu konfiguruje zasady o nazwie "CanadiansOnly", które mają wymaganie, aby użytkownik miał wartość "Kanada".
 
 ```csharp
 services.AddAuthorization(options =>
@@ -132,7 +132,7 @@ services.AddAuthorization(options =>
 
 Więcej informacji na [temat tworzenia zasad niestandardowych można znaleźć w dokumentacji](/aspnet/core/security/authorization/policies)programu.
 
-Niezależnie od tego, czy korzystasz z zasad, czy ról, możesz określić, że określona Strona w Blazor aplikacji wymaga, aby dana rola lub zasady z `[Authorize]` atrybutem zostały zastosowane z `@attribute` dyrektywą.
+Bez względu na to, czy korzystasz z zasad, czy ról, możesz określić, że określona Strona w Blazor aplikacji wymaga, aby dana rola lub zasady z `[Authorize]` atrybutem zostały zastosowane z `@attribute` dyrektywą.
 
 Wymaganie roli:
 
@@ -146,7 +146,7 @@ Wymaganie spełnienia zasad:
 @attribute [Authorize(Policy ="CanadiansOnly")]
 ```
 
-Jeśli potrzebujesz dostępu do stanu uwierzytelniania, ról lub oświadczeń użytkownika w kodzie, istnieją dwa podstawowe sposoby osiągnięcia tego celu. Pierwszym elementem jest otrzymanie stanu uwierzytelniania jako parametru kaskadowego. Drugim jest uzyskanie dostępu do stanu przy użyciu wstrzykiwanego `AuthenticationStateProvider` . Szczegóły każdego z tych metod zostały opisane w dokumentacji dotyczącej [ Blazor zabezpieczeń](/aspnet/core/blazor/security/).
+Jeśli potrzebujesz dostępu do stanu uwierzytelniania, ról lub oświadczeń użytkownika w kodzie, istnieją dwa podstawowe sposoby osiągnięcia tej funkcji. Pierwszym elementem jest otrzymanie stanu uwierzytelniania jako parametru kaskadowego. Drugim jest uzyskanie dostępu do stanu przy użyciu wstrzykiwanego `AuthenticationStateProvider` . Szczegóły każdego z tych metod zostały opisane w dokumentacji dotyczącej [ Blazor zabezpieczeń](/aspnet/core/blazor/security/).
 
 Poniższy kod pokazuje, jak odebrać `AuthenticationState` jako parametr kaskadowy:
 
@@ -221,7 +221,7 @@ Migracja z ASP.NET Web Forms i uniwersalnych dostawców do ASP.NET Core Identity
 
 1. Utwórz schemat bazy danych tożsamości ASP.NET Core w docelowej bazie danych
 2. Migruj dane ze schematu uniwersalnego dostawcy do ASP.NET Core schematu tożsamości
-3. Migruj konfigurację z web.config do oprogramowania pośredniczącego i usług, zazwyczaj w `Startup.cs`
+3. Migruj konfigurację z programu `web.config` do oprogramowania pośredniczącego i usług, zazwyczaj w `Startup.cs`
 4. Aktualizować poszczególne strony przy użyciu kontrolek i warunkowych, aby używać pomocników tagów i nowych interfejsów API tożsamości.
 
 Wszystkie wymienione kroki zostały szczegółowo opisane poniżej.
@@ -252,11 +252,11 @@ Jeśli wolisz uruchomić skrypt w celu zastosowania nowego schematu do istnieją
 dotnet ef migrations script -o auth.sql
 ```
 
-Spowoduje to utworzenie skryptu SQL w pliku wyjściowym, `auth.sql` który można następnie uruchomić dla dowolnej bazy danych, której chcesz użyć. Jeśli masz problemy z uruchamianiem `dotnet ef` poleceń, [upewnij się, że masz narzędzia EF Core zainstalowane w systemie](/ef/core/miscellaneous/cli/dotnet).
+Powyższe polecenie spowoduje utworzenie w pliku wyjściowym skryptu SQL `auth.sql` , który można następnie uruchomić dla dowolnej bazy danych, której chcesz użyć. Jeśli masz problemy z uruchamianiem `dotnet ef` poleceń, [upewnij się, że masz narzędzia EF Core zainstalowane w systemie](/ef/core/miscellaneous/cli/dotnet).
 
 W przypadku, gdy w tabeli źródłowej znajdują się dodatkowe kolumny, należy zidentyfikować najlepszą lokalizację dla tych kolumn w nowym schemacie. Na ogół kolumny Znalezione w `aspnet_Membership` tabeli powinny być mapowane na `AspNetUsers` tabelę. Kolumny na `aspnet_Roles` powinny być mapowane na `AspNetRoles` . Wszystkie dodatkowe kolumny w `aspnet_UsersInRoles` tabeli zostaną dodane do `AspNetUserRoles` tabeli.
 
-Warto także wziąć pod uwagę umieszczenie wszelkich dodatkowych kolumn w oddzielnych tabelach, tak aby przyszłe migracje nie wymagały takich dostosowań domyślnego schematu tożsamości.
+Warto również rozważać wprowadzanie wszelkich dodatkowych kolumn w oddzielnych tabelach. Tak więc przyszłe migracje nie muszą uwzględniać takich dostosowań domyślnego schematu tożsamości.
 
 ### <a name="migrating-data-from-universal-providers-to-aspnet-core-identity"></a>Migrowanie danych od dostawców uniwersalnych do ASP.NET Core Identity
 
@@ -268,7 +268,7 @@ Możliwe jest Migrowanie haseł użytkowników, ale proces jest znacznie bardzie
 
 ### <a name="migrating-security-settings-from-webconfig-to-startupcs"></a>Migrowanie ustawień zabezpieczeń z web.config do Startup.cs
 
-Jak wspomniano powyżej, ASP.NET członkostwa i dostawcy ról są konfigurowane w pliku web.config aplikacji. Ponieważ ASP.NET Core aplikacje nie są powiązane z usługami IIS i używają osobnego systemu do konfiguracji, te ustawienia muszą być skonfigurowane w innym miejscu. W większości przypadków ASP.NET Core tożsamość jest konfigurowana w `Startup.cs` pliku. Otwórz projekt sieci Web, który został utworzony wcześniej (aby wygenerować schemat tabeli tożsamości) i przejrzyj jego `Startup.cs` plik.
+Jak wspomniano powyżej, ASP.NET członkostwa i dostawcy ról są konfigurowane w pliku aplikacji `web.config` . Ponieważ ASP.NET Core aplikacje nie są powiązane z usługami IIS i używają osobnego systemu do konfiguracji, te ustawienia muszą być skonfigurowane w innym miejscu. W większości przypadków ASP.NET Core tożsamość jest konfigurowana w `Startup.cs` pliku. Otwórz projekt sieci Web, który został utworzony wcześniej (aby wygenerować schemat tabeli tożsamości) i przejrzyj jego `Startup.cs` plik.
 
 Domyślna metoda ConfigureServices dodaje obsługę EF Core i tożsamości:
 
@@ -327,19 +327,19 @@ ASP.NET Identity nie konfiguruje dostępu anonimowego lub opartego na rolach do 
 
 ### <a name="updating-individual-pages-to-use-aspnet-core-identity-abstractions"></a>Aktualizowanie poszczególnych stron do użycia w ASP.NET Core Abstracts Identity
 
-Jeśli w aplikacji ASP.NET Web Forms zostały web.config ustawienia, aby odmówić dostępu do określonych stron lub folderów użytkownikom anonimowym, można przeprowadzić migrację, po prostu dodając `[Authorize]` atrybut do takich stron:
+W aplikacji formularze sieci Web ASP.NET, jeśli masz `web.config` Ustawienia, aby odmówić dostępu do określonych stron lub folderów użytkownikom anonimowym, należy zmigrować te zmiany, dodając `[Authorize]` atrybut do takich stron:
 
 ```razor
 @attribute [Authorize]
 ```
 
-W przypadku dalszej odmowy dostępu, z wyjątkiem tych użytkowników należących do określonej roli, można przeprowadzić migrację w taki sposób, dodając atrybut określający rolę:
+Jeśli chcesz jeszcze odmówić dostępu z wyjątkiem tych użytkowników należących do określonej roli, Przeprowadź migrację tego zachowania, dodając atrybut określający rolę:
 
 ```razor
 @attribute [Authorize(Roles ="administrators")]
 ```
 
-Należy zauważyć, że `[Authorize]` atrybut działa tylko na `@page` składnikach, które są osiągalne za pośrednictwem Blazor routera. Ten atrybut nie działa ze składnikami podrzędnymi, które należy zamiast tego używać `AuthorizeView` .
+Ten `[Authorize]` atrybut działa tylko na `@page` składnikach, które są osiągalne za pośrednictwem Blazor routera. Ten atrybut nie działa ze składnikami podrzędnymi, które należy zamiast tego używać `AuthorizeView` .
 
 Jeśli masz logikę w ramach znaczników strony, aby określić, czy ma być wyświetlany jakiś kod dla określonego użytkownika, możesz zastąpić ten `AuthorizeView` składnik. [Składnik AuthorizeView](/aspnet/core/blazor/security#authorizeview-component) selektywnie wyświetla interfejs użytkownika w zależności od tego, czy użytkownik jest uprawniony do jego wyświetlania. Udostępnia również `context` zmienną, której można użyć w celu uzyskania dostępu do informacji o użytkowniku.
 
@@ -356,7 +356,7 @@ Jeśli masz logikę w ramach znaczników strony, aby określić, czy ma być wy�
 </AuthorizeView>
 ```
 
-Można uzyskać dostęp do stanu uwierzytelniania w ramach logiki proceduralnej, uzyskując dostęp do użytkownika ze `Task<AuthenticationState` skonfigurowanego za pomocą `[CascadingParameter]` atrybutu. Spowoduje to uzyskanie dostępu do użytkownika, który może określić, czy są uwierzytelniani i czy należą do określonej roli. Jeśli konieczne jest ocenę zasad proceduralnych, można wstrzyknąć wystąpienie obiektu `IAuthorizationService` i wywołać `AuthorizeAsync` metodę. Następujący przykładowy kod demonstruje, jak uzyskać informacje o użytkowniku i zezwolić autoryzowanemu użytkownikowi na wykonanie zadania ograniczonego przez `content-editor` zasady.
+Możesz uzyskać dostęp do stanu uwierzytelniania w ramach logiki proceduralnej, uzyskując dostęp do użytkownika ze `Task<AuthenticationState` skonfigurowanego za pomocą `[CascadingParameter]` atrybutu. Ta konfiguracja umożliwi użytkownikowi dostęp do użytkownika, który może określić, czy są uwierzytelniani i czy należą do określonej roli. Jeśli konieczne jest ocenę zasad proceduralnych, można wstrzyknąć wystąpienie obiektu `IAuthorizationService` i wywołać `AuthorizeAsync` metodę. Następujący przykładowy kod demonstruje, jak uzyskać informacje o użytkowniku i zezwolić autoryzowanemu użytkownikowi na wykonanie zadania ograniczonego przez `content-editor` zasady.
 
 ```razor
 @using Microsoft.AspNetCore.Authorization
@@ -392,7 +392,7 @@ Można uzyskać dostęp do stanu uwierzytelniania w ramach logiki proceduralnej,
 }
 ```
 
-`AuthenticationState`Najpierw należy przeprowadzić konfigurację jako wartość kaskadową, aby można było powiązać ją z parametrem kaskadowym podobnym do tego. Zwykle jest to wykonywane przy użyciu `CascadingAuthenticationState` składnika. Zwykle jest to wykonywane w `App.razor` :
+`AuthenticationState`Najpierw należy skonfigurować jako wartość kaskadową, zanim będzie można powiązać ją z parametrem kaskadowym podobnym do tego. Zwykle jest to wykonywane przy użyciu `CascadingAuthenticationState` składnika. Ta konfiguracja jest zazwyczaj wykonywana w `App.razor` :
 
 ```razor
 <CascadingAuthenticationState>
@@ -412,7 +412,7 @@ Można uzyskać dostęp do stanu uwierzytelniania w ramach logiki proceduralnej,
 
 ## <a name="summary"></a>Podsumowanie
 
-Blazor używa tego samego modelu zabezpieczeń co ASP.NET Core, który jest ASP.NET Core tożsamością. Migracja z uniwersalnych dostawców do ASP.NET Core tożsamość jest stosunkowo prosta, przy założeniu, że nie zbyt dużo dostosowania zostało zastosowane do oryginalnego schematu danych. Po przeprowadzeniu migracji danych, praca z uwierzytelnianiem i autoryzacją w Blazor aplikacjach jest dobrze udokumentowana, z możliwością konfiguracji, a także obsługą techniczną dla większości wymagań dotyczących zabezpieczeń.
+Blazor używa tego samego modelu zabezpieczeń co ASP.NET Core, który jest ASP.NET Core tożsamością. Migracja z uniwersalnych dostawców do ASP.NET Core tożsamość jest stosunkowo prosta, przy założeniu, że nie zbyt dużo dostosowania zostało zastosowane do oryginalnego schematu danych. Po przeprowadzeniu migracji danych Praca z uwierzytelnianiem i autoryzacją w Blazor aplikacjach jest dobrze udokumentowana, z możliwością konfiguracji oraz obsługą techniczną w przypadku większości wymagań dotyczących zabezpieczeń.
 
 ## <a name="references"></a>Odwołania
 
