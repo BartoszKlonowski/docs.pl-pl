@@ -2,12 +2,12 @@
 title: Debugowanie aplikacji konsolowej .NET przy użyciu Visual Studio Code
 description: Dowiedz się, jak debugować aplikację konsolową .NET przy użyciu Visual Studio Code.
 ms.date: 05/26/2020
-ms.openlocfilehash: 85095a9e70ee3ff846716ef91239b240d8c42410
-ms.sourcegitcommit: 5114e7847e0ff8ddb8c266802d47af78567949cf
+ms.openlocfilehash: 7215ed4a93b31ebac313c04708734667148c4e02
+ms.sourcegitcommit: 30fef5b0ed76e334377d28fa8e80159b29353e10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916232"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96556112"
 ---
 # <a name="tutorial-debug-a-net-console-application-using-visual-studio-code"></a>Samouczek: debugowanie aplikacji konsolowej .NET przy użyciu Visual Studio Code
 
@@ -47,15 +47,7 @@ Punkt przerwania znajduje się po `Console.ReadLine` wywołaniu metody. **Konsol
 
 1. Otwórz plik *.vscode/launch.json*.
 
-1. Zmień `console` ustawienie na `integratedTerminal` .
-
-   Od:
-
-   ```json
-   "console": "internalConsole",
-   ```
-
-   Do:
+1. Zmień `console` ustawienie z `internalConsole` na `integratedTerminal` :
 
    ```json
    "console": "integratedTerminal",
@@ -215,7 +207,7 @@ Aby skompilować i przetestować wydaną wersję aplikacji konsolowej, Otwórz *
 dotnet run --configuration Release
 ```
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Debugowanie w Visual Studio Code](https://code.visualstudio.com/docs/editor/debugging)
 

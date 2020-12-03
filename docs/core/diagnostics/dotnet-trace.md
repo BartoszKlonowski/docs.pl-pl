@@ -2,12 +2,12 @@
 title: dotnet-Trace — narzędzie diagnostyczne — interfejs wiersza polecenia platformy .NET
 description: Dowiedz się, jak zainstalować i użyć narzędzia interfejsu wiersza polecenia śledzenia dotnet, aby zebrać ślady środowiska .NET działającego procesu bez natywnego profilera przy użyciu programu .NET EventPipe.
 ms.date: 11/17/2020
-ms.openlocfilehash: d0798e4f703c18c48db47193ac24ec0d13b66ae5
-ms.sourcegitcommit: 965a5af7918acb0a3fd3baf342e15d511ef75188
+ms.openlocfilehash: 6bc5ad449f62ed0080ff6b1f401f1871d90cf5ec
+ms.sourcegitcommit: c6de55556add9f92af17e0f8d1da8f356a19a03d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94829313"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549335"
 ---
 # <a name="dotnet-trace-performance-analysis-utility"></a>Narzędzie do analizy wydajności śledzenia dotnet
 
@@ -115,7 +115,13 @@ dotnet-trace collect [--buffersize <size>] [--clreventlevel <clreventlevel>] [--
 
 - **`--profile <profile-name>`**
 
-  Nazwany wstępnie zdefiniowany zestaw konfiguracji dostawcy, który umożliwia zwięzłe Określanie typowych scenariuszy śledzenia.
+  Nazwany wstępnie zdefiniowany zestaw konfiguracji dostawcy, który umożliwia zwięzłe Określanie typowych scenariuszy śledzenia. Dostępne są następujące profile:
+
+ | Profil | Opis |
+ |---------|-------------|
+ |`cpu-sampling`|Przydatne do śledzenia użycia procesora i ogólnych informacji środowiska uruchomieniowego platformy .NET. Jest to opcja domyślna, jeśli nie określono żadnego profilu ani dostawcy.|
+ |`gc-verbose`|Śledzi kolekcje GC i przykłady alokacji obiektów.|
+ |`gc-collect`|Śledzi kolekcje GC tylko przy niskim obciążeniu.|
 
 - **`--providers <list-of-comma-separated-providers>`**
 
