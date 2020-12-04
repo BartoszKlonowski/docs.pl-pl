@@ -10,12 +10,12 @@ metadata:
   author: natke
   ms.author: nakersha
   ms.date: 10/30/2019
-  ms.openlocfilehash: 0e2b6370de5cd40f8cca5176fe1ecef1b6556a39
-  ms.sourcegitcommit: 27a15a55019f6b5f2733961738babe94aec0def3
+  ms.openlocfilehash: da58d7b94ebb0d56e98d07055c6d2e9f42cc7830
+  ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/15/2020
-  ms.locfileid: "90551702"
+  ms.lasthandoff: 12/04/2020
+  ms.locfileid: "96599645"
 landingContent:
 - title: ML.NET — podstawy
   linkLists:
@@ -33,6 +33,10 @@ landingContent:
       url: resources/tasks.md
     - text: Jak wybrać algorytm
       url: how-to-choose-an-ml-net-algorithm.md
+  - linkListType: get-started
+    links:
+    - text: ML.NET na Q&A
+      url: /answers/topics/dotnet-mlnet.html
 - title: Rozpoczęcie pracy w 10 minut
   linkLists:
   - linkListType: quickstart
@@ -83,7 +87,7 @@ landingContent:
       url: how-to-guides/save-load-machine-learning-models-ml-net.md
     - text: Ponowne uczenie modelu
       url: how-to-guides/retrain-model-ml-net.md
-- title: Tematy pomocy
+- title: Dokumentacja
   linkLists:
   - linkListType: reference
     links:

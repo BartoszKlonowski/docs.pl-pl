@@ -11,12 +11,12 @@ helpviewer_keywords:
 - enumeration type [C#]
 - bit flags [C#]
 ms.assetid: bbeb9a0f-e9b3-41ab-b0a6-c41b1a08974c
-ms.openlocfilehash: 930efdbdc6a20ea301331c1ce6fc664da43bfc5f
-ms.sourcegitcommit: 870bc4b4087510f6fba3c7b1c0d391f02bcc1f3e
+ms.openlocfilehash: a21bdf63247dc5fec95922de017e1d3502e08565
+ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92471853"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96599437"
 ---
 # <a name="enumeration-types-c-reference"></a>Typy wyliczeniowe (odwołanie w C#)
 
@@ -62,7 +62,7 @@ Aby uzyskać więcej informacji i przykładów, zobacz <xref:System.FlagsAttribu
 
 <xref:System.Enum?displayProperty=nameWithType>Typ jest abstrakcyjną klasą bazową wszystkich typów wyliczeniowych. Zawiera kilka metod uzyskiwania informacji na temat typu wyliczenia i jego wartości. Aby uzyskać więcej informacji i przykładów, zobacz <xref:System.Enum?displayProperty=nameWithType> stronę referencyjną interfejsu API.
 
-Począwszy od języka C# 7,3, można użyć `System.Enum` w ramach ograniczenia klasy bazowej (zwanego [ograniczeniem wyliczenia](../../programming-guide/generics/constraints-on-type-parameters.md#enum-constraints)), aby określić, że parametr typu jest typem wyliczenia.
+Począwszy od języka C# 7,3, można użyć `System.Enum` w ramach ograniczenia klasy bazowej (zwanego [ograniczeniem wyliczenia](../../programming-guide/generics/constraints-on-type-parameters.md#enum-constraints)), aby określić, że parametr typu jest typem wyliczenia. Każdy typ wyliczeniowy spełnia również `struct` ograniczenie, które jest używane do określenia, że parametr typu jest typem wartości niedopuszczających wartości null.
 
 ## <a name="conversions"></a>Konwersje
 
@@ -85,7 +85,7 @@ Aby uzyskać więcej informacji, zobacz następujące sekcje [specyfikacji języ
 - [Jawne konwersje wyliczenia](~/_csharplang/spec/conversions.md#explicit-enumeration-conversions)
 - [Niejawne konwersje wyliczenia](~/_csharplang/spec/conversions.md#implicit-enumeration-conversions)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Dokumentacja języka C#](../index.md)
 - [Wyliczanie ciągów formatujących](../../../standard/base-types/enumeration-format-strings.md)

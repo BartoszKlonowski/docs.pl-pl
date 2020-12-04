@@ -2,15 +2,17 @@
 description: Using — odwołanie w C#
 title: Using — odwołanie w C#
 ms.date: 05/29/2020
+f1_keywords:
+- using-statement_CSharpKeyword
 helpviewer_keywords:
 - using statement [C#]
 ms.assetid: afc355e6-f0b9-4240-94dd-0d93f17d9fc3
-ms.openlocfilehash: c7f1fc4b7e911bdec3bd38ae88aa39b7f1795300
-ms.sourcegitcommit: d579fb5e4b46745fd0f1f8874c94c6469ce58604
+ms.openlocfilehash: 451235d9d41565c35369700eeec75cfd2f5bfc06
+ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89141936"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96599333"
 ---
 # <a name="using-statement-c-reference"></a>using — instrukcja (odwołanie w C#)
 
@@ -58,7 +60,7 @@ Aby uzyskać więcej informacji na temat usuwania `IDisposable` obiektów, zobac
 
 Aby uzyskać więcej informacji, zobacz [instrukcja using](~/_csharplang/spec/statements.md#the-using-statement) w [specyfikacji języka C#](/dotnet/csharp/language-reference/language-specification/introduction). Specyfikacja języka jest ostatecznym źródłem informacji o składni i użyciu języka C#.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Odwołanie w C#](../index.md)
 - [Przewodnik programowania w języku C#](../../programming-guide/index.md)

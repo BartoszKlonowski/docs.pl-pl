@@ -9,12 +9,12 @@ helpviewer_keywords:
 - struct type [C#]
 - structure type [C#]
 ms.assetid: ff3dd9b7-dc93-4720-8855-ef5558f65c7c
-ms.openlocfilehash: daf332dae483d75ef27e78dad5ee912734ccdb5f
-ms.sourcegitcommit: 532b03d5bbab764d63356193b04cd2281bc01239
+ms.openlocfilehash: 96a39609e9ae8b11e9872b049134136fe1ff3e2a
+ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92526606"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96599105"
 ---
 # <a name="structure-types-c-reference"></a>Typy struktur (odwołanie w C#)
 
@@ -130,6 +130,10 @@ Aby zadeklarować `ref` strukturę jako [`readonly`](#readonly-struct) , Połąc
 
 W programie .NET przykłady `ref` struktury są <xref:System.Span%601?displayProperty=nameWithType> i <xref:System.ReadOnlySpan%601?displayProperty=nameWithType> .
 
+## <a name="struct-constraint"></a>ograniczenie struktury
+
+Możesz również użyć `struct` słowa kluczowego w [ `struct` ograniczeniu](../../programming-guide/generics/constraints-on-type-parameters.md) , aby określić, że parametr typu jest typem wartości niedopuszczający wartości null. Zarówno struktura, jak i typy [wyliczeniowe](enum.md) spełniają `struct` warunek ograniczenia.
+
 ## <a name="conversions"></a>Konwersje
 
 Dla dowolnego typu struktury (z wyjątkiem typów [ `ref` struktury](#ref-struct) ) istnieje konwersja [opakowania i rozpakowywanie](../../programming-guide/types/boxing-and-unboxing.md) do i z <xref:System.ValueType?displayProperty=nameWithType> <xref:System.Object?displayProperty=nameWithType> typów i. Istnieje również możliwość pakowania i rozpakowywania konwersji między typem struktury i dowolnym interfejsem, który implementuje.
@@ -144,7 +148,7 @@ Aby uzyskać więcej informacji o funkcjach wprowadzonych w języku C# 7,2 i now
 - [Elementy członkowskie wystąpień tylko do odczytu](~/_csharplang/proposals/csharp-8.0/readonly-instance-members.md)
 - [Bezpieczeństwo czasu kompilowania dla typów zbliżonych do odwołań](~/_csharplang/proposals/csharp-7.2/span-safety.md)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Dokumentacja języka C#](../index.md)
 - [Wytyczne dotyczące projektowania — wybór między klasą a strukturą](../../../standard/design-guidelines/choosing-between-class-and-struct.md)

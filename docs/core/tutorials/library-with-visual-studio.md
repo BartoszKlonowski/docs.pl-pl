@@ -6,12 +6,12 @@ dev_langs:
 - csharp
 - vb
 ms.custom: vs-dotnet,contperfq1
-ms.openlocfilehash: 3af08b5a92c61f29a3700a3417043170f41407bc
-ms.sourcegitcommit: 5114e7847e0ff8ddb8c266802d47af78567949cf
+ms.openlocfilehash: 6a3f61525ca86afc9ee71d56cbc9450862760ba4
+ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916153"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96599515"
 ---
 # <a name="tutorial-create-a-net-class-library-using-visual-studio"></a>Samouczek: Tworzenie biblioteki klas .NET przy użyciu programu Visual Studio
 
@@ -123,9 +123,10 @@ Początkowo nowy projekt aplikacji konsolowej nie ma dostępu do biblioteki klas
 
    :::image type="content" source="media/library-with-visual-studio/run-showcase.png" alt-text="Okno konsoli z uruchomionym pokazem":::
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Tworzenie bibliotek przy użyciu interfejsu wiersza polecenia platformy .NET](libraries.md)
+* [Wersje .NET Standard i obsługiwane przez nich platformy](../../standard/net-standard.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

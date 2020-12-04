@@ -9,12 +9,12 @@ helpviewer_keywords:
 - types [C#], value types
 - C# language, value types
 ms.assetid: 471eb994-2958-49d5-a6be-19b4313f80a3
-ms.openlocfilehash: 6fb33ad2eb3f6a5e8f6506527f3807f31bf33fdc
-ms.sourcegitcommit: 0802ac583585110022beb6af8ea0b39188b77c43
+ms.openlocfilehash: 64c9e9eba2495531cfef8a603d53fb21c95c87a4
+ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "92471654"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96599398"
 ---
 # <a name="value-types-c-reference"></a>Typy wartości (odwołanie w C#)
 
@@ -31,7 +31,7 @@ Jeśli typ wartości zawiera element członkowski danych typu referencyjnego, po
 > [!NOTE]
 > Aby kod był mniej podatny na błędy i bardziej niezawodny, definiować i korzystać z niezmiennego typu wartości. W tym artykule są stosowane modyfikowalne typy wartości tylko w celach demonstracyjnych.
 
-## <a name="kinds-of-value-types"></a>Rodzaje typów wartości
+## <a name="kinds-of-value-types-and-type-constraints"></a>Rodzaje typów wartości i ograniczenia typu
 
 Typ wartości może być jednym z dwóch następujących rodzajów:
 
@@ -39,6 +39,8 @@ Typ wartości może być jednym z dwóch następujących rodzajów:
 - [Typ wyliczeniowy](enum.md), który jest zdefiniowany przez zestaw nazwanych stałych i reprezentuje wybór lub kombinację opcji
 
 [Typ wartości null](nullable-value-types.md) `T?` reprezentuje wszystkie wartości jego bazowego typu wartości `T` oraz dodatkową wartość [null](../keywords/null.md) . Nie można przypisać `null` do zmiennej typu wartości, chyba że jest to typ wartości null.
+
+Możesz użyć [ `struct` ograniczenia](../../programming-guide/generics/constraints-on-type-parameters.md) , aby określić, że parametr typu jest typem wartości niedopuszczający wartości null. Zarówno struktura, jak i typy wyliczeniowe spełniają `struct` warunek ograniczenia. Począwszy od języka C# 7,3, można użyć `System.Enum` w ramach ograniczenia klasy bazowej (zwanego [ograniczeniem wyliczenia](../../programming-guide/generics/constraints-on-type-parameters.md#enum-constraints)), aby określić, że parametr typu jest typem wyliczenia.
 
 ## <a name="built-in-value-types"></a>Wbudowane typy wartości
 
@@ -67,7 +69,7 @@ Aby uzyskać więcej informacji, zobacz następujące sekcje [specyfikacji języ
 - [Typy proste](~/_csharplang/spec/types.md#simple-types)
 - [Zmienne](~/_csharplang/spec/variables.md)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Dokumentacja języka C#](../index.md)
 - <xref:System.ValueType?displayProperty=nameWithType>

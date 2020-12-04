@@ -1,21 +1,21 @@
 ---
-title: Debugowanie aplikacji konsolowej .NET Core przy użyciu Visual Studio dla komputerów Mac
-description: Dowiedz się, jak debugować aplikację konsolową .NET Core przy użyciu programu Visual Studio Mac.
-ms.date: 06/08/2020
-ms.openlocfilehash: 011647a6e3e676909880befa3b770205eb9616d6
-ms.sourcegitcommit: 60dc0a11ebdd77f969f41891d5cca06335cda6a7
+title: Debugowanie aplikacji konsolowej .NET przy użyciu Visual Studio dla komputerów Mac
+description: Dowiedz się, jak debugować aplikację konsolową .NET przy użyciu programu Visual Studio Mac.
+ms.date: 11/30/2020
+ms.openlocfilehash: e35bbef5582b6eec00ee48669a0f5d028eb051fb
+ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88957528"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96599619"
 ---
-# <a name="tutorial-debug-a-net-core-console-application-using-visual-studio-for-mac"></a>Samouczek: debugowanie aplikacji konsolowej .NET Core przy użyciu Visual Studio dla komputerów Mac
+# <a name="tutorial-debug-a-net-console-application-using-visual-studio-for-mac"></a>Samouczek: debugowanie aplikacji konsolowej .NET przy użyciu Visual Studio dla komputerów Mac
 
 W tym samouczku przedstawiono narzędzia debugowania dostępne w Visual Studio dla komputerów Mac.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Ten samouczek współpracuje z aplikacją konsolową utworzoną w temacie [Tworzenie aplikacji konsolowej platformy .NET Core przy użyciu Visual Studio dla komputerów Mac](with-visual-studio-mac.md).
+- Ten samouczek współpracuje z aplikacją konsolową utworzoną w temacie [Tworzenie aplikacji konsolowej platformy .NET przy użyciu Visual Studio dla komputerów Mac](with-visual-studio-mac.md).
 
 ## <a name="use-debug-build-configuration"></a>Użyj konfiguracji kompilacji debugowania
 
@@ -27,7 +27,7 @@ Domyślnie Visual Studio dla komputerów Mac używa konfiguracji kompilacji debu
 
 1. Rozpocznij Visual Studio dla komputerów Mac.
 
-1. Otwórz projekt, który został utworzony w temacie [Tworzenie aplikacji konsolowej platformy .NET Core przy użyciu Visual Studio dla komputerów Mac](with-visual-studio-mac.md).
+1. Otwórz projekt, który został utworzony w temacie [Tworzenie aplikacji konsolowej platformy .NET przy użyciu Visual Studio dla komputerów Mac](with-visual-studio-mac.md).
 
    Bieżąca konfiguracja kompilacji jest pokazywana na pasku narzędzi. Poniższy obraz paska narzędzi pokazuje, że program Visual Studio jest skonfigurowany do kompilowania wersji do debugowania aplikacji:
 
@@ -77,7 +77,7 @@ Okno **bezpośrednie** umożliwia korzystanie z debugowanej aplikacji. Możesz i
 
    :::image type="content" source="media/debugging-with-visual-studio-mac/terminal-hello-world.png" alt-text="Hello world terminalu na dolnym pasku nawigacyjnym":::
 
-1. Naciśnij dowolny klawisz, aby wyjść z programu.
+1. Naciśnij dowolny klawisz, aby zakończyć program.
 
 1. Zamknij okno terminalu.
 
@@ -159,7 +159,7 @@ Program Visual Studio umożliwia również krok po kroku w wierszu przez program
 
    Terminal wyświetla komunikat i czeka na naciśnięcie klawisza.
 
-1. Naciśnij dowolny klawisz, aby wyjść z programu.
+1. Naciśnij dowolny klawisz, aby zakończyć program.
 
 ## <a name="use-release-build-configuration"></a>Użyj konfiguracji kompilacji wydania
 
@@ -173,9 +173,9 @@ Aby skompilować i przetestować wydaną wersję aplikacji konsolowej, wykonaj n
 
 1. Naciśnij pozycję <kbd>⌥</kbd><kbd>⌘</kbd><kbd>↵</kbd> (<kbd>Option</kbd> + <kbd>Command</kbd> + <kbd>Enter</kbd>), aby uruchomić bez debugowania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku użyto narzędzi debugowania programu Visual Studio. W następnym samouczku zostanie opublikowana wersja aplikacji, którą można wdrożyć.
 
 > [!div class="nextstepaction"]
-> [Publikowanie aplikacji konsolowej .NET Core przy użyciu Visual Studio dla komputerów Mac](publishing-with-visual-studio-mac.md)
+> [Publikowanie aplikacji konsolowej .NET przy użyciu Visual Studio dla komputerów Mac](publishing-with-visual-studio-mac.md)

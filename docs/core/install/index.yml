@@ -6,12 +6,12 @@ metadata:
   description: Dowiedz się, gdzie pobrać i zainstalować platformę .NET w wersjach systemu Windows, Linux i macOS. Odkryj zależności wymagane do tworzenia, wdrażania i uruchamiania aplikacji platformy .NET.
   ms.topic: landing-page
   ms.date: 06/29/2020
-  ms.openlocfilehash: 53c4485b986abf58bdff45d78342c110b15d7824
-  ms.sourcegitcommit: bc9c63541c3dc756d48a7ce9d22b5583a18cf7fd
+  ms.openlocfilehash: 4ffa74980e983442d37306fe1e943f68251e51e5
+  ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/11/2020
-  ms.locfileid: "94507205"
+  ms.lasthandoff: 12/04/2020
+  ms.locfileid: "96599248"
 landingContent:
 - title: Windows
   linkLists:
@@ -61,3 +61,17 @@ landingContent:
       url: linux-sles.md
     - text: Ubuntu
       url: linux-ubuntu.md
+- title: Pytania i odpowiedzi
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Instalatory autonomiczne
+      url: /answers/topics/dotnet-ad-installer.html
+    - text: Instalatorzy programu Visual Studio
+      url: /answers/topics/dotnet-ad-vs.html
+    - text: Kanały informacyjne systemu Linux
+      url: /answers/topics/dotnet-ad-linux.html
+    - text: Docker
+      url: /answers/topics/dotnet-ad-docker.html
+    - text: Wdrażanie w przedsiębiorstwie
+      url: /answers/topics/dotnet-ad-enterprise.html

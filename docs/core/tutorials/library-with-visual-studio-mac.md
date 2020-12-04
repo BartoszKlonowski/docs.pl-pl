@@ -1,19 +1,19 @@
 ---
-title: Tworzenie biblioteki klas .NET Standard przy użyciu Visual Studio dla komputerów Mac
-description: Dowiedz się, jak utworzyć bibliotekę klas .NET Standard przy użyciu Visual Studio dla komputerów Mac.
-ms.date: 06/08/2020
-ms.openlocfilehash: a78cc68d29095e4fefcaf1d3b2158d673b8892ec
-ms.sourcegitcommit: 48466b8fb7332ececff5dc388f19f6b3ff503dd4
+title: Tworzenie biblioteki klas .NET przy użyciu Visual Studio dla komputerów Mac
+description: Dowiedz się, jak utworzyć bibliotekę klas .NET przy użyciu Visual Studio dla komputerów Mac.
+ms.date: 11/30/2020
+ms.openlocfilehash: 1b6b26de06d18d505fa6dde3ff9779a3dab3f1e6
+ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93400568"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96599312"
 ---
-# <a name="tutorial-create-a-net-standard-library-using-visual-studio-for-mac"></a>Samouczek: Tworzenie biblioteki .NET Standard przy użyciu Visual Studio dla komputerów Mac
+# <a name="tutorial-create-a-net-class-library-using-visual-studio-for-mac"></a>Samouczek: Tworzenie biblioteki klas .NET przy użyciu Visual Studio dla komputerów Mac
 
-W tym samouczku utworzysz bibliotekę klas, która zawiera jedną metodę obsługi ciągów. Implementuje ją jako [metodę rozszerzenia](../../csharp/programming-guide/classes-and-structs/extension-methods.md) , aby można było wywołać ją tak, jakby była elementem członkowskim <xref:System.String> klasy.
+W tym samouczku utworzysz bibliotekę klas, która zawiera jedną metodę obsługi ciągów.
 
-*Biblioteka klas* definiuje typy i metody, które są wywoływane przez aplikację. Biblioteka klas przeznaczona dla .NET Standard 2,1 może być używana przez aplikację, która jest przeznaczona dla dowolnej implementacji platformy .NET, która obsługuje wersję 2,1 .NET Standard. Po zakończeniu biblioteki klas można ją rozpowszechnić jako składnik innej firmy lub jako składnik pakietu z jedną lub wieloma aplikacjami.
+*Biblioteka klas* definiuje typy i metody, które są wywoływane przez aplikację. Jeśli biblioteka jest przeznaczona .NET Standard 2,0, może być wywoływana przez dowolną implementację platformy .NET (w tym .NET Framework), która obsługuje .NET Standard 2,0. Jeśli biblioteka jest przeznaczona dla platformy .NET 5, może być wywoływana przez dowolną aplikację, która jest przeznaczona dla platformy .NET 5. W tym samouczku przedstawiono sposób ukierunkowania platformy .NET 5.
 
 > [!NOTE]
 > Opinie są wysoce wyceniane. Istnieją dwa sposoby przekazywania opinii zespołowi programistycznemu na Visual Studio dla komputerów Mac:
@@ -23,11 +23,11 @@ W tym samouczku utworzysz bibliotekę klas, która zawiera jedną metodę obsłu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Zainstaluj program Visual Studio dla komputerów Mac w wersji 8,6 lub nowszej](https://visualstudio.microsoft.com/vs/mac/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link). Wybierz opcję zainstalowania platformy .NET Core. Instalowanie platformy Xamarin jest opcjonalne w przypadku programowania .NET Core. Więcej informacji można znaleźć w następujących zasobach:
+* [Zainstaluj program Visual Studio dla komputerów Mac w wersji 8,8 lub nowszej](https://visualstudio.microsoft.com/vs/mac/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link). Wybierz opcję zainstalowania platformy .NET Core. Instalowanie platformy Xamarin jest opcjonalne w przypadku programowania na platformie .NET. Więcej informacji można znaleźć w następujących zasobach:
 
   * [Samouczek: instalowanie Visual Studio dla komputerów Mac](/visualstudio/mac/installation).
   * [Obsługiwane wersje macOS](../install/macos.md).
-  * [Wersje programu .NET Core obsługiwane przez Visual Studio dla komputerów Mac](/visualstudio/mac/net-core-support).
+  * [Wersje platformy .NET obsługiwane przez Visual Studio dla komputerów Mac](/visualstudio/mac/net-core-support).
 
 ## <a name="create-a-solution-with-a-class-library-project"></a>Utwórz rozwiązanie z projektem biblioteki klas
 
@@ -37,19 +37,17 @@ Rozwiązanie programu Visual Studio służy jako kontener dla jednego lub wielu 
 
 1. W oknie uruchamiania wybierz pozycję **Nowy projekt**.
 
-1. W oknie dialogowym **Nowy projekt** w węźle **wiele platform** wybierz pozycję **Biblioteka** , a następnie wybierz szablon **Biblioteka .NET Standard** , a następnie wybierz przycisk **dalej**.
+1. W oknie dialogowym **Wybierz szablon dla nowego projektu** wybierz bibliotekę Biblioteka **klas sieci Web i konsoli**  >  **Library**  >  **Class Library**, a następnie wybierz przycisk **dalej**.
 
    :::image type="content" source="media/library-with-visual-studio-mac/visual-studio-mac-new-project.png" alt-text="Okno dialogowe Nowy projekt":::
 
-1. W oknie dialogowym **Konfigurowanie nowej biblioteki .NET Standard** wybierz pozycję ".NET Standard 2,1", a następnie wybierz przycisk **dalej**.
-
-   :::image type="content" source="media/library-with-visual-studio-mac/choose-net-std-21.png" alt-text="Wybierz .NET Standard 2,1":::
+1. W oknie dialogowym **Konfigurowanie nowej biblioteki klas** wybierz pozycję **.NET 5,0** i wybierz pozycję **dalej**.
 
 1. Nadaj projektowi nazwę "StringLibrary" i rozwiązanie "ClassLibraryProjects". Pozostaw opcję **Utwórz katalog projektu w wybranym katalogu rozwiązania** . Wybierz przycisk **Utwórz**.
 
    :::image type="content" source="media/library-with-visual-studio-mac/visual-studio-mac-new-project-options.png" alt-text="Opcje okna dialogowego Visual Studio dla komputerów Mac nowego projektu":::
 
-1. Z menu głównego wybierz pozycję **Widok**  >  **okienka**  >  **Solution** , a następnie wybierz ikonę dokowania, aby zachować otwartą konsolę.
+1. Z menu głównego wybierz pozycję **Wyświetl**  >  **rozwiązanie** i wybierz ikonę dokowania, aby zachować otwartą konsolę.
 
    :::image type="content" source="media/library-with-visual-studio-mac/solution-dock-icon.png" alt-text="Ikona dokowania dla konsoli rozwiązania":::
 
@@ -75,7 +73,7 @@ Dodaj aplikację konsolową, która używa biblioteki klas. Aplikacja wyświetli
 
 1. W konsoli **rozwiązania** <kbd>naciśnij klawisz Ctrl</kbd>i kliknij `ClassLibraryProjects` rozwiązanie. Dodaj nowy projekt **aplikacji konsoli** , wybierając szablon z szablonów aplikacji **sieci Web i konsoli**  >  **App** , a następnie wybierz przycisk **dalej**.
 
-1. Wybierz pozycję **.NET Core 3,1** jako **platformę docelową** i wybierz pozycję **dalej**.
+1. Wybierz **platformę .net 5,0** jako **platformę docelową** , a następnie wybierz pozycję **dalej**.
 
 1. Nadaj nazwę **pokazowi** projektu. Wybierz pozycję **Utwórz** , aby utworzyć projekt w rozwiązaniu.
 
@@ -99,21 +97,21 @@ Początkowo nowy projekt aplikacji konsolowej nie ma dostępu do biblioteki klas
 
 ## <a name="run-the-app"></a>Uruchamianie aplikacji
 
-1. <kbd>naciśnij klawisz Ctrl</kbd>i kliknij projekt pokazu i wybierz polecenie **Uruchom projekt** z menu kontekstowego.
+1. <kbd>naciśnij klawisz Ctrl</kbd>i kliknij projekt **pokazu** i wybierz polecenie **Uruchom projekt** z menu kontekstowego.
 
 1. Wypróbuj program, wprowadzając ciągi i naciskając klawisz <kbd>Enter</kbd>, a następnie naciśnij klawisz <kbd>Enter</kbd> , aby wyjść.
 
    :::image type="content" source="media/library-with-visual-studio-mac/visual-studio-mac-console-window.png" alt-text="Visual Studio dla komputerów Mac okno konsoli z uruchomioną aplikacją":::
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Tworzenie bibliotek przy użyciu interfejs wiersza polecenia platformy .NET Core](libraries.md)
-* [Wersje .NET Standard i obsługiwane przez nich platformy](../../standard/net-standard.md).
+* [Tworzenie bibliotek przy użyciu interfejsu wiersza polecenia platformy .NET](libraries.md)
 * [Visual Studio 2019 dla komputerów Mac — Informacje o wersji](/visualstudio/releasenotes/vs2019-mac-relnotes)
+* [Wersje .NET Standard i obsługiwane przez nich platformy](../../standard/net-standard.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku utworzono rozwiązanie i projekt biblioteki oraz dodano projekt aplikacji konsoli, który używa biblioteki. W następnym samouczku dodasz projekt testu jednostkowego do rozwiązania.
 
 > [!div class="nextstepaction"]
-> [Testowanie biblioteki .NET Standard za pomocą platformy .NET Core przy użyciu Visual Studio dla komputerów Mac](testing-library-with-visual-studio-mac.md)
+> [Testowanie biblioteki klas .NET przy użyciu Visual Studio dla komputerów Mac](testing-library-with-visual-studio-mac.md)

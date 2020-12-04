@@ -3,12 +3,12 @@ title: Obsługa wersji języka c# — Przewodnik C#
 description: Dowiedz się, w jaki sposób wersja języka C# jest określana na podstawie projektu i przyczyn związanych z tym wyborem. Dowiedz się, jak ręcznie przesłonić wartość domyślną.
 ms.custom: updateeachrelease
 ms.date: 08/11/2020
-ms.openlocfilehash: a06aa8812dad6f4b9a9254eef9f7c678c22af860
-ms.sourcegitcommit: b201d177e01480a139622f3bf8facd367657a472
+ms.openlocfilehash: b022b726861bd6ea45b188df44549dc279d34a74
+ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634512"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96598918"
 ---
 # <a name="c-language-versioning"></a>Przechowywanie wersji języka C#
 
@@ -41,8 +41,8 @@ Kompilator określa wartość domyślną na podstawie następujących reguł:
 
 Jeśli projekt jest przeznaczony dla platformy wersji zapoznawczej, która ma odpowiednią wersję języka wersji zapoznawczej, używana jest wersja języka w wersji zapoznawczej. Należy używać najnowszych funkcji w wersji zapoznawczej w dowolnym środowisku, bez wywierania wpływu na projekty przeznaczone do wydania .NET Core.
 
-> [!TIP]
-> Aby dowiedzieć się, jaka wersja językowa jest obecnie używana, umieść `#error version` (z uwzględnieniem wielkości liter) w kodzie. Dzięki temu kompilator tworzy diagnostykę, CS8304 z komunikatem zawierającym używaną wersję kompilatora i bieżącą wybraną wersję językową.
+> [!IMPORTANT]
+> Program Visual Studio 2017 dodał `<LangVersion>latest</LangVersion>` wpis do wszystkich utworzonych przez siebie plików projektu. To oznacza, że język *C# 7,0* został dodany. Jednak po uaktualnieniu do programu Visual Studio 2019 oznacza to, że jest to najnowsza wydana wersja, niezależnie od platformy docelowej. Te projekty teraz [zastępują zachowanie domyślne](#override-a-default). Należy edytować plik projektu i usunąć ten węzeł. Następnie w projekcie będzie używana wersja kompilatora zalecana dla platformy docelowej.
 
 ## <a name="override-a-default"></a>Zastąp wartość domyślną
 
@@ -51,6 +51,9 @@ Jeśli musisz jawnie określić wersję języka C#, możesz to zrobić na kilka 
 - Edytuj ręcznie [plik projektu](#edit-the-project-file).
 - Ustaw wersję językową [dla wielu projektów w podkatalogu](#configure-multiple-projects).
 - Skonfiguruj [ `-langversion` opcję kompilatora](compiler-options/langversion-compiler-option.md).
+
+> [!TIP]
+> Aby dowiedzieć się, jaka wersja językowa jest obecnie używana, umieść `#error version` (z uwzględnieniem wielkości liter) w kodzie. Dzięki temu kompilator tworzy diagnostykę, CS8304 z komunikatem zawierającym używaną wersję kompilatora i bieżącą wybraną wersję językową.
 
 ### <a name="edit-the-project-file"></a>Edytuj plik projektu
 

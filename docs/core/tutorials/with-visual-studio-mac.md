@@ -1,17 +1,17 @@
 ---
-title: Tworzenie aplikacji konsolowej platformy .NET Core przy użyciu Visual Studio dla komputerów Mac
-description: Dowiedz się, jak utworzyć aplikację konsolową .NET Core przy użyciu Visual Studio dla komputerów Mac.
-ms.date: 06/02/2020
-ms.openlocfilehash: 0248e48865541a7c73b9e219a06a57996c5cf601
-ms.sourcegitcommit: 48466b8fb7332ececff5dc388f19f6b3ff503dd4
+title: Tworzenie aplikacji konsolowej .NET przy użyciu Visual Studio dla komputerów Mac
+description: Dowiedz się, jak utworzyć aplikację konsolową .NET przy użyciu Visual Studio dla komputerów Mac.
+ms.date: 11/30/2020
+ms.openlocfilehash: 1351b06eec32cd8d3d9d44926655405fe2246f58
+ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93400529"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96599489"
 ---
-# <a name="tutorial-create-a-net-core-console-application-using-visual-studio-for-mac"></a>Samouczek: Tworzenie aplikacji konsolowej platformy .NET Core przy użyciu Visual Studio dla komputerów Mac
+# <a name="tutorial-create-a-net-console-application-using-visual-studio-for-mac"></a>Samouczek: Tworzenie aplikacji konsolowej .NET przy użyciu Visual Studio dla komputerów Mac
 
-W tym samouczku pokazano, jak utworzyć i uruchomić aplikację konsolową .NET Core przy użyciu Visual Studio dla komputerów Mac.
+W tym samouczku pokazano, jak utworzyć i uruchomić aplikację konsolową .NET przy użyciu Visual Studio dla komputerów Mac.
 
 > [!NOTE]
 > Opinie są wysoce wyceniane. Istnieją dwa sposoby przekazywania opinii zespołowi programistycznemu na Visual Studio dla komputerów Mac:
@@ -21,15 +21,13 @@ W tym samouczku pokazano, jak utworzyć i uruchomić aplikację konsolową .NET 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Visual Studio dla komputerów Mac w wersji 8,6 lub nowszej](https://visualstudio.microsoft.com/vs/mac/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link). Wybierz opcję zainstalowania platformy .NET Core. Instalowanie platformy Xamarin jest opcjonalne w przypadku programowania .NET Core. Więcej informacji można znaleźć w następujących zasobach:
+* [Visual Studio dla komputerów Mac w wersji 8,8 lub nowszej](https://visualstudio.microsoft.com/vs/mac/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link). Wybierz opcję zainstalowania platformy .NET Core. Instalowanie platformy Xamarin jest opcjonalne w przypadku programowania na platformie .NET. Więcej informacji można znaleźć w następujących zasobach:
 
   * [Samouczek: instalowanie Visual Studio dla komputerów Mac](/visualstudio/mac/installation).
   * [Obsługiwane wersje macOS](../install/windows.md).
-  * [Wersje programu .NET Core obsługiwane przez Visual Studio dla komputerów Mac](/visualstudio/mac/net-core-support).
+  * [Wersje platformy .NET obsługiwane przez Visual Studio dla komputerów Mac](/visualstudio/mac/net-core-support).
 
 ## <a name="create-the-app"></a>Tworzenie aplikacji
-
-Utwórz projekt aplikacji konsolowej .NET Core o nazwie "HelloWorld".
 
 1. Rozpocznij Visual Studio dla komputerów Mac.
 
@@ -41,11 +39,9 @@ Utwórz projekt aplikacji konsolowej .NET Core o nazwie "HelloWorld".
 
    :::image type="content" source="media/with-visual-studio-mac/visual-studio-mac-new-dialog.png" alt-text="Lista nowych szablonów projektu":::
 
-1. Na liście rozwijanej **platforma docelowa** okna dialogowego **Konfigurowanie nowej aplikacji konsoli** wybierz pozycję **.NET Core 3,1** , a następnie wybierz przycisk **dalej**.
+1. Na liście rozwijanej **platforma docelowa** okna dialogowego **Konfigurowanie nowej aplikacji konsolowej** wybierz pozycję **.NET 5,0** i wybierz pozycję **dalej**.
 
-   :::image type="content" source="media/with-visual-studio-mac/target-framework.png" alt-text="Wybierz platformę docelową":::
-
-1. Wpisz "HelloWorld" jako **nazwę projektu** , a następnie wybierz pozycję **Utwórz**.
+1. Wpisz "HelloWorld" jako **nazwę projektu**, a następnie wybierz pozycję **Utwórz**.
 
    :::image type="content" source="media/with-visual-studio-mac/visual-studio-mac-new-options.png" alt-text="Okno dialogowe Konfigurowanie nowej aplikacji konsolowej":::
 
@@ -102,7 +98,7 @@ Podnieś poziom aplikacji, aby monitować użytkownika o jego nazwę i wyświetl
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku utworzono aplikację konsolową .NET Core. W następnym samouczku debugujesz aplikację.
+W tym samouczku utworzono aplikację konsolową .NET. W następnym samouczku debugujesz aplikację.
 
 > [!div class="nextstepaction"]
-> [Debugowanie aplikacji konsolowej .NET Core przy użyciu Visual Studio dla komputerów Mac](debugging-with-visual-studio-mac.md)
+> [Debugowanie aplikacji konsolowej .NET przy użyciu Visual Studio dla komputerów Mac](debugging-with-visual-studio-mac.md)

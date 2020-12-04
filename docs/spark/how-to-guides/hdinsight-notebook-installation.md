@@ -4,12 +4,12 @@ description: Dowiedz się, jak zainstalować platformę .NET dla Apache Spark w 
 ms.date: 10/09/2020
 ms.topic: conceptual
 ms.custom: mvc,how-to
-ms.openlocfilehash: e2319fec833147ce50c7b94dd8ccc84f552f20d2
-ms.sourcegitcommit: 34968a61e9bac0f6be23ed6ffb837f52d2390c85
+ms.openlocfilehash: ff6b3a64c01fb9148d3abe3d04579233d11a4f73
+ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94688283"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96599658"
 ---
 # <a name="install-net-for-apache-spark-on-jupyter-notebooks-on-azure-hdinsight-spark-clusters"></a>Zainstaluj platformę .NET dla Apache Spark w notesach Jupyter w klastrach Azure HDInsight Spark
 
@@ -121,11 +121,11 @@ Postępuj zgodnie z instrukcjami w sekcji [Zatrzymaj usługi Livy Server](#stop-
 
    Po wyświetleniu monitu wybierz pozycję **Potwierdź ponowne uruchomienie wszystkiego** , aby kontynuować, a następnie kliknij przycisk **OK** , aby zakończyć.
 
-## <a name="submit-jobs-through-a-jupyter-notebook"></a>Przesyłanie zadań za pomocą notesu Jupyter
+## <a name="submit-jobs-through-a-jupyter-notebook"></a>Przesyłanie zadań za pomocą Jupyter Notebook
 
 Po zakończeniu poprzednich kroków można teraz przesyłać zadania platformy .NET dla Apache Spark za pomocą notesów Jupyter.
 
-1. Utwórz nowy Notes platformy .NET dla Apache Spark. Uruchom Notes Jupyter z klastra HDI w Azure Portal.
+1. Utwórz nowy Notes platformy .NET dla Apache Spark. W Azure Portal Uruchom Jupyter Notebook z klastra HDI.
 
    ![Jupyter Notebook uruchamiania](./media/hdinsight-notebook-installation/launch-notebook.png)
 

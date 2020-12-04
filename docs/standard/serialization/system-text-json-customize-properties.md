@@ -10,19 +10,19 @@ helpviewer_keywords:
 - serializing objects
 - serialization
 - objects, serializing
-ms.openlocfilehash: 28f7d03ae9f794f6e5ea34a95082a059451daec6
-ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
+ms.openlocfilehash: c754d41071e886bc1efcc3a30e249bf9e554ab5b
+ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96439983"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96599593"
 ---
 # <a name="how-to-customize-property-names-and-values-with-no-locsystemtextjson"></a>Jak dostosować nazwy i wartości właściwości przy użyciu System.Text.Json
 
 Domyślnie nazwy właściwości i klucze słownika nie są zmieniane w danych wyjściowych JSON, włącznie z wielkością liter. Wartości wyliczeniowe są reprezentowane jako liczby. Ten artykuł obejmuje następujące zagadnienia:
 
 > [!NOTE]
-> [Ustawienia domyślne sieci Web](system-text-json-configure-options.md#web-defaults-for-jsonserializeroptions) to notacji CamelCase.
+> [Wartość domyślna w sieci Web](system-text-json-configure-options.md#web-defaults-for-jsonserializeroptions) to notacji CamelCase.
 
 * [Dostosowywanie poszczególnych nazw właściwości](#customize-individual-property-names)
 * [Konwertuj wszystkie nazwy właściwości na notacji CamelCase przypadku](#use-camel-case-for-all-json-property-names)
@@ -164,13 +164,13 @@ Można również deserializować nazwy ciągów wyliczenia, jak pokazano w nast�
 
 :::code language="csharp" source="snippets/system-text-json-how-to/csharp/RoundtripEnumAsString.cs" id="Deserialize":::
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [System.Text.Json Podsumowanie](system-text-json-overview.md)
 * [Tworzenie wystąpienia JsonSerializerOptions](system-text-json-configure-options.md)
-* [Włącz dopasowywanie bez uwzględniania wielkości liter](system-text-json-character-casing.md)
-* [Ignoruj właściwości](system-text-json-ignore-properties.md)
-* [Zezwalaj na nieprawidłowy kod JSON](system-text-json-invalid-json.md)
+* [Włączanie dopasowywania bez uwzględniania wielkości liter](system-text-json-character-casing.md)
+* [Ignorowanie właściwości](system-text-json-ignore-properties.md)
+* [Zezwalanie na nieprawidłowy kod JSON](system-text-json-invalid-json.md)
 * [Obsługa przepełnienia kodu JSON](system-text-json-handle-overflow.md)
 * [Zachowaj odwołania cykliczne](system-text-json-preserve-references.md)
 * [Niemodyfikowalne typy i niepubliczne metody dostępu](system-text-json-immutability.md)

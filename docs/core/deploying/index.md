@@ -2,12 +2,12 @@
 title: Publikowanie aplikacji
 description: Dowiedz się więcej na temat sposobów publikowania aplikacji platformy .NET Core. Platforma .NET Core może publikować aplikacje zależne od platformy lub dla wielu platform. Można opublikować aplikację jako samodzielną lub zależną od struktury. Każdy tryb ma wpływ na sposób uruchamiania aplikacji przez użytkownika.
 ms.date: 04/01/2020
-ms.openlocfilehash: 27206065c899e41a44685f72cfb35ae57986aa4c
-ms.sourcegitcommit: 4d45bda8cd9558ea8af4be591e3d5a29360c1ece
+ms.openlocfilehash: 03d53c8b5184d7276a69a1058d6b1b2f1e62dc81
+ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91654675"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96599580"
 ---
 # <a name="net-core-application-publishing-overview"></a>Omówienie publikowania aplikacji .NET Core
 
@@ -67,7 +67,7 @@ Opublikowanie aplikacji jako zależnej od struktury powoduje utworzenie pliku [b
 
 Międzyplatformowe dane binarne aplikacji można uruchomić za pomocą `dotnet <filename.dll>` polecenia i można je uruchomić na dowolnej platformie. Jeśli aplikacja używa pakietu NuGet, który ma implementacje specyficzne dla platformy, wszystkie zależności platformy są kopiowane do folderu publikowania wraz z aplikacją.
 
-Można utworzyć plik wykonywalny dla określonej platformy, przekazując `-r <RID> --self-contained false` parametry do [`dotnet publish`](../tools/dotnet-publish.md) polecenia. Gdy `-r` parametr zostanie pominięty, tworzony jest plik wykonywalny dla bieżącej platformy. Wszystkie pakiety NuGet, które mają zależności specyficzne dla platformy dla platformy przeznaczonej, są kopiowane do folderu publikowanie.
+Można utworzyć plik wykonywalny dla określonej platformy, przekazując `-r <RID> --self-contained false` parametry do [`dotnet publish`](../tools/dotnet-publish.md) polecenia. Gdy `-r` parametr zostanie pominięty, tworzony jest plik wykonywalny dla bieżącej platformy. Wszystkie pakiety NuGet, które mają zależności specyficzne dla platformy dla platformy przeznaczonej, są kopiowane do folderu publikowanie. Jeśli nie potrzebujesz pliku wykonywalnego specyficznego dla użyciu funkcji platfrom, możesz określić `<UseAppHost>False</UseAppHost>` w pliku projektu. Aby uzyskać więcej informacji, zobacz [Dokumentacja programu MSBuild dla projektów zestawu .NET SDK](../project-sdk/msbuild-props.md#useapphost).
 
 ### <a name="advantages"></a>Zalety
 
@@ -111,7 +111,7 @@ dotnet publish -r linux-x64 --self-contained false
 
 Publikowanie aplikacji jako samodzielnego powoduje utworzenie pliku wykonywalnego specyficznego dla platformy. Folder publikowania danych wyjściowych zawiera wszystkie składniki aplikacji, w tym biblioteki .NET Core i docelowe środowisko uruchomieniowe. Aplikacja jest odizolowana od innych aplikacji platformy .NET Core i nie korzysta z lokalnie zainstalowanego udostępnionego środowiska uruchomieniowego. Użytkownik aplikacji nie jest wymagany do pobrania i zainstalowania platformy .NET Core.
 
-Plik binarny wykonywalny jest generowany dla określonej platformy docelowej. Na przykład jeśli masz aplikację o nazwie **word_reader**i opublikujesz plik wykonywalny samodzielnego dla systemu Windows, zostanie utworzony *word_reader.exe* . Publikowanie dla systemu Linux lub macOS, tworzony jest plik *word_reader* . Docelowa platforma i architektura są określone za pomocą `-r <RID>` parametru [`dotnet publish`](../tools/dotnet-publish.md) polecenia. Aby uzyskać więcej informacji na temat identyfikatorów RID, zobacz [katalog .NET Core RID Catalog](../rid-catalog.md).
+Plik binarny wykonywalny jest generowany dla określonej platformy docelowej. Na przykład jeśli masz aplikację o nazwie **word_reader** i opublikujesz plik wykonywalny samodzielnego dla systemu Windows, zostanie utworzony *word_reader.exe* . Publikowanie dla systemu Linux lub macOS, tworzony jest plik *word_reader* . Docelowa platforma i architektura są określone za pomocą `-r <RID>` parametru [`dotnet publish`](../tools/dotnet-publish.md) polecenia. Aby uzyskać więcej informacji na temat identyfikatorów RID, zobacz [katalog .NET Core RID Catalog](../rid-catalog.md).
 
 Jeśli aplikacja ma zależności specyficzne dla platformy, takie jak pakiet NuGet zawierający zależności specyficzne dla platformy, są one kopiowane do folderu publikowania wraz z aplikacją.
 
@@ -179,7 +179,7 @@ Publikuj samodzielną aplikację i ReadyToRun. Tworzony jest plik wykonywalny sy
 dotnet publish -c Release -r win-x64 -p:PublishReadyToRun=true
 ```
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Wdrażanie aplikacji .NET Core za pomocą interfejs wiersza polecenia platformy .NET Core.](deploy-with-cli.md)
 - [Wdrażanie aplikacji .NET Core za pomocą programu Visual Studio.](deploy-with-vs.md)

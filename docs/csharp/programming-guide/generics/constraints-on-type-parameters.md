@@ -7,12 +7,12 @@ helpviewer_keywords:
 - type constraints [C#]
 - type parameters [C#], constraints
 - unbound type parameter [C#]
-ms.openlocfilehash: 71c853b38e56c56d0077d7eb20e36cd83d3cd23c
-ms.sourcegitcommit: 67ebdb695fd017d79d9f1f7f35d145042d5a37f7
+ms.openlocfilehash: 8230dfed11bb4ba21e922827cc1a525ce45ba3e5
+ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92224310"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96599118"
 ---
 # <a name="constraints-on-type-parameters-c-programming-guide"></a>Ograniczenia dotyczące parametrów typu (Przewodnik programowania w języku C#)
 
@@ -20,7 +20,7 @@ Ograniczenia informują kompilator o możliwościach, które argument typu musi 
 
 |Typu|Opis|
 |----------------|-----------------|
-|`where T : struct`|Argument typu musi być typem wartości niedopuszczający wartości null. Aby uzyskać informacje o typach wartości null, zobacz [dopuszczanie typów wartości null](../../language-reference/builtin-types/nullable-value-types.md). Ponieważ wszystkie typy wartości mają dostępny Konstruktor bez parametrów, `struct` ograniczenie implikuje `new()` ograniczenie i nie można go połączyć z `new()` ograniczeniem. Nie można połączyć `struct` ograniczenia z `unmanaged` ograniczeniem.|
+|`where T : struct`|Argument typu musi być [typem wartości](../../language-reference/builtin-types/value-types.md)niedopuszczający wartości null. Aby uzyskać informacje o typach wartości null, zobacz [dopuszczanie typów wartości null](../../language-reference/builtin-types/nullable-value-types.md). Ponieważ wszystkie typy wartości mają dostępny Konstruktor bez parametrów, `struct` ograniczenie implikuje `new()` ograniczenie i nie można go połączyć z `new()` ograniczeniem. Nie można połączyć `struct` ograniczenia z `unmanaged` ograniczeniem.|
 |`where T : class`|Argument typu musi być typem referencyjnym. To ograniczenie dotyczy również dowolnego typu klasy, interfejsu, delegata lub tablicy. W kontekście dopuszczającym wartość null w języku C# 8,0 lub nowszym, `T` musi to być typ referencyjny, który nie dopuszcza wartości null. |
 |`where T : class?`|Argument typu musi być typem referencyjnym, DOPUSZCZANYM jako Nullable lub nie dopuszczający wartości null. To ograniczenie dotyczy również dowolnego typu klasy, interfejsu, delegata lub tablicy.|
 |`where T : notnull`|Argument typu musi być typem niedopuszczający wartości null. Argument może być typem referencyjnym niedopuszczający wartości null w języku C# 8,0 lub nowszym albo typem wartości innym niż null. |
@@ -122,7 +122,7 @@ Można go użyć, jak pokazano w poniższym przykładzie, aby utworzyć Wyliczen
 
 [!code-csharp[using the enum constrained method](snippets/GenericWhereConstraints.cs#20)]
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - <xref:System.Collections.Generic>
 - [Przewodnik programowania w języku C#](../index.md)

@@ -1,29 +1,29 @@
 ---
-title: Testowanie biblioteki klas .NET Standard za pomocą platformy .NET Core przy użyciu Visual Studio dla komputerów Mac
-description: Utwórz projekt testu jednostkowego dla biblioteki klas .NET Core. Sprawdź, czy biblioteka klas .NET Core działa prawidłowo z testami jednostkowymi.
-ms.date: 06/08/2020
-ms.openlocfilehash: 3adcddc96abf77012f89a28c1cf60ea57ae506a2
-ms.sourcegitcommit: 5b475c1855b32cf78d2d1bbb4295e4c236f39464
+title: Testowanie biblioteki klas .NET przy użyciu Visual Studio dla komputerów Mac
+description: Utwórz projekt testu jednostkowego dla biblioteki klas .NET. Sprawdź, czy biblioteka klas .NET działa prawidłowo z testami jednostkowymi.
+ms.date: 11/18/2020
+ms.openlocfilehash: 02d5aa74258ec15c5447b23246a3c7e9c61a6760
+ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91180533"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96599529"
 ---
-# <a name="test-a-net-standard-class-library-with-net-core-using-visual-studio"></a>Testowanie biblioteki klas .NET Standard za pomocą platformy .NET Core przy użyciu programu Visual Studio
+# <a name="test-a-net-class-library-using-visual-studio"></a>Testowanie biblioteki klas .NET przy użyciu programu Visual Studio
 
 W tym samouczku pokazano, jak zautomatyzować testy jednostkowe przez dodanie projektu testowego do rozwiązania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Ten samouczek współdziała z rozwiązaniem tworzonym w temacie [Tworzenie biblioteki .NET standard przy użyciu Visual Studio dla komputerów Mac](library-with-visual-studio-mac.md).
+- Ten samouczek współdziała z rozwiązaniem tworzonym w temacie [Tworzenie biblioteki klas platformy .NET przy użyciu Visual Studio dla komputerów Mac](library-with-visual-studio-mac.md).
 
-## <a name="create-a-unit-test-project"></a>Tworzenie projektu testu jednostkowego
+## <a name="create-a-unit-test-project"></a>Tworzenie projektu testów jednostkowych
 
 Testy jednostkowe zapewniają zautomatyzowane testowanie oprogramowania podczas opracowywania i publikowania. [MSTest](https://github.com/Microsoft/testfx-docs) jest jednym z trzech platform testowych, spośród których można dokonać wyboru. Inne to [xUnit](https://xunit.net/) i [nunit](https://nunit.org/).
 
 1. Rozpocznij Visual Studio dla komputerów Mac.
 
-1. Otwórz `ClassLibraryProjects` rozwiązanie utworzone w temacie [Tworzenie .NET Standard biblioteki przy użyciu Visual Studio dla komputerów Mac](library-with-visual-studio-mac.md).
+1. Otwórz `ClassLibraryProjects` rozwiązanie utworzone w temacie [Tworzenie biblioteki klas .NET przy użyciu Visual Studio dla komputerów Mac](library-with-visual-studio-mac.md).
 
 1. W konsoli **rozwiązania** <kbd>naciśnij klawisz Ctrl</kbd> `ClassLibraryProjects` i kliknij rozwiązanie, a następnie wybierz pozycję **Dodaj**  >  **Nowy projekt**.
 
@@ -31,7 +31,9 @@ Testy jednostkowe zapewniają zautomatyzowane testowanie oprogramowania podczas 
 
    :::image type="content" source="media/testing-library-with-visual-studio-mac/visual-studio-mac-unit-test-project.png" alt-text="Tworzenie projektu testowego w oknie dialogowym programu Visual Studio Mac New Project":::
 
-1. Wybierz pozycję **.NET Core 3,1**. Nadaj nowemu projektowi nazwę "StringLibraryTest" i wybierz pozycję **Utwórz**.
+1. Wybierz **platformę .net 5,0** jako **platformę docelową** , a następnie wybierz pozycję **dalej**.
+
+1. Nadaj nowemu projektowi nazwę "StringLibraryTest" i wybierz pozycję **Utwórz**.
 
    :::image type="content" source="media/testing-library-with-visual-studio-mac/visual-studio-mac-new-project-name.png" alt-text="Okno dialogowe nowego projektu programu Visual Studio dla komputerów Mac z nazwą projektu":::
 
@@ -165,13 +167,13 @@ Aby przetestować kompilację wydania:
 
 ## <a name="debug-tests"></a>Debuguj testy
 
-Jeśli używasz Visual Studio dla komputerów Mac jako środowiska IDE, możesz użyć tego samego procesu, który został przedstawiony w [samouczku: debugowanie aplikacji konsolowej .NET Core przy użyciu Visual Studio dla komputerów Mac](debugging-with-visual-studio-mac.md) do debugowania kodu przy użyciu projektu testu jednostkowego. Zamiast rozpoczynać projekt aplikacji *Pokaz* <kbd>, kliknij</kbd>projekt **StringLibraryTests** i wybierz pozycję **Rozpocznij debugowanie projektu** z menu kontekstowego.
+Jeśli używasz Visual Studio dla komputerów Mac jako środowiska IDE, możesz użyć tego samego procesu, który został przedstawiony w [samouczku: debugowanie aplikacji konsolowej .NET za pomocą Visual Studio dla komputerów Mac](debugging-with-visual-studio-mac.md) do debugowania kodu przy użyciu projektu testów jednostkowych. Zamiast rozpoczynać projekt aplikacji *Pokaz* <kbd>, kliknij</kbd>projekt **StringLibraryTests** i wybierz pozycję **Rozpocznij debugowanie projektu** z menu kontekstowego.
 
 Program Visual Studio uruchamia projekt testowy z dołączonym debugerem. Wykonanie zostanie zatrzymane na dowolnym punkcie przerwania, który został dodany do projektu testowego lub kodu biblioteki źródłowej.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Testy jednostkowe w .NET Core i .NET Standard](../testing/index.md)
+* [Testy jednostkowe w programie .NET](../testing/index.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -188,4 +190,4 @@ W przypadku opublikowania biblioteki jako pakietu NuGet inne osoby mogą ją zai
 Biblioteka nie musi być dystrybuowana jako pakiet. Można go powiązać z aplikacją konsolową, która go używa. Aby dowiedzieć się, jak opublikować aplikację konsolową, zobacz wcześniejszy samouczek w tej serii:
 
 > [!div class="nextstepaction"]
-> [Publikowanie aplikacji konsolowej .NET Core przy użyciu Visual Studio dla komputerów Mac](publishing-with-visual-studio-mac.md)
+> [Publikowanie aplikacji konsolowej .NET przy użyciu Visual Studio dla komputerów Mac](publishing-with-visual-studio-mac.md)
