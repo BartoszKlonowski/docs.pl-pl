@@ -11,12 +11,12 @@ metadata:
   helpviewer_keywords:
   - .NET Framework guide
   ms.date: 04/22/2020
-  ms.openlocfilehash: 54133d7cd73c9a4d097b601f92b685c27575dc8b
-  ms.sourcegitcommit: 30a686fd4377fe6472aa04e215c0de711bc1c322
+  ms.openlocfilehash: a30bf235f58c2f66bdcc1d8765e231ecefa312b9
+  ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/10/2020
-  ms.locfileid: "94439511"
+  ms.lasthandoff: 12/04/2020
+  ms.locfileid: "96599606"
 landingContent:
 - title: Dowiedz się więcej o .NET Framework
   linkLists:
@@ -26,6 +26,10 @@ landingContent:
       url: get-started/overview.md
     - text: Wymagania systemowe
       url: get-started/system-requirements.md
+  - linkListType: get-started
+    links:
+    - text: .NET Framework na pytaniach&
+      url: /answers/topics/dotnet-runtime-framework.html
   - linkListType: concept
     links:
     - text: Starsze wersje .NET Framework

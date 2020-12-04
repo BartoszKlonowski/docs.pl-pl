@@ -11,12 +11,12 @@ metadata:
   author: mamccrea
   ms.author: mamccrea
   ms.date: 09/11/2019
-  ms.openlocfilehash: 7be10c2f3f07f8caa4f180a0a21f20a7f20f7312
-  ms.sourcegitcommit: 27a15a55019f6b5f2733961738babe94aec0def3
+  ms.openlocfilehash: 1ceb8e11d8a041db729113ec06674ade3646fd7a
+  ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/15/2020
-  ms.locfileid: "90552183"
+  ms.lasthandoff: 12/04/2020
+  ms.locfileid: "96599632"
 landingContent:
 - title: .NET dla Apache Spark — podstawy
   linkLists:
@@ -28,6 +28,10 @@ landingContent:
     links:
     - text: Co to jest platforma .NET dla platformy Apache Spark?
       url: what-is-apache-spark-dotnet.md
+  - linkListType: get-started
+    links:
+    - text: .NET dla Apache Spark na pytaniach dotyczących&
+      url: /answers/topics/dotnet-apache-spark.html
   - linkListType: reference
     links:
     - text: Dokumentacja interfejsu API

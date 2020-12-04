@@ -7,18 +7,18 @@ metadata:
   ms.topic: landing-page
   ms.date: 08/13/2020
   ms.custom: contperfq1
-  ms.openlocfilehash: 1819d6c6cedcd9c2544c8ab6e5ff47d807d8c232
-  ms.sourcegitcommit: 27a15a55019f6b5f2733961738babe94aec0def3
+  ms.openlocfilehash: 5c393052a1782b64af18d32727f6df5bbd9d1415
+  ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/15/2020
-  ms.locfileid: "90554752"
+  ms.lasthandoff: 12/04/2020
+  ms.locfileid: "96599684"
 landingContent:
-- title: Wprowadzenie
+- title: Rozpoczęcie pracy
   linkLists:
   - linkListType: download
     links:
-    - text: Pobierz zestaw SDK dla platformy .NET
+    - text: Pobierz zestaw .NET SDK
       url: https://dotnet.microsoft.com/download
   - linkListType: get-started
     links:
@@ -50,6 +50,10 @@ landingContent:
       url: developing-apps/index.md
     - text: Aplikacja Windows Forms
       url: developing-apps/windows-forms/index.md
+  - linkListType: get-started
+    links:
+    - text: Visual Basic na pytaniach&
+      url: /answers/topics/dotnet-visual-basic.html
 - title: Dokumentacja języka
   linkLists:
   - linkListType: reference
