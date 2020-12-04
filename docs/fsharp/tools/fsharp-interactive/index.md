@@ -4,12 +4,12 @@ description: 'Dowiedz się, jak F# Interactive (dotnet FSI) służy do interakty
 ms.date: 11/29/2020
 f1_keywords:
 - VS.ToolsOptionsPages.F#_Tools.F#_Interactive
-ms.openlocfilehash: 92177c41dc6b31d9186bae8176f85787e2fb89e0
-ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
+ms.openlocfilehash: 71ec5d1b050b02ecbdb98adce814fce011cdbca0
+ms.sourcegitcommit: c6de55556add9f92af17e0f8d1da8f356a19a03d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96438041"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549400"
 ---
 # <a name="interactive-programming-with-f"></a>Programowanie interaktywne przy użyciu języka F\#
 
@@ -90,6 +90,9 @@ Obsługa skryptów języka F # jest natywnie obsługiwana w programie [Visual St
 
 ## <a name="referencing-packages-in-f-interactive"></a>Odwoływanie się do pakietów w F# Interactive
 
+> [!NOTE]
+> System zarządzania pakietami jest rozszerzalny, Przeczytaj więcej na [temat innych rozszerzeń](https://github.com/dotnet/fsharp/tree/main/src/fsharp/Microsoft.DotNet.DependencyManager).
+
 F# Interactive obsługuje odwołania do pakietów NuGet z `#r "nuget:"` składnią i opcjonalną wersją:
 
 ```fsharp
@@ -133,6 +136,8 @@ Można określić dowolną liczbę odwołań do pakietów w skrypcie.
 
 > [!NOTE]
 > Obecnie istnieje ograniczenie dotyczące skryptów, które używają odwołań do struktury (np. `Microsoft.NET.Sdk.Web` lub  `Microsoft.NET.Sdk.WindowsDesktop` ). Pakiety, takie jak Saturn, Giraffe, WinForms, są niedostępne. Jest to śledzone w [#9417](https://github.com/dotnet/fsharp/issues/9417)problemu.
+
+Przeczytaj więcej na temat [rozszerzalności zarządzania pakietami i innych rozszerzeń](https://github.com/dotnet/fsharp/tree/main/src/fsharp/Microsoft.DotNet.DependencyManager).
 
 ## <a name="referencing-assemblies-on-disk-with-f-interactive"></a>Odwołujące się do zestawów na dysku przy użyciu języka F # Interactive
 
@@ -235,7 +240,7 @@ Gdy określisz pliki lub ścieżki w F# Interactive, oczekiwano literału ciągu
 
 ## <a name="interactive-and-compiled-preprocessor-directives"></a>Interaktywne i skompilowane dyrektywy preprocesora
 
-Podczas kompilowania kodu w F# Interactive, niezależnie od tego, czy uruchamiasz **interaktywnie** , czy uruchamiasz skrypt, jest zdefiniowany symbol Interactive. Podczas kompilowania kodu w kompilatorze jest zdefiniowany symbol **skompilowany** . W tym przypadku, jeśli kod musi być inny w skompilowanych i interaktywnych trybach, można użyć tych dyrektyw preprocesora dla kompilacji warunkowej, aby określić, która z nich ma być używana. Przykład:
+Podczas kompilowania kodu w F# Interactive, niezależnie od tego, czy uruchamiasz **interaktywnie** , czy uruchamiasz skrypt, jest zdefiniowany symbol Interactive. Podczas kompilowania kodu w kompilatorze jest zdefiniowany symbol **skompilowany** . W tym przypadku, jeśli kod musi być inny w skompilowanych i interaktywnych trybach, można użyć tych dyrektyw preprocesora dla kompilacji warunkowej, aby określić, która z nich ma być używana. Na przykład:
 
 ```fsharp
 #if INTERACTIVE
