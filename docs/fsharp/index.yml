@@ -8,12 +8,12 @@ metadata:
   author: cartermp
   ms.author: phcart
   ms.date: 08/29/2020
-  ms.openlocfilehash: 12ae202d3618a35ecb19cad85452f5af98640152
-  ms.sourcegitcommit: 30e9e11dfd90112b8eec6406186ba3533f21eba1
+  ms.openlocfilehash: 308f91c4bc8f199410dac1c45ad54dc2feb1c1f4
+  ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/21/2020
-  ms.locfileid: "95099364"
+  ms.lasthandoff: 12/04/2020
+  ms.locfileid: "96599053"
 landingContent:
 - title: 'Naucz się programować w języku F #'
   linkLists:
@@ -31,6 +31,10 @@ landingContent:
     links:
     - text: Pobieranie zestawu .NET Core SDK
       url: https://dotnet.microsoft.com/download
+  - linkListType: get-started
+    links:
+    - text: 'F # na Q&A'
+      url: /answers/topics/dotnet-fsharp.html
 - title: 'Podstawy języka F #'
   linkLists:
   - linkListType: overview
@@ -79,7 +83,7 @@ landingContent:
       url: language-reference/functions/index.md
     - text: 'Typy języka F #'
       url: language-reference/fsharp-types.md
-- title: 'Narzędzia języka F #'
+- title: Narzędzia języka F#
   linkLists:
   - linkListType: reference
     links:
