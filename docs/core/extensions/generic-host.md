@@ -3,13 +3,13 @@ title: Host ogólny .NET
 author: IEvangelist
 description: Dowiedz się więcej na temat hosta ogólnego platformy .NET, który jest odpowiedzialny za uruchamianie aplikacji i zarządzanie okresem istnienia.
 ms.author: dapine
-ms.date: 09/18/2020
-ms.openlocfilehash: d00a8aeae8b4de2cbcb091992fa739c47da6dafc
-ms.sourcegitcommit: 5114e7847e0ff8ddb8c266802d47af78567949cf
+ms.date: 12/04/2020
+ms.openlocfilehash: ddb71b70d15121b7f59899fba38b2bf861219878
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916175"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96740098"
 ---
 # <a name="net-generic-host"></a>Host ogólny .NET
 
@@ -19,7 +19,7 @@ Szablony usługi procesu roboczego tworzą hosta ogólnego platformy .NET <xref:
 
 - Iniekcja zależności (DI)
 - Rejestrowanie
-- Konfigurowanie
+- Konfiguracja
 - `IHostedService` metod
 
 Po uruchomieniu hosta jest on wywoływany <xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync%2A?displayProperty=nameWithType> dla każdej implementacji <xref:Microsoft.Extensions.Hosting.IHostedService> zarejestrowanej w kolekcji kontenera usługi hostowanej usług. W aplikacji usługi procesu roboczego wszystkie `IHostedService` implementacje, które zawierają <xref:Microsoft.Extensions.Hosting.BackgroundService> wystąpienia, mają <xref:Microsoft.Extensions.Hosting.BackgroundService.ExecuteAsync%2A?displayProperty=nameWithType> metody wywoływane.
@@ -74,7 +74,7 @@ public class Program
   - EventLog (tylko w przypadku uruchamiania w systemie Windows)
 - Umożliwia weryfikację zakresu i [Sprawdzanie poprawności zależności](xref:Microsoft.Extensions.DependencyInjection.ServiceProviderOptions.ValidateOnBuild) , gdy środowisko jest `Development` .
 
-Metoda ta umożliwia `ConfigureServices` Dodawanie usług do <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection?displayProperty=nameWithType> wystąpienia. Później te usługi mogą być realizowane z iniekcji zależności.
+Metoda ta umożliwia `ConfigureServices` Dodawanie usług do <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection?displayProperty=nameWithType> wystąpienia. Później te usługi mogą być udostępniane z iniekcji zależności.
 
 ## <a name="framework-provided-services"></a>Usługi udostępniane przez platformę
 
@@ -128,7 +128,7 @@ Aby dodać konfigurację hosta, wywołaj polecenie <xref:Microsoft.Extensions.Ho
 
 Poniższy przykład umożliwia utworzenie konfiguracji hosta:
 
-:::code language="csharp" source="snippets/configuration/console-host/Program.cs" highlight="13-19":::
+:::code language="csharp" source="snippets/configuration/console-host/Program.cs" highlight="19-25":::
 
 ## <a name="app-configuration"></a>Konfiguracja aplikacji
 

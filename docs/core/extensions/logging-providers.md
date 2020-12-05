@@ -3,13 +3,13 @@ title: Dostawcy rejestrowania w programie .NET
 description: Dowiedz się, w jaki sposób interfejs API dostawcy rejestrowania jest używany w aplikacjach .NET.
 author: IEvangelist
 ms.author: dapine
-ms.date: 09/25/2020
-ms.openlocfilehash: 4d4658b7ca892d101af32f5cf8ac48a4beabfb92
-ms.sourcegitcommit: 636af37170ae75a11c4f7d1ecd770820e7dfe7bd
+ms.date: 12/04/2020
+ms.openlocfilehash: fdec9018e58c6038b5589c01e775bbb5f10b6b10
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804755"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96740091"
 ---
 # <a name="logging-providers-in-net"></a>Dostawcy rejestrowania w programie .NET
 
@@ -24,7 +24,7 @@ Domyślne szablony aplikacji programu .NET Worker:
   - [EventSource](#event-source)
   - [EventLog](#windows-eventlog): tylko system Windows
 
-:::code language="csharp" source="snippets/configuration/console/Program.cs" highlight="12":::
+:::code language="csharp" source="snippets/configuration/console/Program.cs" highlight="18":::
 
 Poprzedni kod przedstawia `Program` klasę utworzoną za pomocą szablonów aplikacji roboczych platformy .NET. W następnych sekcjach przedstawiono przykłady na podstawie szablonów aplikacji procesów roboczych platformy .NET, które korzystają z hosta ogólnego.
 
@@ -102,7 +102,7 @@ Aby uzyskać instrukcje dotyczące instalacji, zobacz [dotnet-Trace](../diagnost
 
 ### <a name="windows-eventlog"></a>Dziennik zdarzeń systemu Windows
 
-`EventLog`Dostawca wysyła dane wyjściowe dziennika do dziennika zdarzeń systemu Windows. W przeciwieństwie do innych dostawców `EventLog` dostawca nie dziedziczy ***not*** domyślnych ustawień nienależących do dostawcy. Jeśli `EventLog` nie określono ustawień dziennika, domyślnie są one `LogLevel.Warning` .
+`EventLog`Dostawca wysyła dane wyjściowe dziennika do dziennika zdarzeń systemu Windows. W przeciwieństwie do innych dostawców, `EventLog` dostawca programu nie **not** powinien dziedziczyć domyślnych ustawień nienależących do dostawcy. Jeśli `EventLog` nie określono ustawień dziennika, domyślnie są one `LogLevel.Warning` .
 
 Aby rejestrować zdarzenia mniejsze niż <xref:Microsoft.Extensions.Logging.LogLevel.Warning?displayProperty=nameWithType> , jawnie ustaw poziom dziennika. Poniższy przykład ustawia domyślny poziom dziennika dziennika zdarzeń <xref:Microsoft.Extensions.Logging.LogLevel.Information?displayProperty=nameWithType> :
 
@@ -127,8 +127,14 @@ Poniższy kod zmienia `SourceName` wartość domyślną na `".NET Runtime"` `Cus
 ```csharp
 public class Program
 {
-    public static Task Main(string[] args) =>
-        CreateHostBuilder(args).Build().RunAsync();
+    static async Task Main(string[] args)
+    {
+        using IHost host = CreateHostBuilder(args).Build();
+
+        // Application code should start here.
+
+        await host.RunAsync();
+    }
 
     static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -149,8 +155,14 @@ Aby skonfigurować ustawienia dostawcy, użyj <xref:Microsoft.Extensions.Logging
 ```csharp
 class Program
 {
-    static Task Main(string[] args) =>
-        CreateHostBuilder(args).Build().RunAsync();
+    static async Task Main(string[] args)
+    {
+        using IHost host = CreateHostBuilder(args).Build();
+
+        // Application code should start here.
+
+        await host.RunAsync();
+    }
 
     static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -160,7 +172,7 @@ class Program
                 services.Configure<AzureFileLoggerOptions>(options =>
                 {
                     options.FileName = "azure-diagnostics-";
-                    options.FileSizeLimit = 50 * 1024;
+                    options.FileSizeLimit = 50 _ 1024;
                     options.RetainedFileCountLimit = 5;
                 })
                 .Configure<AzureBlobLoggerOptions>(options =>
@@ -191,7 +203,7 @@ Aby skonfigurować przesyłanie strumieniowe dzienników Azure:
 
 - Przejdź do strony **dzienników App Service** ze strony portalu aplikacji.
 - Ustaw **Rejestrowanie aplikacji (system plików)** na **włączone**.
-- Wybierz **poziom**dziennika. To ustawienie dotyczy tylko przesyłania strumieniowego dzienników Azure.
+- Wybierz **poziom** dziennika. To ustawienie dotyczy tylko przesyłania strumieniowego dzienników Azure.
 
 Przejdź do strony **strumień dziennika** , aby wyświetlić dzienniki. Zarejestrowane komunikaty są rejestrowane przy użyciu `ILogger` interfejsu.
 
@@ -230,7 +242,7 @@ Korzystanie z struktury innej firmy jest podobne do korzystania z jednego z wbud
 
 Aby uzyskać więcej informacji, zobacz dokumentację każdego dostawcy. Dostawcy rejestrowania innych firm nie są obsługiwani przez firmę Microsoft.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Rejestrowanie w programie .NET](logging.md).
 - [Zaimplementuj niestandardowego dostawcę rejestrowania w programie .NET](custom-logging-provider.md).

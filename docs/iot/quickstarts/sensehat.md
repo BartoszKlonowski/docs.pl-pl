@@ -6,16 +6,16 @@ ms.author: casoper
 ms.date: 11/13/2020
 ms.topic: quickstart
 ms.prod: dotnet
-ms.openlocfilehash: 09e0c46a08e08a2021a9dffe214d3d62d6fb8ec5
-ms.sourcegitcommit: b201d177e01480a139622f3bf8facd367657a472
+ms.openlocfilehash: 2919db55304590f5557aa0cbda50cc4bd6640443
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "96589980"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96739533"
 ---
 # <a name="quickstart---use-net-to-drive-a-raspberry-pi-sense-hat"></a>Szybki Start — korzystanie z platformy .NET na potrzeby wykrywania Raspberry Pi
 
-[Hat](https://www.raspberrypi.org/products/sense-hat/) Raspberry Pi jest tablicą <span class="docon docon-navigate-external x-hidden-focus"></span> dodatków dla Raspberry Pi. Program zmysł HAT jest wyposażony w macierz LED 8 × 8, a następnie joystick z pięcioma przyciskami i zawiera następujące czujniki:
+Raspberry [pi](https://www.raspberrypi.org/products/sense-hat/) <span class="docon docon-navigate-external x-hidden-focus"></span> (**H** ardware **A** ttached w **T** op) jest tablicą dodatków dla Raspberry Pi. Program zmysł HAT jest wyposażony w macierz LED 8 × 8, a następnie joystick z pięcioma przyciskami i zawiera następujące czujniki:
 
 - Żyroskop
 - Akcelerometr
@@ -52,7 +52,7 @@ Zwróć uwagę na dane wyjściowe konsoli, ponieważ są wyświetlane dane czujn
 
 ## <a name="get-the-source-code"></a>Uzyskiwanie kodu źródłowego
 
-Źródło tego przewodnika Szybki Start jest [dostępne w serwisie GitHub](https://github.com/MicrosoftDocs/dotnet-iot-assets/tree/master/quickstarts/SenseHat.Quickstart). <span class="docon docon-navigate-external x-hidden-focus"></span>
+Źródło tego przewodnika Szybki Start jest [dostępne w serwisie GitHub](https://github.com/MicrosoftDocs/dotnet-iot-assets/tree/master/quickstarts/SenseHat.Quickstart) <span class="docon docon-navigate-external x-hidden-focus"></span> .
 
 ## <a name="next-steps"></a>Następne kroki
 

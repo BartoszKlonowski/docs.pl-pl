@@ -3,14 +3,14 @@ title: Implementowanie niestandardowego dostawcy konfiguracji w programie .NET
 description: Dowiedz się, jak zaimplementować niestandardowego dostawcę konfiguracji w aplikacjach .NET.
 author: IEvangelist
 ms.author: dapine
-ms.date: 09/16/2020
+ms.date: 12/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 968bf202eeea32742444681260d5ab0b27b403f9
-ms.sourcegitcommit: fe8877e564deb68d77fa4b79f55584ac8d7e8997
+ms.openlocfilehash: 22e46b7df8b02421633d6be251d990879baa8b2b
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90720808"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96740118"
 ---
 # <a name="implement-a-custom-configuration-provider-in-net"></a>Implementowanie niestandardowego dostawcy konfiguracji w programie .NET
 
@@ -58,9 +58,9 @@ Utwórz niestandardowego dostawcę konfiguracji, dziedziczących od <xref:Micros
 
 Poniższy kod pokazuje, jak używać niestandardowych `EntityConfigurationProvider` w *program.cs*:
 
-:::code language="csharp" source="snippets/configuration/custom-provider/Program.cs" highlight="21-22":::
+:::code language="csharp" source="snippets/configuration/custom-provider/Program.cs" highlight="27-28":::
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Konfiguracja w programie .NET](configuration.md)
 - [Dostawcy konfiguracji w programie .NET](configuration-providers.md)

@@ -8,16 +8,19 @@ ms.custom: updateeachrelease
 helpviewer_keywords:
 - code analysis
 - code analyzers
-ms.openlocfilehash: ca3a9cb914befbc8e0982070b818b27ee3143793
-ms.sourcegitcommit: b1442669f1982d3a1cb18ea35b5acfb0fc7d93e4
+ms.openlocfilehash: 8efac4d5e3fddcb9fdc6e08bcc933f2776420ced
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "96589856"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96739977"
 ---
 # <a name="overview-of-net-source-code-analysis"></a>Przegląd analizy kodu źródłowego platformy .NET
 
-Analizatory platformy kompilatora .NET (Roslyn) sprawdzają kod C# lub Visual Basic pod kątem problemów dotyczących jakości i stylu. Począwszy od wersji .NET 5.0 te analizatory są uwzględnione w zestawie .NET SDK. (Wcześniej zostały zainstalowane analizatory jakości kodu jako [pakiet NuGet](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers)i analizatory stylów kodu zostały zainstalowane z programem Visual Studio).
+Analizatory platformy kompilatora .NET (Roslyn) sprawdzają kod C# lub Visual Basic pod kątem problemów dotyczących jakości i stylu. Począwszy od wersji .NET 5.0 te analizatory są uwzględnione w zestawie .NET SDK. Jeśli nie chcesz przenosić do programu .NET 5 lub SDK lub wolisz model oparty na pakiecie NuGet, analizatory są również dostępne w `Microsoft.CodeAnalysis.NetAnalyzers` [pakiecie NuGet](https://www.nuget.org/packages/Microsoft.CodeAnalysis.NetAnalyzers). Można preferować model oparty na pakiecie dla aktualizacji wersji na żądanie.
+
+> [!NOTE]
+> Analizatory .NET to target-platform niezależny od. Oznacza to, że projekt nie musi być przeznaczony dla konkretnej platformy .NET. Analizatory współpracują z projektami przeznaczonymi do pracy, `net5.0` a także ze starszymi wersjami platformy .NET, takimi jak `netcoreapp` , `netstandard` i `net472` .
 
 - [Analiza jakości kodu (reguły "CAxxxx")](#code-quality-analysis)
 - [Analiza stylu kodu (reguły "IDExxxx")](#code-style-analysis)

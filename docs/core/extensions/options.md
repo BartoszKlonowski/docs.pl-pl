@@ -3,13 +3,13 @@ title: Wzorzec opcji w programie .NET
 author: IEvangelist
 description: Informacje na temat używania wzorca opcji do reprezentowania grup powiązanych ustawień w aplikacjach .NET.
 ms.author: dapine
-ms.date: 09/30/2020
-ms.openlocfilehash: 5c59a14223ec7c35456e1ea84d3f976e236f45dd
-ms.sourcegitcommit: 97405ed212f69b0a32faa66a5d5fae7e76628b68
+ms.date: 12/04/2020
+ms.openlocfilehash: 76d99337c51920115a38c400daca1649d0e74a99
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614751"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96740019"
 ---
 # <a name="options-pattern-in-net"></a>Wzorzec opcji w programie .NET
 
@@ -33,14 +33,14 @@ Utwórz następującą `TransientFaultHandlingOptions` klasę:
 Klasa opcji:
 
 * Nie może być abstrakcyjny z publicznym konstruktorem bez parametrów
-* Zawierają publiczne właściwości odczytu i zapisu do powiązania (pola ***nie*** są powiązane)
+* Zawierają publiczne właściwości odczytu i zapisu do powiązania (pola **są *** niepowiązane)
 
 Następujący kod:
 
-* Wywołuje [ConfigurationBinder. bind](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind%2A) , aby powiązać `TransientFaultHandlingOptions` klasę z `"TransientFaultHandlingOptions"` sekcją.
+_ Wywołuje [ConfigurationBinder. bind](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind%2A) , aby powiązać `TransientFaultHandlingOptions` klasę z `"TransientFaultHandlingOptions"` sekcją.
 * Wyświetla dane konfiguracji.
 
-:::code language="csharp" source="snippets/configuration/console-json/Program.cs" range="25-32":::
+:::code language="csharp" source="snippets/configuration/console-json/Program.cs" range="31-38":::
 
 W poprzednim kodzie zmiany w pliku konfiguracji JSON po rozpoczęciu aplikacji są odczytywane.
 
@@ -74,13 +74,13 @@ Korzystając z powyższego kodu, poniższy kod odczytuje opcje pozycji:
 
 :::code language="csharp" source="snippets/configuration/console-json/ExampleService.cs":::
 
-W powyższym kodzie zmiany w pliku konfiguracji JSON po rozpoczęciu aplikacji ***nie*** są odczytywane. Aby odczytać zmiany po rozpoczęciu pracy aplikacji, użyj [IOptionsSnapshot](#use-ioptionssnapshot-to-read-updated-data).
+W powyższym kodzie zmiany w pliku konfiguracji JSON po rozpoczęciu aplikacji **są *** nie_. Aby odczytać zmiany po rozpoczęciu pracy aplikacji, użyj [IOptionsSnapshot](#use-ioptionssnapshot-to-read-updated-data).
 
 ## <a name="options-interfaces"></a>Interfejsy opcji
 
 <xref:Microsoft.Extensions.Options.IOptions%601>:
 
-- Nie ***obsługuje:***
+- Nie _*_obsługuje:_*_
   - Odczytywanie danych konfiguracji po rozpoczęciu aplikacji.
   - [Nazwane opcje](#named-options-support-using-iconfigurenamedoptions)
 - Jest zarejestrowany jako [pojedynczy](dependency-injection.md#singleton) i można go wstrzyknąć w dowolnym [okresie istnienia usługi](dependency-injection.md#service-lifetimes).
@@ -151,7 +151,7 @@ Nazwane opcje:
 - Są przydatne, gdy wiele sekcji konfiguracji wiąże się z tymi samymi właściwościami.
 - Uwzględnia wielkość liter.
 
-Rozważmy następujące *appsettings.js* pliku:
+Rozważmy następujące _appsettings.jspliku *:
 
 ```json
 {

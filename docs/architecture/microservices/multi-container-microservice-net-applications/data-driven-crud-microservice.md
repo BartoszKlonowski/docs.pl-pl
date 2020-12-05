@@ -2,12 +2,12 @@
 title: Tworzenie prostej mikrousługi CRUD na podstawie danych
 description: Architektura mikrousług platformy .NET dla aplikacji platformy .NET w kontenerze | Zapoznaj się z tworzeniem prostej mikrousługi CRUD (opartej na danych) w kontekście aplikacji mikrousług.
 ms.date: 08/14/2020
-ms.openlocfilehash: 056ba37965cf831e0fb176eb585042c440530c6b
-ms.sourcegitcommit: 5b475c1855b32cf78d2d1bbb4295e4c236f39464
+ms.openlocfilehash: 27c9b331573ff08ea16c756552818df285156282
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91172368"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96739872"
 ---
 # <a name="creating-a-simple-data-driven-crud-microservice"></a>Tworzenie prostej mikrousługi CRUD na podstawie danych
 
@@ -219,7 +219,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-### <a name="additional-resources"></a>Zasoby dodatkowe
+### <a name="additional-resources"></a>Dodatkowe zasoby
 
 - **Wykonywanie zapytania dotyczącego danych** \
   [https://docs.microsoft.com/ef/core/querying/index](/ef/core/querying/index)
@@ -233,7 +233,7 @@ Możesz użyć ustawień ASP.NET Core i dodać Właściwość ConnectionString d
 
 ```json
 {
-    "ConnectionString": "Server=tcp:127.0.0.1,5433;Initial Catalog=Microsoft.eShopOnContainers.Services.CatalogDb;User Id=sa;Password=Pass@word",
+    "ConnectionString": "Server=tcp:127.0.0.1,5433;Initial Catalog=Microsoft.eShopOnContainers.Services.CatalogDb;User Id=sa;Password=[PLACEHOLDER]",
     "ExternalCatalogBaseUrl": "http://localhost:5101",
     "Logging": {
         "IncludeScopes": false,
@@ -256,7 +256,7 @@ Z plików Docker-Compose. yml lub Docker-Compose. override. yml można inicjowa�
 #
 catalog-api:
   environment:
-    - ConnectionString=Server=sqldata;Database=Microsoft.eShopOnContainers.Services.CatalogDb;User Id=sa;Password=Pass@word
+    - ConnectionString=Server=sqldata;Database=Microsoft.eShopOnContainers.Services.CatalogDb;User Id=sa;Password=[PLACEHOLDER]
     # Additional environment variables for this service
   ports:
     - "5101:80"
@@ -303,7 +303,7 @@ public class CatalogController : ControllerBase
 
 Ten mechanizm przechowywania wersji jest prosty i zależy od serwera routingu żądania do odpowiedniego punktu końcowego. Jednak w celu uzyskania bardziej zaawansowanej wersji i najlepszej metody w przypadku korzystania z usługi REST należy użyć narzędzia z nośnika i zaimplementować [HATEOAS (hipertekst jako aparat stanu aplikacji)](/azure/architecture/best-practices/api-design#use-hateoas-to-enable-navigation-to-related-resources).
 
-### <a name="additional-resources"></a>Zasoby dodatkowe
+### <a name="additional-resources"></a>Dodatkowe zasoby
 
 - **Scott Hanselman. Łatwość ASP.NET Core RESTful internetowego interfejsu API** \
   <https://www.hanselman.com/blog/ASPNETCoreRESTfulWebAPIVersioningMadeEasy.aspx>
@@ -428,7 +428,7 @@ W szczegółach interfejsu API interfejsu użytkownika programu Swagger przedsta
 
 Jest to proste. I ponieważ jest generowany automatycznie, podczas dodawania większej funkcjonalności do interfejsu API zostaną powiększone metadane programu Swagger.
 
-### <a name="additional-resources"></a>Zasoby dodatkowe
+### <a name="additional-resources"></a>Dodatkowe zasoby
 
 - **Strony pomocy interfejsu API sieci Web ASP.NET korzystające z programu Swagger** \
   [https://docs.microsoft.com/aspnet/core/tutorials/web-api-help-pages-using-swagger](/aspnet/core/tutorials/web-api-help-pages-using-swagger)
