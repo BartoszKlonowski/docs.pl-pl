@@ -1,15 +1,15 @@
 ---
-title: Informacje o obiekcie wywołującym
+title: Informacje o wywołującym
 description: Opisuje sposób używania atrybutów argumentów informacji o wywołującym do uzyskiwania informacji o wywołującym z metody.
 ms.date: 11/04/2019
-ms.openlocfilehash: d995b37149277b7c7d1b6217ee484d3c90a7f8b3
-ms.sourcegitcommit: f348c84443380a1959294cdf12babcb804cfa987
+ms.openlocfilehash: 700cde26fbe4e6c48155f88bfc63af59af86cfe2
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73976798"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96739779"
 ---
-# <a name="caller-information"></a>Informacje o obiekcie wywołującym
+# <a name="caller-information"></a>Informacje o wywołującym
 
 Przy użyciu atrybutów informacji o obiekcie wywołującym można uzyskać informacje o obiekcie wywołującym metodę. Można uzyskać ścieżkę pliku kodu źródłowego, numer wiersza kodu źródłowego i nazwę elementu członkowskiego obiektu wywołującego. Te informacje są przydatne do śledzenia, debugowania i tworzenia narzędzi diagnostycznych.
 
@@ -35,10 +35,10 @@ type Tracer() =
                       [<CallerMemberName; Optional; DefaultParameterValue("")>] memberName: string,
                       [<CallerFilePath; Optional; DefaultParameterValue("")>] path: string,
                       [<CallerLineNumber; Optional; DefaultParameterValue(0)>] line: int) =
-        Trace.WriteLine(sprintf "Message: %s" message)
-        Trace.WriteLine(sprintf "Member name: %s" memberName)
-        Trace.WriteLine(sprintf "Source file path: %s" path)
-        Trace.WriteLine(sprintf "Source line number: %d" line)
+        Trace.WriteLine(sprintf $"Message: {message}")
+        Trace.WriteLine(sprintf $"Member name: {memberName}")
+        Trace.WriteLine(sprintf $"Source file path: {path}")
+        Trace.WriteLine(sprintf $"Source line number: {line}")
 ```
 
 ## <a name="remarks"></a>Uwagi
@@ -51,10 +51,10 @@ Można jawnie dostarczyć opcjonalne argumenty do sterowania informacjami o obie
 
 ## <a name="member-names"></a>Nazwy elementów członkowskich
 
-Można użyć atrybutu [`CallerMemberName`](/dotnet/api/system.runtime.compilerservices.callermembernameattribute) , aby uniknąć określania nazwy elementu członkowskiego jako argumentu `String` dla wywoływanej metody. Korzystając z tej techniki, można uniknąć problemu, którego Refaktoryzacja zmiany nazwy nie zmienia wartości `String`. Jest to szczególnie przydatne w następujących zadaniach:
+Możesz użyć atrybutu, [`CallerMemberName`](/dotnet/api/system.runtime.compilerservices.callermembernameattribute) Aby uniknąć określania nazwy elementu członkowskiego jako `String` argumentu wywoływanej metody. Korzystając z tej techniki, można uniknąć problemu, którego zmiana nazwy Refaktoryzacja nie zmienia `String` wartości. Jest to szczególnie przydatne w następujących zadaniach:
 
 - Używanie procedur do śledzenia i diagnostycznych.
-- Implementowanie interfejsu [INotifyPropertyChanged](/dotnet/api/system.componentmodel.inotifypropertychanged) podczas wiązania danych. Ten interfejs umożliwia właściwości obiektu powiadamianie powiązanego formantu, że właściwość zmieniła się, dzięki czemu formant może wyświetlić zaktualizowane informacje. Bez atrybutu [`CallerMemberName`](/dotnet/api/system.runtime.compilerservices.callermembernameattribute) należy określić nazwę właściwości jako literału.
+- Implementowanie interfejsu [INotifyPropertyChanged](/dotnet/api/system.componentmodel.inotifypropertychanged) podczas wiązania danych. Ten interfejs umożliwia właściwości obiektu powiadamianie powiązanego formantu, że właściwość zmieniła się, dzięki czemu formant może wyświetlić zaktualizowane informacje. Bez [`CallerMemberName`](/dotnet/api/system.runtime.compilerservices.callermembernameattribute) atrybutu, należy określić nazwę właściwości jako literału.
 
 Poniższy wykres pokazuje nazwy elementów członkowskich, które są zwracane w przypadku używania atrybutu CallerMemberName.
 
@@ -71,5 +71,5 @@ Poniższy wykres pokazuje nazwy elementów członkowskich, które są zwracane w
 ## <a name="see-also"></a>Zobacz także
 
 - [Atrybuty](attributes.md)
-- [Nazwane argumenty](parameters-and-arguments.md#named-arguments)
+- [Argumenty nazwane](parameters-and-arguments.md#named-arguments)
 - [Parametry opcjonalne](parameters-and-arguments.md#optional-parameters)

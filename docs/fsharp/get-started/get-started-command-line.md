@@ -2,12 +2,12 @@
 title: 'Wprowadzenie do języka F # z narzędziami wiersza polecenia'
 description: 'Dowiedz się, jak utworzyć proste rozwiązanie z obsługą kilku projektów w języku F # przy użyciu interfejs wiersza polecenia platformy .NET Core na dowolnym systemie operacyjnym (Windows, macOS lub Linux).'
 ms.date: 08/15/2020
-ms.openlocfilehash: e652b66337a3122de8e6bd4d62d86fb6082b759d
-ms.sourcegitcommit: 9c45035b781caebc63ec8ecf912dc83fb6723b1f
+ms.openlocfilehash: f890e31fe8c665874dc3034aebfae32e38b9031a
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88811993"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96739918"
 ---
 # <a name="get-started-with-f-with-the-net-core-cli"></a>Wprowadzenie do języka F # z interfejs wiersza polecenia platformy .NET Core
 
@@ -64,7 +64,7 @@ open Newtonsoft.Json
 
 let getJsonNetJson value =
     let json = JsonConvert.SerializeObject(value)
-    sprintf "I used to be %s but now I'm %s thanks to JSON.NET!" value json
+    $"I used to be {value} but now I'm {json} thanks to JSON.NET!"
 ```
 
 Dodaj Newtonsoft.Jsw pakiecie NuGet do projektu biblioteki.
@@ -115,7 +115,7 @@ let main argv =
 
     for arg in argv do
         let value = getJsonNetJson arg
-        printfn "%s" value
+        printfn $"{value}"
 
     0 // return an integer exit code
 ```

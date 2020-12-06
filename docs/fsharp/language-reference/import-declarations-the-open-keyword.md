@@ -2,12 +2,12 @@
 title: 'Deklaracje importowania: open — Słowo kluczowe'
 description: 'Dowiedz się więcej o deklaracjach importu F # i sposobach określania modułu lub przestrzeni nazw, których elementy można odwołać bez użycia w pełni kwalifikowanej nazwy.'
 ms.date: 08/15/2020
-ms.openlocfilehash: ab208c53809e120bc216c8f8b4d04a322d67cf2f
-ms.sourcegitcommit: f99115e12a5eb75638abe45072e023a3ce3351ac
+ms.openlocfilehash: 4d3fd159aa4b334e9db0d7f756047470ad9c0829
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557184"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96739688"
 ---
 # <a name="import-declarations-the-open-keyword"></a>Deklaracje importu: `open` słowo kluczowe
 
@@ -39,7 +39,7 @@ Kompilator F # nie emituje błędu lub ostrzeżenia, gdy niejasności występuje
 ```fsharp
 open List
 open Seq
-printfn "%A" empty
+printfn %"{empty}"
 ```
 
 W związku z tym należy zachować ostrożność podczas otwierania modułów lub przestrzeni nazw, takich jak `List` lub zawierających `Seq` składowe o identycznych nazwach. zamiast tego należy rozważyć użycie kwalifikowanych nazw. Należy unikać każdej sytuacji, w której kod jest zależny od kolejności deklaracji importu.
@@ -89,8 +89,8 @@ Można zastosować `AutoOpen` atrybut do zestawu, jeśli chcesz automatycznie ot
 
 Niektóre moduły, rekordy lub typy Unii mogą określać `RequireQualifiedAccess` atrybut. Gdy odwołujesz się do elementów tych modułów, rekordów lub Unii, musisz użyć kwalifikowanej nazwy bez względu na to, czy dołączysz deklarację importu. Jeśli ten atrybut jest używany strategicznie dla typów, które definiują często używane nazwy, można uniknąć kolizji nazw, a tym samym zwiększyć odporność kodu na zmiany w bibliotekach. Aby uzyskać więcej informacji, zobacz [RequireQualifiedAccessAttribute —](https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core-requirequalifiedaccessattribute.html).
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Dokumentacja języka F #](index.md)
-- [Namespaces](namespaces.md)
+- [Przestrzenie nazw](namespaces.md)
 - [Moduły](modules.md)

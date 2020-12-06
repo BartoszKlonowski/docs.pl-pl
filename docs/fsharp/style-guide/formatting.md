@@ -2,12 +2,12 @@
 title: Wskazówki dotyczące formatowania kodu F#
 description: 'Poznaj wskazówki dotyczące formatowania kodu F #.'
 ms.date: 08/31/2020
-ms.openlocfilehash: 8f5e333c015f30ae8449c76a3075763370a98e4d
-ms.sourcegitcommit: 965a5af7918acb0a3fd3baf342e15d511ef75188
+ms.openlocfilehash: f9b62a18a5c525924f3ae6da3fbc650394340047
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94830522"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96739892"
 ---
 # <a name="f-code-formatting-guidelines"></a>Wskazówki dotyczące formatowania kodu F#
 
@@ -424,14 +424,14 @@ type PostalAddress =
     { Address: string
       City: string
       Zip: string }
-    member x.ZipAndCity = sprintf "%s %s" x.Zip x.City
+    member x.ZipAndCity = $"{x.Zip} {x.City}"
 
 // Not OK
 type PostalAddress =
   { Address: string
     City: string
     Zip: string }
-    member x.ZipAndCity = sprintf "%s %s" x.Zip x.City
+    member x.ZipAndCity = $"{x.Zip} {x.City}"
 
 // Unusual in F#
 type PostalAddress =
@@ -452,7 +452,7 @@ type PostalAddress =
         City: string
         Zip: string
     }
-    member x.ZipAndCity = sprintf "%s %s" x.Zip x.City
+    member x.ZipAndCity = $"{x.Zip} {x.City}"
 
 type MyRecord =
     {
@@ -780,14 +780,14 @@ Te same wskazówki dotyczą wyrażeń lambda jako argumentów funkcji. Jeśli tr
 ```fsharp
 let printListWithOffset a list1 =
     List.iter
-        (fun elem -> printfn "%d" (a + elem))
+        (fun elem -> printfn $"%d{a + elem}")
         list1
 
 // OK if lambda body is long enough
 let printListWithOffset a list1 =
     List.iter
         (fun elem ->
-            printfn "%d" (a + elem))
+            printfn $"%d{a + elem}")
         list1
 ```
 

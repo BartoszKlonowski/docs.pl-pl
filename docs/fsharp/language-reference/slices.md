@@ -2,12 +2,12 @@
 title: Wycinki
 description: 'Dowiedz się, jak używać wycinków dla istniejących typów danych F # i jak definiować własne wycinki dla innych typów danych.'
 ms.date: 11/20/2020
-ms.openlocfilehash: 9c072648ed46ae29871f2be5cc64b493f6a9b857
-ms.sourcegitcommit: 30e9e11dfd90112b8eec6406186ba3533f21eba1
+ms.openlocfilehash: b776058df5a174dfe48dbf513bf17281036dd83e
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95098960"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96740383"
 ---
 # <a name="slices"></a>Wycinki
 
@@ -27,15 +27,15 @@ let fullList = [ 1 .. 100 ]
 
 // Create a slice from indices 1-5 (inclusive)
 let smallSlice = fullList.[1..5]
-printfn "Small slice: %A" smallSlice
+printfn $"Small slice: {smallSlice}"
 
 // Create a slice from the beginning to index 5 (inclusive)
 let unboundedBeginning = fullList.[..5]
-printfn "Unbounded beginning slice: %A" unboundedBeginning
+printfn $"Unbounded beginning slice: {unboundedBeginning}"
 
 // Create a slice from an index to the end of the list
 let unboundedEnd = fullList.[94..]
-printfn "Unbounded end slice: %A" unboundedEnd
+printfn $"Unbounded end slice: {unboundedEnd}"
 ```
 
 Tablice odcięć są podobne do list wycinków:
@@ -46,15 +46,15 @@ let fullArray = [| 1 .. 100 |]
 
 // Create a slice from indices 1-5 (inclusive)
 let smallSlice = fullArray.[1..5]
-printfn "Small slice: %A" smallSlice
+printfn $"Small slice: {smallSlice}"
 
 // Create a slice from the beginning to index 5 (inclusive)
 let unboundedBeginning = fullArray.[..5]
-printfn "Unbounded beginning slice: %A" unboundedBeginning
+printfn $"Unbounded beginning slice: {unboundedBeginning}"
 
 // Create a slice from an index to the end of the list
 let unboundedEnd = fullArray.[94..]
-printfn "Unbounded end slice: %A" unboundedEnd
+printfn $"Unbounded end slice: {unboundedEnd}"
 ```
 
 ## <a name="slicing-multidimensional-arrays"></a>Dzielenie tablic wielowymiarowych
@@ -66,27 +66,27 @@ W poniższych przykładach pokazano, jak wydzielić tablicę 2D:
 ```fsharp
 // Generate a 3x3 2D matrix
 let A = array2D [[1;2;3];[4;5;6];[7;8;9]]
-printfn "Full matrix:\n %A" A
+printfn $"Full matrix:\n {A}"
 
 // Take the first row
 let row0 = A.[0,*]
-printfn "Row 0: %A" row0
+printfn $"{row0}"
 
 // Take the first column
 let col0 = A.[*,0]
-printfn "Column 0: %A" col0
+printfn $"{col0}"
 
 // Take all rows but only two columns
 let subA = A.[*,0..1]
-printfn "%A" subA
+printfn $"{subA}"
 
 // Take two rows and all columns
 let subA' = A.[0..1,*]
-printfn "%A" subA'
+printfn $"{subA}"
 
 // Slice a 2x2 matrix out of the full 3x3 matrix
 let twoByTwo = A.[0..1,0..1]
-printfn "%A" twoByTwo
+printfn $"{twoByTwo}"
 ```
 
 ## <a name="defining-slices-for-other-data-structures"></a>Definiowanie wycinków dla innych struktur danych
@@ -127,7 +127,7 @@ type Span<'T> with
 
 let printSpan (sp: Span<int>) =
     let arr = sp.ToArray()
-    printfn "%A" arr
+    printfn $"{arr}"
 
 let sp = [| 1; 2; 3; 4; 5 |].AsSpan()
 printSpan sp.[0..] // [|1; 2; 3; 4; 5|]
@@ -144,7 +144,7 @@ Wszystkie wycinki wewnętrzne w języku F # są końcowe włącznie; oznacza to,
 // Define a new list
 let xs = [1 .. 10]
 
-printfn "%A" xs.[2..5] // Includes the 5th index
+printfn $"{xs.[2..5]}" // Includes the 5th index
 ```
 
 ## <a name="built-in-f-empty-slices"></a>Wbudowane puste wycinki języka F #

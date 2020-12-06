@@ -2,12 +2,12 @@
 title: 'Samouczek: Tworzenie dostawcy typów'
 description: 'Dowiedz się, jak utworzyć własnych dostawców typów języka F # w języku F # 3,0, badając kilku dostawców typów prostych, aby zilustrować podstawowe pojęcia.'
 ms.date: 11/04/2019
-ms.openlocfilehash: 71225614ed983a76d35c214faa87bbad0fbb7d24
-ms.sourcegitcommit: 9c45035b781caebc63ec8ecf912dc83fb6723b1f
+ms.openlocfilehash: 65cb9616f66b5850135dbfcdd9b9a9dad30421de
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88810875"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96739701"
 ---
 # <a name="tutorial-create-a-type-provider"></a>Samouczek: Tworzenie dostawcy typów
 
@@ -243,7 +243,7 @@ Należy zwrócić uwagę na następujące kwestie:
 Następnie Dodaj dokumentację XML do typu. Ta dokumentacja jest opóźniona, to jest obliczana na żądanie, jeśli wymaga tego kompilator hosta.
 
 ```fsharp
-t.AddXmlDocDelayed (fun () -> sprintf "This provided type %s" ("Type" + string n))
+t.AddXmlDocDelayed (fun () -> $"""This provided type {"Type" + string n}""")
 ```
 
 Następnie Dodaj podaną Właściwość statyczną do typu:
@@ -352,9 +352,9 @@ t.AddMembersDelayed(fun () ->
                   getterCode= (fun args -> <@@ valueOfTheProperty @@>))
 
               p.AddXmlDocDelayed(fun () ->
-                  sprintf "This is StaticProperty%d on NestedType" i)
+                  $"This is StaticProperty{i} on NestedType")
 
-              p
+              p
       ]
 
     staticPropsInNestedType)
@@ -581,7 +581,7 @@ for group in r.GetGroupNames() do
         propertyName = group,
         propertyType = typeof<Group>,
         getterCode = fun args -> <@@ ((%%args.[0]:obj) :?> Match).Groups.[group] @@>)
-        prop.AddXmlDoc(sprintf @"Gets the ""%s"" group from this match" group)
+        prop.AddXmlDoc($"""Gets the ""{group}"" group from this match""")
     matchTy.AddMember prop
 ```
 
@@ -764,7 +764,7 @@ Najpierw należy rozważyć, jak powinien wyglądać interfejs API. Mając `info
 let info = new MiniCsv<"info.csv">()
 for row in info.Data do
 let time = row.Time
-printfn "%f" (float time)
+printfn $"{float time}"
 ```
 
 W takim przypadku kompilator powinien przekonwertować te wywołania na podobne do poniższego przykładu:
@@ -773,7 +773,7 @@ W takim przypadku kompilator powinien przekonwertować te wywołania na podobne 
 let info = new CsvFile("info.csv")
 for row in info.Data do
 let (time:float) = row.[1]
-printfn "%f" (float time)
+printfn $"%f{float time}"
 ```
 
 Optymalne tłumaczenie wymaga dostawcy typów w celu zdefiniowania rzeczywistego `CsvFile` typu w zestawie dostawcy typów. Dostawcy typów często polegają na kilku typach pomocników i metodach zawijania ważnych logiki. Ponieważ miary są wymazywane w czasie wykonywania, można użyć `float[]` jako typu wymazania dla wiersza. Kompilator będzie traktować różne kolumny jako mające różne typy miar. Na przykład pierwsza kolumna w naszym przykładzie ma typ `float<meter>` , a drugi ma wartość `float<second>` . Wymazywane reprezentacje mogą jednak być bardzo proste.
@@ -1048,7 +1048,7 @@ Interfejs API ProvidedTypes zapewnia pomocników do zapewniania adnotacji miar. 
   let nullableDecimal_kgpm2 = typedefof<System.Nullable<_>>.MakeGenericType [|dkgpm2 |]
 ```
 
-### <a name="accessing-project-local-or-script-local-resources"></a>Uzyskiwanie dostępu do zasobów lokalnych lub lokalnych w projekcie
+### <a name="accessing-project-local-or-script-local-resources"></a>Uzyskiwanie dostępu do zasobów Project-Local lub Script-Local
 
 Podczas konstruowania każde wystąpienie dostawcy typów może mieć określoną `TypeProviderConfig` wartość. Ta wartość zawiera "folder rozpoznawania" dla dostawcy (czyli folder projektu dla kompilacji lub katalog zawierający skrypt), listę zestawów, do których się odwołuje, i inne informacje.
 
@@ -1136,7 +1136,7 @@ devenv /debugexe fsc.exe script.fsx
 
   Możesz użyć rejestrowania do-stdout.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Dostawcy typów](index.md)
 - [Zestaw SDK dostawcy typów](https://github.com/fsprojects/FSharp.TypeProviders.SDK)

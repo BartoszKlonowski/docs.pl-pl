@@ -2,12 +2,12 @@
 title: Parametry i argumenty
 description: 'Dowiedz się więcej o obsłudze języka F # dla definiowania parametrów i przekazywania argumentów do funkcji, metod i właściwości.'
 ms.date: 08/15/2020
-ms.openlocfilehash: 6564fd31105427683af8fc6280672e638737e9b5
-ms.sourcegitcommit: 9c45035b781caebc63ec8ecf912dc83fb6723b1f
+ms.openlocfilehash: 3c391ca37a1cf3bd150316943e5b06efa532b317
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88811525"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96740292"
 ---
 # <a name="parameters-and-arguments"></a>Parametry i argumenty
 
@@ -137,7 +137,7 @@ open System
 open System.Runtime.InteropServices
 type C =
     static member Foo([<Optional; DefaultParameterValue("Hello world")>] message) =
-        printfn "%s" message
+        printfn $"{message}"
 ```
 
 Możesz również określić nowy obiekt jako domyślną wartość parametru. Na przykład `Foo` element członkowski może mieć opcjonalnie `CancellationToken` jako dane wejściowe:
@@ -147,7 +147,7 @@ open System.Threading
 open System.Runtime.InteropServices
 type C =
     static member Foo([<Optional; DefaultParameterValue(CancellationToken())>] ct: CancellationToken) =
-        printfn "%A" ct
+        printfn $"{ct}"
 ```
 
 Wartość określona jako argument `DefaultParameterValue` musi być zgodna z typem parametru. Na przykład następujące elementy są niedozwolone:
@@ -168,12 +168,12 @@ Przekazywanie wartości F # przez odwołanie obejmuje [ByRef](byrefs.md), które
 - Użyj, `byref<'T>` Jeśli musisz zarówno czytać, jak i zapisywać na wskaźniku.
 
 ```fsharp
-let example1 (x: inref<int>) = printfn "It's %d" x
+let example1 (x: inref<int>) = printfn $"It's %d{x}"
 
 let example2 (x: outref<int>) = x <- x + 1
 
 let example3 (x: byref<int>) =
-    printfn "It'd %d" x
+    printfn $"It's %d{x}"
     x <- x + 1
 
 let test () =
@@ -217,6 +217,6 @@ a 1 10 Hello world 1 True
 true
 ```
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Elementy członkowskie](./members/index.md)

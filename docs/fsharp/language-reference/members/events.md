@@ -2,12 +2,12 @@
 title: Zdarzenia
 description: 'Dowiedz się, jak zdarzenia języka F # umożliwiają kojarzenie wywołań funkcji z akcjami użytkownika, które są ważne w programowaniu graficznego interfejsu użytkownika.'
 ms.date: 08/15/2020
-ms.openlocfilehash: 42783255412d56c6ff6729694c31d0868ed99633
-ms.sourcegitcommit: 8bfeb5930ca48b2ee6053f16082dcaf24d46d221
+ms.openlocfilehash: 17e0cc8840053bf24d5c69694fe94d544c44510d
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88559196"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96740344"
 ---
 # <a name="events"></a>Zdarzenia
 
@@ -104,7 +104,7 @@ type AppForm() as this =
     member this.OnPropertyChanged(args : PropertyChangedEventArgs) =
         let newProperty = this.GetType().GetProperty(args.PropertyName)
         let newValue = newProperty.GetValue(this :> obj) :?> string
-        printfn "Property %s changed its value to %s" args.PropertyName newValue
+        printfn "Property {args.PropertyName} changed its value to {newValue}"
 
 // Create a form, hook up the event handler, and start the application.
 let appForm = new AppForm()
@@ -158,7 +158,7 @@ type AppForm private (dummy) as this =
     member this.OnPropertyChanged(args : PropertyChangedEventArgs) =
         let newProperty = this.GetType().GetProperty(args.PropertyName)
         let newValue = newProperty.GetValue(this :> obj) :?> string
-        printfn "Property %s changed its value to %s" args.PropertyName newValue
+        printfn "Property {args.PropertyName} changed its value to {newValue}"
 
     new() as this =
         new AppForm(0)
@@ -171,7 +171,7 @@ let appForm = new AppForm()
 Application.Run(appForm)
 ```
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Elementy członkowskie](index.md)
 - [Obsługa i wywoływanie zdarzeń](../../../standard/events/index.md)

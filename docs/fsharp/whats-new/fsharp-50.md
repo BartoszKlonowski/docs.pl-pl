@@ -2,12 +2,12 @@
 title: 'Co nowego w języku F # 5,0 — Przewodnik po języku f #'
 description: 'Zapoznaj się z omówieniem nowych funkcji dostępnych w języku F # 5,0.'
 ms.date: 11/06/2020
-ms.openlocfilehash: dd954fac31b008beab37cd6c1f06b1d41c5d5004
-ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
+ms.openlocfilehash: 2384f1a75f5e708dc6f170d82fa15c5e0f54c85d
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96438009"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96740188"
 ---
 # <a name="whats-new-in-f-50"></a>Co nowego w języku F # 5,0
 
@@ -15,7 +15,7 @@ F # 5,0 dodaje kilka ulepszeń języka F # i F# Interactive. Jest on publikowany
 
 Najnowszą wersję zestawu SDK platformy .NET można pobrać ze [strony plików do pobrania platformy .NET](https://dotnet.microsoft.com/download).
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 Język F # 5,0 jest dostępny we wszystkich dystrybucjach .NET Core i narzędziach programu Visual Studio. Aby uzyskać więcej informacji, zobacz [wprowadzenie do języka F #](../get-started/index.md) , aby dowiedzieć się więcej.
 
@@ -30,7 +30,7 @@ open Newtonsoft.Json
 
 let o = {| X = 2; Y = "Hello" |}
 
-printfn "%s" (JsonConvert.SerializeObject o)
+printfn $"{JsonConvert.SerializeObject o}"
 ```
 
 Możesz również podać wersję jawną po nazwie pakietu w następujący sposób:
@@ -50,8 +50,8 @@ open FParsec
 
 let test p str =
     match run p str with
-    | Success(result, _, _)   -> printfn "Success: %A" result
-    | Failure(errorMsg, _, _) -> printfn "Failure: %s" errorMsg
+    | Success(result, _, _)   -> printfn $"Success: {result}"
+    | Failure(errorMsg, _, _) -> printfn $"Failure: {errorMsg}"
 
 test pfloat "1.234"
 ```
@@ -123,9 +123,9 @@ let lookupMonth month =
 
     months.[month-1]
 
-printfn "%s" (lookupMonth 12)
-printfn "%s" (lookupMonth 1)
-printfn "%s" (lookupMonth 13)
+printfn $"{lookupMonth 12}"
+printfn $"{lookupMonth 1}"
+printfn $"{lookupMonth 13}"
 ```
 
 Ostatni wiersz zgłosi wyjątek, a "miesiąc" zostanie wyświetlony w komunikacie o błędzie.
@@ -136,9 +136,9 @@ Można przyjąć nazwę niemal każdej konstrukcji F #:
 module M =
     let f x = nameof x
 
-printfn "%s" (M.f 12)
-printfn "%s" (nameof M)
-printfn "%s" (nameof M.f)
+printfn $"{M.f 12}"
+printfn $"{nameof M}"
+printfn $"{nameof M.f}"
 ```
 
 Trzy końcowe dodatki to zmiany wykonywane przez operatorów: dodanie `nameof<'type-parameter>` formularza dla parametrów typu ogólnego i możliwość użycia `nameof` jako wzorca w wyrażeniu dopasowania do wzorca.
@@ -199,7 +199,7 @@ module M =
 // Open only the type inside the module
 open type M.DU
 
-printfn "%A" A
+printfn $"{A}"
 ```
 
 W przeciwieństwie do języka C#, `open type` w przypadku dwóch typów, które uwidaczniają składową o tej samej nazwie, element członkowski z ostatniego typu jest `open` zasłaniał inną nazwę. Jest to zgodne z semantyką języka F # otaczającą już istniejące cieniowanie.
@@ -285,7 +285,7 @@ let inline negate x = -x
 <@ negate 1.0 @>  |> eval
 ```
 
-Ograniczenie generowane przez `inline` funkcję jest zachowywane w cudzysłowie kodu. `negate`Można teraz ocenić w formie cudzysłowu funkcji.
+Ograniczenie generowane przez `inline` funkcję jest zachowywane w cudzysłowie kodu. `negate`Można teraz ocenić formularz quotated funkcji.
 
 Ta funkcja implementuje [Język F # RFC FS-1071](https://github.com/fsharp/fslang-design/blob/master/FSharp-5.0/FS-1071-witness-passing-quotations.md).
 
@@ -324,8 +324,8 @@ let run r1 r2 r3 =
         }
 
     match res1 with
-    | Ok x -> printfn "%s is: %d" (nameof res1) x
-    | Error e -> printfn "%s is: %s" (nameof res1) e
+    | Ok x -> printfn $"{nameof res1} is: %d{x}"
+    | Error e -> printfn $"{nameof res1} is: {e}"
 
 let printApplicatives () =
     let r1 = Ok 2
@@ -394,11 +394,11 @@ type MyType() =
     interface MyDim
 
 let md = MyType() :> MyDim
-printfn "DIM from C#: %d" md.Z
+printfn $"DIM from C#: %d{md.Z}"
 
 // You can also implement it via an object expression
 let md' = { new MyDim }
-printfn "DIM from C# but via Object Expression: %d" md'.Z
+printfn $"DIM from C# but via Object Expression: %d{md'.Z}"
 ```
 
 Dzięki temu można bezpiecznie korzystać z kodu w języku C# i składników .NET zapisanych w nowoczesnej C#, gdy użytkownicy będą mogli korzystać z implementacji domyślnej.
@@ -466,7 +466,7 @@ type Span<'T> with
 
 let printSpan (sp: Span<int>) =
     let arr = sp.ToArray()
-    printfn "%A" arr
+    printfn $"{arr}"
 
 let run () =
     let sp = [| 1; 2; 3; 4; 5 |].AsSpan()

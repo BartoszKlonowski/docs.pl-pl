@@ -4,12 +4,12 @@ description: 'Dowiedz się, jak F# Interactive (dotnet FSI) służy do interakty
 ms.date: 11/29/2020
 f1_keywords:
 - VS.ToolsOptionsPages.F#_Tools.F#_Interactive
-ms.openlocfilehash: 71ec5d1b050b02ecbdb98adce814fce011cdbca0
-ms.sourcegitcommit: c6de55556add9f92af17e0f8d1da8f356a19a03d
+ms.openlocfilehash: fe8ee2ebb97f4a47e80f39d5be8d95ba5b72ddc7
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549400"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96739316"
 ---
 # <a name="interactive-programming-with-f"></a>Programowanie interaktywne przy użyciu języka F\#
 
@@ -118,7 +118,7 @@ let t2 = dsharp.tensor [ [ 0; 1 ]; [ 2; 2 ] ]
 // Define a scalar-to-scalar function
 let f (x: Tensor) = sin (sqrt x)
 
-printfn "%A" (f (dsharp.tensor 1.2))
+printfn $"{f (dsharp.tensor 1.2)}"
 ```
 
 ### <a name="specifying-a-package-source"></a>Określanie źródła pakietu
@@ -137,7 +137,7 @@ Można określić dowolną liczbę odwołań do pakietów w skrypcie.
 > [!NOTE]
 > Obecnie istnieje ograniczenie dotyczące skryptów, które używają odwołań do struktury (np. `Microsoft.NET.Sdk.Web` lub  `Microsoft.NET.Sdk.WindowsDesktop` ). Pakiety, takie jak Saturn, Giraffe, WinForms, są niedostępne. Jest to śledzone w [#9417](https://github.com/dotnet/fsharp/issues/9417)problemu.
 
-Przeczytaj więcej na temat [rozszerzalności zarządzania pakietami i innych rozszerzeń](https://github.com/dotnet/fsharp/tree/main/src/fsharp/Microsoft.DotNet.DependencyManager).
+Aby uzyskać więcej informacji, zobacz [rozszerzalność zarządzania pakietami i inne rozszerzenia](https://github.com/dotnet/fsharp/tree/main/src/fsharp/Microsoft.DotNet.DependencyManager).
 
 ## <a name="referencing-assemblies-on-disk-with-f-interactive"></a>Odwołujące się do zestawów na dysku przy użyciu języka F # Interactive
 
@@ -154,7 +154,7 @@ Jeden skompilowany, można odwoływać się do niego w pliku o nazwie `Script.fs
 ```fsharp
 #r "path/to/MyAssembly.dll"
 
-printfn "%A" (MyAssembly.myFunction 10 40)
+printfn $"{MyAssembly.myFunction 10 40}"
 ```
 
 Wynik jest następujący:
@@ -182,7 +182,7 @@ I plik zużywany, `Script2.fsx` :
 #load "Script1.fsx"
 open Script1
 
-printfn "%d" (square 12)
+printfn $"%d{square 12}"
 ```
 
 Należy pamiętać, że `open Script1` Deklaracja jest wymagana. Wynika to z faktu, że konstrukcje w skrypcie języka F # są kompilowane do modułu najwyższego poziomu, który jest nazwą pliku skryptu, w którym znajduje się.
@@ -206,7 +206,7 @@ Poniższy przykład pokazuje, jak uzyskać i używać argumentów wiersza polece
 let args = fsi.CommandLineArgs
 
 for arg in args do
-    printfn "%s" arg
+    printfn $"{arg}"
 ```
 
 Gdy jest oceniane, drukuje wszystkie argumenty. Pierwszy argument jest zawsze nazwą obliczanego skryptu:

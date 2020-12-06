@@ -2,12 +2,12 @@
 title: Co to jest F#
 description: 'Dowiedz się, co to jest język programowania F # i jakie jest programowanie w języku F #. Dowiedz się więcej o zaawansowanych typach danych, funkcjach i sposobach ich dopasowania.'
 ms.date: 08/03/2018
-ms.openlocfilehash: 37dc2f472d65a046e4bf67e672e2a96f4d4afded
-ms.sourcegitcommit: 30a686fd4377fe6472aa04e215c0de711bc1c322
+ms.openlocfilehash: a6bad3e1db63c3fe948b5916925d5eb24a18a41c
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94439658"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96739480"
 ---
 # <a name="what-is-f"></a>Co to jest F\#
 
@@ -29,7 +29,7 @@ let main args =
     // Prints a greeting for each name!
     names
     |> List.map getGreeting
-    |> List.iter (fun greeting -> printfn "%s" greeting)
+    |> List.iter (fun greeting -> printfn $"{greeting}")
 
     0
 ```
@@ -52,16 +52,14 @@ Typy danych, takie jak [rekordy](./language-reference/records.md) i [związki ro
 
 ```fsharp
 // Group data with Records
-type SuccessfulWithdrawal = {
-    Amount: decimal
-    Balance: decimal
-}
+type SuccessfulWithdrawal =
+    { Amount: decimal
+      Balance: decimal }
 
-type FailedWithdrawal = {
-    Amount: decimal
-    Balance: decimal
-    IsOverdraft: bool
-}
+type FailedWithdrawal =
+    { Amount: decimal
+      Balance: decimal
+      IsOverdraft: bool }
 
 // Use discriminated unions to represent data of 1 or more forms
 type WithdrawalResult =
@@ -86,9 +84,9 @@ let handleWithdrawal amount =
 
     // The F# compiler enforces accounting for each case!
     match w with
-    | Success s -> printfn "Successfully withdrew %f" s.Amount
-    | InsufficientFunds f -> printfn "Failed: balance is %f" f.Balance
-    | CardExpired d -> printfn "Failed: card expired on %O" d
+    | Success s -> printfn "Successfully withdrew %f{s.Amount}"
+    | InsufficientFunds f -> printfn "Failed: balance is %f{f.Balance}"
+    | CardExpired d -> printfn "Failed: card expired on {d}"
     | UndisclosedFailure -> printfn "Failed: unknown :("
 ```
 

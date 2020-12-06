@@ -1,20 +1,20 @@
 ---
 title: Byrefs
-description: Dowiedz się więcej o byref i byref-jak typy w F#, które są używane do programowania niskiego poziomu.
+description: 'Dowiedz się więcej na temat typów ByRef i ByRef w języku F #, które są używane do programowania niskiego poziomu.'
 ms.date: 11/04/2019
-ms.openlocfilehash: 527f465ee87fe153a2deae1306b6730531dc4123
-ms.sourcegitcommit: 7588136e355e10cbc2582f389c90c127363c02a5
+ms.openlocfilehash: ff2c06d8940f7341d5d8b1d942be264bfac586c5
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79187051"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96740318"
 ---
 # <a name="byrefs"></a>Byrefs
 
-F# ma dwa główne obszary funkcji, które zajmują się w przestrzeni programowania niskiego poziomu:
+Język F # ma dwa główne obszary funkcji, które zajmują miejsce w programowaniu niskiego poziomu:
 
-* `byref` / `inref` Typy, / `outref` które są wskaźnikami zarządzanymi. Mają ograniczenia dotyczące użycia, dzięki czemu nie można skompilować program, który jest nieprawidłowy w czasie wykonywania.
-* -jak `byref`struct, który jest [strukturą,](structures.md) która ma podobną semantykę `byref<'T>`i te same ograniczenia czasu kompilacji co . Jednym z <xref:System.Span%601>przykładów jest .
+* `byref` / `inref` / `outref` Typy, które są wskaźnikami zarządzanymi. Mają ograniczenia dotyczące użycia, dzięki czemu nie można skompilować programu, który jest nieprawidłowy w czasie wykonywania.
+* Struktury `byref` podobnej do [struktury](structures.md) , która ma podobną semantykę i te same ograniczenia czasu kompilacji, co `byref<'T>` . Przykładem jest <xref:System.Span%601> .
 
 ## <a name="syntax"></a>Składnia
 
@@ -37,38 +37,38 @@ type S(count1: int, count2: int) =
     member x.Count2 = count2
 ```
 
-## <a name="byref-inref-and-outref"></a>Byref, inref i outref
+## <a name="byref-inref-and-outref"></a>ByRef, inref i outref
 
-Istnieją trzy formy: `byref`
+Istnieją trzy formy `byref` :
 
-* `inref<'T>`, wskaźnik zarządzany do odczytu wartości źródłowej.
-* `outref<'T>`, wskaźnik zarządzany do zapisu do wartości źródłowej.
-* `byref<'T>`, wskaźnik zarządzany do odczytu i zapisu wartości źródłowej.
+* `inref<'T>`, zarządzany wskaźnik odczytu wartości źródłowej.
+* `outref<'T>`, zarządzany wskaźnik zapisu do podstawowej wartości.
+* `byref<'T>`zarządzany wskaźnik służący do odczytywania i zapisywania podstawowej wartości.
 
-A `byref<'T>` mogą być `inref<'T>` przekazywane, gdzie oczekuje się. Podobnie `byref<'T>` można przekazać, gdzie `outref<'T>` oczekuje się.
+`byref<'T>`Można przesłać w miejscu, w którym `inref<'T>` jest oczekiwany. Podobnie `byref<'T>` można przesłać, gdzie `outref<'T>` oczekiwano.
 
-## <a name="using-byrefs"></a>Korzystanie z byrefs
+## <a name="using-byrefs"></a>Korzystanie z ByRef
 
-Aby użyć `inref<'T>`, musisz uzyskać wartość `&`wskaźnika z:
+Aby użyć `inref<'T>` , należy uzyskać wartość wskaźnika przy użyciu `&` :
 
 ```fsharp
 open System
 
 let f (dt: inref<DateTime>) =
-    printfn "Now: %s" (dt.ToString())
+    printfn $"Now: %O{dt}"
 
 let usage =
     let dt = DateTime.Now
     f &dt // Pass a pointer to 'dt'
 ```
 
-Aby zapisać wskaźnik za `outref<'T>` pomocą `byref<'T>`lub , należy również zrobić wartość `mutable`chwycić wskaźnik do .
+Aby zapisać na wskaźniku przy użyciu `outref<'T>` lub `byref<'T>` , należy również wprowadzić wartość, do której będzie można uzyskać wskaźnik `mutable` .
 
 ```fsharp
 open System
 
 let f (dt: byref<DateTime>) =
-    printfn "Now: %s" (dt.ToString())
+    printfn $"Now: %O{dt}"
     dt <- DateTime.Now
 
 // Make 'dt' mutable
@@ -78,9 +78,9 @@ let mutable dt = DateTime.Now
 f &dt
 ```
 
-Jeśli piszesz tylko wskaźnik zamiast go `outref<'T>` czytać, `byref<'T>`rozważ użycie zamiast .
+Jeśli chcesz tylko napisać wskaźnik zamiast odczytywać go, rozważ użycie `outref<'T>` zamiast `byref<'T>` .
 
-### <a name="inref-semantics"></a>Semantyka inref
+### <a name="inref-semantics"></a>Semantyka Inref
 
 Spójrzmy na poniższy kod:
 
@@ -88,53 +88,53 @@ Spójrzmy na poniższy kod:
 let f (x: inref<SomeStruct>) = x.SomeField
 ```
 
-Semantycznie oznacza to, co następuje:
+Semantycznie:
 
-* Posiadacz wskaźnika `x` może go używać tylko do odczytu wartości.
-* Każdy wskaźnik uzyskany do `struct` `SomeStruct` pól zagnieżdżonych w danym typu `inref<_>`.
+* Symbol zastępczy `x` wskaźnika może używać go tylko do odczytu wartości.
+* Dowolny wskaźnik uzyskany do `struct` pól zagnieżdżonych w ramach `SomeStruct` danego typu `inref<_>` .
 
-Prawdą jest również:
+Spełnione są również następujące kwestie:
 
-* Nie ma żadnych implikacji, że inne wątki lub aliasy nie mają dostępu do zapisu . `x`
-* Nie ma implikacji, `SomeStruct` która jest niezmienna `x` ze `inref`względu na to, że jest .
+* Nie ma żadnego znaczenia, że inne wątki lub aliasy nie mają dostępu do zapisu `x` .
+* Nie ma żadnych implikacji, które `SomeStruct` są niezmienne w wyniku `x` `inref` .
 
-Jednak dla typów wartości **are** F#, które `this` są niezmienne, wskaźnik `inref`jest wywnioskować, aby być .
+Jednak dla typów wartości języka F #, które **są** niezmienne, `this` wskaźnik jest wywnioskowany jako `inref` .
 
-Wszystkie te reguły razem oznacza, `inref` że posiadacz wskaźnika nie może modyfikować natychmiastowej zawartości pamięci jest wskazywany.
+Wszystkie te reguły razem oznaczają, że posiadacz `inref` wskaźnika nie modyfikuje natychmiastowej zawartości wskazanej pamięci.
 
 ### <a name="outref-semantics"></a>Semantyka Outref
 
-Celem `outref<'T>` jest wskazanie, że wskaźnik powinien być tylko zapisywany. Nieoczekiwanie `outref<'T>` pozwala na odczyt wartości źródłowej pomimo jego nazwy. Ma to na celu zgodność. Semantycznie, `outref<'T>` nie `byref<'T>`różni się od .
+Celem `outref<'T>` jest wskazanie, że na wskaźniku należy tylko pisać. Nieoczekiwanie `outref<'T>` zezwala na odczytywanie wartości źródłowej pomimo jej nazwy. Jest to przeznaczone do celów zgodności. Semantyka `outref<'T>` nie różni się od `byref<'T>` .
 
-### <a name="interop-with-c"></a>Interop z C\#
+### <a name="interop-with-c"></a>Współdziałanie z C\#
 
-C# obsługuje `in ref` `out ref` i słowa kluczowe, `ref` oprócz zwraca. W poniższej tabeli pokazano, jak F# interpretuje, co elewuje c#:
+Język C# obsługuje `in ref` `out ref` słowa kluczowe i, a nie `ref` zwraca. W poniższej tabeli przedstawiono, w jaki sposób F # interpretuje, co emituje w języku C#:
 
-|Konstrukcja języka C#|Wnioskowanie F#|
+|Konstrukcja języka C#|Liczba wniosku w języku F #|
 |------------|---------|
-|`ref`zwracawartość|`outref<'T>`|
-|`ref readonly`zwracawartość|`inref<'T>`|
-|`in ref`Parametr|`inref<'T>`|
-|`out ref`Parametr|`outref<'T>`|
+|`ref` wartość zwracana|`outref<'T>`|
+|`ref readonly` wartość zwracana|`inref<'T>`|
+|`in ref` konstruktora|`inref<'T>`|
+|`out ref` konstruktora|`outref<'T>`|
 
-W poniższej tabeli przedstawiono, co f# emituje:
+W poniższej tabeli pokazano, co emituje F #:
 
-|Konstrukcja Języka F#|Emitowana konstrukcja|
+|Konstrukcja języka F #|Wyemitowana konstrukcja|
 |------------|-----------------|
-|Argument `inref<'T>`|`[In]`atrybut na argument|
-|`inref<'T>`Zwraca|`modreq`atrybut na wartości|
-|`inref<'T>`w abstrakcyjnym gnieździe lub implementacji|`modreq`na argument lub powrót|
-|Argument `outref<'T>`|`[Out]`atrybut na argument|
+|Argument `inref<'T>`|`[In]` atrybut argumentu|
+|`inref<'T>` przesłać|`modreq` atrybut wartości|
+|`inref<'T>` w nieabstrakcyjnym gnieździe lub implementacji|`modreq` on argument lub Return|
+|Argument `outref<'T>`|`[Out]` atrybut argumentu|
 
-### <a name="type-inference-and-overloading-rules"></a>Reguły wnioskowania i przeciążenia typu
+### <a name="type-inference-and-overloading-rules"></a>Wnioskowanie o typie i reguły przeciążania
 
-Typ `inref<'T>` jest wywnioskowany przez kompilator F# w następujących przypadkach:
+`inref<'T>`Typ jest wnioskowany przez kompilator F # w następujących przypadkach:
 
-1. Parametr .NET lub typ zwracany, który ma atrybut. `IsReadOnly`
-2. Wskaźnik `this` na typ struktury, który nie ma pól zmiennoskowych.
-3. Adres lokalizacji pamięci pochodzące z `inref<_>` innego wskaźnika.
+1. Parametr .NET lub zwracany typ, który ma `IsReadOnly` atrybut.
+2. `this`Wskaźnik na typie struktury, który nie ma modyfikowalnych pól.
+3. Adres lokalizacji pamięci pochodzącej od innego `inref<_>` wskaźnika.
 
-Gdy niejawny `inref` adres niejawnego jest podejmowana, `SomeType` przeciążenie z argumentem typu `inref<SomeType>`jest preferowane przeciążenia z argumentem typu . Przykład:
+Gdy jest używany niejawny adres `inref` , Przeciążenie z argumentem typu `SomeType` jest preferowany do przeciążenia z argumentem typu `inref<SomeType>` . Na przykład:
 
 ```fsharp
 type C() =
@@ -148,11 +148,11 @@ let v =  C.M(res)
 let v2 =  C.M2(res, 4)
 ```
 
-W obu przypadkach przeciążenia biorąc `System.DateTime` są rozwiązywane, `inref<System.DateTime>`a nie przeciążenia biorąc .
+W obu przypadkach przeciążenia `System.DateTime` są rozwiązywane, a nie przez pobieranie przeciążenia `inref<System.DateTime>` .
 
-## <a name="byref-like-structs"></a>Struktury podobne do Byref
+## <a name="byref-like-structs"></a>Struktury podobne do ByRef
 
-`byref` / `outref` Oprócz / trio, można zdefiniować własne struktury, które mogą `byref`przylegać do -jak semantyka. `inref` Odbywa się to <xref:System.Runtime.CompilerServices.IsByRefLikeAttribute> za pomocą atrybutu:
+Oprócz `byref` / `inref` / `outref` trójka można definiować własne struktury, które mogą stosować się do `byref` semantyki podobnej. Jest to realizowane z <xref:System.Runtime.CompilerServices.IsByRefLikeAttribute> atrybutem:
 
 ```fsharp
 open System
@@ -164,31 +164,31 @@ type S(count1: Span<int>, count2: Span<int>) =
     member x.Count2 = count2
 ```
 
-`IsByRefLike`nie oznacza `Struct`. Oba muszą być obecne na typie.
+`IsByRefLike` nie oznacza `Struct` . Oba muszą być obecne w typie.
 
-Struktura`byref`"-like" w języku F# jest typem wartości powiązanym ze stosem. Nigdy nie jest przydzielany na zarządzanym stercie. Struktura `byref`-like jest przydatna w programowaniu o wysokiej wydajności, ponieważ jest wymuszana z zestawem silnych kontroli dotyczących okresu istnienia i braku przechwytywania. Zasady są następujące:
+Struktura " `byref` like" w języku F # jest typem wartości powiązanej ze stosem. Nigdy nie jest przydzielany na zarządzanym stosie. `byref`Struktura przypominająca podobne rozwiązanie jest przydatna w programowaniu o wysokiej wydajności, ponieważ jest wymuszana z zestawem silnych sprawdzeń i bez przechwycenia. Reguły są następujące:
 
-* Mogą być używane jako parametry funkcji, parametry metody, zmienne lokalne, zwraca metoda.
-* Nie mogą być statyczne lub wystąpienia elementów członkowskich klasy lub normalnej struktury.
-* Nie mogą być przechwytywane`async` przez dowolną konstrukcję zamknięcia (metody lub wyrażenia lambda).
-* Nie można ich używać jako parametru ogólnego.
+* Mogą one być używane jako parametry funkcji, parametry metody, zmienne lokalne, Metoda Return.
+* Nie mogą być statyczne ani składowe wystąpień klasy ani normalnej struktury.
+* Nie mogą być przechwytywane przez żadną konstrukcję zamknięcia ( `async` metody lub wyrażenia lambda).
+* Nie mogą być używane jako parametr generyczny.
 
-Ten ostatni punkt ma kluczowe znaczenie dla programowania `|>` w stylu potoku F#, podobnie jak funkcja ogólna, która parametryzuje jego typy danych wejściowych. Ograniczenie to może `|>` być złagodzone w przyszłości, ponieważ jest wbudowane i nie wykonuje żadnych wywołań do funkcji ogólnych niewbudowanych w jego treści.
+Ten ostatni punkt jest decydujący dla programowania w stylu potoku języka F #, podobnie jak `|>` ogólna funkcja, która parameterizes jego typy wejściowe. To ograniczenie może być `|>` w przyszłości swobodne, ponieważ jest wbudowane i nie wykonuje żadnych wywołań funkcji ogólnych, które nie są określone w treści.
 
-Chociaż reguły te zdecydowanie ograniczają użycie, robią to, aby spełnić obietnicę obliczeń o wysokiej wydajności w bezpieczny sposób.
+Chociaż te reguły silnie ograniczają użycie, robią to w celu zapewnienia bezpieczeństwa obliczeń o wysokiej wydajności w bezpieczny sposób.
 
-## <a name="byref-returns"></a>Zwroty Byref
+## <a name="byref-returns"></a>Zwracane przez ByRef
 
-Byref zwraca z funkcji F# lub elementów członkowskich mogą być produkowane i używane. Podczas korzystania `byref`z -returning metody, wartość jest niejawnie wyłusk. Przykład:
+Funkcja ByRef zwraca z funkcji F # lub elementów członkowskich, które mogą być tworzone i używane. Podczas konsumowania `byref` metody zwracanej wartość jest niejawnie wykorzystana. Na przykład:
 
 ```fsharp
 let squareAndPrint (data : byref<int>) =
     let squared = data*data    // data is implicitly dereferenced
-    printfn "%d" squared
+    printfn $"%d{squared}"
 ```
 
-Aby zwrócić wartość byref, zmienna, która zawiera wartość musi żyć dłużej niż bieżący zakres.
-Ponadto, aby zwrócić byref, użyj `&value` (gdzie wartość jest zmienna, która żyje dłużej niż bieżący zakres).
+Aby zwrócić wartość ByRef, zmienna, która zawiera wartość, musi znajdować się na żywo dłużej niż bieżący zakres.
+Ponadto, aby zwrócić element ByRef, użyj `&value` (gdzie Value jest zmienną, która jest dłuższa niż bieżący zakres).
 
 ```fsharp
 let mutable sum = 0
@@ -198,9 +198,9 @@ let safeSum (bytes: Span<byte>) =
     &sum  // sum lives longer than the scope of this function.
 ```
 
-Aby uniknąć niejawne wywanie, takie jak `&x` przekazywanie `x` odwołania za pośrednictwem wielu wywołań łańcuchowych, użyj (gdzie jest wartość).
+Aby uniknąć niejawnego odwołania, na przykład przekazywania odwołania przez wiele wywołań łańcucha, użyj `&x` (gdzie `x` jest wartością).
 
-Można również bezpośrednio przypisać do `byref`zwrotu . Należy wziąć pod uwagę następujący (bardzo imperatyw) program:
+Możesz również bezpośrednio przypisać do powrotu `byref` . Weź pod uwagę następujący (wysoce bezwzględny) program:
 
 ```fsharp
 type C() =
@@ -218,13 +218,13 @@ type C() =
 [<EntryPoint>]
 let main argv =
     let c = C()
-    printfn "Original sequence: %s" (c.ToString())
+    printfn $"Original sequence: %O{c}"
 
     let v = &c.FindLargestSmallerThan 16
 
     v <- v*2 // Directly assign to the byref return
 
-    printfn "New sequence:      %s" (c.ToString())
+    printfn $"New sequence:      %O{c}"
 
     0 // return an integer exit code
 ```
@@ -236,9 +236,9 @@ Original sequence: 1 3 7 15 31 63 127 255 511 1023
 New sequence:      1 3 7 30 31 63 127 255 511 1023
 ```
 
-## <a name="scoping-for-byrefs"></a>Zakres dla byrefs
+## <a name="scoping-for-byrefs"></a>Określanie zakresu dla ByRef
 
-Wartość `let`-bound nie może mieć odwołania przekracza zakres, w którym została zdefiniowana. Na przykład nie zezwala się na następujące czynności:
+`let`Wartość powiązania nie może mieć odwołania przekraczającego zakres, w którym został zdefiniowany. Na przykład następujące elementy są niedozwolone:
 
 ```fsharp
 let test2 () =
@@ -252,4 +252,4 @@ let test () =
     ()
 ```
 
-Zapobiega to uzyskiwanie różnych wyników w zależności od tego, czy skompilować z optymalizacji, czy nie.
+Dzięki temu można uzyskać różne wyniki w zależności od tego, czy kompilujesz z optymalizacją.

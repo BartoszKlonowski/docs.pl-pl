@@ -2,12 +2,12 @@
 title: Dopasowanie wzorca
 description: 'Dowiedz się, w jaki sposób wzorce są używane w języku F # do porównywania danych ze strukturami logicznymi, rozkładania danych na części składowych lub wyodrębniania informacji z danych.'
 ms.date: 11/12/2020
-ms.openlocfilehash: e167712b082b7f587e41a78edcaf0a0db9c7294b
-ms.sourcegitcommit: 34968a61e9bac0f6be23ed6ffb837f52d2390c85
+ms.openlocfilehash: 932f50b7947f6df728149437dd3ceb19c42e5c6a
+ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687808"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96740279"
 ---
 # <a name="pattern-matching"></a>Dopasowanie wzorca
 
@@ -88,8 +88,8 @@ Możesz użyć nazwanych pól w wyrażeniu dopasowania wzorca w następujący sp
 ```fsharp
 let matchShape shape =
     match shape with
-    | Rectangle(height = h) -> printfn "Rectangle with length %f" h
-    | Circle(r) -> printfn "Circle with radius %f" r
+    | Rectangle(height = h) -> printfn $"Rectangle with length %f{h}"
+    | Circle(r) -> printfn $"Circle with radius %f{r}"
 ```
 
 Użycie nazwanego pola jest opcjonalne, dlatego w poprzednim przykładzie oba `Circle(r)` i `Circle(radius = r)` mają ten sam efekt.
@@ -98,7 +98,7 @@ Po określeniu wielu pól Użyj średnika (;) jako separator.
 
 ```fsharp
 match shape with
-| Rectangle(height = h; width = w) -> printfn "Rectangle with height %f and width %f" h w
+| Rectangle(height = h; width = w) -> printfn $"Rectangle with height %f{h} and width %f{w}"
 | _ -> ()
 ```
 
