@@ -11,12 +11,12 @@ metadata:
   author: BillWagner
   ms.author: wiwagn
   ms.date: 10/9/2020
-  ms.openlocfilehash: 6e3cd264dee78ed51ba31e09584850660ec01f30
-  ms.sourcegitcommit: 965a5af7918acb0a3fd3baf342e15d511ef75188
+  ms.openlocfilehash: ceaf08c55fd8119fea0edf427543403df0804413
+  ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/18/2020
-  ms.locfileid: "94819529"
+  ms.lasthandoff: 12/04/2020
+  ms.locfileid: "96599671"
 highlightedContent:
   items:
   - title: Pobierz platformę .NET
@@ -80,6 +80,9 @@ conceptualContent:
     - url: https://channel9.msdn.com/Series/NET-Core-101/What-is-NET
       itemType: video
       text: Co to jest platforma .NET?
+    - url: /answers/products/dotnet
+      itemType: get-started
+      text: .NET w witrynie Q&A
     - url: ./core/introduction.md
       itemType: overview
       text: Omówienie platformy .NET

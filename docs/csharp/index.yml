@@ -6,12 +6,12 @@ metadata:
   description: Naucz się programowania w języku C# — dla początkujących deweloperów, nowych deweloperów w języku C# i doświadczonych deweloperów w języku C#/.NET
   ms.topic: landing-page
   ms.date: 11/19/2019
-  ms.openlocfilehash: f31d24add06b958f6c5bc00baf4c09601616604e
-  ms.sourcegitcommit: f99115e12a5eb75638abe45072e023a3ce3351ac
+  ms.openlocfilehash: bc75503b565020fb9966fd756d87890263f63533
+  ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/12/2020
-  ms.locfileid: "94556820"
+  ms.lasthandoff: 12/04/2020
+  ms.locfileid: "96599450"
 landingContent:
 - title: Naucz się programowania w języku C#
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
       url: tutorials/intro-to-csharp/index.md
     - text: Tworzenie aplikacji C# za pomocą programu Visual Studio
       url: /visualstudio/get-started/csharp/tutorial-console
+    - text: C# w witrynie Q&A
+      url: /answers/topics/dotnet-csharp.html
   - linkListType: video
     links:
     - text: Co to jest język C#?
