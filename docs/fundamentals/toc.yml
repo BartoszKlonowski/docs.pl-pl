@@ -367,6 +367,8 @@ items:
             href: ../core/additional-tools/index.md
           - name: Narzędzie do odinstalowania platformy .NET
             href: ../core/additional-tools/uninstall-tool.md
+          - name: Narzędzie do instalowania platformy .NET dla autorów rozszerzeń
+            href: ../core/additional-tools/vscode-dotnet-runtime.md
           - name: Generowanie certyfikatów z podpisem własnym
             href: ../core/additional-tools/self-signed-certificates-guide.md
           - name: WCF Web Service Reference Provider
@@ -452,7 +454,7 @@ items:
           - name: Omówienie
             href: code-analysis/overview.md
             displayName: 'code analysis, analyzers'
-          - name: Konfigurowanie
+          - name: Konfiguracja
             items:
               - name: Opcje ogólne
                 href: code-analysis/configuration-options.md
@@ -1645,6 +1647,8 @@ items:
                 displayName: binary serialization
               - name: Przewodnik po zabezpieczeniach elementu BinaryFormatter
                 href: ../standard/serialization/binaryformatter-security-guide.md
+              - name: Źródło zdarzenia BinaryFormatter
+                href: ../standard/serialization/binaryformatter-event-source.md
               - name: Koncepcje z zakresu serializacji
                 href: ../standard/serialization/serialization-concepts.md
               - name: Serializacja podstawowa
