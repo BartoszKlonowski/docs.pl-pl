@@ -1,24 +1,27 @@
 ---
 title: Określanie, które wersje programu .NET Framework są zainstalowane
 description: Użyj kodu, regedit.exe lub programu PowerShell, aby wykryć, które wersje .NET Framework są zainstalowane na komputerze, badając rejestr systemu Windows.
-ms.date: 02/03/2020
+ms.date: 12/04/2020
 dev_langs:
 - csharp
 - vb
 helpviewer_keywords:
 - versions, determining for .NET Framework
-- .NET Framework, determining version
+- .NET Framework, determining installed versions
 ms.assetid: 40a67826-e4df-4f59-a651-d9eb0fdc755d
-ms.openlocfilehash: b4c5b6911a4be4f9ac156b600646c649549f88f8
-ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
+ms.openlocfilehash: a219514fafdcb17db259e089afa8318dbab24811
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96438139"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851832"
 ---
 # <a name="how-to-determine-which-net-framework-versions-are-installed"></a>Instrukcje: Określanie, które wersje .NET Framework są zainstalowane
 
 Użytkownicy mogą [instalować](../install/index.md) i uruchamiać wiele wersji .NET Framework na swoich komputerach. Podczas opracowywania lub wdrażania aplikacji może być konieczne, aby wiedzieć, które wersje .NET Framework są zainstalowane na komputerze użytkownika. Rejestr zawiera listę wersji .NET Framework zainstalowanych na komputerze.
+
+> [!NOTE]
+> Ten artykuł dotyczy .NET Framework. Aby określić, które zestawy SDK i środowiska uruchomieniowe platformy .NET Core i .NET 5 są zainstalowane, zobacz [Jak sprawdzić, czy program .NET jest już zainstalowany](../../core/install/how-to-detect-installed-versions.md).
 
 .NET Framework składa się z dwóch głównych składników, które są osobno dla wersji:
 
@@ -37,6 +40,21 @@ Narzędzia obsługiwane przez społeczność są dostępne, aby pomóc w wykrywa
   Moduł programu PowerShell 2,0.
 
 Aby uzyskać informacje dotyczące wykrywania zainstalowanych aktualizacji dla każdej wersji .NET Framework, zobacz [How to: Określanie, które aktualizacje .NET Framework są zainstalowane](how-to-determine-which-net-framework-updates-are-installed.md).
+
+## <a name="determine-which-net-implementation-and-version-an-app-is-running-on"></a>Określanie implementacji i wersji platformy .NET, na której działa aplikacja
+
+Możesz użyć właściwości, <xref:System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription?displayProperty=nameWithType> Aby wykonać zapytanie dotyczące implementacji i wersji platformy .NET, na której działa aplikacja. Jeśli aplikacja działa na .NET Framework, dane wyjściowe będą podobne do:
+
+```output
+.NET Framework 4.8.4250.0
+```
+
+Porównując, jeśli aplikacja działa w środowisku .NET Core lub .NET 5 +, dane wyjściowe będą podobne do:
+
+```output
+.NET Core 3.1.9
+.NET 5.0.0
+```
 
 ## <a name="detect-net-framework-45-and-later-versions"></a>Wykryj .NET Framework 4,5 i nowsze wersje
 
@@ -81,13 +99,13 @@ Aby określić, czy jest dostępna *minimalna* wersja .NET Framework, sprawdź, 
 
 ### <a name="use-registry-editor"></a>Korzystanie z edytora rejestru
 
-01. Z menu **Start** wybierz polecenie **Uruchom**, wpisz polecenie *regedit*, a następnie wybierz przycisk **OK**.
+1. Z menu **Start** wybierz polecenie **Uruchom**, wpisz polecenie *regedit*, a następnie wybierz przycisk **OK**.
 
    (Musisz mieć poświadczenia administracyjne, aby uruchomić regedit).
 
-01. W Edytorze rejestru Otwórz następujący podklucz: **HKEY_LOCAL_MACHINE \\ Software \\ Microsoft \\ .NET Framework Setup \\ NDP \\ v4 \\**. Jeśli **pełny** podklucz nie jest obecny, nie masz zainstalowanego .NET Framework 4,5 lub nowszego.
+1. W Edytorze rejestru Otwórz następujący podklucz: **HKEY_LOCAL_MACHINE \\ Software \\ Microsoft \\ .NET Framework Setup \\ NDP \\ v4 \\**. Jeśli **pełny** podklucz nie jest obecny, nie masz zainstalowanego .NET Framework 4,5 lub nowszego.
 
-01. Sprawdź, czy REG_DWORD wpis o nazwie **Release**. Jeśli istnieje, jest zainstalowana .NET Framework 4,5 lub nowsza. Jego wartość odnosi się do określonej wersji .NET Framework. Na przykład, wartość wpisu **zlecenia** to 528040, który jest kluczem wydania dla .NET Framework 4,8.
+1. Sprawdź, czy REG_DWORD wpis o nazwie **Release**. Jeśli istnieje, jest zainstalowana .NET Framework 4,5 lub nowsza. Jego wartość odnosi się do określonej wersji .NET Framework. Na przykład, wartość wpisu **zlecenia** to 528040, który jest kluczem wydania dla .NET Framework 4,8.
 
    ![Wpis rejestru dla .NET Framework 4,5](./media/clr-installdir.png )
 
@@ -136,7 +154,7 @@ Każda wersja .NET Framework od 1,1 do 4,0 jest wyświetlana jako podklucz w **H
 
 | Wersja struktury  | Podklucz rejestru | Wartość |
 | ------------------ | --------------- | ----- |
-| 1,0                | **HKLM \\ oprogramowanie \\ Microsoft \\ . NETFramework \\ Policy \\ v 1.0 \\ 3705**     | **Zainstaluj** program REG_SZ równa się `1` |
+| 1.0                | **HKLM \\ oprogramowanie \\ Microsoft \\ . NETFramework \\ Policy \\ v 1.0 \\ 3705**     | **Zainstaluj** program REG_SZ równa się `1` |
 | 1,1                | **HKLM \\ oprogramowanie \\ Microsoft \\ .NET Framework Setup \\ NDP \\ v 1.1.4322**   | **Zainstaluj** program REG_DWORD równa się `1` |
 | 2,0                | **HKLM \\ oprogramowanie \\ Microsoft \\ .NET Framework Setup \\ NDP \\ v 2.0.50727**  | **Zainstaluj** program REG_DWORD równa się `1` |
 | 3.0                | **HKLM \\ oprogramowanie \\ Microsoft \\ .NET Framework Setup \\ NDP \\ v 3.0 \\ Setup** | **InstallSuccess** REG_DWORD równa się `1` |
@@ -235,7 +253,7 @@ v4.0
   Version: 4.0.30319.18010
   ```
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Instrukcje: Określanie, które aktualizacje .NET Framework są zainstalowane](how-to-determine-which-net-framework-updates-are-installed.md)
 - [Zainstaluj .NET Framework dla deweloperów](../install/guide-for-developers.md)

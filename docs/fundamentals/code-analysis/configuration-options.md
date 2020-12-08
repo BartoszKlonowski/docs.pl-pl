@@ -5,18 +5,20 @@ ms.date: 09/24/2020
 ms.topic: conceptual
 no-loc:
 - EditorConfig
-ms.openlocfilehash: af2ebb74786f0ae884ffee4636765cae43fcb23f
-ms.sourcegitcommit: 97405ed212f69b0a32faa66a5d5fae7e76628b68
+ms.openlocfilehash: 4f7b392a2b066023fec75c5295bd94651654d645
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "96589336"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851793"
 ---
 # <a name="configuration-options-for-code-analysis"></a>Opcje konfiguracji na potrzeby analizy kodu
 
 Reguły analizy kodu mają różne opcje konfiguracji. Te opcje są określone jako pary klucz-wartość w [pliku konfiguracji analizatora](configuration-files.md) przy użyciu składni `<option key> = <option value>` .
 
-Najbardziej typową opcją, którą skonfigurujesz, jest ważność reguły. Można skonfigurować poziom ważności dla wszystkich reguł analizatora, w tym [reguły jakości kodu](quality-rules/index.md) i [reguły stylu kodu](style-rules/index.md).
+Najbardziej typową opcją, którą skonfigurujesz, jest [ważność reguły](#severity-level). Można skonfigurować poziom ważności dla wszystkich reguł analizatora, w tym [reguły jakości kodu](quality-rules/index.md) i [reguły stylu kodu](style-rules/index.md). Aby na przykład włączyć regułę jako ostrzeżenie, można dodać do pliku następującą parę klucz-wartość EditorConfig .
+
+`dotnet_diagnostic.<rule ID>.severity = warning`
 
 Możesz również skonfigurować dodatkowe opcje, aby dostosować zachowanie reguły:
 

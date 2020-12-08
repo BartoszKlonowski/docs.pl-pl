@@ -6,20 +6,20 @@ ms.author: wiwagn
 no-loc:
 - Blazor
 - WebAssembly
-ms.date: 07/27/2020
-ms.openlocfilehash: f04de5c350dfead4dad8c37eece7f16c9a9e00bc
-ms.sourcegitcommit: 0c3ce6d2e7586d925a30f231f32046b7b3934acb
+ms.date: 12/01/2020
+ms.openlocfilehash: c29e58fb4c748d6025b7c2fbe62a54a85cc71fba
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89515822"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851656"
 ---
 # <a name="choose-between-traditional-web-apps-and-single-page-apps-spas"></a>Wybór między tradycyjnymi Web Apps i aplikacjami jednostronicowymi (aplikacji jednostronicowych)
 
 > "Atwoodeme: Każda aplikacja, którą można napisać w języku JavaScript, zostanie ostatecznie zapisywana w języku JavaScript".  
 > _\- Jan Atwoodem_
 
-Obecnie istnieją dwa ogólne podejścia do kompilowania aplikacji sieci Web: tradycyjne aplikacje sieci Web, które wykonują większość logiki aplikacji na serwerze i aplikacje jednostronicowe (aplikacji jednostronicowych), które wykonują większość logiki interfejsu użytkownika w przeglądarce internetowej, komunikując się z serwerem sieci Web przede wszystkim przy użyciu interfejsów API sieci Web. Podejście hybrydowe jest również możliwe, najprostszym hostem jednego lub więcej rozbudowanych podaplikacji typu SPA w ramach większej tradycyjnej aplikacji sieci Web.
+Obecnie istnieją dwa ogólne podejścia do tworzenia aplikacji sieci Web: tradycyjne aplikacje sieci Web, które wykonują większość logiki aplikacji na serwerze i aplikacje jednostronicowe (aplikacji jednostronicowych), które wykonują większość logiki interfejsu użytkownika w przeglądarce internetowej, komunikując się z serwerem sieci Web głównie przy użyciu interfejsów API sieci Web. Podejście hybrydowe jest również możliwe, najprostszym hostem jednego lub więcej rozbudowanych podaplikacji typu SPA w ramach większej tradycyjnej aplikacji sieci Web.
 
 Używaj tradycyjnych aplikacji sieci Web, gdy:
 
@@ -43,7 +43,7 @@ Udoskonalenia środowiska użytkownika wykonywanego przez podejście SPA muszą 
 
 ## Blazor
 
-ASP.NET Core obejmuje model kompilowania bogatych, interaktywnych i składających się interfejsów użytkownika o nazwie Blazor . Blazor po stronie serwera umożliwiają deweloperom tworzenie interfejsu użytkownika przy użyciu języka C# i Razor na serwerze oraz interfejs użytkownika, który ma być interaktywnie połączony z przeglądarką w czasie rzeczywistym za pomocą połączenia trwałego. BlazorWebAssemblywprowadza kolejną opcję dla Blazor aplikacji, umożliwiając ich uruchamianie w przeglądarce przy użyciu programu WebAssembly . Ponieważ jest to rzeczywista platforma .NET działająca w systemie WebAssembly , można użyć kodu i bibliotek z części aplikacji po stronie serwera.
+ASP.NET Core obejmuje model kompilowania bogatych, interaktywnych i składających się interfejsów użytkownika o nazwie Blazor . Blazor po stronie serwera umożliwiają deweloperom tworzenie interfejsu użytkownika przy użyciu języka C# i Razor na serwerze oraz interfejs użytkownika, który ma być interaktywnie połączony z przeglądarką w czasie rzeczywistym za pomocą połączenia trwałego. BlazorWebAssemblywprowadza kolejną opcję dla Blazor aplikacji, umożliwiając ich uruchamianie w przeglądarce przy użyciu programu WebAssembly . Ponieważ jest to rzeczywista platforma .NET działająca w systemie WebAssembly , można ponownie użyć kodu i bibliotek z części aplikacji po stronie serwera.
 
 Blazor Program udostępnia nową, trzecią opcję, którą należy wziąć pod uwagę podczas oceniania, czy należy utworzyć czysto wyrenderowaną przez serwer aplikację sieci Web lub SPA. Korzystając z programu, można tworzyć rozbudowane, takie jak zachowania po stronie klienta Blazor , bez konieczności znaczącego programowania w języku JavaScript. Blazor aplikacje mogą wywoływać interfejsy API w celu żądania danych lub wykonywania operacji po stronie serwera. Mogą współdziałać z JavaScript, tam gdzie jest to konieczne, aby korzystać z bibliotek i struktur języka JavaScript.
 
@@ -53,17 +53,17 @@ Rozważ skompilowanie aplikacji sieci Web przy użyciu programu Blazor :
 
 - Twój zespół jest bardziej wygodny dla projektowania platformy .NET niż programowanie w języku JavaScript lub TypeScript
 
-Jeśli masz istniejącą aplikację formularzy sieci Web, rozważasz migrację do platformy .NET Core, warto przejrzeć bezpłatną książkę elektroniczną [ Blazor dla deweloperów formularzy sieci Web](../blazor-for-web-forms-developers/index.md) , aby sprawdzić, czy warto rozważyć przeprowadzenie migracji do programu Blazor .
+Jeśli masz istniejącą aplikację formularzy sieci Web, rozważasz migrację do platformy .NET Core lub najnowszej wersji platformy .NET, warto przejrzeć bezpłatną książkę elektroniczną [ Blazor dla deweloperów formularzy sieci Web](../blazor-for-web-forms-developers/index.md) , aby sprawdzić, czy warto rozważyć przeprowadzenie migracji do programu Blazor .
 
 Aby uzyskać więcej informacji na temat Blazor , zobacz [wprowadzenie Blazor do ](https://blazor.net/docs/get-started.html).
 
 ## <a name="when-to-choose-traditional-web-apps"></a>Kiedy należy wybrać tradycyjne aplikacje sieci Web
 
-Poniżej znajduje się bardziej szczegółowy opis przedstawionych wcześniej powodów dotyczących wybierania tradycyjnych aplikacji sieci Web.
+Poniższa sekcja zawiera bardziej szczegółowy opis przedstawionych wcześniej powodów dotyczących wybierania tradycyjnych aplikacji sieci Web.
 
 **Twoja aplikacja ma proste, prawdopodobnie tylko do odczytu wymagania po stronie klienta**
 
-Wiele aplikacji sieci Web jest używanych głównie w sposób tylko do odczytu przez ogromną większość użytkowników. Aplikacje tylko do odczytu (lub do odczytu) są znacznie prostsze niż te, które utrzymują i manipulują dużą ilością. Na przykład aparat wyszukiwania może składać się z jednego punktu wejścia z polem tekstowym i drugą stroną do wyświetlania wyników wyszukiwania. Anonimowi użytkownicy mogą łatwo wprowadzać żądania i nie ma potrzeby dla logiki po stronie klienta. Podobnie aplikacja publiczna lub publiczny systemu zarządzania zawartością zwykle składa się głównie z zawartości z małym zachowaniem po stronie klienta. Takie aplikacje są łatwe do skompilowania jako tradycyjne aplikacje sieci Web oparte na serwerze, które wykonują logikę na serwerze sieci Web i Renderuj HTML do wyświetlania w przeglądarce. Oznacza to, że każda unikatowa Strona witryny ma własny adres URL, który może być oznaczony zakładką i indeksowany przez aparaty wyszukiwania (domyślnie bez konieczności dodawania go jako osobnej funkcji aplikacji) również w takich scenariuszach.
+Wiele aplikacji sieci Web jest używanych głównie w sposób tylko do odczytu przez ogromną większość użytkowników. Aplikacje tylko do odczytu (lub do odczytu) są znacznie prostsze niż te aplikacje, które utrzymują i zajmują się dużą ilością. Na przykład aparat wyszukiwania może składać się z jednego punktu wejścia z polem tekstowym i drugą stroną do wyświetlania wyników wyszukiwania. Anonimowi użytkownicy mogą łatwo wprowadzać żądania i nie ma potrzeby dla logiki po stronie klienta. Podobnie aplikacja publiczna lub publiczny systemu zarządzania zawartością zwykle składa się głównie z zawartości z małym zachowaniem po stronie klienta. Takie aplikacje są łatwe do skompilowania jako tradycyjne aplikacje sieci Web oparte na serwerze, które wykonują logikę na serwerze sieci Web i Renderuj HTML do wyświetlania w przeglądarce. Fakt, że każda unikatowa Strona witryny ma własny adres URL, który może być oznaczony zakładką i indeksowany przez aparaty wyszukiwania (domyślnie bez konieczności dodawania tej funkcji jako osobnej funkcji aplikacji) również w takich scenariuszach.
 
 **Aplikacja musi działać w przeglądarkach bez obsługi języka JavaScript**
 
@@ -75,13 +75,13 @@ Jeśli Twój zespół nie zna języka JavaScript lub TypeScript, ale jest zaznaj
 
 ## <a name="when-to-choose-spas"></a>Kiedy należy wybrać aplikacji jednostronicowych
 
-Poniżej znajduje się bardziej szczegółowy opis sytuacji, w której można wybrać styl aplikacji jednostronicowej dla aplikacji sieci Web.
+Poniższa sekcja zawiera bardziej szczegółowe wyjaśnienie, kiedy należy wybrać styl aplikacji jednostronicowej dla aplikacji sieci Web.
 
 **Aplikacja musi uwidaczniać rozbudowany interfejs użytkownika z wieloma funkcjami**
 
 Aplikacji jednostronicowych może obsługiwać rozbudowane funkcje po stronie klienta, które nie wymagają ponownego załadowania strony, ponieważ użytkownicy podejmują działania lub Przechodź między obszarami aplikacji. Aplikacji jednostronicowych może szybciej ładować, pobierać dane w tle, a akcje poszczególnych użytkowników są większe, ponieważ pełne obciążenia stron są rzadkie. Aplikacji jednostronicowych może obsługiwać aktualizacje przyrostowe, zapisując częściowo zakończone formularze lub dokumenty bez konieczności klikania przycisku w celu przesłania formularza. Aplikacji jednostronicowych może obsługiwać rozbudowane zachowania po stronie klienta, na przykład przeciąganie i upuszczanie, znacznie łatwiejsze niż tradycyjne aplikacje. Aplikacji jednostronicowych może być zaprojektowana tak, aby działała w trybie rozłączenia, po wprowadzeniu aktualizacji do modelu po stronie klienta, które zostały ostatecznie zsynchronizowane z serwerem po ponownym nawiązaniu połączenia. Wybierz aplikację w stylu SPA, jeśli wymagania dotyczące aplikacji obejmują rozbudowane funkcje, które wykraczają poza typowe oferty formularzy HTML.
 
-Często aplikacji jednostronicowych muszą implementować funkcje, które są wbudowane w tradycyjne aplikacje sieci Web, takie jak wyświetlanie zrozumiałego adresu URL na pasku adresu odzwierciedlające bieżącą operację (i Umożliwianie użytkownikom zakładek lub głębokiego linku do tego adresu URL w celu powrotu do niego). Aplikacji jednostronicowych powinien również zezwalać użytkownikom na używanie przycisków Wstecz i do przodu przeglądarki z wynikami, które nie są w ich przypadku niewidoczne.
+Często aplikacji jednostronicowych muszą implementować funkcje, które są wbudowane w tradycyjne aplikacje sieci Web, takie jak wyświetlanie zrozumiałego adresu URL na pasku adresu odzwierciedlający bieżącą operację (i umożliwienie użytkownikom przełączenia do tego adresu URL w celu powrotu do niego). Aplikacji jednostronicowych powinien również zezwalać użytkownikom na używanie przycisków Wstecz i do przodu przeglądarki z wynikami, które nie są w ich przypadku niewidoczne.
 
 **Twój zespół zna język JavaScript i/lub programowanie TypeScript**
 
@@ -102,7 +102,7 @@ Jeśli obsługujesz już internetowy interfejs API do użytku przez innych klien
 
 ## <a name="when-to-choose-no-locblazor"></a>Kiedy należy wybrać Blazor
 
-Poniżej znajduje się bardziej szczegółowy opis sytuacji, w których należy wybrać Blazor aplikację sieci Web.
+Poniższa sekcja zawiera bardziej szczegółowy opis sytuacji, w których należy wybrać Blazor aplikację sieci Web.
 
 **Aplikacja musi uwidaczniać rozbudowany interfejs użytkownika**
 
@@ -116,11 +116,11 @@ Wielu deweloperów jest wydajniejsza przy użyciu platformy .NET i Razor niż w 
 
 W poniższej tabeli decyzji przedstawiono podstawowe czynniki, które należy wziąć pod uwagę podczas wybierania między tradycyjną aplikacją sieci Web, SPA lub Blazor aplikacją.
 
-| **Czynnik**                                           | **Tradycyjna aplikacja internetowa** | **Aplikacja jednostronicowa** | **Blazor Aplikacje**  |
+| **1U**                                           | **Tradycyjna aplikacja internetowa** | **Aplikacja jednostronicowa** | **Blazor Aplikacje**  |
 | ---------------------------------------------------- | ----------------------- | --------------------------- | --------------- |
 | Wymagana znajomość zespołu w języku JavaScript/TypeScript | **Minimalny**             | **Wymagane**                | **Minimalny**     |
-| Obsługa przeglądarek bez obsługi skryptów                   | **Obsługiwał**           | **Nieobsługiwane**           | **Obsługiwał**   |
-| Minimalne zachowanie aplikacji po stronie klienta             | **Dobrze dopasowane**         | **Zbyt obszerne**                | **Żywe**      |
+| Obsługa przeglądarek bez obsługi skryptów                   | **Obsługiwane**           | **Nieobsługiwane**           | **Obsługiwane**   |
+| Minimalne zachowanie aplikacji Client-Side             | **Dobrze dopasowane**         | **Zbyt obszerne**                | **Żywe**      |
 | Zaawansowane wymagania dotyczące interfejsu użytkownika            | **Ograniczone**             | **Dobrze dopasowane**             | **Dobrze dopasowane** |
 
 >[!div class="step-by-step"]

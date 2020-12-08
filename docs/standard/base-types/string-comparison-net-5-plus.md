@@ -1,13 +1,13 @@
 ---
 title: Zachowanie zmian w przypadku porównywania ciągów w programie .NET 5 +
 description: Informacje o zmianach zachowania porównania ciągów w programie .NET 5 i nowszych wersjach w systemie Windows.
-ms.date: 11/04/2020
-ms.openlocfilehash: fa1a1d12f45e5b41877a674d7b8747bb2b2f9658
-ms.sourcegitcommit: d8020797a6657d0fbbdff362b80300815f682f94
+ms.date: 12/07/2020
+ms.openlocfilehash: a53c36b31785fb43c0aa5f5040042abb6d40031a
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95734234"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851754"
 ---
 # <a name="behavior-changes-when-comparing-strings-on-net-5"></a>Zachowanie zmian w przypadku porównywania ciągów w programie .NET 5 +
 
@@ -43,16 +43,29 @@ Ta sekcja zawiera dwie opcje dotyczące postępowania z nieoczekiwanymi zmianami
 
 ### <a name="enable-code-analyzers"></a>Włącz analizatory kodu
 
-[Analizatory kodu](../../fundamentals/code-analysis/overview.md) mogą wykrywać możliwe wywołania debugowania. Aby pomóc w ochronie przed wszelkimi zachowaniami zaskakujące, zalecamy zainstalowanie [pakietu NuGet __Microsoft. CodeAnalysis. FxCopAnalyzers__](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers/) w projekcie. Ten pakiet zawiera reguły analizy kodu [CA1307](../../fundamentals/code-analysis/quality-rules/ca1307.md) i [CA1309](../../fundamentals/code-analysis/quality-rules/ca1309.md), które ułatwiają Oflagowanie kodu, który może przypadkowo używać funkcji porównującej język, gdy liczba porządkowa jest prawdopodobnie zamierzone.
+[Analizatory kodu](../../fundamentals/code-analysis/overview.md) mogą wykrywać możliwe wywołania debugowania. Aby pomóc w ochronie przed wszelkimi zachowaniami zaskakujące, zalecamy włączenie analizatorów platformy .NET kompilators (Roslyn) w projekcie. Analizatory ułatwiają flagę kodu, który może przypadkowo używać funkcji porównującej język, gdy wartośćowa wartość porównująca była prawdopodobnie zamierzona. Następujące reguły powinny pomóc w oznaczeniu tych problemów:
 
-Na przykład:
+- [CA1307: Określ parametr StringComparison w celu zapewnienia jednoznaczności](../../fundamentals/code-analysis/quality-rules/ca1307.md)
+- [CA1309: Użyj porządkowego ustawienia właściwości StringComparison](../../fundamentals/code-analysis/quality-rules/ca1309.md)
+- [CA1310: Określ parametr StringComparison w celu zapewnienia poprawności](../../fundamentals/code-analysis/quality-rules/ca1310.md)
+
+Te określone reguły nie są domyślnie włączone. Aby je włączyć i pokazać wszystkie naruszenia jako błędy kompilacji, ustaw następujące właściwości w pliku projektu:
+
+```xml
+<PropertyGroup>
+  <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+  <WarningsAsErrors>$(WarningsAsErrors);CA1307;CA1309;CA1310</WarningsAsErrors>
+</PropertyGroup>
+```
+
+Poniższy fragment kodu przedstawia przykłady kodów, które tworzą odpowiednie ostrzeżenia analizatora kodu lub błędy.
 
 ```cs
 //
 // Potentially incorrect code - answer might vary based on locale.
 //
 string s = GetString();
-// Produces analyzer warning CA1307.
+// Produces analyzer warning CA1310 for string; CA1307 matches on char ','
 int idx = s.IndexOf(",");
 Console.WriteLine(idx);
 
@@ -89,17 +102,12 @@ List<string> list = GetListOfStrings();
 list.Sort(StringComparer.Ordinal);
 ```
 
-Aby uzyskać więcej informacji na temat tych reguł analizatora kodu, w tym gdy może być odpowiednie pominięcie tych reguł we własnej bazie kodu, zapoznaj się z następującymi artykułami:
-
-* [CA1307: Określ parametr StringComparison w celu zapewnienia jednoznaczności](../../fundamentals/code-analysis/quality-rules/ca1307.md)
-* [CA1309: Użyj porządkowego ustawienia właściwości StringComparison](../../fundamentals/code-analysis/quality-rules/ca1309.md)
-
 ### <a name="revert-back-to-nls-behaviors"></a>Przywracanie zachowań NLS
 
 Aby przywrócić aplikacje .NET 5 z powrotem do starszych zachowań funkcji NLS podczas działania w systemie Windows, wykonaj kroki opisane w temacie [globalizacja i ICU platformy .NET](../globalization-localization/globalization-icu.md). Ten przełącznik zgodności dla całej aplikacji musi być ustawiony na poziomie aplikacji. Poszczególne biblioteki nie mogą korzystać z tego zachowania ani go wycofać.
 
 > [!TIP]
-> Zdecydowanie zalecamy włączenie reguł analizy kodu [CA1307](../../fundamentals/code-analysis/quality-rules/ca1307.md) i [CA1309](../../fundamentals/code-analysis/quality-rules/ca1309.md) , aby pomóc w ulepszaniu higieny kodu i wykryciu wszelkich istniejących błędów. Aby uzyskać więcej informacji, zobacz [Włączanie analizatorów kodu](#enable-code-analyzers).
+> Zdecydowanie zalecamy włączenie reguł analizy kodu [CA1307](../../fundamentals/code-analysis/quality-rules/ca1307.md), [CA1309](../../fundamentals/code-analysis/quality-rules/ca1309.md)i [CA1310](../../fundamentals/code-analysis/quality-rules/ca1310.md) , aby pomóc w ulepszaniu higieny kodu i wykryciu wszelkich istniejących błędów. Aby uzyskać więcej informacji, zobacz [Włączanie analizatorów kodu](#enable-code-analyzers).
 
 ## <a name="affected-apis"></a>Dotyczy interfejsów API
 
@@ -196,7 +204,7 @@ Rozważ ponownie ciąg `"résumé"` i cztery różne reprezentacje. W poniższej
 
 Element sortowania ponosi swobodne informacje o tym, co czytelnicy mogą traktować jako pojedynczy znak lub klaster znaków. Jest on koncepcyjnie podobny do [klastra Grapheme](character-encoding-introduction.md#grapheme-clusters) , ale obejmuje nieco większy parasol.
 
-W przypadku opcji porównującej język dokładne dopasowania nie są konieczne. W przeciwieństwie do ich semantyki są porównywane elementy sortowania. Na przykład moduł porównujący lingwistyczny tsreat podciągi `"\u00E9"` i jest `"e\u0301"` równy, ponieważ obie semantyką oznaczają "małą literę e z ostrym modyfikatorem akcentu". Dzięki temu `IndexOf` Metoda pasuje do podciągu `"e\u0301"` w większym ciągu zawierającym semantycznie równoważny podciąg `"\u00E9"` , jak pokazano w poniższym przykładzie kodu.
+W przypadku opcji porównującej język dokładne dopasowania nie są konieczne. W przeciwieństwie do ich semantyki są porównywane elementy sortowania. Na przykład, funkcja porównująca język traktuje podciągi `"\u00E9"` i jest `"e\u0301"` równe, ponieważ obie semantyką oznaczają "małą literę e z ostrym modyfikatorem akcentu". Dzięki temu `IndexOf` Metoda pasuje do podciągu `"e\u0301"` w większym ciągu zawierającym semantycznie równoważny podciąg `"\u00E9"` , jak pokazano w poniższym przykładzie kodu.
 
 ```cs
 Console.WriteLine("r\u00E9sum\u00E9".IndexOf("e")); // prints '-1' (not found)
@@ -259,7 +267,7 @@ Ponieważ `string.IndexOf(string)` Metoda domyślnie używa wyszukiwania w języ
 
 W poniższej tabeli wymieniono domyślne typy wyszukiwania i porównywania dla różnych interfejsów API w postaci ciągów i ciągów. Jeśli obiekt wywołujący dostarcza jawny `CultureInfo` lub `StringComparison` parametr, ten parametr będzie honorować domyślnie.
 
-| Interfejs API | Zachowanie domyślne | Uwagi |
+| interfejs API | Zachowanie domyślne | Uwagi |
 |---|---|---|
 | `string.Compare` | CurrentCulture | |
 | `string.CompareTo` | CurrentCulture | |
@@ -290,7 +298,7 @@ W poniższej tabeli wymieniono domyślne typy wyszukiwania i porównywania dla r
 
 W przeciwieństwie do `string` interfejsów API, wszystkie `MemoryExtensions` interfejsy API domyślnie wykonują wyszukiwanie *porządkowe* i porównania z następującymi wyjątkami.
 
-| Interfejs API | Zachowanie domyślne | Uwagi |
+| interfejs API | Zachowanie domyślne | Uwagi |
 |---|---|---|
 | `MemoryExtensions.ToLower` | CurrentCulture | (gdy przeszedł argument o wartości null `CultureInfo` ) |
 | `MemoryExtensions.ToLowerInvariant` | InvariantCulture | |
@@ -317,7 +325,7 @@ ReadOnlySpan<char> span = s.AsSpan();
 if (span.StartsWith("Hello", StringComparison.Ordinal)) { /* do something */ } // ordinal comparison
 ```
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Zmiany dotyczące podziału globalizacji](../../core/compatibility/globalization.md)
 - [Najlepsze rozwiązania dotyczące porównywania ciągów w programie .NET](best-practices-strings.md)

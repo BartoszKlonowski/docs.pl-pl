@@ -3,13 +3,13 @@ title: Zalecenia dotyczące hostingu platformy Azure dla ASP.NET Core aplikacji 
 description: Tworzenie architektury nowoczesnych aplikacji sieci Web przy użyciu ASP.NET Core i platformy Azure | Zalecenia dotyczące hostingu platformy Azure dla usługi ASP.NET Web Apps
 author: ardalis
 ms.author: wiwagn
-ms.date: 06/06/2019
-ms.openlocfilehash: 19626aea07fb26222af575a709b54577ca12589b
-ms.sourcegitcommit: 5b475c1855b32cf78d2d1bbb4295e4c236f39464
+ms.date: 12/01/2020
+ms.openlocfilehash: c209a7fa9ce89e12466424f750d5583a59f8b980
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91169222"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851721"
 ---
 # <a name="azure-hosting-recommendations-for-aspnet-core-web-apps"></a>Zalecenia dotyczące hostingu platformy Azure dla ASP.NET Core aplikacji sieci Web
 
@@ -44,7 +44,7 @@ App Service Web Apps oferuje w pełni zarządzaną platformę zoptymalizowaną p
 
 - Integracja z programem Visual Studio.
 
-Usługa Azure App Service to najlepszy wybór w przypadku większości aplikacji internetowych. Wdrażanie i zarządzanie są zintegrowane z platformą, witryny można szybko skalować na potrzeby obsługi dużych obciążeń generowanych przez ruch sieciowy, a wbudowane równoważenie obciążenia i usługa Traffic Manager zapewniają wysoką dostępność. Istniejące witryny możesz łatwo przenieść do usługi Azure App Service za pomocą narzędzia do migracji online, używając aplikacji open source z galerii aplikacji internetowych lub tworząc nową witrynę za pomocą wybranej platformy i narzędzi. Zadania WebJob upraszczają dodawanie przetwarzania zadań w tle do aplikacji internetowej usługi App Service. Jeśli masz istniejącą aplikację ASP.NET hostowaną lokalnie przy użyciu lokalnej bazy danych, istnieje wyraźna ścieżka do migracji aplikacji do aplikacji internetowej App Service z Azure SQL Database (lub bezpiecznego dostępu do lokalnego serwera bazy danych, jeśli jest preferowany).
+Usługa Azure App Service to najlepszy wybór w przypadku większości aplikacji internetowych. Wdrażanie i zarządzanie są zintegrowane z platformą, witryny można szybko skalować na potrzeby obsługi dużych obciążeń generowanych przez ruch sieciowy, a wbudowane równoważenie obciążenia i usługa Traffic Manager zapewniają wysoką dostępność. Istniejące Lokacje można przenosić do Azure App Service łatwo przy użyciu narzędzia do migracji w trybie online. Możesz użyć aplikacji typu open source z galerii aplikacji sieci Web lub utworzyć nową witrynę za pomocą wybranej platformy i narzędzi. Zadania WebJob upraszczają dodawanie przetwarzania zadań w tle do aplikacji internetowej usługi App Service. Jeśli masz istniejącą aplikację ASP.NET hostowaną lokalnie przy użyciu lokalnej bazy danych, istnieje wyraźna ścieżka do migracji. Możesz użyć App Service aplikacji sieci Web z Azure SQL Database (lub bezpiecznego dostępu do lokalnego serwera bazy danych, jeśli jest preferowany).
 
 ![Zalecana strategia migracji lokalnych aplikacji .NET do Azure App Service](./media/image1-6.png)
 
@@ -58,7 +58,7 @@ Niewielka liczba zasobów w pojedynczej grupie zasobów jest zwykle wystarczają
 
 ### <a name="app-service-web-apps-for-containers"></a>App Service Web Apps kontenerów
 
-Oprócz obsługi bezpośredniego hostowania aplikacji sieci Web [App Service Web Apps dla kontenerów](https://azure.microsoft.com/services/app-service/containers/) mogą służyć do uruchamiania aplikacji kontenerowych w systemach Windows i Linux. Korzystając z tej usługi, można łatwo wdrażać i uruchamiać aplikacje z kontenerami, które można skalować w miarę rozwoju firmy. Aplikacje mają wszystkie funkcje App Service Web Apps wymienionych powyżej. Ponadto Web Apps dla kontenerów obsługują usprawnione ciągłe wdrażanie/ciągłe dostarczanie za pomocą usługi Docker Hub, Azure Container Registry i usługi GitHub. Za pomocą usługi Azure DevOps można definiować potoki kompilacji i wdrażania, które publikują zmiany w rejestrze. Te zmiany można następnie przetestować w środowisku przejściowym i wdrożyć je automatycznie do produkcji przy użyciu miejsc wdrożenia, co umożliwia uaktualnianie bez przestojów. Przywrócenie poprzednich wersji może odbywać się równie łatwo.
+Oprócz obsługi bezpośredniego hostowania aplikacji sieci Web [App Service Web Apps dla kontenerów](https://azure.microsoft.com/services/app-service/containers/) mogą służyć do uruchamiania aplikacji kontenerowych w systemach Windows i Linux. Korzystając z tej usługi, można łatwo wdrażać i uruchamiać aplikacje z kontenerami, które można skalować w miarę rozwoju firmy. Aplikacje mają wszystkie funkcje App Service Web Apps wymienionych powyżej. Ponadto Web Apps dla kontenerów obsługuje usprawnione ciągłe wdrażanie/ciągłe dostarczanie za pomocą usługi Docker Hub, Azure Container Registry i usługi GitHub. Za pomocą usługi Azure DevOps można definiować potoki kompilacji i wdrażania, które publikują zmiany w rejestrze. Te zmiany można następnie przetestować w środowisku przejściowym i wdrożyć je automatycznie do produkcji przy użyciu miejsc wdrożenia, co umożliwia uaktualnianie bez przestojów. Przywrócenie poprzednich wersji może odbywać się równie łatwo.
 
 Istnieje kilka scenariuszy, w których Web Apps for Containers są najbardziej sensowne. Jeśli masz istniejące aplikacje, które możesz konteneryzowanie, niezależnie od tego, czy znajdują się w kontenerach systemu Windows lub Linux, możesz je hostować za pomocą tego zestawu narzędzi. Po prostu opublikuj kontener, a następnie skonfiguruj Web Apps dla kontenerów w celu ściągnięcia najnowszej wersji tego obrazu z wybranego rejestru. Jest to podejście "Unieś i Shift" służące do migrowania z modeli hostingu aplikacji klasycznych do modelu zoptymalizowanego pod kątem chmury.
 
@@ -68,7 +68,7 @@ Takie podejście również sprawdza się również wtedy, gdy zespół programis
 
 ![Kompleksowy przepływ pracy cyklu życia DevOps platformy Docker](./media/image1-7.png)
 
-Programowanie przy użyciu kontenerów oferuje wiele korzyści, zwłaszcza gdy kontenery są używane w środowisku produkcyjnym. Ta sama konfiguracja kontenera jest używana do hostowania aplikacji w każdym środowisku, w którym jest uruchomiona, z lokalnej maszyny deweloperskiej do kompilowania i testowania systemów do produkcji. Znacznie zmniejsza prawdopodobieństwo wystąpienia wad wynikających z różnic między konfiguracją komputera lub wersjami oprogramowania. Deweloperzy mogą również korzystać ze wszystkich narzędzi, które są najbardziej produktywne, w tym systemu operacyjnego, ponieważ kontenery mogą być uruchamiane w dowolnym systemie operacyjnym. W niektórych przypadkach aplikacje rozproszone obejmujące wiele kontenerów mogą być bardzo czasochłonne, aby można je było uruchamiać na jednym komputerze deweloperskim. W tym scenariuszu warto przeprowadzić uaktualnienie do korzystania z Kubernetes i Azure Dev Spaces, które opisano w następnej sekcji.
+Programowanie przy użyciu kontenerów oferuje wiele korzyści, zwłaszcza gdy kontenery są używane w środowisku produkcyjnym. Ta sama konfiguracja kontenera jest używana do hostowania aplikacji w każdym środowisku, w którym jest uruchomiona, z lokalnej maszyny deweloperskiej w celu utworzenia i przetestowania systemów do produkcji. Takie podejście znacznie zmniejsza prawdopodobieństwo wystąpienia wad wynikających z różnic między konfiguracją komputera lub wersjami oprogramowania. Deweloperzy mogą również korzystać ze wszystkich narzędzi, które są najbardziej produktywne, w tym systemu operacyjnego, ponieważ kontenery mogą być uruchamiane w dowolnym systemie operacyjnym. W niektórych przypadkach aplikacje rozproszone obejmujące wiele kontenerów mogą być bardzo czasochłonne, aby można je było uruchamiać na jednym komputerze deweloperskim. W tym scenariuszu warto przeprowadzić uaktualnienie do korzystania z Kubernetes i Azure Dev Spaces, które opisano w następnej sekcji.
 
 W miarę jak część większych aplikacji jest dzielona na własne, niezależne *mikrousługi*, można użyć dodatkowych wzorców projektowych, aby poprawić zachowanie aplikacji. Zamiast bezpośrednio pracować z poszczególnymi usługami, *brama interfejsu API* może uprościć dostęp i oddzielić klienta od jego zaplecza. Istnienie osobnych zaplecza usługi dla różnych frontonów pozwala również na rozwój usług w porozumieniu z klientami. Dostęp do wspólnych usług można uzyskać za pośrednictwem oddzielnego kontenera *przyczepek* , który może obejmować typowe biblioteki łączności klienta przy użyciu wzorca *ambasadora* .
 
@@ -78,7 +78,7 @@ W miarę jak część większych aplikacji jest dzielona na własne, niezależne
 
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-Usługa Azure Kubernetes Service (AKS) zarządza hostowanym środowiskiem Kubernetes, dzięki czemu można szybko i łatwo wdrażać konteneryzowane aplikacje i zarządzać nimi bez specjalistycznej wiedzy z zakresu aranżacji kontenerów. Eliminuje to również uciążliwości związane z bieżącą obsługą i konserwacją dzięki aprowizowaniu, aktualizowaniu i skalowaniu zasobów na żądanie bez przełączania aplikacji do trybu offline.
+Usługa Azure Kubernetes Service (AKS) zarządza hostowanym środowiskiem Kubernetes, dzięki czemu można szybko i łatwo wdrażać konteneryzowane aplikacje i zarządzać nimi bez specjalistycznej wiedzy z zakresu aranżacji kontenerów. Eliminuje to również obciążenie trwających operacji i konserwacji dzięki aprowizacji, uaktualnianiu i skalowaniu zasobów na żądanie bez przełączania aplikacji do trybu offline.
 
 Usługa AKS zmniejsza złożoność i nakłady operacyjne związane z zarządzaniem klastrem Kubernetes, przenosząc znaczną część tej odpowiedzialności na platformę Azure. Jako hostowana usługa Kubernetes, platforma Azure obsługuje krytyczne zadania, takie jak monitorowanie kondycji i konserwacja. Ponadto płacisz tylko za węzły agentów w klastrach, a nie dla wzorców. Jako zarządzana usługa Kubernetes, usługa AKS zapewnia:
 

@@ -3,20 +3,20 @@ title: Typowe architektury aplikacji internetowych
 description: Tworzenie architektury nowoczesnych aplikacji sieci Web przy użyciu ASP.NET Core i platformy Azure | Poznaj typowe architektury aplikacji sieci Web
 author: ardalis
 ms.author: wiwagn
-ms.date: 12/04/2019
-ms.openlocfilehash: 86d2e931e6462fb9f6ff5e3cd31b8d3fd188dd5a
-ms.sourcegitcommit: d8020797a6657d0fbbdff362b80300815f682f94
+ms.date: 12/01/2020
+ms.openlocfilehash: c9c593788d4cdbb5a1d4c57ac91880ef965f06fa
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95682045"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851741"
 ---
 # <a name="common-web-application-architectures"></a>Typowe architektury aplikacji internetowych
 
-> "Jeśli sądzisz, że dobra architektura jest kosztowna, wypróbuj złą architekturę".  
+> "Jeśli sądzisz, że dobra architektura jest kosztowna, wypróbuj złą architekturę".
 > _-Brian i Joseph Yoder_
 
-Większość tradycyjnych aplikacji .NET jest wdrażana jako pojedyncze jednostki odpowiadające plikowi wykonywalnemu lub pojedynczej aplikacji sieci Web uruchomionej w ramach jednej domeny AppDomain usług IIS. Jest to najprostszy model wdrażania i jest bardzo dobrze obsługujący wiele wewnętrznych i mniejszych aplikacji publicznych. Jednak nawet w przypadku tej pojedynczej jednostki wdrożenia większość aplikacji nieuproszczonych korzysta z niektórych logicznych rozbarwień na kilku warstwach.
+Większość tradycyjnych aplikacji .NET jest wdrażana jako pojedyncze jednostki odpowiadające plikowi wykonywalnemu lub pojedynczej aplikacji sieci Web uruchomionej w ramach jednej domeny AppDomain usług IIS. To podejście jest najprostszym modelem wdrażania i jest bardzo dobrze obsługiwane w przypadku wielu wewnętrznych i mniejszych aplikacji publicznych. Jednak nawet w przypadku tej pojedynczej jednostki wdrożenia większość aplikacji nieuproszczonych korzysta z niektórych logicznych rozbarwień na kilku warstwach.
 
 ## <a name="what-is-a-monolithic-application"></a>Co to jest aplikacja monolityczna?
 
@@ -40,15 +40,15 @@ Aby rozwiązać te problemy, aplikacje często są rozłożone na rozwiązania o
 
 ## <a name="what-are-layers"></a>Co to są warstwy logiczne?
 
-W miarę wzrostu złożoności aplikacji jeden ze sposobów zarządzania tą złożonością polega na rozdzieleniu aplikacji zależnie od jej obowiązków lub obaw. Jest to zgodne z zasadami separacji i mogą pomóc w utrzymaniu zorganizowanej bazy kodu, dzięki czemu deweloperzy mogą łatwo znaleźć, gdzie są zaimplementowane pewne funkcje. Architektura warstwowa oferuje wiele korzyści poza organizacją kodu, chociaż.
+W miarę wzrostu złożoności aplikacji jeden ze sposobów zarządzania tą złożonością polega na rozdzieleniu aplikacji zależnie od jej obowiązków lub obaw. Takie podejście stosuje się do oddzielenia zasad i może pomóc w utrzymaniu zorganizowanej bazy kodu w taki sposób, aby deweloperzy mogli łatwo znajdować określone funkcje. Architektura warstwowa oferuje wiele korzyści poza organizacją kodu, chociaż.
 
 Organizując kod na warstwy, typowe funkcje niskiego poziomu mogą być ponownie używane w całej aplikacji. To ponowne użycie jest korzystne, ponieważ oznacza to, że nie trzeba pisać kodu i ponieważ może on umożliwić standaryzację aplikacji w ramach jednej implementacji, zgodnie z zasadą [nie powtarzaj siebie (sucha)](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) .
 
-W przypadku architektury warstwowej aplikacje mogą wymuszać ograniczenia dotyczące tego, które warstwy mogą komunikować się z innymi warstwami. Pomaga to w osiągnięciu hermetyzacji. Po zmianie lub wymianie warstwy należy mieć wpływ tylko na te warstwy, które z nią pracują. Ograniczając warstwy, które są zależne od tego, które warstwy, wpływ zmian można zmniejszyć, tak aby jedna zmiana nie miała wpływu na całą aplikację.
+W przypadku architektury warstwowej aplikacje mogą wymuszać ograniczenia dotyczące tego, które warstwy mogą komunikować się z innymi warstwami. Ta architektura pomaga w osiągnięciu hermetyzacji. Po zmianie lub wymianie warstwy należy mieć wpływ tylko na te warstwy, które z nią pracują. Ograniczając warstwy, które są zależne od tego, które warstwy, wpływ zmian można zmniejszyć, tak aby jedna zmiana nie miała wpływu na całą aplikację.
 
-Warstwy (i hermetyzacja) znacznie ułatwiają zamianę funkcji w aplikacji. Na przykład aplikacja może początkowo używać własnej SQL Server bazy danych do trwałości, ale później może zdecydować się na korzystanie z strategii trwałości opartej na chmurze lub jednej za interfejsem API sieci Web. Jeśli aplikacja prawidłowo hermetyzuje swoją implementację trwałości w obrębie warstwy logicznej, SQL Server konkretna warstwa może zostać zastąpiona przez nową, implementując ten sam interfejs publiczny.
+Warstwy (i hermetyzacja) znacznie ułatwiają zamianę funkcji w aplikacji. Na przykład aplikacja może początkowo używać własnej SQL Server bazy danych do trwałości, ale później może zdecydować się na korzystanie z strategii trwałości opartej na chmurze lub jednej za interfejsem API sieci Web. Jeśli aplikacja prawidłowo hermetyzuje swoją implementację trwałości w warstwie logicznej, taka warstwa SQL Server może zostać zastąpiona przez nową, implementując ten sam interfejs publiczny.
 
-Oprócz możliwości zamiany implementacji w odpowiedzi na przyszłe zmiany w wymaganiach, warstwy aplikacji mogą także ułatwić wymianę implementacji na potrzeby testowania. Zamiast konieczności pisania testów, które działają względem warstwy danych rzeczywistych lub warstwy interfejsu użytkownika aplikacji, te warstwy mogą zostać zastąpione w czasie testu przy użyciu fałszywych implementacji, które zapewniają znane odpowiedzi na żądania. Zwykle sprawia to, że testy znacznie ułatwiają pisanie i szybsze wykonywanie w porównaniu z uruchamianiem testów względem rzeczywistej infrastruktury aplikacji.
+Oprócz możliwości zamiany implementacji w odpowiedzi na przyszłe zmiany w wymaganiach, warstwy aplikacji mogą także ułatwić wymianę implementacji na potrzeby testowania. Zamiast konieczności pisania testów, które działają względem warstwy danych rzeczywistych lub warstwy interfejsu użytkownika aplikacji, te warstwy mogą zostać zastąpione w czasie testu przy użyciu fałszywych implementacji, które zapewniają znane odpowiedzi na żądania. Takie podejście zwykle sprawia, że testy znacznie ułatwiają pisanie i szybsze wykonywanie w porównaniu z uruchamianiem testów względem rzeczywistej infrastruktury aplikacji.
 
 Warstwami logicznymi jest typowa technika ulepszania organizacji kodu w aplikacjach oprogramowania dla przedsiębiorstw. istnieje kilka sposobów, w których kod może być zorganizowany do warstw.
 
@@ -101,7 +101,7 @@ Aplikacje, które są zgodne z zasadą niezależności zależności, a także za
 
 Aplikacja referencyjna eShopOnWeb korzysta z metody czystego architektury w organizowaniu kodu do projektów. Możesz znaleźć szablon rozwiązania, którego można użyć jako punktu wyjścia dla własnego ASP.NET Core w repozytorium GitHub [ardalis/cleanarchitecture](https://github.com/ardalis/cleanarchitecture) .
 
-Czysty architektura powoduje umieszczenie logiki biznesowej i modelu aplikacji w centrum aplikacji. Zamiast mieć logikę biznesową zależą od dostępu do danych lub innych problemów związanych z infrastrukturą, ta zależność jest odwrócona: szczegóły infrastruktury i implementacji zależą od rdzenia aplikacji. Jest to osiągane przez zdefiniowanie abstrakcji lub interfejsów w rdzeń aplikacji, które następnie są implementowane przez typy zdefiniowane w warstwie infrastruktury. Typowym sposobem wizualizacji tej architektury jest użycie serii okręgów koncentrycznych, podobnie jak w przypadku cebuli. Rysunek 5-7 pokazuje przykład tego stylu reprezentacji architektury.
+Czysty architektura powoduje umieszczenie logiki biznesowej i modelu aplikacji w centrum aplikacji. Zamiast mieć logikę biznesową zależą od dostępu do danych lub innych problemów związanych z infrastrukturą, ta zależność jest odwrócona: szczegóły infrastruktury i implementacji zależą od rdzenia aplikacji. Ta funkcja jest osiągana przez zdefiniowanie abstrakcji lub interfejsów w rdzeń aplikacji, które następnie są implementowane przez typy zdefiniowane w warstwie infrastruktury. Typowym sposobem wizualizacji tej architektury jest użycie serii okręgów koncentrycznych, podobnie jak w przypadku cebuli. Rysunek 5-7 pokazuje przykład tego stylu reprezentacji architektury.
 
 ![Czysta architektura; Widok cebuli](./media/image5-7.png)
 
@@ -215,15 +215,15 @@ Istnieją zalety używania kontenerów do zarządzania wdrożeniami aplikacji mo
 
 Wdrażanie aktualizacji jako obrazów platformy Docker odbywa się znacznie szybciej i wydajniej. Obrazy platformy Docker zwykle zaczynają się w ciągu sekund, co przyspiesza wprowadzanie. Przerywanie wystąpienia platformy Docker jest tak proste jak wydawanie `docker stop` polecenia, zwykle kończącego się w mniej niż drugim.
 
-Ponieważ kontenery są z natury niezmienne przez zaprojektowanie, nigdy nie trzeba martwić się o uszkodzone maszyny wirtualne, natomiast skrypty aktualizacji mogą ulec zapomnieć na potrzeby konkretnej konfiguracji lub pliku pozostawionego na dysku.
+Ponieważ kontenery są z natury niezmienne przez zaprojektowanie, nigdy nie trzeba martwić się o uszkodzone maszyny wirtualne, natomiast skrypty aktualizacji mogą zapomnieć, że dla konkretnej konfiguracji lub pliku pozostawiono na dysku.
 
-Kontenerów platformy Docker można używać do monolitycznego wdrażania prostszych aplikacji sieci Web. Pozwala to zwiększyć ciągłą integrację i ciągłe wdrażanie potoków oraz zapewnić pomyślne wdrożenie do produkcji. Nie ma więcej "działa na mojej maszynie, dlaczego nie działa w środowisku produkcyjnym?"
+Kontenerów platformy Docker można używać do monolitycznego wdrażania prostszych aplikacji sieci Web. Takie podejście ulepsza ciągłą integrację i ciągłe wdrażanie potoków, a następnie pomaga osiągnąć sukces wdrożenia do produkcji. Nie ma więcej "działa na mojej maszynie, dlaczego nie działa w środowisku produkcyjnym?"
 
 Architektura oparta na mikrousługach ma wiele korzyści, ale te korzyści mają na celu zwiększenie złożoności. W niektórych przypadkach koszty te zwiększają korzyści, więc jest to lepsza aplikacja do wdrożenia działająca w jednym kontenerze lub w zaledwie kilku kontenerach.
 
 Aplikacja monolityczna może nie być łatwo można jej przetworzyć w dobrze rozdzielonych mikrousługach. Mikrousługi powinny działać niezależnie od siebie, aby zapewnić bardziej odporną aplikację. Jeśli nie można dostarczyć niezależnych wycinków funkcji aplikacji, oddzielenie go tylko zwiększa złożoność.
 
-Aplikacja może jeszcze nie mieć możliwości skalowania funkcji niezależnie. Wiele aplikacji, gdy wymagają skalowania poza pojedynczym wystąpieniem, może to zrobić za pomocą stosunkowo prostego procesu klonowania całego wystąpienia. Dodatkowa część pracy w celu rozdzielenia aplikacji na osobne usługi zapewnia minimalną korzyść, gdy skalowanie pełnych wystąpień aplikacji jest proste i ekonomiczne.
+Aplikacja może jeszcze nie mieć możliwości skalowania funkcji niezależnie. Wiele aplikacji, gdy wymagają skalowania poza pojedynczym wystąpieniem, może to zrobić za pomocą stosunkowo prostego procesu klonowania całego wystąpienia. Dodatkowa służba do rozdzielania aplikacji na osobne usługi zapewniają minimalną korzyść, gdy skalowanie pełnych wystąpień aplikacji jest proste i ekonomiczne.
 
 Na wczesnym etapie opracowywania aplikacji może nie mieć jasnego pomysłu, w którym naturalne granice funkcjonalności są. Podczas opracowywania minimalnego produktu, którego oddzielenie prawdopodobnie nie zostało jeszcze wykonane. Niektóre z tych warunków mogą być tymczasowe. Można zacząć od utworzenia aplikacji monolitycznej i późniejszego oddzielenia niektórych funkcji, które mają być opracowane i wdrożone jako mikrousługi. Inne warunki mogą być niezbędne w przypadku problemów z aplikacją, co oznacza, że aplikacja może nigdy nie być uszkodzona w wielu mikrousługach.
 
@@ -231,17 +231,17 @@ Rozdzielenie aplikacji na wiele procesów dyskretnych powoduje również zwięks
 
 Znacznie prostsze [aplikacje referencyjne eShopOnWeb](https://github.com/dotnet-architecture/eShopOnWeb) obsługują użycie kontenerów monolitycznych jednego kontenera. Aplikacja zawiera jedną aplikację sieci Web, która zawiera tradycyjne widoki MVC, interfejsy API sieci Web i Razor Pages. Ta aplikacja może być uruchamiana z poziomu głównego rozwiązania przy `docker-compose build` użyciu `docker-compose up` poleceń i. To polecenie umożliwia skonfigurowanie kontenera dla wystąpienia sieci Web przy użyciu `Dockerfile` znalezionego w katalogu głównym projektu sieci Web i uruchomienie kontenera na określonym porcie. Możesz pobrać źródło dla tej aplikacji z usługi GitHub i uruchomić ją lokalnie. Nawet ta monolityczna aplikacja nie będzie wdrażana w środowisku kontenera.
 
-W przypadku jednego z kontenerów wdrożenie to oznacza, że każde wystąpienie aplikacji działa w tym samym środowisku. Obejmuje to środowisko deweloperskie, w którym odbywa się wczesne testowanie i programowanie. Zespół programistyczny może uruchomić aplikację w środowisku kontenerów, które pasuje do środowiska produkcyjnego.
+W przypadku jednego z kontenerów wdrożenie to oznacza, że każde wystąpienie aplikacji działa w tym samym środowisku. To podejście obejmuje środowisko deweloperskie, w którym odbywa się wczesne testowanie i programowanie. Zespół programistyczny może uruchomić aplikację w środowisku kontenerów, które pasuje do środowiska produkcyjnego.
 
-Ponadto aplikacje kontenera są skalowane przy niższych kosztach. Użycie środowiska kontenera pozwala zwiększyć udostępnianie zasobów niż tradycyjne środowiska maszyn wirtualnych.
+Ponadto aplikacje kontenera są skalowane z niższym kosztem. Użycie środowiska kontenera pozwala zwiększyć udostępnianie zasobów niż tradycyjne środowiska maszyn wirtualnych.
 
 Na koniec konteneryzowania aplikacja wymusza rozdzielenie między logiką biznesową a serwerem magazynu. W miarę skalowania aplikacji, wiele kontenerów będzie polegać na jednym fizycznym nośniku magazynowania. Ten nośnik magazynu zazwyczaj jest serwerem o wysokiej dostępności z uruchomioną SQL Server bazą danych.
 
 ## <a name="docker-support"></a>Obsługa platformy Docker
 
-`eShopOnWeb`Projekt jest uruchamiany na platformie .NET Core. W związku z tym może działać w kontenerach opartych na systemie Linux lub Windows. Należy pamiętać, że w przypadku wdrożenia platformy Docker chcesz użyć tego samego typu hosta dla SQL Server. Kontenery oparte na systemie Linux umożliwiają mniejsze rozmiary i są preferowane.
+`eShopOnWeb`Projekt jest uruchamiany na platformie .NET. W związku z tym może działać w kontenerach opartych na systemie Linux lub Windows. Należy pamiętać, że w przypadku wdrożenia platformy Docker chcesz użyć tego samego typu hosta dla SQL Server. Kontenery oparte na systemie Linux umożliwiają mniejsze rozmiary i są preferowane.
 
-Aby dodać obsługę platformy Docker do istniejącej aplikacji, można użyć programu Visual Studio 2017 lub nowszego, klikając prawym przyciskiem myszy projekt w **Eksplorator rozwiązań** i wybierając polecenie **Dodaj**  >  **obsługę platformy Docker**. Spowoduje to dodanie plików wymaganych i zmodyfikowanie projektu w celu ich użycia. Bieżący `eShopOnWeb` przykład ma już te pliki.
+Aby dodać obsługę platformy Docker do istniejącej aplikacji, można użyć programu Visual Studio 2017 lub nowszego, klikając prawym przyciskiem myszy projekt w **Eksplorator rozwiązań** i wybierając polecenie **Dodaj**  >  **obsługę platformy Docker**. Ten krok powoduje dodanie plików wymaganych i zmodyfikowanie projektu w celu ich użycia. Bieżący `eShopOnWeb` przykład ma już te pliki.
 
 Plik poziomu rozwiązania `docker-compose.yml` zawiera informacje o obrazach do skompilowania oraz o kontenerach do uruchomienia. Plik umożliwia używanie `docker-compose` polecenia do uruchamiania wielu aplikacji w tym samym czasie. W tym przypadku uruchamia tylko projekt sieci Web. Można go również użyć do skonfigurowania zależności, takich jak oddzielny kontener bazy danych.
 
@@ -268,7 +268,7 @@ networks:
 `docker-compose.yml`Plik odwołuje się do `Dockerfile` `Web` projektu. Służy `Dockerfile` do określenia, który kontener bazowy będzie używany, oraz sposobu ich konfiguracji. `Web`" `Dockerfile` :
 
 ```dockerfile
-FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /app
 
 COPY *.sln .
@@ -278,7 +278,7 @@ RUN dotnet restore
 
 RUN dotnet publish -c Release -o out
 
-FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/src/Web/out ./
 
@@ -291,7 +291,7 @@ Po uruchomieniu aplikacji kontenera nadal będzie ona działać do momentu jej z
 
 Należy pamiętać, że uruchomione kontenery platformy Docker mogą być powiązane z portami, z których możesz próbować korzystać w środowisku deweloperskim. W przypadku próby uruchomienia lub debugowania aplikacji przy użyciu tego samego portu co uruchomiony kontener platformy Docker zostanie wyświetlony komunikat o błędzie informujący o tym, że serwer nie może powiązać z tym portem. Po ponownym zatrzymywaniu kontenera należy rozwiązać ten problem.
 
-Jeśli chcesz dodać obsługę platformy Docker do aplikacji przy użyciu programu Visual Studio, upewnij się, że program Docker Desktop jest uruchomiony, gdy to zrobisz. Kreator nie będzie działać prawidłowo, jeśli program Docker Desktop nie zostanie uruchomiony po uruchomieniu kreatora. Ponadto Kreator sprawdza bieżący kontener, aby dodać poprawną obsługę platformy Docker. Jeśli chcesz dodać obsługę kontenerów systemu Windows, musisz uruchomić kreatora, gdy pulpit platformy Docker jest uruchomiony z skonfigurowanymi kontenerami systemu Windows. Jeśli chcesz dodać obsługę kontenerów systemu Linux, uruchom kreatora, gdy zainstalowano Aparat Docker z skonfigurowanymi kontenerami systemu Linux.
+Jeśli chcesz dodać obsługę platformy Docker do aplikacji przy użyciu programu Visual Studio, upewnij się, że program Docker Desktop jest uruchomiony, gdy to zrobisz. Kreator nie będzie działać prawidłowo, jeśli program Docker Desktop nie zostanie uruchomiony po uruchomieniu kreatora. Ponadto Kreator sprawdza bieżący kontener, aby dodać poprawną obsługę platformy Docker. Aby dodać obsługę kontenerów systemu Windows, należy uruchomić kreatora, gdy jest uruchomiony pulpit Docker z skonfigurowanymi kontenerami systemu Windows. Jeśli chcesz dodać, obsłużyć kontenery systemu Linux, uruchom kreatora, gdy zainstalowano Aparat Docker z skonfigurowanymi kontenerami systemu Linux.
 
 ### <a name="references--common-web-architectures"></a>Odwołania — wspólne architektury sieci Web
 

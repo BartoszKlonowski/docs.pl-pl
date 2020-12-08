@@ -3,13 +3,13 @@ title: Proces programistyczny dla platformy Azure
 description: Tworzenie architektury nowoczesnych aplikacji sieci Web przy użyciu ASP.NET Core i platformy Azure | Proces tworzenia aplikacji na platformie Azure
 author: ardalis
 ms.author: wiwagn
-ms.date: 01/30/2019
-ms.openlocfilehash: 8907c63f8dcd57ec22c3c196cbb1db52d91a3b5f
-ms.sourcegitcommit: bc293b14af795e0e999e3304dd40c0222cf2ffe4
+ms.date: 12/01/2020
+ms.openlocfilehash: 2706a4091565e6f3cb795acf031a238ae55a1068
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "91169040"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851630"
 ---
 # <a name="development-process-for-azure"></a>Proces programistyczny dla platformy Azure
 
@@ -32,7 +32,7 @@ Bez względu na to, czy wolisz pełną i wydajną platformę IDE, czy też Edyto
 
 **Interfejs wiersza polecenia Visual Studio Code i dotnet** (międzyplatformowe narzędzia dla systemów Mac, Linux i Windows). Jeśli wolisz uproszczony i Międzyplatformowy Edytor obsługujący dowolny język programowania, możesz użyć kodu Microsoft Visual Studio i interfejsu wiersza polecenia dotnet. Te produkty zapewniają proste, a jeszcze niezawodne środowisko, które usprawnia przepływ pracy dewelopera. Ponadto Visual Studio Code obsługuje rozszerzenia dla programowania C \# i sieci Web, które udostępnia funkcje IntelliSense i skróty w edytorze.
 
-[Pobieranie zestawu .NET Core SDK](https://dotnet.microsoft.com/download)
+[Pobierz zestaw .NET SDK](https://dotnet.microsoft.com/download)
 
 [Pobierz program Visual Studio Code](https://code.visualstudio.com/download)
 
@@ -56,17 +56,17 @@ Utwórz Azure App Service, w którym zostanie wdrożona aplikacja. Utwórz aplik
 
 **Rysunek 10-1.** Tworzenie nowej aplikacji sieci Web Azure App Service w witrynie Azure Portal.
 
-Proces kompilacji CI wykonuje zautomatyzowaną kompilację za każdym razem, gdy nowy kod zostanie przekazany do repozytorium kontroli źródła projektu. Dzięki temu można natychmiast uzyskać informacje o tym, że kod kompiluje (i najlepiej przekazuje testy automatyczne) i może zostać wdrożony. Ta kompilacja elementu konfiguracji spowoduje utworzenie artefaktu pakietu Narzędzia Web Deploy i opublikowanie go do użycia przez proces tworzenia dysku CD.
+Proces kompilacji CI wykonuje zautomatyzowaną kompilację za każdym razem, gdy nowy kod zostanie przekazany do repozytorium kontroli źródła projektu. Ten proces daje natychmiastowe informacje o tym, że kod kompiluje (i najlepiej przekazuje testy automatyczne) i może zostać wdrożony. Ta kompilacja elementu konfiguracji spowoduje utworzenie artefaktu pakietu Narzędzia Web Deploy i opublikowanie go do użycia przez proces tworzenia dysku CD.
 
 [Zdefiniuj proces kompilacji elementu konfiguracji](/azure/devops/pipelines/ecosystems/dotnet-core)
 
 Pamiętaj, aby włączyć integrację ciągłą, aby system ustawił w kolejce kompilację, gdy ktoś w zespole zatwierdzi nowy kod. Przetestuj kompilację i sprawdź, czy produkuje pakiet Web Deploy jako jeden z jego artefaktów.
 
-Gdy kompilacja zakończy się pomyślnie, proces dysku CD wdróże wyniki kompilacji CI w aplikacji sieci Web platformy Azure. Aby skonfigurować to rozwiązanie, należy utworzyć i skonfigurować *wydanie*, które zostanie wdrożone w Azure App Service.
+Gdy kompilacja zakończy się pomyślnie, proces dysku CD wdróże wyniki kompilacji CI w aplikacji sieci Web platformy Azure. Aby skonfigurować ten krok, należy utworzyć i skonfigurować *wydanie*, które zostanie wdrożone w Azure App Service.
 
 [Wdrażanie aplikacji internetowej platformy Azure](/azure/devops/pipelines/targets/webapp)
 
-Po skonfigurowaniu potoku ciągłej integracji/ciągłego wdrażania możesz po prostu wprowadzić aktualizacje aplikacji sieci Web i zatwierdzić je do kontroli źródła, aby zostały wdrożone.
+Po skonfigurowaniu potoku ciągłej integracji/ciągłego wdrażania możesz łatwo wprowadzać aktualizacje aplikacji sieci Web i zatwierdzić je do kontroli źródła, aby zostały wdrożone.
 
 ### <a name="workflow-for-developing-azure-hosted-aspnet-core-applications"></a>Przepływ pracy służący do tworzenia aplikacji ASP.NET Core hostowanych na platformie Azure
 
@@ -78,7 +78,7 @@ Po skonfigurowaniu konta platformy Azure i procesu ciągłej integracji/ciągłe
 
 #### <a name="step-1-local-dev-environment-inner-loop"></a>Krok 1. Pętla wewnętrzna lokalnego środowiska deweloperskiego
 
-Opracowywanie aplikacji ASP.NET Core na potrzeby wdrażania na platformie Azure nie różni się od tworzenia aplikacji w inny sposób. Korzystaj z lokalnego środowiska programistycznego, z którym masz doświadczenie, niezależnie od tego, czy jest to program Visual Studio 2017, czy interfejs wiersza polecenia dotnet i Visual Studio Code lub preferowany Edytor. Można napisać kod, uruchamiać i debugować zmiany, uruchamiać testy automatyczne i przekazywać lokalne zatwierdzenia do kontroli źródła do momentu, gdy wszystko będzie gotowe do wypchnięcia zmian do udostępnionego repozytorium kontroli źródła.
+Opracowywanie aplikacji ASP.NET Core na potrzeby wdrażania na platformie Azure nie różni się od tworzenia aplikacji w inny sposób. Korzystaj z lokalnego środowiska programistycznego, z którym masz doświadczenie, niezależnie od tego, czy jest to program Visual Studio 2019, czy interfejs wiersza polecenia dotnet i Visual Studio Code lub preferowany Edytor. Można napisać kod, uruchamiać i debugować zmiany, uruchamiać testy automatyczne i przekazywać lokalne zatwierdzenia do kontroli źródła do momentu, gdy wszystko będzie gotowe do wypchnięcia zmian do udostępnionego repozytorium kontroli źródła.
 
 #### <a name="step-2-application-code-repository"></a>Krok 2. Repozytorium kodu aplikacji
 
@@ -90,7 +90,7 @@ Nowa kompilacja jest wyzwalana na serwerze kompilacji za każdym razem, gdy w re
 
 #### <a name="step-4-build-server-continuous-delivery"></a>Krok 4. Serwer kompilacji: ciągłe dostarczanie
 
-Gdy kompilacja zakończyła się powodzeniem, proces tworzenia dysków CD zostanie pobrany z utworzonych artefaktów kompilacji. Obejmie to pakiet Web Deploy. Serwer kompilacji wdroży ten pakiet w Azure App Service, zastępując istniejącą usługę nowo utworzoną. Zazwyczaj ten krok jest przeznaczony dla środowiska przejściowego, ale niektóre aplikacje wdrażają bezpośrednio w środowisku produkcyjnym przez proces CD.
+Gdy kompilacja zakończyła się powodzeniem, proces tworzenia dysków CD zostanie pobrany z utworzonych artefaktów kompilacji. Ten proces obejmie pakiet narzędzia Web Deploy. Serwer kompilacji wdroży ten pakiet w Azure App Service, zastępując istniejącą usługę nowo utworzoną. Zazwyczaj ten krok jest przeznaczony dla środowiska przejściowego, ale niektóre aplikacje wdrażają bezpośrednio w środowisku produkcyjnym przez proces CD.
 
 #### <a name="step-5-azure-app-service-web-app"></a>Krok 5. Aplikacja internetowa usługi Azure App Service
 

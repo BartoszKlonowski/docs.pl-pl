@@ -6,16 +6,16 @@ ms.author: adegeo
 ms.date: 11/10/2020
 ms.custom: updateeachrelease
 zone_pivot_groups: operating-systems-set-one
-ms.openlocfilehash: 39020a32cdea9b82dc9d30e62e663ebc4ee39ebb
-ms.sourcegitcommit: 34968a61e9bac0f6be23ed6ffb837f52d2390c85
+ms.openlocfilehash: 2fc12c8c398b1a74d623e53884df666f4d4b85f1
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687445"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851617"
 ---
 # <a name="how-to-check-that-net-is-already-installed"></a>Jak sprawdzić, czy platforma .NET jest już zainstalowana
 
-W tym artykule przedstawiono sposób sprawdzania, które wersje środowiska uruchomieniowego .NET i zestawu SDK są zainstalowane na komputerze. Program .NET mógł już zostać zainstalowany, jeśli masz zintegrowane środowisko programistyczne, takie jak Visual Studio lub Visual Studio dla komputerów Mac.
+W tym artykule przedstawiono sposób sprawdzania, które wersje środowiska uruchomieniowego .NET i zestawu SDK są zainstalowane na komputerze. Jeśli masz zintegrowane środowisko programistyczne, takie jak Visual Studio lub Visual Studio dla komputerów Mac, program .NET mógł już być zainstalowany.
 
 Zainstalowanie zestawu SDK instaluje odpowiednie środowisko uruchomieniowe.
 
@@ -139,7 +139,7 @@ Microsoft.NETCore.App 5.0.0 [/usr/local/share/dotnet/shared/Microsoft.NETCore.Ap
 
 ## <a name="check-for-install-folders"></a>Sprawdź foldery instalacji
 
-Istnieje możliwość, że platforma .NET jest zainstalowana, ale nie została dodana do `PATH` zmiennej dla systemu operacyjnego lub profilu użytkownika. Uruchamianie poleceń z poprzednich sekcji może nie działać. Alternatywnie można sprawdzić, czy istnieją foldery instalacji platformy .NET.
+Istnieje możliwość, że platforma .NET jest zainstalowana, ale nie została dodana do `PATH` zmiennej dla systemu operacyjnego lub profilu użytkownika. W takim przypadku polecenia z poprzednich sekcji mogą nie funkcjonować. Alternatywnie można sprawdzić, czy istnieją foldery instalacji platformy .NET.
 
 W przypadku instalowania programu .NET z Instalatora lub skryptu jest on instalowany w folderze standardowym. Większość czasu Instalator lub skrypt używany do instalowania programu .NET udostępnia opcję instalacji w innym folderze. Jeśli zdecydujesz się zainstalować w innym folderze, Dostosuj początek ścieżki folderu.
 
@@ -191,3 +191,7 @@ Można wyświetlić zarówno wersje zestawu SDK, jak i wersje środowiska urucho
 - [Zainstaluj środowisko uruchomieniowe platformy .NET i zestaw SDK dla systemu Windows](windows.md).
 - [Zainstaluj środowisko uruchomieniowe platformy .NET i zestaw SDK dla macOS](macos.md).
 - [Zainstaluj środowisko uruchomieniowe platformy .NET i zestaw SDK dla systemu Linux](linux.md).
+
+## <a name="see-also"></a>Zobacz też
+
+- [Ustal, które wersje .NET Framework są zainstalowane](../../framework/migration-guide/how-to-determine-which-versions-are-installed.md)
