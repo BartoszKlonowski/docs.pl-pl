@@ -3,20 +3,20 @@ title: Opracowywanie aplikacji ASP.NET Core MVC
 description: Tworzenie architektury nowoczesnych aplikacji sieci Web przy użyciu ASP.NET Core i platformy Azure | opracowywanie aplikacji ASP.NET Core MVC
 author: ardalis
 ms.author: wiwagn
-ms.date: 08/12/2020
+ms.date: 12/01/2020
 no-loc:
 - Blazor
 - WebAssembly
-ms.openlocfilehash: e746362657a25487e98ddac09fa4337b00dfe805
-ms.sourcegitcommit: 5b475c1855b32cf78d2d1bbb4295e4c236f39464
+ms.openlocfilehash: 94dda02045f4c3bb1b5bdd64ab6b40eb22f6817c
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91169131"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851438"
 ---
 # <a name="develop-aspnet-core-mvc-apps"></a>Opracowywanie aplikacji ASP.NET Core MVC
 
-> "Nie jest ważne, aby pobrać go po raz pierwszy. Bardzo ważne jest, aby uzyskać je po raz ostatni. "  
+> "Nie jest ważne, aby pobrać go po raz pierwszy. Bardzo ważne jest, aby uzyskać je po raz ostatni. "
 > _— Andrew polowa i David Thomas_
 
 ASP.NET Core to międzyplatformowa platforma typu "open source" służąca do tworzenia nowoczesnych aplikacji sieci Web zoptymalizowanych pod kątem chmury. Aplikacje ASP.NET Core są lekkie i modularne, dzięki wbudowanej obsłudze iniekcji zależności, co pozwala zwiększyć możliwości testowania i utrzymania. W połączeniu z platformą MVC, która obsługuje tworzenie nowoczesnych interfejsów API sieci Web oprócz aplikacji opartych na widoku, ASP.NET Core to zaawansowana platforma, w której można tworzyć aplikacje sieci Web dla przedsiębiorstw.
@@ -25,11 +25,11 @@ ASP.NET Core to międzyplatformowa platforma typu "open source" służąca do tw
 
 ASP.NET Core MVC oferuje wiele funkcji, które są przydatne do tworzenia interfejsów API i aplikacji opartych na sieci Web. Termin MVC oznacza "Model-View-Controller", wzorzec interfejsu użytkownika, który dzieli obowiązki odpowiedzi na żądania użytkowników do kilku części. Oprócz tego wzorca można także zaimplementować funkcje w ASP.NET Core aplikacji jako Razor Pages. Razor Pages są wbudowane w ASP.NET Core MVC i używają tych samych funkcji routingu, powiązania modelu, filtrów, autoryzacji itp. Jednak zamiast oddzielnych folderów i plików dla kontrolerów, modeli, widoków itp. i używania routingu opartego na atrybutach Razor Pages są umieszczane w pojedynczym folderze ("/Pages"), trasie na podstawie ich lokalizacji względnej w tym folderze i obsługi żądań z obsługą, a nie akcją kontrolera. W związku z tym podczas pracy z Razor Pages wszystkie potrzebne pliki i klasy są zwykle współzlokalizowane, a nie rozłożone w całym projekcie sieci Web.
 
-Podczas tworzenia nowej aplikacji ASP.NET Core należy mieć plan na uwadze dla rodzaju aplikacji, którą chcesz skompilować. W programie Visual Studio będziesz wybierać spośród kilku szablonów. Trzy najpopularniejsze szablony projektów to Web API, aplikacja sieci Web i aplikacja sieci Web (Model-View-Controller). Chociaż tę decyzję można podjąć tylko podczas pierwszego tworzenia projektu, nie jest to nieodwołalna decyzja. Projekt interfejsu API sieci Web używa standardowych kontrolerów kontrolera widoku modelu — tylko domyślnie nie ma widoków. Podobnie szablon domyślnej aplikacji sieci Web używa Razor Pages, a zatem nie ma folderu widoki. Możesz później dodać folder widoki do tych projektów, aby obsługiwać zachowanie oparte na widoku. Projekty Web API i Model-View-Controller nie zawierają domyślnie folderu Pages, ale można je później dodać do obsługi zachowania opartego na Razor Pages. Te trzy szablony można traktować jako obsługujące trzy różne rodzaje domyślnej interakcji użytkownika: dane (internetowy interfejs API), oparte na stronach i widoku. Można jednak mieszać i dopasować dowolne lub wszystkie z nich w ramach pojedynczego projektu, jeśli chcesz.
+Podczas tworzenia nowej aplikacji ASP.NET Core należy mieć plan na uwadze dla rodzaju aplikacji, którą chcesz skompilować. W programie Visual Studio będziesz wybierać spośród kilku szablonów. Trzy najpopularniejsze szablony projektów to Web API, aplikacja sieci Web i aplikacja sieci Web (Model-View-Controller). Chociaż tę decyzję można podjąć tylko podczas pierwszego tworzenia projektu, nie jest to nieodwołalna decyzja. Projekt interfejsu API sieci Web używa standardowych kontrolerów kontrolera widoku modelu — tylko domyślnie nie ma widoków. Podobnie szablon domyślnej aplikacji sieci Web używa Razor Pages, a zatem nie ma folderu widoki. Możesz później dodać folder widoki do tych projektów, aby obsługiwać zachowanie oparte na widoku. Projekty Web API i Model-View-Controller nie zawierają domyślnie folderu Pages, ale można je później dodać do obsługi zachowania opartego na Razor Pages. Te trzy szablony można traktować jako obsługujące trzy różne rodzaje domyślnej interakcji użytkownika: dane (internetowy interfejs API), oparte na stronach i widoku. Można jednak mieszać i dopasować dowolne lub wszystkie z tych szablonów w ramach pojedynczego projektu, jeśli chcesz.
 
 ### <a name="why-razor-pages"></a>Dlaczego Razor Pages?
 
-Razor Pages to domyślne podejście do nowych aplikacji sieci Web w programie Visual Studio. Razor Pages oferuje prostszy sposób tworzenia funkcji aplikacji opartych na stronach, takich jak formularze niespa. Korzystanie z kontrolerów i widoków było powszechne dla aplikacji, które mają bardzo duże kontrolery, które pracowały z wieloma różnymi zależnościami, i wyświetlają wiele różnych widoków. Spowodowało to zwiększenie złożoności i często wynika z tego, że kontrolery, które nie były zgodne z pojedynczą zasadą odpowiedzialności lub zasady otwarte/zamknięte w praktyce. Razor Pages rozwiązuje ten problem przez hermetyzację logiki po stronie serwera dla danej logicznej "strony" w aplikacji sieci Web z oznaczeniem Razor. Strona Razor, która nie ma logiki po stronie serwera, może po prostu składać się z pliku Razor (na przykład "index. cshtml"). Jednak większość nieuproszczonych Razor Pages będzie miała skojarzoną klasę modelu strony, która jest taka sama jak nazwa pliku Razor z rozszerzeniem ". cs" (na przykład "Index.cshtml.cs").
+Razor Pages to domyślne podejście do nowych aplikacji sieci Web w programie Visual Studio. Razor Pages oferuje prostszy sposób tworzenia funkcji aplikacji opartych na stronach, takich jak formularze niespa. Korzystanie z kontrolerów i widoków było powszechne dla aplikacji, które mają bardzo duże kontrolery, które pracowały z wieloma różnymi zależnościami, i wyświetlają wiele różnych widoków. Spowodowało to zwiększenie złożoności i często wynika z tego, że kontrolery, które nie były zgodne z pojedynczą zasadą odpowiedzialności lub zasady otwarte/zamknięte w praktyce. Razor Pages rozwiązuje ten problem przez hermetyzację logiki po stronie serwera dla danej logicznej "strony" w aplikacji sieci Web z oznaczeniem Razor. Strona Razor, która nie ma logiki po stronie serwera, może składać się tylko z pliku Razor (na przykład "index. cshtml"). Jednak większość nieuproszczonych Razor Pages będzie miała skojarzoną klasę modelu strony, która jest taka sama jak nazwa pliku Razor z rozszerzeniem ". cs" (na przykład "Index.cshtml.cs").
 
 Model strony strony Razor łączy obowiązki kontrolera MVC i ViewModel. Zamiast obsługi żądań z metodami akcji kontrolera, programy obsługi modelu strony, takie jak "OnGet ()", są wykonywane, domyślnie renderuje ich skojarzone strony. Razor Pages upraszcza proces kompilowania poszczególnych stron w aplikacji ASP.NET Core, zapewniając jednocześnie wszystkie funkcje architektury ASP.NET Core MVC. Są to dobry wybór domyślny dla nowych funkcji opartych na stronach.
 
@@ -41,7 +41,7 @@ Niezależnie od tego, czy wybierzesz kompilację aplikacji sieci Web przy użyci
 
 ## <a name="mapping-requests-to-responses"></a>Mapowanie żądań na odpowiedzi
 
-W swoich serca ASP.NET Core aplikacje mapują przychodzące żądania na odpowiedzi wychodzące. Na niskim poziomie jest to realizowane za pomocą oprogramowania pośredniczącego, a proste aplikacje i mikrousługi ASP.NET Core mogą obejmować wyłącznie niestandardowe oprogramowanie pośredniczące. W przypadku korzystania z ASP.NET Core MVC można korzystać na nieco wyższym poziomie, zastanawiając się pod względem _tras_, _kontrolerów_i _akcji_. Każde żądanie przychodzące jest porównywane z tabelą routingu aplikacji. w przypadku znalezienia zgodnej trasy zostanie wywołana skojarzona Metoda akcji (należącej do kontrolera) do obsługi żądania. Jeśli nie zostanie znaleziona zgodna trasa, zostanie wywołana procedura obsługi błędów (w tym przypadku zwracająca wynik NotFound).
+W swoich serca ASP.NET Core aplikacje mapują przychodzące żądania na odpowiedzi wychodzące. Na niskim poziomie to mapowanie odbywa się przy użyciu oprogramowania pośredniczącego, a proste aplikacje i mikrousługi ASP.NET Core mogą obejmować wyłącznie niestandardowe oprogramowanie pośredniczące. W przypadku korzystania z ASP.NET Core MVC można korzystać na nieco wyższym poziomie, zastanawiając się pod względem _tras_, _kontrolerów_ i _akcji_. Każde żądanie przychodzące jest porównywane z tabelą routingu aplikacji. w przypadku znalezienia zgodnej trasy zostanie wywołana skojarzona Metoda akcji (należącej do kontrolera) do obsługi żądania. Jeśli nie zostanie znaleziona zgodna trasa, zostanie wywołana procedura obsługi błędów (w tym przypadku zwracająca wynik NotFound).
 
 Aplikacje ASP.NET Core MVC mogą używać tras konwencjonalnych, tras atrybutów lub obu. Trasy konwencjonalne są zdefiniowane w kodzie, określając _konwencje_ routingu przy użyciu składni podobnej do poniższego przykładu:
 
@@ -52,9 +52,9 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-W tym przykładzie trasa o nazwie "default" została dodana do tabeli routingu. Definiuje szablon trasy z symbolami zastępczymi dla _kontrolera_, _akcji_i _identyfikatora_. Symbole zastępcze kontrolera i akcji mają domyślnie określony ("Dom" i "index"), a symbol zastępczy ID jest opcjonalny (na przykład "?"). W ramach Konwencji zdefiniowanej tutaj należy określić, że pierwsza część żądania powinna odpowiadać nazwie kontrolera, drugiej części akcji, a następnie, jeśli to konieczne, trzecia część będzie reprezentować parametr ID. Trasy konwencjonalne są zwykle zdefiniowane w jednym miejscu dla aplikacji, na przykład w metodzie Configure w klasie Startup.
+W tym przykładzie trasa o nazwie "default" została dodana do tabeli routingu. Definiuje szablon trasy z symbolami zastępczymi dla _kontrolera_, _akcji_ i _identyfikatora_. Symbole zastępcze kontrolera i akcji mają domyślnie określony (odpowiednio "Dom" i "index"), a symbol zastępczy ID jest opcjonalny (na przykład "?"). W ramach Konwencji zdefiniowanej tutaj należy określić, że pierwsza część żądania powinna odpowiadać nazwie kontrolera, drugiej części akcji, a następnie, jeśli to konieczne, trzecia część będzie reprezentować parametr ID. Trasy konwencjonalne są zwykle zdefiniowane w jednym miejscu dla aplikacji, na przykład w metodzie Configure w klasie Startup.
 
-Trasy atrybutów są stosowane bezpośrednio do kontrolerów i akcji, a nie do określonych globalnie. Zaletą tego jest znacznie bardziej wykrywalność, gdy przeglądasz określoną metodę, ale oznacza to, że informacje o routingu nie są przechowywane w jednym miejscu w aplikacji. Korzystając z tras atrybutów, można łatwo określić wiele tras dla danej akcji, a także połączyć trasy między kontrolerami i akcjami. Na przykład:
+Trasy atrybutów są stosowane bezpośrednio do kontrolerów i akcji, a nie do określonych globalnie. Takie podejście ma znacznie większą możliwość odnajdywania, gdy przeglądasz określoną metodę, ale oznacza to, że informacje o routingu nie są przechowywane w jednym miejscu w aplikacji. Korzystając z tras atrybutów, można łatwo określić wiele tras dla danej akcji, a także połączyć trasy między kontrolerami i akcjami. Na przykład:
 
 ```csharp
 [Route("Home")]
@@ -95,7 +95,7 @@ Po dopasowaniu danego żądania do trasy, ale przed wywołaniem metody akcji, AS
 
 Po powiązaniu modelu, ale przed wywołaniem metody akcji, następuje Walidacja modelu. Walidacja modelu używa opcjonalnych atrybutów dla typu modelu i może pomóc zapewnić, że udostępniony obiekt modelu spełnia określone wymagania dotyczące danych. Niektóre wartości mogą być określone jako wymagane lub ograniczone do określonej długości lub zakresu liczbowego itd. Jeśli określono atrybuty walidacji, ale model nie spełnia wymagań, właściwość ModelState. IsValid ma wartość false, a zestaw reguł walidacji z błędami będzie dostępny do wysłania do klienta wysyłającego żądanie.
 
-W przypadku korzystania z walidacji modelu należy zawsze sprawdzić, czy model jest prawidłowy przed wykonaniem jakichkolwiek poleceń zmiany stanu, aby upewnić się, że aplikacja nie jest uszkodzona przez nieprawidłowe dane. Możesz użyć [filtru](/aspnet/core/mvc/controllers/filters) , aby uniknąć konieczności dodawania kodu dla każdej akcji. ASP.NET Core filtry MVC oferują sposób przechwytywania grup żądań, dzięki czemu można zastosować typowe zasady i zagadnienia dotyczące krzyżowego rozliczania. Filtry mogą być stosowane do poszczególnych akcji, całych kontrolerów lub globalnie dla aplikacji.
+W przypadku korzystania z walidacji modelu należy zawsze sprawdzić, czy model jest prawidłowy przed wykonaniem jakichkolwiek poleceń zmiany stanu, aby upewnić się, że aplikacja nie jest uszkodzona przez nieprawidłowe dane. Możesz użyć [filtru](/aspnet/core/mvc/controllers/filters) , aby uniknąć konieczności dodawania kodu dla tej walidacji w każdej akcji. ASP.NET Core filtry MVC oferują sposób przechwytywania grup żądań, dzięki czemu można zastosować typowe zasady i zagadnienia dotyczące krzyżowego rozliczania. Filtry mogą być stosowane do poszczególnych akcji, całych kontrolerów lub globalnie dla aplikacji.
 
 W przypadku interfejsów API sieci Web ASP.NET Core MVC obsługuje [_negocjowanie zawartości_](/aspnet/core/mvc/models/formatting), umożliwiając żądanie określenia sposobu formatowania odpowiedzi. W oparciu o nagłówki podane w żądaniu akcje zwracające dane spowodują sformatowanie odpowiedzi w formacie XML, JSON lub innym obsługiwanym formacie. Ta funkcja umożliwia korzystanie z tego samego interfejsu API przez wielu klientów z różnymi wymaganiami dotyczącymi formatu danych.
 
@@ -184,7 +184,7 @@ Rezultatem tego podejścia jest to, że kontrolery są znacznie mniejsze i konce
 
 ASP.NET Core ma wbudowaną obsługę i wewnętrznie wykorzystuje technikę znaną jako [iniekcja zależności](/aspnet/core/fundamentals/dependency-injection). Wstrzykiwanie zależności to technika, która umożliwia swobodne sprzęganie różnych części aplikacji. Sprzężenie luźne jest pożądane, ponieważ ułatwia izolowanie części aplikacji, co pozwala na testowanie lub zastępowanie. Sprawia również, że zmiana w jednej części aplikacji będzie miała nieoczekiwany wpływ w innym miejscu aplikacji. Iniekcja zależności jest oparta na zasadzie niewersji zależności i jest często kluczem do osiągnięcia zasady otwarte/zamknięte. Podczas oceniania, jak działa Twoja aplikacja wraz z jej zależnościami, należy pamiętać o kodzie [static cling](https://deviq.com/static-cling/) zapachu i pamiętaj, że aphorism "[New to Glue](https://ardalis.com/new-is-glue)".
 
-Statyczne cling występuje, gdy klasy umożliwiają wywoływanie metod statycznych lub dostęp do właściwości statycznych, które mają efekty uboczne lub zależności dotyczące infrastruktury. Na przykład jeśli masz metodę, która wywołuje metodę statyczną, która z kolei zapisuje dane w bazie danych, metoda jest ściśle sprzężona z bazą danych. Wszystkie elementy, które dzielą się tym wywołaniem bazy danych, spowodują uszkodzenie metody. Testowanie takich metod jest trudne, ponieważ takie testy wymagają, aby komercyjne biblioteki do zasymulować wywołania statyczne lub mogły być testowane tylko z testową bazą danych. Wywołania statyczne, które nie są zależne od infrastruktury, szczególnie te, które są całkowicie bezstanowe, są bardzo ważne do wywołania i nie mają wpływu na sprzęganie ani testowanie (poza kodem sprzęgania do samego wywołania statycznego).
+Statyczne cling występuje, gdy klasy umożliwiają wywoływanie metod statycznych lub dostęp do właściwości statycznych, które mają efekty uboczne lub zależności dotyczące infrastruktury. Na przykład jeśli masz metodę, która wywołuje metodę statyczną, która z kolei zapisuje dane w bazie danych, metoda jest ściśle sprzężona z bazą danych. Wszystkie elementy, które dzielą się tym wywołaniem bazy danych, spowodują uszkodzenie metody. Testowanie takich metod jest trudne, ponieważ takie testy wymagają, aby komercyjne biblioteki do zasymulować wywołania statyczne lub mogły być testowane tylko z testową bazą danych. Wywołania statyczne, które nie mają żadnych zależności względem infrastruktury, szczególnie te, które są całkowicie bezstanowe, są bardzo ważne do wywołania i nie mają wpływu na sprzężenie lub możliwości testowania (poza kodem sprzęgania do samego wywołania statycznego).
 
 Wielu programistów zna ryzyko związane ze statycznym clingm i globalnym stanem, ale nadal ściśle połączy swój kod z określonymi implementacjami za pośrednictwem bezpośredniego tworzenia wystąpienia. "New to Glue" to przypomnienie dotyczące sprzęgu, a nie ogólne Condemnation użycia `new` słowa kluczowego. Podobnie jak w przypadku wywołań metod statycznych, nowe wystąpienia typów, które nie mają zależności zewnętrznych, zazwyczaj nie umożliwiają ścisłego podzielenia kodu na szczegóły implementacji lub sprawiają, że testowanie jest trudniejsze. Ale za każdym razem, gdy Klasa jest tworzona, Poświęć nieco chwilę, aby rozważyć, czy ma to sens, że ma to na celu wyznaczenie, że ma to miejsce w konkretnym miejscu w danej lokalizacji, czy też będzie lepszym rozwiązaniem do żądania tego wystąpienia jako zależności.
 
@@ -305,7 +305,7 @@ ASP.NET Core MVC używa również Konwencji do lokalizowania widoków. Można za
 
 ### <a name="apis-and-no-locblazor-applications"></a>Interfejsy API i Blazor aplikacje
 
-Jeśli aplikacja zawiera zestaw interfejsów API sieci Web, które muszą być zabezpieczone, należy je odpowiednio skonfigurować jako oddzielny projekt z widoku lub aplikacji Razor Pages. Oddzielanie interfejsów API, szczególnie publicznych interfejsów API, z aplikacji sieci Web po stronie serwera ma wiele korzyści. Te aplikacje często będą mieć unikatowe charakterystyki wdrożenia i obciążenia. Są one również bardzo prawdopodobnie do wdrażania różnych mechanizmów zabezpieczeń, dzięki standardowym aplikacjom opartym na formularzach, wykorzystującym uwierzytelnianie oparte na plikach cookie i interfejsy API najprawdopodobniej przy użyciu uwierzytelniania opartego na tokenach.
+Jeśli aplikacja zawiera zestaw interfejsów API sieci Web, które muszą być zabezpieczone, te interfejsy API należy najlepiej skonfigurować jako oddzielny projekt z widoku lub aplikacji Razor Pages. Oddzielanie interfejsów API, szczególnie publicznych interfejsów API, z aplikacji sieci Web po stronie serwera ma wiele korzyści. Te aplikacje często będą mieć unikatowe charakterystyki wdrożenia i obciążenia. Są one również bardzo prawdopodobnie do wdrażania różnych mechanizmów zabezpieczeń, dzięki standardowym aplikacjom opartym na formularzach, wykorzystującym uwierzytelnianie oparte na plikach cookie i interfejsy API najprawdopodobniej przy użyciu uwierzytelniania opartego na tokenach.
 
 Ponadto Blazor aplikacje, bez względu na to, czy program korzysta z Blazor serwera, czy też Blazor WebAssembly , powinny być skompilowane jako oddzielne projekty. Aplikacje mają różne charakterystyki środowiska uruchomieniowego, a także modele zabezpieczeń. Mogą współużytkować typowe typy z aplikacją sieci Web po stronie serwera (lub projektem interfejsu API), a typy te powinny być zdefiniowane we wspólnym projekcie udostępnionym.
 
@@ -443,9 +443,9 @@ Ważne jest, aby UseIdentity pojawił się przed UseMvc w metodzie Configure. Po
 
 Więcej informacji na temat [konfigurowania uwierzytelniania dwuskładnikowego](/aspnet/core/security/authentication/2fa) i [włączania zewnętrznych dostawców logowania](/aspnet/core/security/authentication/social/) można znaleźć w oficjalnym ASP.NET Core dokumentach.
 
-### <a name="authentication"></a>Uwierzytelnianie
+### <a name="authentication"></a>Authentication
 
-Uwierzytelnianie to proces określania, kto uzyskuje dostęp do systemu. Jeśli używasz tożsamości ASP.NET Core i metod konfiguracji przedstawionych w poprzedniej sekcji, spowoduje to automatyczne skonfigurowanie niektórych ustawień uwierzytelniania w aplikacji. Można jednak również skonfigurować te ustawienia domyślne ręcznie lub zastąpić je zestawem AddIdentity. Jeśli używasz tożsamości, skonfigurujesz uwierzytelnianie na podstawie plików cookie jako *schemat*domyślny.
+Uwierzytelnianie to proces określania, kto uzyskuje dostęp do systemu. Jeśli używasz tożsamości ASP.NET Core i metod konfiguracji przedstawionych w poprzedniej sekcji, spowoduje to automatyczne skonfigurowanie niektórych ustawień uwierzytelniania w aplikacji. Można jednak również skonfigurować te ustawienia domyślne ręcznie lub zastąpić je zestawem AddIdentity. Jeśli używasz tożsamości, konfiguruje uwierzytelnianie oparte na plikach cookie jako *schemat* domyślny.
 
 W przypadku uwierzytelniania opartego na sieci Web, zwykle do 5 akcji, które mogą być wykonywane w trakcie uwierzytelniania klienta systemu. Są to:
 
@@ -455,7 +455,7 @@ W przypadku uwierzytelniania opartego na sieci Web, zwykle do 5 akcji, które mo
 - Logowanie. W jakiś sposób Utrwalaj istniejącego klienta.
 - Wyloguj się. Usuń klienta z trwałości.
 
-Istnieje kilka typowych technik uwierzytelniania w aplikacjach sieci Web. Są one nazywane schematami. Dany schemat definiuje akcje dla niektórych lub wszystkich powyższych opcji. Niektóre schematy obsługują tylko podzbiór akcji i mogą wymagać oddzielnego schematu, aby wykonać te czynności, które nie są obsługiwane. Na przykład schemat OpenID Connect-Connect (OIDC) nie obsługuje logowania ani wylogowywania, ale jest często skonfigurowany do korzystania z uwierzytelniania plików cookie dla tej trwałości.
+Istnieje kilka typowych technik uwierzytelniania w aplikacjach sieci Web. Są one nazywane schematami. Dany schemat definiuje akcje dla niektórych lub wszystkich powyższych opcji. Niektóre schematy obsługują tylko podzbiór akcji i mogą wymagać oddzielnego schematu, aby wykonać te czynności, które nie są obsługiwane. Na przykład schemat OpenId-Connect (OIDC) nie obsługuje logowania ani wylogowywania, ale jest często skonfigurowany do korzystania z uwierzytelniania plików cookie dla tej trwałości.
 
 W aplikacji ASP.NET Core można skonfigurować `DefaultAuthenticateScheme` oraz opcjonalne określone schematy dla każdej akcji opisanej powyżej. Na przykład, `DefaultChallengeScheme` `DefaultForbidScheme` itp. Wywołanie [`AddIdentity<TUser,TRole>`](https://github.com/dotnet/aspnetcore/blob/release/3.1/src/Identity/Core/src/IdentityServiceCollectionExtensions.cs#L38-L102) konfiguruje kilka aspektów aplikacji i dodaje wiele wymaganych usług. Obejmuje to również wywołanie konfigurowania schematu uwierzytelniania:
 
@@ -512,7 +512,7 @@ Blazor Aplikacje serwera mogą korzystać z tych samych funkcji uwierzytelniania
 
 ### <a name="authorization"></a>Autoryzacja
 
-Najprostsza forma autoryzacji obejmuje ograniczenie dostępu do użytkowników anonimowych. Można to osiągnąć przez zastosowanie \[ \] atrybutu Autoryzuj do określonych kontrolerów lub akcji. Jeśli role są używane, atrybut można rozszerzyć, aby ograniczyć dostęp do użytkowników, którzy należą do określonych ról, jak pokazano poniżej:
+Najprostsza forma autoryzacji obejmuje ograniczenie dostępu do użytkowników anonimowych. Tę funkcję można osiągnąć, stosując \[ \] atrybut Autoryzuj do określonych kontrolerów lub akcji. Jeśli role są używane, atrybut można rozszerzyć, aby ograniczyć dostęp do użytkowników, którzy należą do określonych ról, jak pokazano poniżej:
 
 ```csharp
 [Authorize(Roles = "HRManager,Finance")]
@@ -522,7 +522,7 @@ public class SalaryController : Controller
 }
 ```
 
-W takim przypadku użytkownicy należący do roli HRManager lub finanse (lub obie) będą mieli dostęp do SalaryController. Aby wymagać, aby użytkownik należał do wielu ról (nie tylko jeden z kilku), można zastosować atrybut wielokrotnie, określając wymaganą rolę za każdym razem.
+W takim przypadku użytkownicy należący do `HRManager` lub `Finance` role (lub obie) będą mieli dostęp do SalaryController. Aby wymagać, aby użytkownik należał do wielu ról (nie tylko jeden z kilku), można zastosować atrybut wielokrotnie, określając wymaganą rolę za każdym razem.
 
 Określanie niektórych zestawów ról jako ciągów w wielu różnych kontrolerach i akcjach może prowadzić do niepożądanego powtórzenia. Należy określić co najmniej stałe dla tych literałów ciągów i użyć stałych w dowolnym miejscu, aby podać ciąg. Istnieje również możliwość skonfigurowania zasad autoryzacji, które hermetyzują reguły autoryzacji, a następnie określania zasad zamiast poszczególnych ról przy zastosowaniu \[ \] atrybutu Autoryzuj:
 
@@ -565,7 +565,7 @@ Możesz utworzyć własną usługę uwierzytelniania, zintegrować ją z usług�
 
 Tokeny JWT mogą osadzać oświadczenia dotyczące użytkownika, które można odczytać na kliencie lub serwerze. Możesz użyć narzędzia, takiego jak [JWT.IO](https://jwt.io/) , aby wyświetlić zawartość tokenu JWT. Nie należy przechowywać poufnych danych, takich jak hasła lub klucze w tokenach JTW, ponieważ ich zawartość jest łatwo odczytywana.
 
-W przypadku używania tokenów JWT z SPA lub Blazor WebAssembly aplikacjami należy przechowywać token w dowolnym miejscu na kliencie, a następnie dodać go do każdego wywołania interfejsu API. Jest to zwykle wykonywane jako nagłówek, jak ilustruje poniższy kod:
+W przypadku używania tokenów JWT z SPA lub Blazor WebAssembly aplikacjami należy przechowywać token w dowolnym miejscu na kliencie, a następnie dodać go do każdego wywołania interfejsu API. To działanie jest zwykle wykonywane jako nagłówek, ponieważ ilustruje poniższy kod:
 
 ```csharp
 // AuthService.cs in BlazorAdmin project of eShopOnWeb
@@ -660,7 +660,7 @@ Rozważ sposoby, w których aplikacje komunikują się bezpośrednio z aplikacja
 
 ## <a name="domain-driven-design--should-you-apply-it"></a>Projektowanie oparte na domenie — czy należy je zastosować?
 
-Projektowanie oparte na domenie (DDD) to Agile podejście do tworzenia oprogramowania, które kładzie nacisk na _domenę biznesową_. W dużym stopniu naciska na komunikację i interakcję z ekspertami domeny biznesowej, którzy mogą odnosić się do deweloperów, w jaki działa system w świecie rzeczywistym. Jeśli na przykład tworzysz system, który obsługuje handel giełdowy, ekspertem domeny może być doświadczony Broker ds. it. DDD jest przeznaczony do rozwiązywania dużych i złożonych problemów związanych z biznesem. często nie jest to konieczne w przypadku mniejszych, prostszych aplikacji, ponieważ inwestycje w zrozumieniu i modelowania domeny nie są w tej samej postaci.
+Domain-Driven Design (DDD) to Agile podejście do tworzenia oprogramowania, które kładzie nacisk na _domenę biznesową_. W dużym stopniu naciska na komunikację i interakcję z ekspertami domeny biznesowej, którzy mogą odnosić się do deweloperów, w jaki działa system w świecie rzeczywistym. Jeśli na przykład tworzysz system, który obsługuje handel giełdowy, ekspertem domeny może być doświadczony Broker ds. it. DDD jest przeznaczony do rozwiązywania dużych i złożonych problemów związanych z biznesem. często nie jest to konieczne w przypadku mniejszych, prostszych aplikacji, ponieważ inwestycje w zrozumieniu i modelowania domeny nie są w tej samej postaci.
 
 Podczas kompilowania oprogramowania po drodze, zespół (w tym udziałowcy nietechniczne i współautorzy) powinien opracować powszechny _Język_ dla obszaru problemu. Oznacza to, że ta sama terminologia powinna zostać użyta w przypadku modelowania rzeczywistego pojęcia, odpowiedniki oprogramowania i wszelkich struktur, które mogą istnieć, aby zachować koncepcję (na przykład tabele bazy danych). W związku z tym koncepcje opisane w języku powszechnym powinny stanowić podstawę dla _modelu domeny_.
 
@@ -700,14 +700,14 @@ DDD obejmuje inwestycje w modelowanie, architekturę i komunikację, które mog�
 
 Podejście hybrydowe będzie używać DDD tylko dla transakcyjnych lub bardziej złożonych obszarów aplikacji, ale nie dla prostszej CRUD lub tylko do odczytu części aplikacji. Na przykład nie są wymagane ograniczenia agregacji, jeśli tworzysz zapytanie o dane w celu wyświetlenia raportu lub wizualizacji danych dla pulpitu nawigacyjnego. Doskonale akceptowalne jest oddzielny, prostszy model odczytu dla takich wymagań.
 
-> ### <a name="references--domain-driven-design"></a>Odwołania — Projektowanie oparte na domenie
+> ### <a name="references--domain-driven-design"></a>Odwołania — projektowanie Domain-Driven
 >
 > - **DDD w zwykłym języku angielskim (odpowiedź StackOverflow)**  
 >   <https://stackoverflow.com/questions/1222392/can-someone-explain-domain-driven-design-ddd-in-plain-english-please/1222488#1222488>
 
 ## <a name="deployment"></a>Wdrożenie
 
-W procesie wdrażania aplikacji ASP.NET Core należy wykonać kilka kroków, bez względu na to, gdzie będzie ona hostowana. Pierwszym krokiem jest opublikowanie aplikacji, którą można wykonać przy użyciu `dotnet publish` interfejsu wiersza polecenia. Spowoduje to skompilowanie aplikacji i umieszczenie wszystkich plików wymaganych do uruchomienia aplikacji w wydzielonym folderze. W przypadku wdrażania z programu Visual Studio ten krok jest wykonywany automatycznie. Folder publikowania zawiera pliki. exe i. dll dla aplikacji i jej zależności. Aplikacja samodzielna zawiera również wersję środowiska uruchomieniowego .NET. Aplikacje ASP.NET Core zawierają również pliki konfiguracji, statyczne zasoby klienta i widoki MVC.
+W procesie wdrażania aplikacji ASP.NET Core należy wykonać kilka kroków, bez względu na to, gdzie będzie ona hostowana. Pierwszym krokiem jest opublikowanie aplikacji, którą można wykonać przy użyciu `dotnet publish` interfejsu wiersza polecenia. Ten krok spowoduje skompilowanie aplikacji i umieszczenie wszystkich plików wymaganych do uruchomienia aplikacji w wydzielonym folderze. W przypadku wdrażania z programu Visual Studio ten krok jest wykonywany automatycznie. Folder publikowania zawiera pliki. exe i. dll dla aplikacji i jej zależności. Aplikacja samodzielna zawiera również wersję środowiska uruchomieniowego .NET. Aplikacje ASP.NET Core zawierają również pliki konfiguracji, statyczne zasoby klienta i widoki MVC.
 
 Aplikacje ASP.NET Core są aplikacjami konsolowymi, które należy uruchomić, gdy serwer jest uruchamiany i uruchamiany ponownie, jeśli wystąpi awaria aplikacji (lub serwera). Za pomocą Menedżera procesów można zautomatyzować ten proces. Najbardziej typowymi menedżerami procesów dla ASP.NET Core są Nginx i Apache w systemach Linux i IIS lub Windows Service w systemie Windows.
 

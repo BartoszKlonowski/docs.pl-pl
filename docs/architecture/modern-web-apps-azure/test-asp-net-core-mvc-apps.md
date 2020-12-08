@@ -3,13 +3,13 @@ title: Testowanie aplikacji ASP.NET Core MVC
 description: Tworzenie architektury nowoczesnych aplikacji sieci Web przy użyciu ASP.NET Core i platformy Azure | Testowanie aplikacji ASP.NET Core MVC
 author: ardalis
 ms.author: wiwagn
-ms.date: 12/04/2019
-ms.openlocfilehash: ca86388b9f5dfe5e63ead1b5f84486ba2181af57
-ms.sourcegitcommit: 5b475c1855b32cf78d2d1bbb4295e4c236f39464
+ms.date: 12/01/2020
+ms.openlocfilehash: b253cfb90487cc462b0f3b8a7564c97ad403aa06
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91169079"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851402"
 ---
 # <a name="test-aspnet-core-mvc-apps"></a>Testowanie aplikacji ASP.NET Core MVC
 
@@ -30,7 +30,7 @@ Testy jednostkowe, na mocy których testuje tylko jedną jednostkę kodu bez zal
 
 ### <a name="integration-tests"></a>Testy integracji
 
-Chociaż dobrym pomysłem jest Hermetyzowanie kodu, który współdziała z infrastrukturą, taką jak bazy danych i systemy plików, nadal będziesz mieć część tego kodu i prawdopodobnie chcesz go przetestować. Ponadto należy sprawdzić, czy warstwy kodu działają w oczekiwany sposób, gdy zależności aplikacji są w pełni rozwiązane. Jest to odpowiedzialność za testy integracji. Testy integracji są znacznie wolniejsze i trudniejsze do skonfigurowania niż testy jednostkowe, ponieważ często zależą od zewnętrznych zależności i infrastruktury. W tym celu należy unikać testowania, które mogą być testowane przy użyciu testów jednostkowych w testach integracji. Jeśli można testować dany scenariusz z testem jednostkowym, należy przetestować go z testem jednostkowym. Jeśli nie jest to możliwe, rozważ użycie testu integracji.
+Chociaż dobrym pomysłem jest Hermetyzowanie kodu, który współdziała z infrastrukturą, taką jak bazy danych i systemy plików, nadal będziesz mieć część tego kodu i prawdopodobnie chcesz go przetestować. Ponadto należy sprawdzić, czy warstwy kodu działają w oczekiwany sposób, gdy zależności aplikacji są w pełni rozwiązane. Ta funkcja jest odpowiedzialna za testy integracji. Testy integracji są znacznie wolniejsze i trudniejsze do skonfigurowania niż testy jednostkowe, ponieważ często zależą od zewnętrznych zależności i infrastruktury. W tym celu należy unikać testowania, które mogą być testowane przy użyciu testów jednostkowych w testach integracji. Jeśli można testować dany scenariusz z testem jednostkowym, należy przetestować go z testem jednostkowym. Jeśli nie jest to możliwe, rozważ użycie testu integracji.
 
 Testy integracji często mają bardziej skomplikowane ustawienia i usuwania procedury niż testy jednostkowe. Na przykład test integracji, który przechodzi względem rzeczywistej bazy danych, będzie wymagał metody przywrócenia bazy danych do znanego stanu przed każdym uruchomieniem testu. Po dodaniu nowych testów, a produkcyjny schemat bazy danych, te skrypty te zależą od rozmiaru i złożoności. W wielu dużych systemach nie ma praktycznego uruchamiania pełnych zestawów testów integracji na stacjach roboczych deweloperów przed zaewidencjonowaniem zmian w udostępnionej kontroli źródła. W takich przypadkach testy integracji mogą być uruchamiane na serwerze kompilacji.
 
@@ -44,7 +44,7 @@ Testy integracji są napisywane od perspektywy dewelopera, aby sprawdzić, czy n
 
 Fond się powiedzieć "jako Deweloperzy, ale kończymy się niepowodzeniem na dwa sposoby: możemy utworzyć niewłaściwy element lub stworzyć niewłaściwy element". Testy jednostkowe gwarantują, że tworzysz to prawo; testy funkcjonalne zapewniają, że tworzysz odpowiednie rzeczy.
 
-Ponieważ testy funkcjonalne działają na poziomie systemu, mogą wymagać pewnego stopnia automatyzacji interfejsu użytkownika. Podobnie jak w przypadku testów integracji, zazwyczaj działają one również w przypadku niektórych rodzajów infrastruktury testowej. Sprawia to wolniejsze i bardziej kruchy niż testy jednostkowe i integracji. Należy mieć tylko tyle testów funkcjonalnych, ile trzeba mieć pewność, że system zachowuje się, gdy użytkownicy oczekują.
+Ponieważ testy funkcjonalne działają na poziomie systemu, mogą wymagać pewnego stopnia automatyzacji interfejsu użytkownika. Podobnie jak w przypadku testów integracji, zazwyczaj działają one również w przypadku niektórych rodzajów infrastruktury testowej. To działanie sprawia, że są one wolniejsze i bardziej kruchy niż testy jednostkowe i integracji. Należy mieć tylko tyle testów funkcjonalnych, ile trzeba mieć pewność, że system zachowuje się, gdy użytkownicy oczekują.
 
 ### <a name="testing-pyramid"></a>Piramida testowania
 
@@ -78,7 +78,7 @@ Możesz użyć niezależnej platformy testowej. Środowisko xUnit Framework dzia
 
 ### <a name="test-naming"></a>Nazwa testu
 
-Nazwij testy w spójny sposób, podając nazwy wskazujące, co każdy test wykonuje. Jednym z metod, które mam doskonałe sukces, jest nazwa klasy testowej zgodnie z klasą i metodą, które są testowane. Powoduje to wykonanie wielu małych klas testowych, ale wyraźnie czyści, do czego każdy test jest odpowiedzialny. Przy użyciu nazwy klasy testowej skonfigurowanej do identyfikacji klasy i metody do przetestowania, nazwa metody testowej może służyć do określenia testowanego zachowania. Powinno to obejmować oczekiwane zachowanie oraz wszelkie dane wejściowe lub założeń, które powinny spowodować takie zachowanie. Przykładowe nazwy testów:
+Nazwij testy w spójny sposób, podając nazwy wskazujące, co każdy test wykonuje. Jednym z metod, które mam doskonałe sukces, jest nazwa klasy testowej zgodnie z klasą i metodą, które są testowane. To podejście skutkuje wieloma niewielkimi klasami testowymi, ale wyraźnie czyści, do czego każdy test jest odpowiedzialny. Po skonfigurowaniu nazwy klasy testowej, aby zidentyfikować klasę i metodę do przetestowania, nazwa metody testowej może służyć do określenia testowanego zachowania. Ta nazwa powinna zawierać oczekiwane zachowanie i wszelkie dane wejściowe lub założenia, które powinny spowodować takie zachowanie. Przykładowe nazwy testów:
 
 - `CatalogControllerGetImage.CallsImageServiceWithId`
 
@@ -94,7 +94,7 @@ Zmiana tego podejścia spowoduje zakończenie każdej klasy testowej o nazwie "p
 
 - `CatalogControllerGetImage`**Powinien** `.` **Dziennik**`WarningGivenImageMissingException`
 
-Niektóre zespoły szukają drugiego podejścia do nazewnictwa, chociaż nieco bardziej pełne. W każdym przypadku spróbuj użyć konwencji nazewnictwa, która zapewnia wgląd w działanie testowe, dzięki czemu w przypadku niepowodzenia co najmniej jednego testu, jest oczywiste z nazw, których przypadki zakończyły się niepowodzeniem. Unikaj niejasnego nazewnictwa testów, takich jak ControllerTests. TEST1, ponieważ nie są one wyświetlane w wynikach testu.
+Niektóre zespoły szukają drugiego podejścia do nazewnictwa, chociaż nieco bardziej pełne. W każdym przypadku spróbuj użyć konwencji nazewnictwa, która zapewnia wgląd w działanie testowe, dzięki czemu w przypadku niepowodzenia co najmniej jednego testu, jest oczywiste z nazw, których przypadki zakończyły się niepowodzeniem. Unikaj niejasnego nazewnictwa testów, takich jak ControllerTests. TEST1, ponieważ te nazwy nie oferują wartości, gdy są widoczne w wynikach testu.
 
 Jeśli przestrzegasz konwencji nazewnictwa, takiej jak powyżej, która tworzy wiele małych klas testowych, dobrym pomysłem jest dalsze organizowanie testów przy użyciu folderów i przestrzeni nazw. Rysunek 9-4 przedstawia jedno podejście do organizowania testów według folderu w kilku projektach testowych.
 
@@ -102,13 +102,13 @@ Jeśli przestrzegasz konwencji nazewnictwa, takiej jak powyżej, która tworzy w
 
 **Rysunek 9-4.** Organizowanie klas testowych według folderu na podstawie testowanej klasy.
 
-Jeśli określona Klasa aplikacji ma wiele metod do przetestowania (i w ten sposób wiele klas testowych), warto je umieścić w folderze odpowiadającym klasie aplikacji. Ta organizacja nie różni się od sposobu, w jaki można organizować pliki w folderach w innym miejscu. Jeśli masz więcej niż trzy lub cztery powiązane pliki w folderze zawierającym wiele innych plików, często warto przenieść je do własnego podfolderu.
+Jeśli określona Klasa aplikacji ma wiele metod do przetestowania (i w ten sposób wiele klas testowych), warto umieścić te klasy w folderze odpowiadającym klasie aplikacji. Ta organizacja nie różni się od sposobu, w jaki można organizować pliki w folderach w innym miejscu. Jeśli masz więcej niż trzy lub cztery powiązane pliki w folderze zawierającym wiele innych plików, często warto przenieść je do własnego podfolderu.
 
 ## <a name="unit-testing-aspnet-core-apps"></a>Testowanie jednostkowe ASP.NET Core aplikacji
 
-W dobrze zaprojektowanej aplikacji ASP.NET Core większość złożoności i logiki biznesowej będzie hermetyzowana w jednostkach firmy i w różnych usługach. Sama aplikacja MVC ASP.NET Core, z jej kontrolerami, filtrami, modele widoków i widokami, powinna wymagać bardzo kilku testów jednostkowych. Większość funkcjonalności danej akcji leży poza samą metodą akcji. Testowanie, czy kierowanie i globalna obsługa błędów działają poprawnie, nie można efektywnie wykonać test jednostkowy. Analogicznie, wszelkie filtry, w tym Walidacja modelu i filtry uwierzytelniania i autoryzacji, nie mogą być badane jednostkowo z testem docelowym metody akcji kontrolera. Bez tych źródeł zachowania większość metod działania powinna być bardzo mała, co pozwala na ich przetestowanie do usług, które mogą być testowane niezależnie od kontrolera, który z nich korzysta.
+W dobrze zaprojektowanej aplikacji ASP.NET Core większość złożoności i logiki biznesowej będzie hermetyzowana w jednostkach firmy i w różnych usługach. Sama aplikacja MVC ASP.NET Core ze swoimi kontrolerami, filtrami, modele widoków i widokami powinna wymagać kilku testów jednostkowych. Większość funkcjonalności danej akcji leży poza samą metodą akcji. Testowanie, czy kierowanie i globalna obsługa błędów działają poprawnie, nie można efektywnie wykonać test jednostkowy. Analogicznie, wszelkie filtry, w tym Walidacja modelu i filtry uwierzytelniania i autoryzacji, nie mogą być badane jednostkowo z testem docelowym metody akcji kontrolera. Bez tych źródeł zachowania większość metod działania powinna być bardzo mała, co pozwala na ich przetestowanie do usług, które mogą być testowane niezależnie od kontrolera, który z nich korzysta.
 
-Czasami konieczne będzie Refaktoryzacja kodu w celu przetestowania go jednostkowo. Często polega to na identyfikowaniu abstrakcji i korzystaniu z iniekcji zależności w celu uzyskania dostępu do abstrakcji kodu, który chcesz przetestować, zamiast kodowania bezpośrednio względem infrastruktury. Rozważmy na przykład prostą metodę akcji do wyświetlania obrazów:
+Czasami konieczne będzie Refaktoryzacja kodu w celu przetestowania go jednostkowo. Często to działanie obejmuje identyfikowanie abstrakcji i użycie iniekcji zależności w celu uzyskania dostępu do abstrakcji w kodzie, który chcesz przetestować, zamiast kodowania bezpośrednio względem infrastruktury. Rozważmy na przykład tę prostą metodę działania do wyświetlania obrazów:
 
 ```csharp
 [HttpGet("[controller]/pic/{id}")]
@@ -121,7 +121,7 @@ public IActionResult GetImage(int id)
 }
 ```
 
-Testy jednostkowe tej metody są utrudnione w zależności od tego `System.IO.File` , która z nich używa do odczytu z systemu plików. Możesz przetestować to zachowanie, aby upewnić się, że działa zgodnie z oczekiwaniami, ale jest to test integracji z rzeczywistymi plikami. Należy zauważyć, że nie można testować jednostki tej trasy metody, zobaczysz, &mdash; jak to zrobić z testem funkcjonalnym wkrótce.
+Testy jednostkowe tej metody są utrudnione w zależności od tego `System.IO.File` , która z nich używa do odczytu z systemu plików. Możesz przetestować to zachowanie, aby upewnić się, że działa zgodnie z oczekiwaniami, ale jest to test integracji z rzeczywistymi plikami. Warto zauważyć, że nie można testować jednostkowo trasy tej metody, zobaczysz, &mdash; jak wkrótce wykonać te testy z testem funkcjonalnym.
 
 Jeśli nie można bezpośrednio przetestować zachowania systemu plików i nie można przetestować trasy, co to jest? Ponadto po refaktoryzacji w celu przeprowadzenia testów jednostkowych można wykryć niektóre przypadki testowe i brakujące zachowanie, takie jak obsługa błędów. Co robią metoda po znalezieniu pliku? Co należy zrobić? W tym przykładzie metoda refaktoryzacji wygląda następująco:
 
@@ -143,7 +143,7 @@ public IActionResult GetImage(int id)
 }
 ```
 
-`_logger` i `_imageService` są zarówno wstrzykiwane jak i zależności. Teraz można testować, że ten sam identyfikator, który jest przesyłany do metody akcji, jest przenoszona do `_imageService` i że wynikowe bajty są zwracane jako część FileResult. Możesz również sprawdzić, czy rejestrowanie błędów odbywa się zgodnie z oczekiwaniami, a `NotFound` wynik jest zwracany, jeśli brakuje obrazu, przy założeniu, że jest to ważne zachowanie aplikacji (czyli nie tylko kod tymczasowy dodany przez dewelopera w celu zdiagnozowania problemu). Rzeczywista logika pliku została przeniesiona do oddzielnej usługi implementacji i została uzupełniona, aby zwracała wyjątek specyficzny dla aplikacji w przypadku brakujących plików. Tę implementację można przetestować niezależnie przy użyciu testu integracji.
+`_logger` i `_imageService` są zarówno wstrzykiwane jak i zależności. Teraz można testować, że ten sam identyfikator, który jest przesyłany do metody akcji, jest przenoszona do `_imageService` i że wynikowe bajty są zwracane jako część FileResult. Możesz również sprawdzić, czy rejestrowanie błędów odbywa się zgodnie z oczekiwaniami, a `NotFound` wynik jest zwracany, jeśli brakuje obrazu, przy założeniu, że to zachowanie jest ważnym zachowaniem aplikacji (czyli nie tylko kod tymczasowy dodany przez dewelopera w celu zdiagnozowania problemu). Rzeczywista logika pliku została przeniesiona do oddzielnej usługi implementacji i została uzupełniona, aby zwracała wyjątek specyficzny dla aplikacji w przypadku brakujących plików. Tę implementację można przetestować niezależnie przy użyciu testu integracji.
 
 W większości przypadków należy użyć globalnych programów obsługi wyjątków na kontrolerach, więc ilość logiki w nich powinna być minimalna i prawdopodobnie nie być testowana. Wykonaj większość testów akcji kontrolera przy użyciu testów funkcjonalnych i `TestServer` klasy opisanej poniżej.
 
@@ -155,7 +155,7 @@ Większość testów integracji w aplikacjach ASP.NET Core należy przetestować
 
 W przypadku aplikacji ASP.NET Core `TestServer` Klasa sprawia, że testy funkcjonalne są dość łatwe do zapisu. Można skonfigurować `TestServer` za pomocą `WebHostBuilder` (lub `HostBuilder` ) bezpośrednio (jak zwykle w przypadku aplikacji) lub z `WebApplicationFactory` typem (dostępnym od wersji 2,1). Spróbuj dokładnie dopasować hosta testowego do hosta produkcyjnego, aby testy były wykonywane podobnie jak w środowisku produkcyjnym. `WebApplicationFactory`Klasa jest przydatna do konfigurowania ContentRoot TestServer, który jest używany przez ASP.NET Core do lokalizowania zasobów statycznych, takich jak widoki.
 
-Można utworzyć proste testy funkcjonalne przez utworzenie klasy testowej implementującej `IClassFixture\<WebApplicationFactory\<TEntry>>` , gdzie `TEntry` jest klasą aplikacji sieci Web `Startup` . W tym miejscu, armatura testowa może utworzyć klienta przy użyciu `CreateClient` metody fabryki:
+Można utworzyć proste testy funkcjonalne przez utworzenie klasy testowej implementującej `IClassFixture\<WebApplicationFactory\<TEntry>>` , gdzie `TEntry` jest klasą aplikacji sieci Web `Startup` . W tym interfejsie, armatura testowa może utworzyć klienta przy użyciu `CreateClient` metody fabryki:
 
 ```csharp
 public class BasicWebTests : IClassFixture<WebApplicationFactory<Startup>>
@@ -171,7 +171,7 @@ public class BasicWebTests : IClassFixture<WebApplicationFactory<Startup>>
 }
 ```
 
-Często podczas każdego przebiegu testowego należy wykonać dodatkową konfigurację lokacji, na przykład w celu skonfigurowania aplikacji do używania magazynu danych w pamięci, a następnie wypełniania aplikacji za pomocą danych testowych. W tym celu należy utworzyć własną podklasę `WebApplicationFactory\<TEntry>` i zastąpić jej `ConfigureWebHost` metodę. Poniższy przykład pochodzi z projektu eShopOnWeb FunctionalTests i jest używany jako część testów w głównej aplikacji sieci Web.
+Często podczas każdego przebiegu testowego należy wykonać dodatkową konfigurację lokacji, na przykład Konfigurując aplikację do używania magazynu danych w pamięci, a następnie wypełniania aplikacji danymi testowymi. Aby osiągnąć tę funkcję, Utwórz własną podklasę `WebApplicationFactory\<TEntry>` i Zastąp jej `ConfigureWebHost` metodę. Poniższy przykład pochodzi z projektu eShopOnWeb FunctionalTests i jest używany jako część testów w głównej aplikacji sieci Web.
 
 ```csharp
 using Microsoft.AspNetCore.Hosting;

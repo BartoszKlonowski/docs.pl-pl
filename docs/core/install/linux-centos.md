@@ -4,12 +4,12 @@ description: Przedstawiono różne sposoby instalowania zestawu .NET SDK i środ
 author: adegeo
 ms.author: adegeo
 ms.date: 11/10/2020
-ms.openlocfilehash: b30aa206057107aa17fcd62e0f042f9fe3ad56dc
-ms.sourcegitcommit: 0802ac583585110022beb6af8ea0b39188b77c43
+ms.openlocfilehash: 2c3453c79a1dc31f01577bc0c1b9e320eb307c0a
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031933"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851682"
 ---
 # <a name="install-the-net-sdk-or-the-net-runtime-on-centos"></a>Zainstaluj zestaw .NET SDK lub środowisko uruchomieniowe .NET w systemie CentOS
 
@@ -27,7 +27,7 @@ Poniższa tabela zawiera listę obecnie obsługiwanych wersji platformy .NET w s
 - ❌Wskazuje, że wersja programu CentOS lub .NET nie jest obsługiwana w tej wersji CentOS.
 - Gdy wersja programu CentOS i wersja platformy .NET mają ✔️, obsługiwane są kombinacje systemów operacyjnych i .NET.
 
-| CentOS                   | .NET Core 2.1 | .NET Core 3,1 | .NET 5,0 |
+| CentOS                   | .NET Core 2.1 | .NET Core 3.1 | .NET 5.0 |
 |--------------------------|---------------|---------------|----------------|
 | ✔️ [8](#centos-8-) | ✔️ 2,1        | ✔️ 3,1        | ✔️ 5,0 |
 | ✔️ [7](#centos-7-) | ✔️ 2,1        | ✔️ 3,1        | ✔️ 5,0 |
@@ -50,14 +50,7 @@ Następujące wersje platformy .NET nie są już obsługiwane. Pliki do pobrania
 
 ## <a name="centos-8-"></a>CentOS 8 ✔️
 
-> [!TIP]
-> Program .NET 5,0 nie jest jeszcze dostępny w repozytoriach pakietów domyślnych, ale .NET Core 3,1 to. Aby zainstalować program .NET Core 3,1, użyj `dnf install` polecenia z odpowiednim pakietem, takim jak `aspnetcore-runtime-3.1` lub `dotnet-sdk-3.1` . Poniższe instrukcje dotyczą programu .NET 5,0.
-
-[!INCLUDE [linux-prep-intro-generic](includes/linux-prep-intro-generic.md)]
-
-```bash
-sudo rpm -Uvh https://packages.microsoft.com/config/centos/8/packages-microsoft-prod.rpm
-```
+Program .NET 5,0 jest dostępny w domyślnych repozytoriach pakietów dla CentOS 8.
 
 [!INCLUDE [linux-dnf-install-50](includes/linux-install-50-dnf.md)]
 

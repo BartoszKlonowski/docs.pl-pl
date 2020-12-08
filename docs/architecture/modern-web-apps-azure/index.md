@@ -3,19 +3,21 @@ title: Tworzenie architektury nowoczesnych aplikacji internetowych za pomocą pl
 description: Przewodnik, który oferuje kompleksowe wskazówki dotyczące tworzenia monolitycznych aplikacji sieci Web przy użyciu ASP.NET Core i platformy Azure.
 author: ardalis
 ms.author: wiwagn
-ms.date: 5/25/2020
-ms.openlocfilehash: 7be03ea8edb763096b0684a62e71826f1cfcd42f
-ms.sourcegitcommit: 33deec3e814238fb18a49b2a7e89278e27888291
+ms.date: 12/07/2020
+ms.openlocfilehash: 90d092b2269315e5b6734430e82cc7211324479b
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84284458"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851298"
 ---
 # <a name="architect-modern-web-applications-with-aspnet-core-and-azure"></a>Tworzenie architektury nowoczesnych aplikacji internetowych za pomocą platformy ASP.NET Core i platformy Azure
 
 ![Obraz okładki książki nowoczesnej aplikacji sieci Web.](./media/index/web-application-guide-cover-image.png)
 
-**Edition w wersji 3.1** — zaktualizowany do ASP.NET Core 3,1
+**Edition w wersji 5.0** — zaktualizowane do ASP.NET Core 5,0
+
+Odwołaj się do [dziennika zmian](https://aka.ms/aspnet-ebook-changelog) dotyczących aktualizacji książki i wkładów społecznościowych.
 
 OPUBLIKOWANA PRZEZ
 
@@ -29,7 +31,7 @@ Redmond, Waszyngton 98052-6399
 
 Prawa autorskie © 2020 przez firmę Microsoft Corporation
 
-Wszelkie prawa zastrzeżone. Żadna część zawartości tej księgi nie może być odtwarzana ani przekazywana w żadnej formie ani za pomocą jakichkolwiek środków bez zgody na wydawcę.
+All rights reserved. Żadna część zawartości tej księgi nie może być odtwarzana ani przekazywana w żadnej formie ani za pomocą jakichkolwiek środków bez zgody na wydawcę.
 
 Ta książka jest świadczona w postaci "AS-IS" i zawiera widoki i opinie autora. Widoki, opinie i informacje wyrażone w tej książce, w tym adresy URL i inne odwołania do witryn internetowych, mogą ulec zmianie bez powiadomienia.
 
@@ -59,7 +61,7 @@ Edytory
 
 ## <a name="introduction"></a>Wprowadzenie
 
-Platforma .NET Core i ASP.NET Core oferują kilka korzyści w porównaniu z tradycyjnym programowaniem platformy .NET. Należy używać platformy .NET Core dla aplikacji serwerowych, jeśli niektóre lub wszystkie z następujących elementów są ważne dla sukcesu aplikacji:
+Program .NET 5 i ASP.NET Core oferują kilka korzyści w porównaniu z tradycyjnym programowaniem platformy .NET. Należy używać programu .NET 5 dla aplikacji serwerowych, jeśli niektóre lub wszystkie z następujących elementów są ważne dla sukcesu aplikacji:
 
 - Obsługa wielu platform.
 
@@ -71,7 +73,7 @@ Platforma .NET Core i ASP.NET Core oferują kilka korzyści w porównaniu z trad
 
 - Równoczesne przechowywanie wersji platformy .NET według aplikacji na tym samym serwerze.
 
-Tradycyjne aplikacje .NET mogą i obsługują wiele z tych wymagań, ale ASP.NET Core i .NET Core zostały zoptymalizowane w celu zapewnienia lepszej obsługi powyższych scenariuszy.
+Tradycyjne aplikacje .NET mogą i obsługują wiele z tych wymagań, ale ASP.NET Core i .NET 5 zostały zoptymalizowane w celu zapewnienia lepszej obsługi powyższych scenariuszy.
 
 Więcej i więcej organizacji umożliwia hostowanie aplikacji sieci Web w chmurze przy użyciu usług takich jak Microsoft Azure. Należy rozważyć hosting aplikacji w chmurze, jeśli istnieją następujące istotne dla Twojej aplikacji lub organizacji:
 
@@ -89,7 +91,7 @@ Tworzenie aplikacji sieci Web za pomocą ASP.NET Core hostowanych na platformie 
 
 ## <a name="version"></a>Wersja
 
-Ten przewodnik został zmieniony w celu uwzględnienia wersji **programu .NET Core 3,1** wraz z wieloma dodatkowymi aktualizacjami związanymi z tym samymi "" Wave "technologiami (czyli platformą Azure i dodatkowymi technologiami innych firm), które są zgodne z wersją platformy .net Core 3,1. Dlatego też wersja książki została zaktualizowana do wersji **3,1**.
+Ten przewodnik został zmieniony w celu uwzględnienia wersji **programu .net 5,0** wraz z wieloma dodatkowymi aktualizacjami związanymi z tym samymi "" Wave "technologiami (czyli platformą Azure i dodatkowymi technologiami innych firm), które są zgodne z wersją platformy .NET 5,0. Dlatego też wersja książki została zaktualizowana do wersji **5,0**.
 
 ## <a name="purpose"></a>Przeznaczenie
 
@@ -118,7 +120,7 @@ Możesz przesłać dalej ten przewodnik do zespołu, aby pomóc w zapewnieniu po
 
 ## <a name="references"></a>Odwołania
 
-- **Wybieranie między programami .NET Core i .NET Framework na potrzeby aplikacji serwerowych**  
+- **Wybór między platformą .NET 5 i .NET Framework dla aplikacji serwerowych**  
   [https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server](../../standard/choosing-core-framework-server.md)
 
 >[!div class="step-by-step"]

@@ -3,22 +3,22 @@ title: Pracuj z danymi w aplikacjach ASP.NET Core
 description: Tworzenie architektury nowoczesnych aplikacji sieci Web przy użyciu ASP.NET Core i platformy Azure | Praca z danymi w aplikacjach ASP.NET Core
 author: ardalis
 ms.author: wiwagn
-ms.date: 08/12/2020
+ms.date: 12/01/2020
 no-loc:
 - Blazor
 - WebAssembly
-ms.openlocfilehash: cfc91bb811697176ef5d9ecd6b412bd36af3af04
-ms.sourcegitcommit: b4a46f6d7ebf44c0035627d00924164bcae2db30
+ms.openlocfilehash: 9d85d700ecb8d6cbe7afd8d3c724f499ee5fed71
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91438058"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851259"
 ---
 # <a name="working-with-data-in-aspnet-core-apps"></a>Praca z danymi w aplikacjach ASP.NET Core
 
 > "Dane są cenne i będą trwać dłużej niż same systemy".
 >
-> Tim — Lewandowski
+> Tim Berners-Lee
 
 Dostęp do danych jest ważną częścią niemal każdej aplikacji oprogramowania. ASP.NET Core obsługuje wiele opcji dostępu do danych, w tym Entity Framework Core (i Entity Framework 6), i może współdziałać z dowolnymi strukturami dostępu do danych platformy .NET. Wybór struktury dostępu do danych, która ma być używana, zależy od potrzeb aplikacji. Abstrakcję tych opcji z projektów ApplicationCore i interfejsów użytkownika oraz Hermetyzowanie szczegółów implementacji w infrastrukturze, pomaga w wytwarzaniu luźno sprzężonych, weryfikowalne oprogramowania.
 
@@ -121,7 +121,7 @@ EF Core obsługuje metody synchroniczne i asynchroniczne do pobierania i zapisyw
 
 ### <a name="fetching-related-data"></a>Pobieranie powiązanych danych
 
-Gdy EF Core Pobiera jednostki, wypełnia wszystkie właściwości, które są przechowywane bezpośrednio w tej jednostce w bazie danych. Właściwości nawigacji, takie jak listy powiązanych jednostek, nie są wypełniane i mogą mieć ustawioną wartość null. Dzięki temu EF Core nie pobiera większej ilości danych niż jest to potrzebne, co jest szczególnie ważne w przypadku aplikacji sieci Web, które muszą szybko przetwarzać żądania i zwracać odpowiedzi w wydajny sposób. Aby uwzględnić relacje z jednostką przy użyciu _ładowania eager_, należy określić właściwość przy użyciu metody include Extension w zapytaniu, jak pokazano poniżej:
+Gdy EF Core Pobiera jednostki, wypełnia wszystkie właściwości, które są przechowywane bezpośrednio w tej jednostce w bazie danych. Właściwości nawigacji, takie jak listy powiązanych jednostek, nie są wypełniane i mogą mieć ustawioną wartość null. Ten proces zapewnia, że EF Core nie pobiera większej ilości danych niż jest to konieczne, co jest szczególnie ważne w przypadku aplikacji sieci Web, które muszą szybko przetwarzać żądania i zwracać odpowiedzi w wydajny sposób. Aby uwzględnić relacje z jednostką przy użyciu _ładowania eager_, należy określić właściwość przy użyciu metody include Extension w zapytaniu, jak pokazano poniżej:
 
 ```csharp
 // .Include requires using Microsoft.EntityFrameworkCore
@@ -148,15 +148,15 @@ query = specification.IncludeStrings.Aggregate(query,
             (current, include) => current.Include(include));
 ```
 
-Kolejną opcją ładowania powiązanych danych jest użycie _jawnego ładowania_. Jawne ładowanie umożliwia załadowanie dodatkowych danych do jednostki, która została już pobrana. Ponieważ obejmuje to oddzielne żądanie do bazy danych, nie jest to zalecane w przypadku aplikacji sieci Web, co powinno zminimalizować liczbę rejsów w bazie danych na żądanie.
+Kolejną opcją ładowania powiązanych danych jest użycie _jawnego ładowania_. Jawne ładowanie umożliwia załadowanie dodatkowych danych do jednostki, która została już pobrana. Ponieważ takie podejście obejmuje oddzielne żądanie do bazy danych, nie jest to zalecane w przypadku aplikacji sieci Web, co powinno zminimalizować liczbę rejsów w bazie danych na żądanie.
 
-_Ładowanie z opóźnieniem_ to funkcja, która automatycznie ładuje powiązane dane, ponieważ odwołuje się do niej aplikacja. EF Core dodano obsługę ładowania z opóźnieniem w wersji 2,1. Ładowanie z opóźnieniem nie jest domyślnie włączone i wymaga zainstalowania `Microsoft.EntityFrameworkCore.Proxies` . Podobnie jak w przypadku jawnego ładowania, ładowanie z opóźnieniem powinno być zwykle wyłączone dla aplikacji sieci Web, ponieważ jego użycie spowoduje, że w każdym żądaniu sieci Web zostaną wykonane dodatkowe zapytania bazy danych. Niestety, obciążenie związane z ładowaniem opóźnionym często jest niezauważalne w czasie projektowania, gdy opóźnienie jest małe i często zestawy danych używane do testowania są małe. Jednak w środowisku produkcyjnym, z większą liczbą użytkowników, większą ilością danych i większym opóźnieniu, dodatkowe żądania bazy danych mogą być często przyczyną niskiej wydajności aplikacji sieci Web, które intensywnie wykorzystują ładowanie z opóźnieniem.
+_Ładowanie z opóźnieniem_ to funkcja, która automatycznie ładuje powiązane dane, ponieważ odwołuje się do niej aplikacja. EF Core dodano obsługę ładowania z opóźnieniem w wersji 2,1. Ładowanie z opóźnieniem nie jest domyślnie włączone i wymaga zainstalowania `Microsoft.EntityFrameworkCore.Proxies` . Podobnie jak w przypadku jawnego ładowania, ładowanie z opóźnieniem powinno być zwykle wyłączone dla aplikacji sieci Web, ponieważ jego użycie spowoduje, że w każdym żądaniu sieci Web zostaną wykonane dodatkowe zapytania bazy danych. Niestety, narzuty związane z ładowaniem opóźnionym często są niezauważalne w czasie projektowania, gdy opóźnienie jest małe i często zestawy danych używane do testowania są małe. Jednak w środowisku produkcyjnym, z większą liczbą użytkowników, większą ilością danych i większym opóźnieniu, dodatkowe żądania bazy danych mogą być często przyczyną niskiej wydajności aplikacji sieci Web, które intensywnie wykorzystują ładowanie z opóźnieniem.
 
 [Unikaj załadowania jednostek w aplikacjach sieci Web](https://ardalis.com/avoid-lazy-loading-entities-in-asp-net-applications)
 
 ### <a name="encapsulating-data"></a>Hermetyzowanie danych
 
-EF Core obsługuje kilka funkcji, które umożliwiają modelowi prawidłowe hermetyzację stanu. Typowym problemem w modelach domen jest ujawnienie przez nich właściwości nawigacji kolekcji jako typy list dostępnych publicznie. Pozwala to dowolnym współpracownikowi na manipulowanie zawartością tych typów kolekcji, co może spowodować obejście ważnych reguł firmy związanych z kolekcją, prawdopodobnie pozostawiając obiekt w nieprawidłowym stanie. Rozwiązaniem tego problemu jest udostępnienie dostępu tylko do odczytu do powiązanych kolekcji i jawne udostępnienie metod definiujących sposoby manipulowania nimi przez klientów, jak w tym przykładzie:
+EF Core obsługuje kilka funkcji, które umożliwiają modelowi prawidłowe hermetyzację stanu. Typowym problemem w modelach domen jest ujawnienie przez nich właściwości nawigacji kolekcji jako typy list dostępnych publicznie. Ten problem umożliwia jakiemukolwiek współpracownikowi manipulowanie zawartością tych typów kolekcji, co może spowodować obejście ważnych reguł firmy związanych z kolekcją, prawdopodobnie pozostawiając obiekt w nieprawidłowym stanie. Rozwiązaniem tego problemu jest ujawnienie dostępu tylko do odczytu do powiązanych kolekcji i jawne udostępnienie metod definiujących sposoby manipulowania nimi przez klientów, jak w tym przykładzie:
 
 ```csharp
 public class Basket : BaseEntity
@@ -305,7 +305,7 @@ public async Task<IEnumerable<CatalogType>> GetCatalogTypesWithDapper()
 }
 ```
 
-Jeśli konieczne jest skompilowanie bardziej złożonych grafów obiektów za pomocą Dapper, należy napisać powiązane zapytania samodzielnie (w przeciwieństwie do dodania dołączenia w EF Core). Jest to obsługiwane za pomocą różnych składni, w tym funkcji o nazwie mapowanie wielokrotne, która umożliwia mapowanie poszczególnych wierszy na wiele mapowanych obiektów. Na przykład, jeśli dane wpisu klasy są właścicielami właściwości typu użytkownika, następujące SQL zwróci wszystkie niezbędne dane:
+Jeśli konieczne jest skompilowanie bardziej złożonych grafów obiektów za pomocą Dapper, należy napisać powiązane zapytania samodzielnie (w przeciwieństwie do dodania dołączenia w EF Core). Ta funkcja jest obsługiwana za pomocą różnych składni, w tym funkcji o nazwie mapowanie wielokrotne, która umożliwia mapowanie poszczególnych wierszy na wiele mapowanych obiektów. Na przykład, jeśli dane wpisu klasy są właścicielami właściwości typu użytkownika, następujące SQL zwróci wszystkie niezbędne dane:
 
 ```sql
 select * from #Posts p
@@ -337,9 +337,9 @@ W przypadku większości aplikacji i większości części prawie wszystkich apl
 
 Tradycyjnie relacyjne bazy danych, takie jak SQL Server, korzystają z witryny Marketplace na potrzeby trwałego magazynowania danych, ale nie są jedynymi dostępnymi rozwiązaniami. Bazy danych NoSQL, takie jak [MongoDB](https://www.mongodb.com/what-is-mongodb) , oferują inne podejście do przechowywania obiektów. Zamiast mapowania obiektów do tabel i wierszy, kolejną opcją jest Serializacja całego wykresu obiektów i przechowywanie wyniku. Zalety tego podejścia, co najmniej początkowo, są prostoty i wydajności. Prostszym sposobem jest przechowywanie pojedynczego serializowanego obiektu z kluczem niż w celu rozdzielenia obiektu na wiele tabel z relacjami i aktualizacji oraz wierszy, które mogły ulec zmianie od czasu ostatniego pobrania obiektu z bazy danych. Podobnie pobieranie i deserializacja pojedynczego obiektu z magazynu opartego na kluczach jest zwykle znacznie szybsze i łatwiejsze niż złożone sprzężenia lub wiele zapytań bazy danych wymaganych do pełnego zredagowania tego samego obiektu z relacyjnej bazy danych. Brak blokad lub transakcji lub stały schemat sprawia również, że bazy danych NoSQL mogą być skalowane na wielu maszynach i obsługują bardzo duże zestawy danych.
 
-Z drugiej strony bazy danych NoSQL (jak są zwykle wywoływane) mają swoje wady. Relacyjne bazy danych wykorzystują normalizację w celu wymuszenia spójności i uniknięcia duplikowania danych. Pozwala to zmniejszyć łączny rozmiar bazy danych i zapewnić, że aktualizacje udostępnionych danych będą dostępne natychmiast w całej bazie danych. W relacyjnej bazie danych tabela adresów może odwoływać się do tabeli kraju według identyfikatora, w taki sposób, że jeśli nazwa kraju/regionu została zmieniona, rekordy adresów byłyby korzystne dla aktualizacji, które nie będą musiały zostać zaktualizowane. Jednak w przypadku bazy danych NoSQL adres i jego stowarzyszony kraj mogą być serializowane w ramach wielu przechowywanych obiektów. Aktualizacja nazwy kraju/regionu wymagała aktualizacji wszystkich takich obiektów, a nie jednego wiersza. Relacyjne bazy danych mogą również zapewnić relacyjną integralność, wymuszając reguły, takie jak klucze obce. Bazy danych NoSQL zazwyczaj nie oferują takich ograniczeń dla swoich danych.
+Z drugiej strony bazy danych NoSQL (jak są zwykle wywoływane) mają swoje wady. Relacyjne bazy danych wykorzystują normalizację w celu wymuszenia spójności i uniknięcia duplikowania danych. Takie podejście zmniejsza łączny rozmiar bazy danych i gwarantuje, że aktualizacje udostępnionych danych będą dostępne bezpośrednio w całej bazie danych. W relacyjnej bazie danych tabela adresów może odwoływać się do tabeli kraju według identyfikatora, w taki sposób, że jeśli nazwa kraju/regionu została zmieniona, rekordy adresów byłyby korzystne dla aktualizacji, które nie będą musiały zostać zaktualizowane. Jednak w NoSQL bazie danych, adres i skojarzony z nim kraj mogą być serializowane w ramach wielu przechowywanych obiektów. Aktualizacja nazwy kraju/regionu wymagała aktualizacji wszystkich takich obiektów, a nie jednego wiersza. Relacyjne bazy danych mogą również zapewnić relacyjną integralność, wymuszając reguły, takie jak klucze obce. Bazy danych NoSQL zazwyczaj nie oferują takich ograniczeń dla swoich danych.
 
-Inne bazy danych NoSQL złożoności muszą zająć się przechowywaniem wersji. Zmiany właściwości obiektu mogą nie być możliwe do deserializacji z wcześniejszych wersji, które były przechowywane. W ten sposób wszystkie istniejące obiekty, które mają serializowaną (poprzednią) wersję obiektu, muszą zostać zaktualizowane, aby były zgodne ze swoim nowym schematem. Nie różni się to od relacyjnej bazy danych, gdzie zmiany schematu czasami wymagają skryptów aktualizacji lub mapowania aktualizacji. Jednak liczba wpisów, które muszą zostać zmodyfikowane, jest często znacznie większa w podejściu NoSQL, ponieważ istnieje więcej duplikacji danych.
+Inne bazy danych NoSQL złożoności muszą zająć się przechowywaniem wersji. Zmiany właściwości obiektu mogą nie być możliwe do deserializacji z wcześniejszych wersji, które były przechowywane. W ten sposób wszystkie istniejące obiekty, które mają serializowaną (poprzednią) wersję obiektu, muszą zostać zaktualizowane, aby były zgodne ze swoim nowym schematem. Ta metoda nie różni się koncepcyjnie od relacyjnej bazy danych, gdzie zmiany schematu czasami wymagają skryptów aktualizacji lub mapowania aktualizacji. Jednak liczba wpisów, które muszą zostać zmodyfikowane, jest często znacznie większa w podejściu NoSQL, ponieważ istnieje więcej duplikacji danych.
 
 Istnieje możliwość, że w bazach danych NoSQL są przechowywane wiele wersji obiektów, ale nie są zwykle obsługiwane. Jednak w tym przypadku kod aplikacji będzie musiał uwzględnić istnienie poprzednich wersji obiektów, co zwiększa złożoność.
 
@@ -377,13 +377,13 @@ Oprócz opcji magazynu relacyjnego i NoSQL aplikacje ASP.NET Core mogą używać
 
 ## <a name="caching"></a>Buforowanie
 
-W aplikacjach internetowych każde żądanie sieci Web powinno być wykonywane w najkrótszym możliwym czasie. Jednym ze sposobów osiągnięcia tego celu jest ograniczenie liczby wywołań zewnętrznych, które serwer musi wykonać, aby zakończyć żądanie. Buforowanie obejmuje przechowywanie kopii danych na serwerze (lub w innym magazynie danych, który jest bardziej czytelny niż źródło danych). Aplikacje sieci Web, a w szczególności niespa tradycyjne aplikacje sieci Web, muszą kompilować cały interfejs użytkownika przy użyciu każdego żądania. Często wiąże się to z wielokrotnym wykonywaniem wielu zapytań bazy danych z jednego żądania użytkownika do następnego. W większości przypadków te zmiany danych są rzadko zmieniane, więc istnieje nieco powód, aby ciągle zażądać ich z bazy danych. ASP.NET Core obsługuje buforowanie odpowiedzi, do buforowania całych stron i buforowania danych, co zapewnia bardziej szczegółowe zachowanie buforowania.
+W aplikacjach internetowych każde żądanie sieci Web powinno być wykonywane w najkrótszym możliwym czasie. Jednym ze sposobów osiągnięcia tej funkcji jest ograniczenie liczby wywołań zewnętrznych, które serwer musi wykonać, aby zakończyć żądanie. Buforowanie obejmuje przechowywanie kopii danych na serwerze (lub w innym magazynie danych, który jest bardziej czytelny niż źródło danych). Aplikacje sieci Web, a w szczególności niespa tradycyjne aplikacje sieci Web, muszą kompilować cały interfejs użytkownika przy użyciu każdego żądania. Takie podejście często polega na tym, że wiele z tych samych kwerend bazy danych jest wielokrotnie powtarzanych z jednego żądania użytkownika do następnego. W większości przypadków te zmiany danych są rzadko zmieniane, więc istnieje nieco powód, aby ciągle zażądać ich z bazy danych. ASP.NET Core obsługuje buforowanie odpowiedzi, do buforowania całych stron i buforowania danych, co zapewnia bardziej szczegółowe zachowanie buforowania.
 
-Podczas implementowania buforowania należy pamiętać o rozdzieleniu obaw. Unikaj implementowania logiki buforowania w logice dostępu do danych lub w interfejsie użytkownika. Zamiast tego hermetyzowaj buforowanie we własnych klasach i używaj konfiguracji do zarządzania zachowaniem. Jest to zgodne z zasadami dotyczącymi otwartych/zamkniętych i pojedynczych odpowiedzialności. ułatwia to zarządzanie sposobem korzystania z pamięci podręcznej w aplikacji podczas jej rozszerzania.
+Podczas implementowania buforowania należy pamiętać o rozdzieleniu obaw. Unikaj implementowania logiki buforowania w logice dostępu do danych lub w interfejsie użytkownika. Zamiast tego hermetyzowaj buforowanie we własnych klasach i używaj konfiguracji do zarządzania zachowaniem. Takie podejście następuje zgodnie z zasadami dotyczącymi otwartych/zamkniętych i pojedynczych odpowiedzialności. ułatwi to zarządzanie sposobem korzystania z pamięci podręcznej w aplikacji podczas jej rozszerzania.
 
 ### <a name="aspnet-core-response-caching"></a>Buforowanie odpowiedzi ASP.NET Core
 
-ASP.NET Core obsługuje dwa poziomy buforowania odpowiedzi. Pierwszy poziom nie buforuje żadnych elementów na serwerze, ale dodaje nagłówki HTTP, które instruują klientów i serwery proxy w celu buforowania odpowiedzi. Jest to implementowane przez dodanie atrybutu ResponseCache do poszczególnych kontrolerów lub akcji:
+ASP.NET Core obsługuje dwa poziomy buforowania odpowiedzi. Pierwszy poziom nie buforuje żadnych elementów na serwerze, ale dodaje nagłówki HTTP, które instruują klientów i serwery proxy w celu buforowania odpowiedzi. Ta funkcja jest implementowana przez dodanie atrybutu ResponseCache do poszczególnych kontrolerów lub akcji:
 
 ```csharp
 [ResponseCache(Duration = 60)]
@@ -416,7 +416,7 @@ Oprogramowanie pośredniczące buforowania odpowiedzi automatycznie buforuje odp
 
 ### <a name="data-caching"></a>Buforowanie danych
 
-Zamiast (lub oprócz) buforowania pełnych odpowiedzi sieci Web, można buforować wyniki poszczególnych zapytań dotyczących danych. W tym celu można użyć usługi do buforowania pamięci na serwerze sieci Web lub użyć [rozproszonej pamięci podręcznej](/aspnet/core/performance/caching/distributed). W tej sekcji pokazano, jak zaimplementować program w pamięci podręcznej.
+Zamiast (lub oprócz) buforowania pełnych odpowiedzi sieci Web, można buforować wyniki poszczególnych zapytań dotyczących danych. W przypadku tej funkcji można użyć usługi do buforowania pamięci na serwerze sieci Web lub użyć [rozproszonej pamięci podręcznej](/aspnet/core/performance/caching/distributed). W tej sekcji pokazano, jak zaimplementować program w pamięci podręcznej.
 
 Dodano obsługę buforowania pamięci (lub rozproszonego) w ConfigureServices:
 
@@ -477,7 +477,7 @@ public class CachedCatalogService : ICatalogService
 }
 ```
 
-Aby skonfigurować aplikację do korzystania z buforowanej wersji usługi, ale nadal zezwolić usłudze na uzyskanie wystąpienia CatalogService, którego potrzebuje w jego konstruktorze, Dodaj następujące elementy w ConfigureServices:
+Aby skonfigurować aplikację do korzystania z buforowanej wersji usługi, ale nadal zezwolić usłudze na uzyskanie wystąpienia CatalogService, które jest potrzebne w jego konstruktorze, Dodaj następujące wiersze w ConfigureServices:
 
 ```csharp
 services.AddMemoryCache();
@@ -485,7 +485,7 @@ services.AddScoped<ICatalogService, CachedCatalogService>();
 services.AddScoped<CatalogService>();
 ```
 
-W tym miejscu baza danych wywołuje pobieranie danych wykazu tylko raz na minutę, a nie na każdym żądaniu. W zależności od ruchu do lokacji może to mieć znaczny wpływ na liczbę zapytań wykonywanych w bazie danych oraz średni czas ładowania strony dla strony głównej, który jest obecnie zależny od wszystkich trzech zapytań narażonych na tę usługę.
+W przypadku tego kodu program wywołuje pobieranie danych wykazu tylko raz na minutę, a nie na każdym żądaniu. W zależności od ruchu do lokacji może to mieć znaczny wpływ na liczbę zapytań wykonywanych w bazie danych oraz średni czas ładowania strony dla strony głównej, który jest obecnie zależny od wszystkich trzech zapytań narażonych na tę usługę.
 
 Problem, który powstaje, gdy buforowanie jest zaimplementowane, to _dane nieodświeżone_ — czyli dane, które uległy zmianie w źródle, ale w pamięci podręcznej pozostaje nieaktualna wersja. Prostym sposobem na ograniczenie tego problemu jest użycie małych okresów pamięci podręcznej, ponieważ w przypadku zajętej aplikacji istnieje ograniczone dodatkowe korzyści umożliwiające rozszerzanie danych długości. Rozważmy na przykład stronę, która tworzy zapytanie pojedynczej bazy danych i żąda 10 razy na sekundę. Jeśli ta strona jest buforowana przez jedną minutę, spowoduje to liczbę zapytań bazy danych wykonanych na minutę do porzucenia z 600 do 1, zmniejszenie 99,8%. Jeśli zamiast tego czas trwania pamięci podręcznej został wykonany jedną godzinę, ogólna obniżka wynosi 99,997%, ale teraz prawdopodobieństwo i potencjalny wiek starych danych są znacznie większe.
 
@@ -523,7 +523,7 @@ Przykład aplikacji można znaleźć Blazor WebAssembly w [aplikacji eShopOnWeb 
 
 **Rysunek 8-3.** Zrzut ekranu administratora katalogu eShopOnWeb.
 
-Podczas pobierania danych z interfejsów API sieci Web w Blazor WebAssembly aplikacji wystarczy użyć wystąpienia `HttpClient` tak samo jak w przypadku dowolnej aplikacji .NET. Podstawowe kroki polegają na utworzeniu żądania wysłania (jeśli jest to wymagane, zazwyczaj w przypadku żądań POST lub PUT), od samego żądania, sprawdzenia kodu stanu i deserializacji odpowiedzi. Jeśli zamierzasz wykonać wiele żądań do danego zestawu interfejsów API, warto hermetyzować interfejsy API i konfigurować `HttpClient` adres podstawowy centralnie. W ten sposób, jeśli musisz dostosować dowolne z tych ustawień między środowiskami, możesz wprowadzić zmiany w jednym miejscu. Obsługę tej usługi należy dodać w programie `Program.Main` :
+Podczas pobierania danych z interfejsów API sieci Web w Blazor WebAssembly aplikacji wystarczy użyć wystąpienia `HttpClient` tak samo jak w przypadku dowolnej aplikacji .NET. Podstawowe kroki polegają na utworzeniu żądania wysłania (jeśli to konieczne, zazwyczaj w przypadku żądań POST lub PUT), od samego żądania, sprawdzenia kodu stanu i deserializacji odpowiedzi. Jeśli zamierzasz wykonać wiele żądań do danego zestawu interfejsów API, warto hermetyzować interfejsy API i konfigurować `HttpClient` adres podstawowy centralnie. W ten sposób, jeśli musisz dostosować dowolne z tych ustawień między środowiskami, możesz wprowadzić zmiany w jednym miejscu. Obsługę tej usługi należy dodać w programie `Program.Main` :
 
 ```csharp
 builder.Services.AddScoped(sp =>
@@ -540,9 +540,9 @@ _httpClient.DefaultRequestHeaders.Authorization =
     new AuthenticationHeaderValue("Bearer", token);
 ```
 
-Można to zrobić z dowolnego składnika, który został wprowadzony `HttpClient` do niego, pod warunkiem, że `HttpClient` nie został dodany do usług aplikacji z `Transient` okresem istnienia. Każde odwołanie do `HttpClient` w aplikacji odwołuje się do tego samego wystąpienia, więc zmiany w nim w jednym przepływie składnika przez całą aplikację. Dobrym miejscem do wykonania tego sprawdzenia uwierzytelniania (po określeniu tokenu) jest składnik współużytkowany, taki jak główna Nawigacja dla witryny. Dowiedz się więcej na temat tego podejścia w `BlazorAdmin` projekcie w [aplikacji eShopOnWeb Reference](https://github.com/dotnet-architecture/eShopOnWeb).
+To działanie można wykonać z dowolnego składnika, który został wprowadzony `HttpClient` do niego, pod warunkiem, że `HttpClient` nie został dodany do usług aplikacji z `Transient` okresem istnienia. Każde odwołanie do `HttpClient` w aplikacji odwołuje się do tego samego wystąpienia, więc zmiany w nim w jednym przepływie składnika przez całą aplikację. Dobrym miejscem do wykonania tego sprawdzenia uwierzytelniania (po określeniu tokenu) jest składnik współużytkowany, taki jak główna Nawigacja dla witryny. Dowiedz się więcej na temat tego podejścia w `BlazorAdmin` projekcie w [aplikacji eShopOnWeb Reference](https://github.com/dotnet-architecture/eShopOnWeb).
 
-Jedną z korzyści w Blazor WebAssembly porównaniu do tradycyjnych aplikacji jednostronicowych języka JavaScript jest to, że nie trzeba przechowywać zsynchronizowanych kopii obiektów transferów danych (DTO). Projekt Blazor WebAssembly i projekt interfejsu API sieci Web mogą współużytkować ten sam DTO w wspólnym projekcie udostępnionym. Eliminuje to pewne tarcie podczas opracowywania aplikacji jednostronicowych.
+Jedną z korzyści w Blazor WebAssembly porównaniu do tradycyjnych aplikacji jednostronicowych języka JavaScript jest to, że nie trzeba przechowywać zsynchronizowanych kopii obiektów transferów danych (DTO). Projekt Blazor WebAssembly i projekt interfejsu API sieci Web mogą współużytkować ten sam DTO w wspólnym projekcie udostępnionym. Takie podejście eliminuje pewne tarcie dotyczące opracowywania aplikacji jednostronicowych.
 
 Aby szybko pobrać dane z punktu końcowego interfejsu API, można użyć wbudowanej metody pomocnika `GetFromJsonAsync` . Istnieją podobne metody dla wpisów POST, PUT itp. Poniżej pokazano, jak uzyskać CatalogItem z punktu końcowego interfejsu API przy użyciu skonfigurowanej `HttpClient` w Blazor WebAssembly aplikacji:
 

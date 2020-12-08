@@ -1,7 +1,7 @@
 ---
 title: Standardowe ciągi formatujące datę i godzinę
 description: Dowiedz się, jak używać standardowego ciągu formatu daty i godziny, aby zdefiniować tekstową reprezentację wartości daty i godziny w programie .NET.
-ms.date: 11/05/2020
+ms.date: 12/07/2020
 dev_langs:
 - csharp
 - vb
@@ -13,13 +13,14 @@ helpviewer_keywords:
 - custom date and time format strings
 - formatting [.NET], time
 - date and time strings
+ms.topic: reference
 ms.custom: contperfq2
-ms.openlocfilehash: b6917fa8a012a6fe52db1ea2b79397a0484d9d8f
-ms.sourcegitcommit: 965a5af7918acb0a3fd3baf342e15d511ef75188
+ms.openlocfilehash: 688aaf7a1814e132f3bffa48394873653bf314e8
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831328"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851135"
 ---
 # <a name="standard-date-and-time-format-strings"></a>Standardowe ciągi formatujące datę i godzinę
 
@@ -479,7 +480,7 @@ Ponadto, jeśli używasz <xref:System.Globalization.CultureInfo.%23ctor%28System
 
 Na formatowanie mają wpływ właściwości bieżącego <xref:System.Globalization.DateTimeFormatInfo> obiektu, które są dostarczane niejawnie przez bieżącą kulturę wątku lub jawnie przez <xref:System.IFormatProvider> parametr metody, która wywołuje formatowanie. Dla <xref:System.IFormatProvider> parametru, aplikacja powinna określać <xref:System.Globalization.CultureInfo> obiekt, który reprezentuje kulturę, lub <xref:System.Globalization.DateTimeFormatInfo> obiekt, który reprezentuje konwencje formatowania daty i godziny określonej kultury. Wiele specyfikatorów standardowego formatu daty i godziny to aliasy dla wzorców formatowania zdefiniowanych przez właściwości bieżącego <xref:System.Globalization.DateTimeFormatInfo> obiektu. Aplikacja może zmienić wynik wygenerowany przez niektóre standardowe specyfikatory formatu daty i godziny, zmieniając odpowiednie wzorce formatu daty i godziny odpowiedniej <xref:System.Globalization.DateTimeFormatInfo> właściwości.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - <xref:System.DateTime?displayProperty=nameWithType>
 - <xref:System.DateTimeOffset?displayProperty=nameWithType>

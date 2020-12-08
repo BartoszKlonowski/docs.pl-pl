@@ -3,18 +3,18 @@ title: Zasady dotyczące architektury
 description: Tworzenie architektury nowoczesnych aplikacji sieci Web przy użyciu ASP.NET Core i platformy Azure | Zasady architektury
 author: ardalis
 ms.author: wiwagn
-ms.date: 12/04/2019
-ms.openlocfilehash: a3444071abae89780304a9687e486f3842283a33
-ms.sourcegitcommit: 046a9c22487551360e20ec39fc21eef99820a254
+ms.date: 12/01/2020
+ms.openlocfilehash: f4079e0409c1675e8f8a3e494303683daeef29c1
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83396245"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851415"
 ---
 # <a name="architectural-principles"></a>Zasady dotyczące architektury
 
 > "Jeśli konstruktory skompilowane przez programistów w sposób, w jaki programiści zapisały programy, to pierwszy Woodpecker, który miał być zniszczony Civilization".  
-> _\-Gerald Weinberg_
+> _\- Gerald Weinberg_
 
 Należy wziąć pod uwagę możliwość tworzenia i projektowania rozwiązań programistycznych. Zasady przedstawione w tej sekcji mogą ułatwić podejmowanie decyzji dotyczących architektury, które będą powodowały czyste i utrzymywane w obsłudze aplikacje. Ogólnie rzecz biorąc, te zasady przeprowadzą Cię przez proces tworzenia aplikacji poza dyskretnymi składnikami, które nie są ściśle powiązane z innymi częściami aplikacji, ale raczej komunikują się przez jawne interfejsy lub systemy obsługi komunikatów.
 
@@ -30,7 +30,7 @@ Architektura aplikacji może być logicznie skompilowana, aby przestrzegać tej 
 
 Różne części aplikacji powinny używać **hermetyzacji** do izolowania ich od innych części aplikacji. Składniki aplikacji i warstwy powinny mieć możliwość dostosowania ich wewnętrznej implementacji bez przerywania współpracowników, tak długo, jak kontrakty zewnętrzne nie zostały naruszone. Odpowiednie użycie hermetyzacji pomaga osiągnąć swobodny sprzężenie i modułowość w projektach aplikacji, ponieważ obiekty i pakiety można zamienić na alternatywne implementacje, o ile ten sam interfejs jest obsługiwany.
 
-W klasach hermetyzacja jest realizowana przez ograniczenie poza dostępem do stanu wewnętrznego klasy. Jeśli aktor zewnętrzny chce manipulować stanem obiektu, należy to zrobić za pośrednictwem dobrze zdefiniowanej funkcji (lub metody ustawiającej właściwości), a nie bezpośredniego dostępu do stanu prywatnego obiektu. Podobnie składniki aplikacji i aplikacje powinny ujawniać dobrze zdefiniowane interfejsy dla współpracowników, zamiast zezwalać na bezpośrednie modyfikowanie ich stanu. Pozwala to na rozbicie projektu wewnętrznego aplikacji na czas bez obaw, że takie działanie spowoduje przerwanie współpracowników, dopóki są utrzymywane umowy publiczne.
+W klasach hermetyzacja jest realizowana przez ograniczenie poza dostępem do stanu wewnętrznego klasy. Jeśli aktor zewnętrzny chce manipulować stanem obiektu, należy to zrobić za pośrednictwem dobrze zdefiniowanej funkcji (lub metody ustawiającej właściwości), a nie bezpośredniego dostępu do stanu prywatnego obiektu. Podobnie składniki aplikacji i aplikacje powinny ujawniać dobrze zdefiniowane interfejsy dla współpracowników, zamiast zezwalać na bezpośrednie modyfikowanie ich stanu. Takie podejście zwalnia projekt wewnętrzny aplikacji do rozbudowania z upływem czasu bez obaw, że takie działanie spowoduje przerwanie współpracowników, dopóki są utrzymywane umowy publiczne.
 
 ### <a name="dependency-inversion"></a>Niewersja zależności
 
@@ -95,11 +95,11 @@ Wymaganie, aby klasy miały dowolne z powyższych funkcji lub zachowań, dodaje 
 
 ### <a name="bounded-contexts"></a>Powiązane konteksty
 
-**Powiązane konteksty** są głównym wzorcem w projekcie opartym na domenie. Zapewniają one sposób działania złożoności w dużych aplikacjach lub organizacjach, dzieląc je na osobne moduły koncepcyjne. Każdy moduł koncepcyjny reprezentuje kontekst, który jest oddzielony od innych kontekstów (w związku z czym jest ograniczony) i może się niezależnie rozwijać. Każdy związany kontekst powinien być bezpłatny, aby można było wybrać własne nazwy dla koncepcji w nim i powinien mieć wyłączny dostęp do własnego magazynu trwałości.
+**Powiązane konteksty** są głównym wzorcem w projekcie Domain-Driven. Zapewniają one sposób działania złożoności w dużych aplikacjach lub organizacjach, dzieląc je na osobne moduły koncepcyjne. Każdy moduł koncepcyjny reprezentuje kontekst, który jest oddzielony od innych kontekstów (w związku z czym jest ograniczony) i może się niezależnie rozwijać. Każdy związany kontekst powinien być bezpłatny, aby można było wybrać własne nazwy dla koncepcji w nim i powinien mieć wyłączny dostęp do własnego magazynu trwałości.
 
 Co najmniej poszczególne aplikacje sieci Web powinny dążyć do własnego kontekstu, z własnym magazynem trwałości dla ich modelu biznesowego, a nie do udostępniania bazy danych innym aplikacjom. Komunikacja między kontekstami ograniczonymi odbywa się za pomocą interfejsów programistycznych, a nie za pomocą udostępnionej bazy danych, która umożliwia wykonywanie logiki biznesowej i zdarzeń w odpowiedzi na zmiany, które mają miejsce. Powiązane konteksty są ściśle mapowane na mikrousługi, które są również idealnie zaimplementowane jako własne powiązane konteksty.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Wzorce projektowe JAVA: zasady](https://java-design-patterns.com/principles/)
 - [Ograniczony kontekst](https://martinfowler.com/bliki/BoundedContext.html)

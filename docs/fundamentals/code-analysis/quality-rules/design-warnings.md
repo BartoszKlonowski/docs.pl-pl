@@ -11,12 +11,12 @@ helpviewer_keywords:
 - rules, design
 author: gewarren
 ms.author: gewarren
-ms.openlocfilehash: c8c7d46b9271e33ab7ce3f989fae95bd57394ccd
-ms.sourcegitcommit: 636af37170ae75a11c4f7d1ecd770820e7dfe7bd
+ms.openlocfilehash: 7b49403b1aa3d48008e6f7448ab0ed5a84468373
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "96589436"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851532"
 ---
 # <a name="design-rules"></a>Reguły projektowania
 
@@ -75,3 +75,4 @@ Reguły projektowania obsługują przestrzeganie [wytycznych dotyczących projek
 | [CA1068: Parametry CancellationToken muszą występować na końcu](ca1068.md) | Metoda ma parametr CancellationToken, który nie jest ostatnim parametrem. |
 | [CA1069: Wyliczenia nie powinny mieć zduplikowanych wartości](ca1069.md) | Wyliczenie ma wiele elementów członkowskich, do których jawnie przypisano tę samą stałą wartość. |
 | [CA1070: Nie deklaruj pól zdarzeń jako wirtualnych](ca1070.md) | [Zdarzenie podobne do pola](../../../csharp/event-pattern.md#defining-and-raising-field-like-events) zostało zadeklarowane jako wirtualne. |
+| [CA1071: Przesłoń bazę. Równa się podczas implementowania IEquatable](ca1071.md) | Typ pochodny implementuje <xref:System.IEquatable%601> , ale nie przesłania metody klasy bazowej <xref:System.IEquatable%601.Equals%2A> . |

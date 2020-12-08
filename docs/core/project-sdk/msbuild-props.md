@@ -4,12 +4,12 @@ description: Odwołanie do właściwości i elementów programu MSBuild, które 
 ms.date: 02/14/2020
 ms.topic: reference
 ms.custom: updateeachrelease
-ms.openlocfilehash: 14603ba98f00d46d0f167652500979f94de0ec9a
-ms.sourcegitcommit: 0802ac583585110022beb6af8ea0b39188b77c43
+ms.openlocfilehash: 3b58fd080439c73ee30d5c8dc59c50c0410db164
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031692"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851578"
 ---
 # <a name="msbuild-reference-for-net-sdk-projects"></a>Dokumentacja programu MSBuild dla projektów zestawu .NET SDK
 
@@ -204,7 +204,7 @@ W poniższej tabeli przedstawiono dostępne opcje.
 
 ### <a name="analysismode"></a>Analizamode
 
-Począwszy od platformy .NET 5,0 RC2, zestaw .NET SDK jest dostarczany ze wszystkimi [regułami dotyczącymi jakości kodu "CA"](../../fundamentals/code-analysis/quality-rules/index.md). Domyślnie tylko [niektóre reguły są włączane](../../fundamentals/code-analysis/overview.md#enabled-rules) jako ostrzeżenia kompilacji. `AnalysisMode`Właściwość umożliwia dostosowanie zestawu reguł, które są domyślnie włączone. Można przełączać się na bardziej agresywny tryb analizy lub bardziej ostrożny tryb analizy. Na przykład jeśli chcesz włączyć wszystkie reguły domyślnie jako ostrzeżenia kompilacji, ustaw wartość na `AllEnabledByDefault` .
+Począwszy od platformy .NET 5,0, zestaw SDK platformy .NET jest dostarczany ze wszystkimi [regułami dotyczącymi jakości kodu "CA"](../../fundamentals/code-analysis/quality-rules/index.md). Domyślnie tylko [niektóre reguły są włączane](../../fundamentals/code-analysis/overview.md#enabled-rules) jako ostrzeżenia kompilacji. `AnalysisMode`Właściwość umożliwia dostosowanie zestawu reguł, które są domyślnie włączone. Można przełączać się na bardziej agresywny tryb analizy lub bardziej ostrożny tryb analizy. Na przykład jeśli chcesz włączyć wszystkie reguły domyślnie jako ostrzeżenia kompilacji, ustaw wartość na `AllEnabledByDefault` .
 
 ```xml
 <PropertyGroup>

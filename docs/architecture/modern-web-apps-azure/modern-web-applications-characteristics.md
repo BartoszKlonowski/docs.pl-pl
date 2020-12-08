@@ -6,13 +6,13 @@ ms.author: wiwagn
 no-loc:
 - Blazor
 - WebAssembly
-ms.date: 12/04/2019
-ms.openlocfilehash: 6241a9a3a51bd4d5228841caeaf3a7b652fc6eaa
-ms.sourcegitcommit: 97405ed212f69b0a32faa66a5d5fae7e76628b68
+ms.date: 12/01/2020
+ms.openlocfilehash: 2a9e55250018352c8019d30a4d615ec39e619e31
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91608364"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851233"
 ---
 # <a name="characteristics-of-modern-web-applications"></a>Charakterystyki nowoczesnych aplikacji sieci Web
 
@@ -42,7 +42,7 @@ ASP.NET Core jest zoptymalizowany dla chmury (chmura publiczna, Chmura prywatna,
 
 ## <a name="cross-platform"></a>Wiele platform
 
-ASP.NET Core to platforma międzyplatformowa i może działać w systemach Linux, macOS i Windows. Spowoduje to otwarcie wielu nowych opcji związanych z tworzeniem i wdrażaniem aplikacji skompilowanych za pomocą ASP.NET Core. Kontenery platformy Docker — zarówno Linux, jak i Windows — mogą hostować ASP.NET Core aplikacje, umożliwiając im korzystanie z zalet [kontenerów i mikrousług](../microservices/index.md).
+ASP.NET Core to platforma międzyplatformowa i może działać w systemach Linux, macOS i Windows. Ta funkcja otwiera wiele nowych opcji zarówno dla opracowywania, jak i wdrażania aplikacji utworzonych przy użyciu ASP.NET Core. Kontenery platformy Docker — zarówno Linux, jak i Windows — mogą hostować ASP.NET Core aplikacje, umożliwiając im korzystanie z zalet [kontenerów i mikrousług](../microservices/index.md).
 
 ## <a name="modular-and-loosely-coupled"></a>Modularna i luźno sprzężona
 

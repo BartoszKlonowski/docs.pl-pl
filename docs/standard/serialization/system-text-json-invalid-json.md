@@ -1,7 +1,7 @@
 ---
 title: Jak zezwolić na niektóre rodzaje nieprawidłowego kodu JSON z System.Text.Json
 description: Dowiedz się, jak zezwalać na komentarze, końcowe przecinki i liczby ujęte w cudzysłów podczas serializacji do i deserializacji z formatu JSON w programie .NET.
-ms.date: 11/30/2020
+ms.date: 12/03/2020
 no-loc:
 - System.Text.Json
 - Newtonsoft.Json
@@ -11,12 +11,12 @@ helpviewer_keywords:
 - serializing objects
 - serialization
 - objects, serializing
-ms.openlocfilehash: 60cbb98bb65ee5c1ffdd3043e42a04004530a115
-ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
+ms.openlocfilehash: 1b6402952c4765290d22b530834ed831a68bd2fe
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96439952"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851246"
 ---
 # <a name="how-to-allow-some-kinds-of-invalid-json-with-no-locsystemtextjson"></a>Jak zezwolić na niektóre rodzaje nieprawidłowego kodu JSON z System.Text.Json
 
@@ -36,6 +36,8 @@ Oto przykładowy kod JSON z komentarzami i końcowym przecinkiem:
   "Date": "2019-08-01T00:00:00-07:00",
   "TemperatureCelsius": 25, // Fahrenheit 77
   "Summary": "Hot", /* Zharko */
+  // Comments on
+  /* separate lines */
 }
 ```
 
@@ -45,7 +47,7 @@ Oto przykładowy kod JSON z komentarzami i końcowym przecinkiem:
 
 Niektóre serializatory kodują liczby jako ciągi JSON (ujęte w cudzysłowy).
 
-Przykład:
+Na przykład:
 
 ```json
 {
@@ -78,9 +80,9 @@ Aby dopuszczać lub zapisywać liczby ujęte w cudzysłów dla określonych wła
 
 * [System.Text.Json Podsumowanie](system-text-json-overview.md)
 * [Tworzenie wystąpienia JsonSerializerOptions](system-text-json-configure-options.md)
-* [Włącz dopasowywanie bez uwzględniania wielkości liter](system-text-json-character-casing.md)
+* [Włączanie dopasowywania bez uwzględniania wielkości liter](system-text-json-character-casing.md)
 * [Dostosowywanie nazw i wartości właściwości](system-text-json-customize-properties.md)
-* [Ignoruj właściwości](system-text-json-ignore-properties.md)
+* [Ignorowanie właściwości](system-text-json-ignore-properties.md)
 * [Obsługa przepełnienia kodu JSON](system-text-json-handle-overflow.md)
 * [Zachowaj odwołania cykliczne](system-text-json-preserve-references.md)
 * [Niemodyfikowalne typy i niepubliczne metody dostępu](system-text-json-immutability.md)

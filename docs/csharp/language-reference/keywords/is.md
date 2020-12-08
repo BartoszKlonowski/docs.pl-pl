@@ -8,12 +8,12 @@ f1_keywords:
 helpviewer_keywords:
 - is keyword [C#]
 ms.assetid: bc62316a-d41f-4f90-8300-c6f4f0556e43
-ms.openlocfilehash: d30ebfa2dc47265185a96514efbddc3e4937438c
-ms.sourcegitcommit: 0802ac583585110022beb6af8ea0b39188b77c43
+ms.openlocfilehash: c38649a9e3b3f75ec35fb8711324302a682b504e
+ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "94982397"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96851337"
 ---
 # <a name="is-c-reference"></a>is (odwołanie w C#)
 
@@ -32,7 +32,7 @@ Począwszy od języka C# 7,0 `is` instrukcje i [przełącznik](switch.md) obsłu
 W przypadku używania wzorca typu do dopasowania do wzorca, `is` sprawdza, czy wyrażenie może być konwertowane do określonego typu i, jeśli może, rzutowania go na zmienną tego typu. Jest to proste rozszerzenie `is` instrukcji, która umożliwia obliczanie i konwersję typu zwięzłego. Ogólna forma `is` wzorca typu jest:
 
 ```csharp
-   expr is type varname
+expr is type varname
 ```
 
 Gdzie *Expr* jest wyrażeniem, którego wynikiem jest wystąpienie pewnego typu, *Type* jest nazwą typu, do którego zostanie przekonwertowany wynik *wyrażenia* , a *nazwa_zmiennej* jest obiektem, do którego wynik *wyrażenia* jest konwertowany, jeśli `is` test jest `true` .
@@ -124,7 +124,7 @@ W poprzednim przykładzie zmienna tymczasowa jest używana do przechowywania wyn
   
 Aby uzyskać więcej informacji, zobacz sekcję [operator is](~/_csharplang/spec/expressions.md#the-is-operator) w [specyfikacji języka c#](~/_csharplang/spec/introduction.md) oraz następujące propozycje dotyczące języka c#:
 
-- [Dopasowanie wzorca](~/_csharplang/proposals/csharp-7.0/pattern-matching.md)
+- [Dopasowanie do wzorca](~/_csharplang/proposals/csharp-7.0/pattern-matching.md)
 - [Dopasowywanie wzorca do typów ogólnych](~/_csharplang/proposals/csharp-7.1/generics-pattern-match.md)
   
 ## <a name="see-also"></a>Zobacz też
