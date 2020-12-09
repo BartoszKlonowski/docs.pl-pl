@@ -1,7 +1,7 @@
 ---
 title: Jak serializować i deserializować kod JSON przy użyciu języka C# — .NET
 description: Dowiedz się, jak używać System.Text.Json przestrzeni nazw do serializacji i deserializacji z JSON w programie .NET. Zawiera przykładowy kod.
-ms.date: 11/30/2020
+ms.date: 12/02/2020
 ms.custom: contperfq2
 no-loc:
 - System.Text.Json
@@ -12,12 +12,12 @@ helpviewer_keywords:
 - serializing objects
 - serialization
 - objects, serializing
-ms.openlocfilehash: 9ea9e2fef5ef66f2a5ff816168abfbd7b2e75276
-ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
+ms.openlocfilehash: dc1f8dab0d8d1ab5001797140a3bbfe4a02cb52b
+ms.sourcegitcommit: 0014aa4d5cb2da56a70e03fc68f663d64df5247a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437675"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96918570"
 ---
 # <a name="how-to-serialize-and-deserialize-marshal-and-unmarshal-json-in-net"></a>Jak serializować i deserializować (Marshaling and unmarshaling) JSON w programie .NET
 
@@ -248,6 +248,8 @@ Oto przykład typu do serializacji i całkiem wydrukowanych danych wyjściowych 
   "Summary": "Hot"
 }
 ```
+
+Jeśli używasz `JsonSerializerOptions` wielokrotnie z tymi samymi opcjami, nie twórz nowego `JsonSerializerOptions` wystąpienia za każdym razem, gdy go używasz. Ponownie Użyj tego samego wystąpienia dla każdego wywołania. Aby uzyskać więcej informacji, zobacz [ponowne użycie wystąpień JsonSerializerOptions](system-text-json-configure-options.md#reuse-jsonserializeroptions-instances).
 
 ## <a name="include-fields"></a>Dołącz pola
 

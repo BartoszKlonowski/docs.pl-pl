@@ -12,12 +12,12 @@ helpviewer_keywords:
 - serialization
 - objects, serializing
 - converters
-ms.openlocfilehash: 17671b86dc6d1d7b45a01cb0bf7c5c42f624d99f
-ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
+ms.openlocfilehash: 008455a77f98cd9975b04001121217866cc2ba6e
+ms.sourcegitcommit: 0014aa4d5cb2da56a70e03fc68f663d64df5247a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96438118"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96918609"
 ---
 # <a name="how-to-write-custom-converters-for-json-serialization-marshalling-in-net"></a>Jak pisać konwertery niestandardowe na potrzeby serializacji JSON (kierowanie) w programie .NET
 
@@ -44,6 +44,8 @@ Możesz również napisać niestandardowe konwertery, aby dostosować lub zwięk
 * [Obsługa deserializacji polimorficznej](#support-polymorphic-deserialization).
 * [Obsługa rundy dla stosu \<T> ](#support-round-trip-for-stackt).
 ::: zone-end
+
+W kodzie napisanym dla niestandardowego konwertera należy pamiętać o znacznej wydajności związanej z korzystaniem z nowych <xref:System.Text.Json.JsonSerializerOptions> wystąpień. Aby uzyskać więcej informacji, zobacz [ponowne użycie wystąpień JsonSerializerOptions](system-text-json-configure-options.md#reuse-jsonserializeroptions-instances).
 
 ## <a name="custom-converter-patterns"></a>Wzorce niestandardowego konwertera
 
@@ -370,7 +372,7 @@ Aby włączyć obsługę niestandardowego konwertera `null` dla typu odwołania 
 
 Jeśli musisz utworzyć konwerter, który modyfikuje zachowanie istniejącego wbudowanego konwertera, możesz uzyskać [kod źródłowy istniejącego konwertera](https://github.com/dotnet/runtime/tree/81bf79fd9aa75305e55abe2f7e9ef3f60624a3a1/src/libraries/System.Text.Json/src/System/Text/Json/Serialization/Converters) , który będzie używany jako punkt wyjścia do dostosowania.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Kod źródłowy wbudowanych konwerterów](https://github.com/dotnet/runtime/tree/81bf79fd9aa75305e55abe2f7e9ef3f60624a3a1/src/libraries/System.Text.Json/src/System/Text/Json/Serialization/Converters)
 * [Obsługa DateTime i DateTimeOffset w System.Text.Json](../datetime/system-text-json-support.md)
