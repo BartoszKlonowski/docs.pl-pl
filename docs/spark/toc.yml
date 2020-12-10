@@ -59,7 +59,7 @@
           href: how-to-guides/dotnet-interactive-udf-issue.md
         - name: Wdrażanie procesu roboczego i plików binarnych UDF
           href: how-to-guides/deploy-worker-udf-binaries.md
-    - name: Korzystanie z notesów programu Jupyter
+    - name: Korzystanie z notesów Jupyter
       href: how-to-guides/dotnet-spark-jupyter-notebooks.md
     - name: Przewodnik po emisji
       href: how-to-guides/broadcast-guide.md
