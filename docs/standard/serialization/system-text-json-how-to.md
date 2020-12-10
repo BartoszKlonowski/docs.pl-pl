@@ -12,12 +12,12 @@ helpviewer_keywords:
 - serializing objects
 - serialization
 - objects, serializing
-ms.openlocfilehash: dc1f8dab0d8d1ab5001797140a3bbfe4a02cb52b
-ms.sourcegitcommit: 0014aa4d5cb2da56a70e03fc68f663d64df5247a
+ms.openlocfilehash: 1ea4ff71b9e21bd7c5b12598581b33e1e96ebb19
+ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96918570"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008841"
 ---
 # <a name="how-to-serialize-and-deserialize-marshal-and-unmarshal-json-in-net"></a>Jak serializować i deserializować (Marshaling and unmarshaling) JSON w programie .NET
 
@@ -282,11 +282,22 @@ Istnieją również metody rozszerzające dla System.Text.Json [HttpContent](xre
 Metody rozszerzające w systemach `HttpClient` i `HttpContent` nie są dostępne w System.Text.Json programie .NET Core 3,1.
 ::: zone-end
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [System.Text.Json Podsumowanie](system-text-json-overview.md)
-* [Jak pisać konwertery niestandardowe](system-text-json-converters-how-to.md)
-* [Jak przeprowadzić migrację z Newtonsoft.Json](system-text-json-migrate-from-newtonsoft-how-to.md)
-* [Obsługa DateTime i DateTimeOffset w System.Text.Json](../datetime/system-text-json-support.md)
+* [Tworzenie wystąpienia JsonSerializerOptions wystąpień](system-text-json-configure-options.md)
+* [Włączanie dopasowywania bez uwzględniania wielkości liter](system-text-json-character-casing.md)
+* [Dostosowywanie nazw i wartości właściwości](system-text-json-customize-properties.md)
+* [Ignorowanie właściwości](system-text-json-ignore-properties.md)
+* [Zezwalanie na nieprawidłowy kod JSON](system-text-json-invalid-json.md)
+* [Obsługa przepełnienia kodu JSON](system-text-json-handle-overflow.md)
+* [Zachowywanie odwołań](system-text-json-preserve-references.md)
+* [Niemodyfikowalne typy i niepubliczne metody dostępu](system-text-json-immutability.md)
+* [Serializacja polimorficzna](system-text-json-polymorphism.md)
+* [Migruj z Newtonsoft.Json do System.Text.Json](system-text-json-migrate-from-newtonsoft-how-to.md)
+* [Dostosowywanie kodowania znaków](system-text-json-character-encoding.md)
+* [Napisz niestandardowe serializatory i deserializatory](write-custom-serializer-deserializer.md)
+* [Zapisz konwertery niestandardowe na potrzeby serializacji JSON](system-text-json-converters-how-to.md)
+* [Obsługa wartości DateTime i DateTimeOffset](../datetime/system-text-json-support.md)
 * [System.Text.Json Dokumentacja interfejsu API](xref:System.Text.Json)
-<!-- * [System.Text.Json roadmap](https://github.com/dotnet/runtime/blob/81bf79fd9aa75305e55abe2f7e9ef3f60624a3a1/src/libraries/System.Text.Json/roadmap/README.md)-->
+* [System.Text.Json. Dokumentacja interfejsu API serializacji](xref:System.Text.Json.Serialization)

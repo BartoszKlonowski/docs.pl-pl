@@ -4,12 +4,12 @@ description: Dowiedz się więcej na temat wersji programu macOS, na których mo
 author: adegeo
 ms.author: adegeo
 ms.date: 11/10/2020
-ms.openlocfilehash: f926479227f11def5c8bb8c6bf29ad30a04e6ed2
-ms.sourcegitcommit: d8020797a6657d0fbbdff362b80300815f682f94
+ms.openlocfilehash: b1434938a8e8e81da81e495a6b99e6c99467aae1
+ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95715137"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97009361"
 ---
 # <a name="install-net-on-macos"></a>Zainstaluj platformę .NET na macOS
 
@@ -33,8 +33,9 @@ Poniższa tabela zawiera listę obecnie obsługiwanych wersji platformy .NET i w
 - ✔️ wskazuje, że wersja platformy .NET Core jest nadal obsługiwana.
 - ❌Wskazuje, że wersja programu .NET Core nie jest obsługiwana.
 
-| System operacyjny          | .NET Core 2.1 | .NET Core 3,1 | .NET 5,0 |
+| System operacyjny          | .NET Core 2.1 | .NET Core 3.1 | .NET 5.0 |
 |---------------------------|---------------|---------------|----------------|
+| macOS 11,0 "Big Sur"        | ✔️ 2,1 ([Informacje o wersji][release-notes-21]) | ✔️ 3,1 ([Informacje o wersji][release-notes-31]) | ✔️ 5,0 ([Informacje o wersji][release-notes-50]) |
 | macOS 10,15 "Catalina"    | ✔️ 2,1 ([Informacje o wersji][release-notes-21]) | ✔️ 3,1 ([Informacje o wersji][release-notes-31]) | ✔️ 5,0 ([Informacje o wersji][release-notes-50]) |
 | macOS 10,14 "Mojave"      | ✔️ 2,1 ([Informacje o wersji][release-notes-21]) | ✔️ 3,1 ([Informacje o wersji][release-notes-31]) | ✔️ 5,0 ([Informacje o wersji][release-notes-50]) |
 | macOS 10,13 "wysoka firma Sierra" | ✔️ 2,1 ([Informacje o wersji][release-notes-21]) | ✔️ 3,1 ([Informacje o wersji][release-notes-31]) | ✔️ 5,0 ([Informacje o wersji][release-notes-50]) |
@@ -143,7 +144,7 @@ export PATH=$PATH:$HOME/dotnet
 > [!TIP]
 > Powyższe `export` polecenia sprawiają, że dla sesji terminala, w której został uruchomiony, są dostępne tylko polecenia interfejsu CLI platformy .NET.
 >
-> Możesz edytować profil powłoki, aby trwale dodać polecenia. Istnieje wiele różnych powłok dostępnych dla systemu Linux, a każdy z nich ma inny profil. Na przykład:
+> Możesz edytować profil powłoki, aby trwale dodać polecenia. Istnieje wiele różnych powłok dostępnych dla systemu Linux, a każdy z nich ma inny profil. Przykład:
 >
 > - **Bash Shell**: *~/.bash_profile*, *~/.bashrc.*
 > - **Powłoka Korn**: *~/.KSHRC* lub *. profile*

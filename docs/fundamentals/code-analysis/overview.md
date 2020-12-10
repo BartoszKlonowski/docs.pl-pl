@@ -8,12 +8,12 @@ ms.custom: updateeachrelease
 helpviewer_keywords:
 - code analysis
 - code analyzers
-ms.openlocfilehash: 657975742c3efc2985264fe16cb316357b959e73
-ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
+ms.openlocfilehash: 2f59b97de6f92e5a9bf927e1318286e400017dad
+ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96851819"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97009849"
 ---
 # <a name="overview-of-net-source-code-analysis"></a>Przegląd analizy kodu źródłowego platformy .NET
 
@@ -101,23 +101,22 @@ Domyślnie podczas uaktualniania do nowszych wersji zestawu .NET SDK otrzymasz n
 
 ## <a name="code-style-analysis"></a>Analiza stylu kodu
 
-Reguły *analizy stylów kodu* ("IDExxxx") umożliwiają definiowanie i konserwowanie spójnego stylu kodu w bazie kodu. Domyślne ustawienia obsługi są następujące:
+Reguły *analizy kodu w kodzie* ("IDExxxx") umożliwiają definiowanie i konserwowanie spójnego stylu kodu w bazie kodu. Domyślne ustawienia obsługi są następujące:
 
-- Kompilacja w wierszu polecenia: Analiza stylu kodu jest domyślnie wyłączona dla wszystkich projektów .NET na kompilacjach w wierszu polecenia.
+- Kompilacja w wierszu polecenia: Analiza stylu kodu jest domyślnie wyłączona dla wszystkich projektów .NET w kompilacjach w wierszu polecenia.
 - Visual Studio: Analiza stylu kodu jest domyślnie włączona dla wszystkich projektów .NET w programie Visual Studio jako [szybkie akcje refaktoryzacji kodu](/visualstudio/ide/code-generation-in-visual-studio).
 
-Począwszy od programu .NET 5,0, można włączyć analizę stylu kodu dla kompilacji, zarówno w wierszu polecenia, jak i w programie Visual Studio. Naruszenia stylu kodu są wyświetlane jako ostrzeżenia lub błędy z prefiksem "IDE". Umożliwia to wymuszanie spójnych stylów kodu w czasie kompilacji.
+Począwszy od platformy .NET 5,0, można włączyć analizę stylu kodu dla kompilacji, zarówno w wierszu polecenia, jak i w programie Visual Studio. Naruszenia stylu kodu są wyświetlane jako ostrzeżenia lub błędy z prefiksem "IDE". Umożliwia to wymuszanie spójnych stylów kodu w czasie kompilacji.
 
 Aby zapoznać się z pełną listą reguł analizy w stylu kodu, zobacz [reguły dotyczące stylu kodu](style-rules/index.md).
 
-> [!NOTE]
-> Funkcja analizy stylu kodu jest eksperymentalna i może ulec zmianie między wersjami .NET 5 i .NET 6.
+### <a name="enable-on-build"></a>Włącz przy kompilacji
 
-Procedura włączania analizy stylów kodu podczas kompilacji:
+Wykonaj następujące kroki, aby włączyć analizę stylu kodu podczas kompilacji:
 
 1. Ustaw właściwość programu MSBuild [EnforceCodeStyleInBuild](../../core/project-sdk/msbuild-props.md#enforcecodestyleinbuild) na wartość `true` .
 
-1. W pliku *. editorconfig* [Skonfiguruj](configuration-options.md) każdą regułę stylu kodu "IDE", która ma być uruchamiana podczas kompilacji jako ostrzeżenie lub błąd. Na przykład:
+1. W pliku *. editorconfig* [Skonfiguruj](configuration-options.md) każdą regułę stylu kodu "IDE", która ma być uruchamiana podczas kompilacji jako ostrzeżenie lub błąd. Przykład:
 
    ```ini
    [*.{cs,vb}]
@@ -125,7 +124,7 @@ Procedura włączania analizy stylów kodu podczas kompilacji:
    dotnet_diagnostic.IDE0040.severity = warning
    ```
 
-   Alternatywnie można skonfigurować całą kategorię "Style" jako ostrzeżenie lub błąd, domyślnie, a następnie selektywnie wyłączyć reguły, które nie mają być uruchamiane podczas kompilacji. Na przykład:
+   Alternatywnie można skonfigurować całą kategorię "Style" jako ostrzeżenie lub błąd, domyślnie, a następnie selektywnie wyłączyć reguły, które nie mają być uruchamiane podczas kompilacji. Przykład:
 
    ```ini
    [*.{cs,vb}]
@@ -137,9 +136,12 @@ Procedura włączania analizy stylów kodu podczas kompilacji:
    dotnet_diagnostic.IDE0040.severity = silent
    ```
 
+> [!NOTE]
+> Funkcja analizy w stylu kodu jest eksperymentalna i może ulec zmianie między wersjami .NET 5 i .NET 6.
+
 ## <a name="suppress-a-warning"></a>Pomiń ostrzeżenie
 
-Aby pominąć naruszenie reguły, należy ustawić opcję ważności dla tego identyfikatora reguły na `none` w pliku EditorConfig. Na przykład:
+Aby pominąć naruszenie reguły, należy ustawić opcję ważności dla tego identyfikatora reguły na `none` w pliku EditorConfig. Przykład:
 
 ```ini
 dotnet_diagnostic.CA1822.severity = none
@@ -153,7 +155,7 @@ Aby uzyskać więcej informacji o zakresie reguł, zobacz [Konfigurowanie ważno
 
 Oprócz oficjalnych analizatorów .NET, można również zainstalować [analizatory](https://www.nuget.org/packages/SonarAnalyzer.CSharp/)innych firm, takie jak [StyleCop](https://www.nuget.org/packages/StyleCop.Analyzers/), [Roslynator](https://www.nuget.org/packages/Roslynator.Analyzers/), analizatorze [XUnit](https://www.nuget.org/packages/xunit.analyzers/)i sonar.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Odwołanie do reguły analizy jakości kodu](quality-rules/index.md)
 - [Odwołanie do reguły analizy stylu kodu](style-rules/index.md)

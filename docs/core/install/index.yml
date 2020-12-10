@@ -1,17 +1,17 @@
 ### YamlMime:Landing
 title: Instalowanie programu .NET w systemach Windows, Linux i macOS
-summary: Dowiedz się więcej na temat instalowania platformy .NET w wersjach systemu Windows, Linux i macOS. Odkryj zależności wymagane do tworzenia, wdrażania i uruchamiania aplikacji platformy .NET.
+summary: Dowiedz się więcej na temat instalowania platformy .NET Core, programu .NET 5 i nowszych wersji w systemach Windows, Linux i macOS. Odkryj zależności wymagane do tworzenia, wdrażania i uruchamiania aplikacji platformy .NET.
 metadata:
   title: Instalowanie programu .NET w systemach Windows, Linux i macOS
-  description: Dowiedz się, gdzie pobrać i zainstalować platformę .NET w wersjach systemu Windows, Linux i macOS. Odkryj zależności wymagane do tworzenia, wdrażania i uruchamiania aplikacji platformy .NET.
+  description: Dowiedz się, gdzie pobrać i zainstalować platformę .NET Core, .NET 5 i nowsze wersje w systemach Windows, Linux i macOS. Odkryj zależności wymagane do tworzenia, wdrażania i uruchamiania aplikacji platformy .NET.
   ms.topic: landing-page
   ms.date: 06/29/2020
-  ms.openlocfilehash: 4ffa74980e983442d37306fe1e943f68251e51e5
-  ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
+  ms.openlocfilehash: 4fdfa606c07105a5a0f966a4562732d150bd3d54
+  ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 12/04/2020
-  ms.locfileid: "96599248"
+  ms.lasthandoff: 12/10/2020
+  ms.locfileid: "97009511"
 landingContent:
 - title: Windows
   linkLists:

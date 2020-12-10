@@ -10,12 +10,12 @@ helpviewer_keywords:
 - serializing objects
 - serialization
 - objects, serializing
-ms.openlocfilehash: d8bd5bcf78db534bd722972db01253cbd13a7a06
-ms.sourcegitcommit: 74d05613d6c57106f83f82ce8ee71176874ea3f0
+ms.openlocfilehash: cb5c15c2a5c336e2d5b4a3754fa7a02a370602f3
+ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93282407"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97009888"
 ---
 # <a name="json-serialization-and-deserialization-marshalling-and-unmarshalling-in-net---overview"></a>Serializacja i deserializacja kodu JSON (kierowanie i cofanie) w programie .NET — Omówienie
 
@@ -37,9 +37,19 @@ Biblioteka zawiera również klasy umożliwiające pracę z modelem DOM (Documen
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Jak używać biblioteki](system-text-json-how-to.md)
-* [Jak przeprowadzić migrację z Newtonsoft.Json](system-text-json-migrate-from-newtonsoft-how-to.md)
-* [Jak pisać konwertery](system-text-json-converters-how-to.md)
-* [System.Text.Json kod źródłowy](https://github.com/dotnet/runtime/tree/81bf79fd9aa75305e55abe2f7e9ef3f60624a3a1/src/libraries/System.Text.Json)
+* [Tworzenie wystąpienia JsonSerializerOptions wystąpień](system-text-json-configure-options.md)
+* [Włączanie dopasowywania bez uwzględniania wielkości liter](system-text-json-character-casing.md)
+* [Dostosowywanie nazw i wartości właściwości](system-text-json-customize-properties.md)
+* [Ignorowanie właściwości](system-text-json-ignore-properties.md)
+* [Zezwalanie na nieprawidłowy kod JSON](system-text-json-invalid-json.md)
+* [Obsługa przepełnienia kodu JSON](system-text-json-handle-overflow.md)
+* [Zachowywanie odwołań](system-text-json-preserve-references.md)
+* [Niemodyfikowalne typy i niepubliczne metody dostępu](system-text-json-immutability.md)
+* [Serializacja polimorficzna](system-text-json-polymorphism.md)
+* [Migruj z Newtonsoft.Json do System.Text.Json](system-text-json-migrate-from-newtonsoft-how-to.md)
+* [Dostosowywanie kodowania znaków](system-text-json-character-encoding.md)
+* [Napisz niestandardowe serializatory i deserializatory](write-custom-serializer-deserializer.md)
+* [Zapisz konwertery niestandardowe na potrzeby serializacji JSON](system-text-json-converters-how-to.md)
+* [Obsługa wartości DateTime i DateTimeOffset](../datetime/system-text-json-support.md)
 * [System.Text.Json Dokumentacja interfejsu API](xref:System.Text.Json)
 * [System.Text.Json. Dokumentacja interfejsu API serializacji](xref:System.Text.Json.Serialization)
-<!-- * [Roadmap](https://github.com/dotnet/runtime/blob/81bf79fd9aa75305e55abe2f7e9ef3f60624a3a1/src/libraries/System.Text.Json/roadmap/README.md)-->

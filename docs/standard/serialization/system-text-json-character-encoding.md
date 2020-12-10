@@ -10,12 +10,12 @@ helpviewer_keywords:
 - serializing objects
 - serialization
 - objects, serializing
-ms.openlocfilehash: f6a50a3ca2a5e871294cf7c056cbf197a61cd668
-ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
+ms.openlocfilehash: cfb83af0c58e0c9dfb73ecb8e2177d255e403fae
+ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96440026"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97009628"
 ---
 # <a name="how-to-customize-character-encoding-with-no-locsystemtextjson"></a>Jak dostosować kodowanie znaków za pomocą System.Text.Json
 
@@ -83,9 +83,22 @@ Aby zminimalizować liczbę ucieczki, można użyć <xref:System.Text.Encodings.
 >
 > Używaj niebezpiecznego kodera tylko wtedy, gdy wiadomo, że klient będzie interpretować otrzymany ładunek jako zakodowany w formacie JSON UTF-8. Można na przykład użyć go, jeśli serwer wysyła nagłówek odpowiedzi `Content-Type: application/json; charset=utf-8` . Nigdy nie Zezwalaj na `UnsafeRelaxedJsonEscaping` emitowanie nieprzetworzonych danych wyjściowych do strony HTML lub `<script>` elementu.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [System.Text.Json Podsumowanie](system-text-json-overview.md)
-* [Jak napisać Serializatory niestandardowe i deserializatory](write-custom-serializer-deserializer.md)
-* [Jak napisać konwertery niestandardowe na potrzeby serializacji JSON](system-text-json-converters-how-to.md)
+* [Jak serializować i deserializować dane JSON](system-text-json-how-to.md)
+* [Tworzenie wystąpienia JsonSerializerOptions wystąpień](system-text-json-configure-options.md)
+* [Włączanie dopasowywania bez uwzględniania wielkości liter](system-text-json-character-casing.md)
+* [Dostosowywanie nazw i wartości właściwości](system-text-json-customize-properties.md)
+* [Ignorowanie właściwości](system-text-json-ignore-properties.md)
+* [Zezwalanie na nieprawidłowy kod JSON](system-text-json-invalid-json.md)
+* [Obsługa przepełnienia kodu JSON](system-text-json-handle-overflow.md)
+* [Zachowywanie odwołań](system-text-json-preserve-references.md)
+* [Niemodyfikowalne typy i niepubliczne metody dostępu](system-text-json-immutability.md)
+* [Serializacja polimorficzna](system-text-json-polymorphism.md)
+* [Migruj z Newtonsoft.Json do System.Text.Json](system-text-json-migrate-from-newtonsoft-how-to.md)
+* [Napisz niestandardowe serializatory i deserializatory](write-custom-serializer-deserializer.md)
+* [Zapisz konwertery niestandardowe na potrzeby serializacji JSON](system-text-json-converters-how-to.md)
+* [Obsługa wartości DateTime i DateTimeOffset](../datetime/system-text-json-support.md)
 * [System.Text.Json Dokumentacja interfejsu API](xref:System.Text.Json)
+* [System.Text.Json. Dokumentacja interfejsu API serializacji](xref:System.Text.Json.Serialization)

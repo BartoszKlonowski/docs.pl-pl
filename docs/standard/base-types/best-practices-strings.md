@@ -17,12 +17,12 @@ helpviewer_keywords:
 - comparing strings
 - strings [.NET],comparing
 ms.assetid: b9f0bf53-e2de-4116-8ce9-d4f91a1df4f7
-ms.openlocfilehash: d0a928fffb84e925ae167885e6d2456dc45b6892
-ms.sourcegitcommit: 965a5af7918acb0a3fd3baf342e15d511ef75188
+ms.openlocfilehash: bf11edc3669916ba4d30a3648692ca9b084d4340
+ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94825081"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97009822"
 ---
 # <a name="best-practices-for-comparing-strings-in-net"></a>Najlepsze rozwiązania dotyczące porównywania ciągów w programie .NET
 
@@ -167,9 +167,6 @@ jest odpowiednikiem (ale szybszym niż) tego porównania:
 
 Te porównania są nadal bardzo szybkie.
 
-> [!NOTE]
-> Zachowanie ciągu w systemie plików, kluczach rejestru i wartościach oraz zmienne środowiskowe najlepiej reprezentowane przez program <xref:System.StringComparison.OrdinalIgnoreCase?displayProperty=nameWithType> .
-
 Zarówno <xref:System.StringComparison.Ordinal?displayProperty=nameWithType> , jak i <xref:System.StringComparison.OrdinalIgnoreCase?displayProperty=nameWithType> używają wartości binarnych, są one najlepiej dopasowane do dopasowywania. Gdy nie masz pewności co do ustawień porównania, użyj jednej z tych dwóch wartości. Jednak ze względu na to, że wykonują porównywanie bajt po bajcie, nie sortuje według języka porządku sortowania (na przykład słownika angielskiego), ale według binarnej kolejności sortowania. Wyniki mogą wyglądać nieparzystie w większości kontekstów, jeśli są wyświetlane użytkownikom.
 
 Semantyka porządkowa jest wartością domyślną dla <xref:System.String.Equals%2A?displayProperty=nameWithType> przeciążeń, które nie zawierają <xref:System.StringComparison> argumentu (łącznie z operatorem równości). W każdym przypadku zalecamy wywołanie przeciążenia z <xref:System.StringComparison> parametrem.
@@ -197,7 +194,7 @@ W przypadku niezmiennej kultura ma bardzo kilka właściwości, które ułatwiaj
 
 Poniższa tabela zawiera opis mapowania z kontekstu ciągu semantycznego do <xref:System.StringComparison> elementu członkowskiego wyliczenia:
 
-|Dane|Zachowanie|Odpowiadający system. StringComparison<br /><br /> value|
+|Dane|Zachowanie|Odpowiadający system. StringComparison<br /><br /> wartość|
 |----------|--------------|-----------------------------------------------------|
 |Identyfikatory wewnętrzne z uwzględnieniem wielkości liter.<br /><br /> Identyfikatory z uwzględnieniem wielkości liter w standardach, takich jak XML i HTTP.<br /><br /> Ustawienia związane z zabezpieczeniami z uwzględnieniem wielkości liter.|Identyfikator niebędący językiem, gdzie bajty są dokładnie zgodne.|<xref:System.StringComparison.Ordinal>|
 |Identyfikatory wewnętrzne bez uwzględniania wielkości liter.<br /><br /> Identyfikatory bez uwzględniania wielkości liter w standardach, takich jak XML i HTTP.<br /><br /> Ścieżki plików.<br /><br /> Klucze i wartości rejestru.<br /><br /> Zmienne środowiskowe.<br /><br /> Identyfikatory zasobów (na przykład nazwy uchwytów).<br /><br /> Ustawienia związane z zabezpieczeniami bez uwzględniania wielkości liter.|Identyfikator niebędący językiem, gdzie przypadek jest nieistotny; szczególnie dane przechowywane w większości usług systemu Windows.|<xref:System.StringComparison.OrdinalIgnoreCase>|

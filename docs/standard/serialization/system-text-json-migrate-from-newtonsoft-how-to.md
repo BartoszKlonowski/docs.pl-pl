@@ -13,12 +13,12 @@ helpviewer_keywords:
 - serializing objects
 - serialization
 - objects, serializing
-ms.openlocfilehash: bc256c5129cd4a7306e632685474b159a43ce76c
-ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
+ms.openlocfilehash: 418637639790199755803bf374ef99af949ae9b3
+ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96438055"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97009901"
 ---
 # <a name="how-to-migrate-from-no-locnewtonsoftjson-to-no-locsystemtextjson"></a>Jak przeprowadzić migrację z Newtonsoft.Json do programu System.Text.Json
 
@@ -535,7 +535,7 @@ Wymagany konwerter właściwości wymaga dodatkowej logiki, jeśli trzeba obsłu
 * `DateTimeZoneHandling`Ustawienie to może służyć do serializacji wszystkich `DateTime` wartości jako daty UTC.
 * `DateFormatString`Ustawienia i `DateTime` konwertery mogą służyć do dostosowywania formatu ciągów daty.
 
-W programie <xref:System.Text.Json> jedynym formatem, który ma wbudowaną obsługę, jest ISO 8601-1:2019, ponieważ jest on powszechnie przyjęty, niejednoznaczny i umożliwia precyzyjne przekazanie rundy. Aby użyć innego formatu, Utwórz konwerter niestandardowy. Aby uzyskać więcej informacji, zobacz [Obsługa DateTime i DateTimeOffset System.Text.Json w ](../datetime/system-text-json-support.md).
+<xref:System.Text.Json> obsługuje ISO 8601-1:2019, w tym profil RFC 3339. Ten format jest szeroko przyjęty, jednoznaczny i sprawia, że okrągłe podróże są dokładnie takie same. Aby użyć innego formatu, Utwórz konwerter niestandardowy. Aby uzyskać więcej informacji, zobacz [Obsługa DateTime i DateTimeOffset System.Text.Json w ](../datetime/system-text-json-support.md).
 
 ### <a name="callbacks"></a>Wywołania zwrotne
 
@@ -804,12 +804,22 @@ Jeśli chcesz nadal używać `Newtonsoft.Json` dla określonych platform docelow
 * [UnifiedJsonWriter.JsonTextWriter.cs](https://github.com/dotnet/runtime/blob/81bf79fd9aa75305e55abe2f7e9ef3f60624a3a1/src/installer/managed/Microsoft.Extensions.DependencyModel/UnifiedJsonWriter.JsonTextWriter.cs)
 * [UnifiedJsonWriter.Utf8JsonWriter.cs](https://github.com/dotnet/runtime/blob/81bf79fd9aa75305e55abe2f7e9ef3f60624a3a1/src/installer/managed/Microsoft.Extensions.DependencyModel/UnifiedJsonWriter.Utf8JsonWriter.cs)
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-<!-- * [System.Text.Json roadmap](https://github.com/dotnet/runtime/blob/81bf79fd9aa75305e55abe2f7e9ef3f60624a3a1/src/libraries/System.Text.Json/roadmap/README.md)[Restore this when the roadmap is updated.]-->
 * [System.Text.Json Podsumowanie](system-text-json-overview.md)
-* [Jak używać System.Text.Json](system-text-json-how-to.md)
-* [Jak pisać konwertery niestandardowe](system-text-json-converters-how-to.md)
-* [Obsługa DateTime i DateTimeOffset w System.Text.Json](../datetime/system-text-json-support.md)
+* [Jak serializować i deserializować dane JSON](system-text-json-how-to.md)
+* [Tworzenie wystąpienia JsonSerializerOptions wystąpień](system-text-json-configure-options.md)
+* [Włączanie dopasowywania bez uwzględniania wielkości liter](system-text-json-character-casing.md)
+* [Dostosowywanie nazw i wartości właściwości](system-text-json-customize-properties.md)
+* [Ignorowanie właściwości](system-text-json-ignore-properties.md)
+* [Zezwalanie na nieprawidłowy kod JSON](system-text-json-invalid-json.md)
+* [Obsługa przepełnienia kodu JSON](system-text-json-handle-overflow.md)
+* [Zachowywanie odwołań](system-text-json-preserve-references.md)
+* [Niemodyfikowalne typy i niepubliczne metody dostępu](system-text-json-immutability.md)
+* [Serializacja polimorficzna](system-text-json-polymorphism.md)
+* [Dostosowywanie kodowania znaków](system-text-json-character-encoding.md)
+* [Napisz niestandardowe serializatory i deserializatory](write-custom-serializer-deserializer.md)
+* [Zapisz konwertery niestandardowe na potrzeby serializacji JSON](system-text-json-converters-how-to.md)
+* [Obsługa wartości DateTime i DateTimeOffset](../datetime/system-text-json-support.md)
 * [System.Text.Json Dokumentacja interfejsu API](xref:System.Text.Json)
-* [System.Text.JsonOdwołanie do interfejsu API serializacji](xref:System.Text.Json.Serialization)
+* [System.Text.Json. Dokumentacja interfejsu API serializacji](xref:System.Text.Json.Serialization)

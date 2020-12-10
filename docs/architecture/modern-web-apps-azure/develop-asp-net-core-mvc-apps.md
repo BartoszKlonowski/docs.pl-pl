@@ -7,12 +7,12 @@ ms.date: 12/01/2020
 no-loc:
 - Blazor
 - WebAssembly
-ms.openlocfilehash: 94dda02045f4c3bb1b5bdd64ab6b40eb22f6817c
-ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
+ms.openlocfilehash: c0fc92b2dbc25a1a48e0264b64c79fc8631fa8f0
+ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96851438"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97009667"
 ---
 # <a name="develop-aspnet-core-mvc-apps"></a>Opracowywanie aplikacji ASP.NET Core MVC
 
@@ -52,9 +52,9 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-W tym przykładzie trasa o nazwie "default" została dodana do tabeli routingu. Definiuje szablon trasy z symbolami zastępczymi dla _kontrolera_, _akcji_ i _identyfikatora_. Symbole zastępcze kontrolera i akcji mają domyślnie określony (odpowiednio "Dom" i "index"), a symbol zastępczy ID jest opcjonalny (na przykład "?"). W ramach Konwencji zdefiniowanej tutaj należy określić, że pierwsza część żądania powinna odpowiadać nazwie kontrolera, drugiej części akcji, a następnie, jeśli to konieczne, trzecia część będzie reprezentować parametr ID. Trasy konwencjonalne są zwykle zdefiniowane w jednym miejscu dla aplikacji, na przykład w metodzie Configure w klasie Startup.
+W tym przykładzie trasa o nazwie "default" została dodana do tabeli routingu. Definiuje szablon trasy z symbolami zastępczymi dla `controller` , `action` i `id` . `controller` `action` Symbole zastępcze i mają domyślnie określony ( `Home` i `Index` , odpowiednio), a `id` symbol zastępczy jest opcjonalny (na przykład "?"). W ramach Konwencji zdefiniowanej tutaj należy określić, że pierwsza część żądania powinna odpowiadać nazwie kontrolera, drugiej części akcji, a następnie, jeśli to konieczne, trzecia część będzie reprezentować parametr ID. Trasy konwencjonalne są zwykle definiowane w jednym miejscu dla aplikacji, na przykład w `Configure` metodzie `Startup` klasy.
 
-Trasy atrybutów są stosowane bezpośrednio do kontrolerów i akcji, a nie do określonych globalnie. Takie podejście ma znacznie większą możliwość odnajdywania, gdy przeglądasz określoną metodę, ale oznacza to, że informacje o routingu nie są przechowywane w jednym miejscu w aplikacji. Korzystając z tras atrybutów, można łatwo określić wiele tras dla danej akcji, a także połączyć trasy między kontrolerami i akcjami. Na przykład:
+Trasy atrybutów są stosowane bezpośrednio do kontrolerów i akcji, a nie do określonych globalnie. Takie podejście ma znacznie większą możliwość odnajdywania, gdy przeglądasz określoną metodę, ale oznacza to, że informacje o routingu nie są przechowywane w jednym miejscu w aplikacji. Korzystając z tras atrybutów, można łatwo określić wiele tras dla danej akcji, a także połączyć trasy między kontrolerami i akcjami. Przykład:
 
 ```csharp
 [Route("Home")]
@@ -91,7 +91,7 @@ W poprzednim przykładzie dana strona będzie pasowała do trasy z `id` parametr
 "/Products/123"
 ```
 
-Po dopasowaniu danego żądania do trasy, ale przed wywołaniem metody akcji, ASP.NET Core MVC będzie wykonywał [powiązania modelu](/aspnet/core/mvc/models/model-binding) i [Sprawdzanie poprawności modelu](/aspnet/core/mvc/models/validation) na żądanie. Powiązanie modelu jest odpowiedzialne za konwertowanie przychodzących danych HTTP na typy .NET określone jako parametry metody akcji, która ma zostać wywołana. Na przykład jeśli metoda akcja oczekuje `int id` parametru, powiązanie modelu podejmie próbę podania tego parametru z wartości dostarczonej jako część żądania. W tym celu powiązanie modelu wyszukuje wartości w opublikowanym formularzu, wartości w samej trasie i wartości ciągu zapytania. Przy założeniu, że wartość identyfikatora zostanie znaleziona, zostanie przekonwertowana na liczbę całkowitą przed przekazaniem do metody akcji.
+Po dopasowaniu danego żądania do trasy, ale przed wywołaniem metody akcji, ASP.NET Core MVC będzie wykonywał [powiązania modelu](/aspnet/core/mvc/models/model-binding) i [Sprawdzanie poprawności modelu](/aspnet/core/mvc/models/validation) na żądanie. Powiązanie modelu jest odpowiedzialne za konwertowanie przychodzących danych HTTP na typy .NET określone jako parametry metody akcji, która ma zostać wywołana. Na przykład jeśli metoda akcja oczekuje `int id` parametru, powiązanie modelu podejmie próbę podania tego parametru z wartości dostarczonej jako część żądania. W tym celu powiązanie modelu wyszukuje wartości w opublikowanym formularzu, wartości w samej trasie i wartości ciągu zapytania. Przy założeniu `id` , że wartość zostanie znaleziona, zostanie przekonwertowana na liczbę całkowitą przed przekazaniem do metody akcji.
 
 Po powiązaniu modelu, ale przed wywołaniem metody akcji, następuje Walidacja modelu. Walidacja modelu używa opcjonalnych atrybutów dla typu modelu i może pomóc zapewnić, że udostępniony obiekt modelu spełnia określone wymagania dotyczące danych. Niektóre wartości mogą być określone jako wymagane lub ograniczone do określonej długości lub zakresu liczbowego itd. Jeśli określono atrybuty walidacji, ale model nie spełnia wymagań, właściwość ModelState. IsValid ma wartość false, a zestaw reguł walidacji z błędami będzie dostępny do wysłania do klienta wysyłającego żądanie.
 
@@ -105,7 +105,7 @@ Projekty interfejsu API sieci Web należy rozważyć przy użyciu `[ApiControlle
 
 W przypadku aplikacji opartych na stronach Razor Pages wykonać doskonałe zadanie utrzymywania zbyt dużej liczby kontrolerów. Każda Strona otrzymuje własne pliki i klasy, które są przeznaczone tylko dla jego programów obsługi. Przed wprowadzeniem Razor Pages wiele aplikacji zorientowanych na widok będzie miała duże klasy kontrolerów odpowiedzialne za wiele różnych akcji i widoków. Te klasy byłyby naturalnie rosnące w celu posiadania wielu obowiązków i zależności, co utrudnia ich konserwację. Jeśli okaże się, że Twoje kontrolery widoków są zbyt duże, rozważ ich refaktoryzację do użycia Razor Pages lub wprowadzenie wzorca, takiego jak mediator.
 
-Wzorzec projektowy mediator jest używany do zredukowania sprzęgania między klasami, jednocześnie umożliwiając komunikację między nimi. W aplikacjach ASP.NET Core MVC ten wzorzec jest często stosowany do podziału kontrolerów na mniejsze części za pomocą *programów obsługi* w celu wykonywania pracy z metodami akcji. Popularny [pakiet NuGet MediatR](https://www.nuget.org/packages/MediatR/) jest często używany do osiągnięcia tego celu. Zazwyczaj kontrolery obejmują wiele różnych metod akcji, z których każdy może wymagać pewnych zależności. Zestaw wszystkich zależności wymaganych przez dowolną akcję musi być przekazaniem do konstruktora kontrolera. W przypadku korzystania z Mediatr jedyną zależnością jest kontroler w wystąpieniu mediator. Każda akcja następnie używa wystąpienia mediator do wysyłania komunikatu, który jest przetwarzany przez procedurę obsługi. Procedura obsługi jest specyficzna dla jednej akcji i w ten sposób wymaga tylko zależności wymaganych przez tę akcję. Przykładem kontrolera korzystającego z MediatR jest następujący:
+Wzorzec projektowy mediator jest używany do zredukowania sprzęgania między klasami, jednocześnie umożliwiając komunikację między nimi. W aplikacjach ASP.NET Core MVC ten wzorzec jest często stosowany do podziału kontrolerów na mniejsze części za pomocą *programów obsługi* w celu wykonywania pracy z metodami akcji. Popularny [pakiet NuGet MediatR](https://www.nuget.org/packages/MediatR/) jest często używany do osiągnięcia tego celu. Zazwyczaj kontrolery obejmują wiele różnych metod akcji, z których każdy może wymagać pewnych zależności. Zestaw wszystkich zależności wymaganych przez dowolną akcję musi być przekazaniem do konstruktora kontrolera. W przypadku korzystania z MediatR jedyną zależnością jest kontroler w wystąpieniu mediator. Każda akcja następnie używa wystąpienia mediator do wysyłania komunikatu, który jest przetwarzany przez procedurę obsługi. Procedura obsługi jest specyficzna dla jednej akcji i w ten sposób wymaga tylko zależności wymaganych przez tę akcję. Przykładem kontrolera korzystającego z MediatR jest następujący:
 
 ```csharp
 public class OrderController : Controller
@@ -169,15 +169,15 @@ Rezultatem tego podejścia jest to, że kontrolery są znacznie mniejsze i konce
 
 > ### <a name="references--mapping-requests-to-responses"></a>References — mapowanie żądań na odpowiedzi
 >
-> - **Routing do akcji kontrolera**
+> - **Routing do akcji kontrolera**\
  > <https://docs.microsoft.com/aspnet/core/mvc/controllers/routing>
-> - **Powiązanie modelu**
+> - **Powiązanie modelu**\
  > <https://docs.microsoft.com/aspnet/core/mvc/models/model-binding>
-> - **Walidacja modelu**
+> - **Walidacja modelu**\
  > <https://docs.microsoft.com/aspnet/core/mvc/models/validation>
-> - **Filtry**
+> - **Filtry**\
  > <https://docs.microsoft.com/aspnet/core/mvc/controllers/filters>
-> - **ApiController — atrybut**
+> - **ApiController — atrybut**\
  > <https://docs.microsoft.com/aspnet/core/web-api/>
 
 ## <a name="working-with-dependencies"></a>Praca z zależnościami
@@ -391,13 +391,13 @@ Aby dowiedzieć się więcej na temat implementowania filtrów i pobrać przykł
 
 > ### <a name="references--structuring-applications"></a>References — Tworzenie struktury aplikacji
 >
-> - **Obszary**  
+> - **Obszarach**\
 >   <https://docs.microsoft.com/aspnet/core/mvc/controllers/areas>
-> - **Magazyn MSDN — wycinki funkcji dla ASP.NET Core MVC**  
+> - **Magazyn MSDN — wycinki funkcji dla ASP.NET Core MVC**\
 >   <https://docs.microsoft.com/archive/msdn-magazine/2016/september/asp-net-core-feature-slices-for-asp-net-core-mvc>
-> - **Filtry**  
+> - **Filtry**\
 >   <https://docs.microsoft.com/aspnet/core/mvc/controllers/filters>
-> - **MSDN Magazine — Real World ASP.NET Core Filters**  
+> - **MSDN Magazine — Real World ASP.NET Core Filters**\
 >   <https://docs.microsoft.com/archive/msdn-magazine/2016/august/asp-net-core-real-world-asp-net-core-mvc-filters>
 
 ## <a name="security"></a>Zabezpieczenia
@@ -447,7 +447,7 @@ Więcej informacji na temat [konfigurowania uwierzytelniania dwuskładnikowego](
 
 Uwierzytelnianie to proces określania, kto uzyskuje dostęp do systemu. Jeśli używasz tożsamości ASP.NET Core i metod konfiguracji przedstawionych w poprzedniej sekcji, spowoduje to automatyczne skonfigurowanie niektórych ustawień uwierzytelniania w aplikacji. Można jednak również skonfigurować te ustawienia domyślne ręcznie lub zastąpić je zestawem AddIdentity. Jeśli używasz tożsamości, konfiguruje uwierzytelnianie oparte na plikach cookie jako *schemat* domyślny.
 
-W przypadku uwierzytelniania opartego na sieci Web, zwykle do 5 akcji, które mogą być wykonywane w trakcie uwierzytelniania klienta systemu. Są to:
+W przypadku uwierzytelniania opartego na sieci Web w programie istnieje zazwyczaj pięć akcji, które mogą być wykonywane w trakcie uwierzytelniania klienta systemu. Są to:
 
 - Potwierdza. Użyj informacji dostarczonych przez klienta, aby utworzyć tożsamość do użycia w aplikacji.
 - Sprawdz. Ta akcja służy do wymagania, aby klient mógł identyfikować siebie.
@@ -501,13 +501,13 @@ Blazor Aplikacje serwera mogą korzystać z tych samych funkcji uwierzytelniania
 
 > ### <a name="references--authentication"></a>Odwołania — uwierzytelnianie
 >
-> - **Akcje uwierzytelniania i ustawienia domyślne**  
+> - **Akcje uwierzytelniania i ustawienia domyślne**\
 >   <https://stackoverflow.com/a/52493428>
-> - **Uwierzytelnianie i autoryzacja dla aplikacji jednostronicowych**
+> - **Uwierzytelnianie i autoryzacja dla aplikacji jednostronicowych**\
 >   <https://docs.microsoft.com/aspnet/core/security/authentication/identity-api-authorization>
-> - **ASP.NET Core Blazor uwierzytelnianie i autoryzacja**
+> - **ASP.NET Core Blazor uwierzytelnianie i autoryzacja**\
 >   <https://docs.microsoft.com/aspnet/core/blazor/security/>
-> - **Zabezpieczenia: uwierzytelnianie i autoryzacja w ASP.NET Web Forms i Blazor**
+> - **Zabezpieczenia: uwierzytelnianie i autoryzacja w ASP.NET Web Forms i Blazor**\
 >   <https://docs.microsoft.com/dotnet/architecture/blazor-for-web-forms-developers/security-authentication-authorization>
 
 ### <a name="authorization"></a>Autoryzacja
@@ -584,17 +584,17 @@ Należy zwrócić szczególną uwagę na "wycofywanie własnych" implementacji k
 
 > ### <a name="references--security"></a>Odwołania — zabezpieczenia
 >
-> - **Przegląd dokumentów dotyczących zabezpieczeń**  
+> - **Przegląd dokumentów dotyczących zabezpieczeń**\
 >   <https://docs.microsoft.com/aspnet/core/security/>
-> - **Wymuszanie protokołu SSL w aplikacji ASP.NET Core**  
+> - **Wymuszanie protokołu SSL w aplikacji ASP.NET Core**\
 >   <https://docs.microsoft.com/aspnet/core/security/enforcing-ssl>
-> - **Wprowadzenie do systemu Identity**  
+> - **Wprowadzenie do tożsamości**\
 >   <https://docs.microsoft.com/aspnet/core/security/authentication/identity>
-> - **Wprowadzenie do autoryzacji**  
+> - **Wprowadzenie do autoryzacji**\
 >   <https://docs.microsoft.com/aspnet/core/security/authorization/introduction>
-> - **Uwierzytelnianie i autoryzacja dla usługi API Apps w usłudze Azure App Service**  
+> - **Uwierzytelnianie i autoryzacja API Apps w Azure App Service**\
 >   <https://docs.microsoft.com/azure/app-service-api/app-service-api-authentication>
-> - **Serwer tożsamości**  
+> - **Serwer tożsamości**\
 >   <https://github.com/IdentityServer>
 
 ## <a name="client-communication"></a>Komunikacja z klientem
@@ -653,9 +653,9 @@ Rozważ sposoby, w których aplikacje komunikują się bezpośrednio z aplikacja
 
 > ### <a name="references--client-communication"></a>Odwołania — komunikacja z klientem
 >
-> - **ASP.NET Core SignalR**  
+> - **ASP.NET Core sygnalizujący**\
 >   <https://github.com/dotnet/aspnetcore/tree/master/src/SignalR>
-> - **Menedżer obiektów WebSocket**  
+> - **Menedżer obiektów WebSocket**\
 >   <https://github.com/radu-matei/websocket-manager>
 
 ## <a name="domain-driven-design--should-you-apply-it"></a>Projektowanie oparte na domenie — czy należy je zastosować?
@@ -702,7 +702,7 @@ Podejście hybrydowe będzie używać DDD tylko dla transakcyjnych lub bardziej 
 
 > ### <a name="references--domain-driven-design"></a>Odwołania — projektowanie Domain-Driven
 >
-> - **DDD w zwykłym języku angielskim (odpowiedź StackOverflow)**  
+> - **DDD w zwykłym języku angielskim (odpowiedź StackOverflow)**\
 >   <https://stackoverflow.com/questions/1222392/can-someone-explain-domain-driven-design-ddd-in-plain-english-please/1222488#1222488>
 
 ## <a name="deployment"></a>Wdrożenie
@@ -745,13 +745,13 @@ _Dowiedz się więcej o opcjach wdrażania platformy Azure w [rozdziale 10](deve
 
 > ### <a name="references--deployment"></a>Odwołania — wdrażanie
 >
-> - **Omówienie hostingu i wdrażania**  
+> - **Omówienie hostingu i wdrażania**\
 >   <https://docs.microsoft.com/aspnet/core/publishing/>
-> - **Kiedy używać Kestrel z zwrotnym serwerem proxy**  
+> - **Kiedy używać Kestrel z zwrotnym serwerem proxy**\
 >   <https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy>
-> - **Hostowanie aplikacji ASP.NET Core w platformie Docker**  
+> - **Hostowanie aplikacji ASP.NET Core w platformie Docker**\
 >   <https://docs.microsoft.com/aspnet/core/publishing/docker>
-> - **Wprowadzenie do usługi Azure Application Gateway**  
+> - **Wprowadzenie do usługi Azure Application Gateway**\
 >   <https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction>
 
 >[!div class="step-by-step"]

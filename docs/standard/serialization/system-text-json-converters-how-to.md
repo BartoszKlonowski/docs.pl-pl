@@ -1,7 +1,7 @@
 ---
 title: Jak pisać konwertery niestandardowe na potrzeby serializacji JSON — .NET
 description: Dowiedz się, jak utworzyć niestandardowe konwertery dla klas serializacji JSON, które są dostępne w System.Text.Json przestrzeni nazw.
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 no-loc:
 - System.Text.Json
 - Newtonsoft.Json
@@ -12,12 +12,12 @@ helpviewer_keywords:
 - serialization
 - objects, serializing
 - converters
-ms.openlocfilehash: 008455a77f98cd9975b04001121217866cc2ba6e
-ms.sourcegitcommit: 0014aa4d5cb2da56a70e03fc68f663d64df5247a
+ms.openlocfilehash: 33334ccd8bad4ac5a9f5dccde79ff3ae09ca8f89
+ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96918609"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008867"
 ---
 # <a name="how-to-write-custom-converters-for-json-serialization-marshalling-in-net"></a>Jak pisać konwertery niestandardowe na potrzeby serializacji JSON (kierowanie) w programie .NET
 
@@ -25,7 +25,7 @@ W tym artykule pokazano, jak utworzyć niestandardowe konwertery dla klas serial
 
 *Konwerter* jest klasą, która konwertuje obiekt lub wartość do i z formatu JSON. `System.Text.Json`Przestrzeń nazw ma wbudowane konwertery dla większości typów pierwotnych, które są mapowane na elementy pierwotne języka JavaScript. Możesz pisać niestandardowe konwertery:
 
-* Aby zastąpić domyślne zachowanie konwertera wbudowanego. Na przykład, możesz chcieć `DateTime` przedstawić wartości w formacie mm/dd/rrrr zamiast domyślnego formatu ISO 8601-1:2019.
+* Aby zastąpić domyślne zachowanie konwertera wbudowanego. Na przykład, możesz chcieć `DateTime` przedstawić wartości w formacie mm/dd/rrrr. Domyślnie ISO 8601-1:2019 jest obsługiwany łącznie z profilem RFC 3339. Aby uzyskać więcej informacji, zobacz [Obsługa DateTime i DateTimeOffset System.Text.Json w ](../datetime/system-text-json-support.md).
 * Do obsługi niestandardowego typu wartości. Na przykład `PhoneNumber` Struktura.
 
 Możesz również napisać niestandardowe konwertery, aby dostosować lub zwiększyć `System.Text.Json` funkcjonalność, która nie jest uwzględniona w bieżącej wersji. Poniższe scenariusze zostały omówione w dalszej części tego artykułu:
@@ -105,7 +105,11 @@ Wzorzec fabryki jest wymagany do otwierania typów ogólnych, ponieważ kod do k
 
 ## <a name="error-handling"></a>Obsługa błędów
 
-Jeśli musisz zgłosić wyjątek w kodzie obsługi błędu, rozważ przegenerowanie <xref:System.Text.Json.JsonException> bez komunikatu. Ten typ wyjątku powoduje automatyczne utworzenie komunikatu zawierającego ścieżkę do części JSON, która spowodowała błąd. Na przykład instrukcja `throw new JsonException();` generuje komunikat o błędzie, jak w poniższym przykładzie:
+Serializator zapewnia specjalną obsługę typów wyjątków <xref:System.Text.Json.JsonException> i <xref:System.NotSupportedException> .
+
+### <a name="jsonexception"></a>Jsonexception
+
+W przypadku zgłoszenia `JsonException` bez komunikatu, serializator tworzy komunikat, który zawiera ścieżkę do części JSON, która spowodowała błąd. Na przykład instrukcja `throw new JsonException()` generuje komunikat o błędzie, jak w poniższym przykładzie:
 
 ```output
 Unhandled exception. System.Text.Json.JsonException:
@@ -113,7 +117,25 @@ The JSON value could not be converted to System.Object.
 Path: $.Date | LineNumber: 1 | BytePositionInLine: 37.
 ```
 
-Jeśli zostanie wyświetlony komunikat (na przykład `throw new JsonException("Error occurred")` , wyjątek nadal zapewnia ścieżkę we <xref:System.Text.Json.JsonException.Path> właściwości.
+Jeśli zostanie wyświetlony komunikat (na przykład `throw new JsonException("Error occurred")` , serializator nadal ustawia <xref:System.Text.Json.JsonException.Path> <xref:System.Text.Json.JsonException.LineNumber> właściwości,, i <xref:System.Text.Json.JsonException.BytePositionInLine> .
+
+### <a name="notsupportedexception"></a>NotSupportedException
+
+W przypadku zgłoszenia elementu należy `NotSupportedException` zawsze uzyskać informacje o ścieżce w komunikacie. Jeśli zostanie wyświetlony komunikat, do niego są dołączane informacje o ścieżce. Na przykład instrukcja `throw new NotSupportedException("Error occurred.")` generuje komunikat o błędzie, jak w poniższym przykładzie:
+
+```output
+Error occurred. The unsupported member type is located on type
+'System.Collections.Generic.Dictionary`2[Samples.SummaryWords,System.Int32]'.
+Path: $.TemperatureRanges | LineNumber: 4 | BytePositionInLine: 24
+```
+
+### <a name="when-to-throw-which-exception-type"></a>Kiedy należy zgłosić typ wyjątku
+
+Gdy ładunek JSON zawiera tokeny, które nie są prawidłowe dla deserializowanego typu, throw `JsonException` .
+
+Jeśli chcesz uniemożliwić określone typy, throw `NotSupportedException` . Ten wyjątek jest tym, co serializator automatycznie zgłasza dla typów, które nie są obsługiwane. Na przykład `System.Type` nie jest obsługiwana ze względów bezpieczeństwa, dlatego próba deserializacji powoduje wystąpienie `NotSupportedException` .
+
+W razie konieczności można zgłosić inne wyjątki, ale nie zawierają one automatycznie informacji o ścieżce JSON.
 
 ## <a name="register-a-custom-converter"></a>Rejestrowanie niestandardowego konwertera
 
@@ -375,8 +397,20 @@ Jeśli musisz utworzyć konwerter, który modyfikuje zachowanie istniejącego wb
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Kod źródłowy wbudowanych konwerterów](https://github.com/dotnet/runtime/tree/81bf79fd9aa75305e55abe2f7e9ef3f60624a3a1/src/libraries/System.Text.Json/src/System/Text/Json/Serialization/Converters)
-* [Obsługa DateTime i DateTimeOffset w System.Text.Json](../datetime/system-text-json-support.md)
-* [Jak dostosować kodowanie znaków](system-text-json-character-encoding.md)
-* [Jak napisać Serializatory niestandardowe i deserializatory](write-custom-serializer-deserializer.md)
+* [System.Text.Json Podsumowanie](system-text-json-overview.md)
+* [Jak serializować i deserializować dane JSON](system-text-json-how-to.md)
+* [Tworzenie wystąpienia JsonSerializerOptions wystąpień](system-text-json-configure-options.md)
+* [Włączanie dopasowywania bez uwzględniania wielkości liter](system-text-json-character-casing.md)
+* [Dostosowywanie nazw i wartości właściwości](system-text-json-customize-properties.md)
+* [Ignorowanie właściwości](system-text-json-ignore-properties.md)
+* [Zezwalanie na nieprawidłowy kod JSON](system-text-json-invalid-json.md)
+* [Obsługa przepełnienia kodu JSON](system-text-json-handle-overflow.md)
+* [Zachowywanie odwołań](system-text-json-preserve-references.md)
+* [Niemodyfikowalne typy i niepubliczne metody dostępu](system-text-json-immutability.md)
+* [Serializacja polimorficzna](system-text-json-polymorphism.md)
+* [Migruj z Newtonsoft.Json do System.Text.Json](system-text-json-migrate-from-newtonsoft-how-to.md)
+* [Dostosowywanie kodowania znaków](system-text-json-character-encoding.md)
+* [Napisz niestandardowe serializatory i deserializatory](write-custom-serializer-deserializer.md)
+* [Obsługa wartości DateTime i DateTimeOffset](../datetime/system-text-json-support.md)
 * [System.Text.Json Dokumentacja interfejsu API](xref:System.Text.Json)
-* [System.Text.JsonOdwołanie do interfejsu API serializacji](xref:System.Text.Json.Serialization)
+* [System.Text.Json. Dokumentacja interfejsu API serializacji](xref:System.Text.Json.Serialization)

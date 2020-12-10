@@ -10,12 +10,12 @@ helpviewer_keywords:
 - serializing objects
 - serialization
 - objects, serializing
-ms.openlocfilehash: c754d41071e886bc1efcc3a30e249bf9e554ab5b
-ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
+ms.openlocfilehash: 4b88509313e719ea993e00d889bc6145f4976a2d
+ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96599593"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008906"
 ---
 # <a name="how-to-customize-property-names-and-values-with-no-locsystemtextjson"></a>Jak dostosować nazwy i wartości właściwości przy użyciu System.Text.Json
 
@@ -167,12 +167,19 @@ Można również deserializować nazwy ciągów wyliczenia, jak pokazano w nast�
 ## <a name="see-also"></a>Zobacz także
 
 * [System.Text.Json Podsumowanie](system-text-json-overview.md)
-* [Tworzenie wystąpienia JsonSerializerOptions](system-text-json-configure-options.md)
+* [Jak serializować i deserializować dane JSON](system-text-json-how-to.md)
+* [Tworzenie wystąpienia JsonSerializerOptions wystąpień](system-text-json-configure-options.md)
 * [Włączanie dopasowywania bez uwzględniania wielkości liter](system-text-json-character-casing.md)
 * [Ignorowanie właściwości](system-text-json-ignore-properties.md)
 * [Zezwalanie na nieprawidłowy kod JSON](system-text-json-invalid-json.md)
 * [Obsługa przepełnienia kodu JSON](system-text-json-handle-overflow.md)
-* [Zachowaj odwołania cykliczne](system-text-json-preserve-references.md)
+* [Zachowywanie odwołań](system-text-json-preserve-references.md)
 * [Niemodyfikowalne typy i niepubliczne metody dostępu](system-text-json-immutability.md)
 * [Serializacja polimorficzna](system-text-json-polymorphism.md)
+* [Migruj z Newtonsoft.Json do System.Text.Json](system-text-json-migrate-from-newtonsoft-how-to.md)
+* [Dostosowywanie kodowania znaków](system-text-json-character-encoding.md)
+* [Napisz niestandardowe serializatory i deserializatory](write-custom-serializer-deserializer.md)
+* [Zapisz konwertery niestandardowe na potrzeby serializacji JSON](system-text-json-converters-how-to.md)
+* [Obsługa wartości DateTime i DateTimeOffset](../datetime/system-text-json-support.md)
 * [System.Text.Json Dokumentacja interfejsu API](xref:System.Text.Json)
+* [System.Text.Json. Dokumentacja interfejsu API serializacji](xref:System.Text.Json.Serialization)

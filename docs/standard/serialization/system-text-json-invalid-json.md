@@ -11,12 +11,12 @@ helpviewer_keywords:
 - serializing objects
 - serialization
 - objects, serializing
-ms.openlocfilehash: 1b6402952c4765290d22b530834ed831a68bd2fe
-ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
+ms.openlocfilehash: 2559b081010fb0a2fa208b121cb095efdeb8da2e
+ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96851246"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97009812"
 ---
 # <a name="how-to-allow-some-kinds-of-invalid-json-with-no-locsystemtextjson"></a>Jak zezwolić na niektóre rodzaje nieprawidłowego kodu JSON z System.Text.Json
 
@@ -47,7 +47,7 @@ Oto przykładowy kod JSON z komentarzami i końcowym przecinkiem:
 
 Niektóre serializatory kodują liczby jako ciągi JSON (ujęte w cudzysłowy).
 
-Na przykład:
+Przykład:
 
 ```json
 {
@@ -76,15 +76,22 @@ Aby dopuszczać lub zapisywać liczby ujęte w cudzysłów dla określonych wła
 `System.Text.Json` w programie .NET Core 3,1 nie obsługuje serializacji ani deserializacji numerów ujętych w cudzysłów. Aby uzyskać więcej informacji, zobacz [dopuszczanie lub zapisywanie numerów w cudzysłowach](system-text-json-migrate-from-newtonsoft-how-to.md#allow-or-write-numbers-in-quotes).
 ::: zone-end
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [System.Text.Json Podsumowanie](system-text-json-overview.md)
-* [Tworzenie wystąpienia JsonSerializerOptions](system-text-json-configure-options.md)
+* [Jak serializować i deserializować dane JSON](system-text-json-how-to.md)
+* [Tworzenie wystąpienia JsonSerializerOptions wystąpień](system-text-json-configure-options.md)
 * [Włączanie dopasowywania bez uwzględniania wielkości liter](system-text-json-character-casing.md)
 * [Dostosowywanie nazw i wartości właściwości](system-text-json-customize-properties.md)
 * [Ignorowanie właściwości](system-text-json-ignore-properties.md)
 * [Obsługa przepełnienia kodu JSON](system-text-json-handle-overflow.md)
-* [Zachowaj odwołania cykliczne](system-text-json-preserve-references.md)
+* [Zachowywanie odwołań](system-text-json-preserve-references.md)
 * [Niemodyfikowalne typy i niepubliczne metody dostępu](system-text-json-immutability.md)
 * [Serializacja polimorficzna](system-text-json-polymorphism.md)
+* [Migruj z Newtonsoft.Json do System.Text.Json](system-text-json-migrate-from-newtonsoft-how-to.md)
+* [Dostosowywanie kodowania znaków](system-text-json-character-encoding.md)
+* [Napisz niestandardowe serializatory i deserializatory](write-custom-serializer-deserializer.md)
+* [Zapisz konwertery niestandardowe na potrzeby serializacji JSON](system-text-json-converters-how-to.md)
+* [Obsługa wartości DateTime i DateTimeOffset](../datetime/system-text-json-support.md)
 * [System.Text.Json Dokumentacja interfejsu API](xref:System.Text.Json)
+* [System.Text.Json. Dokumentacja interfejsu API serializacji](xref:System.Text.Json.Serialization)

@@ -2,12 +2,12 @@
 title: dotnet-Trace — narzędzie diagnostyczne — interfejs wiersza polecenia platformy .NET
 description: Dowiedz się, jak zainstalować i użyć narzędzia interfejsu wiersza polecenia śledzenia dotnet, aby zebrać ślady środowiska .NET działającego procesu bez natywnego profilera przy użyciu programu .NET EventPipe.
 ms.date: 11/17/2020
-ms.openlocfilehash: 6bc5ad449f62ed0080ff6b1f401f1871d90cf5ec
-ms.sourcegitcommit: c6de55556add9f92af17e0f8d1da8f356a19a03d
+ms.openlocfilehash: 868ce7828eee6bd7f2101d5d6a65c7f7bf87fe24
+ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549335"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97009537"
 ---
 # <a name="dotnet-trace-performance-analysis-utility"></a>Narzędzie do analizy wydajności śledzenia dotnet
 
@@ -78,7 +78,7 @@ Zbiera dane śledzenia diagnostycznego z uruchomionego procesu.
 ```console
 dotnet-trace collect [--buffersize <size>] [--clreventlevel <clreventlevel>] [--clrevents <clrevents>]
     [--format <Chromium|NetTrace|Speedscope>] [-h|--help]
-    [-n, --name <name>]  [-o|--output <trace-file-path>] [-p|--process-id <pid>]
+    [-n, --name <name>] [--diagnostic-port] [-o|--output <trace-file-path>] [-p|--process-id <pid>]
     [--profile <profile-name>] [--providers <list-of-comma-separated-providers>]
     [-- <command>] (for target applications running .NET 5.0 or later)
 ```
@@ -104,6 +104,10 @@ dotnet-trace collect [--buffersize <size>] [--clreventlevel <clreventlevel>] [--
 - **`-n, --name <name>`**
 
   Nazwa procesu, z którego ma zostać zebrane śledzenie.
+
+- **`--diagnostic-port <path-to-port>`**
+
+  Nazwa portu diagnostycznego do utworzenia. Zobacz [Używanie portu diagnostycznego, aby zebrać ślad z uruchamiania aplikacji](#use-diagnostic-port-to-collect-a-trace-from-app-startup) , aby dowiedzieć się, jak za pomocą tej opcji zbierać dane śledzenia z uruchamiania aplikacji.
 
 - **`-o|--output <trace-file-path>`**
 
@@ -250,6 +254,48 @@ Można zatrzymać zbieranie śladów przez naciśnięcie klawisza `<Enter>` lub 
 > Uruchamianie `hello.exe` za pomocą programu dotnet-Trace spowoduje przekierowanie danych wejściowych/wyjściowych i nie będzie możliwe interakcje z jego stdin/stdout.
 > Zamknięcie narzędzia za pośrednictwem kombinacji klawiszy CTRL + C lub SIGTERM spowoduje bezpieczne zakończenie zarówno narzędzia, jak i procesu podrzędnego.
 > Jeśli proces podrzędny zostanie zakończony przed narzędziem, narzędzie zostanie również zakończone, a śledzenie powinno być bezpiecznie widoczne.
+
+## <a name="use-diagnostic-port-to-collect-a-trace-from-app-startup"></a>Użyj portu diagnostycznego, aby zebrać ślad z uruchamiania aplikacji
+
+  > [!IMPORTANT]
+  > Działa to w przypadku aplikacji z uruchomionym programem .NET 5,0 lub nowszym.
+
+Port diagnostyczny to nowa funkcja środowiska uruchomieniowego, która została dodana w programie .NET 5, która umożliwia uruchamianie śledzenia przy uruchamianiu aplikacji. W tym celu `dotnet-trace` można użyć polecenia `dotnet-trace collect -- <command>` zgodnie z opisem w powyższych przykładach lub użyć `--diagnostic-port` opcji.
+
+Używanie `dotnet-trace <collect|monitor> -- <command>` do uruchamiania aplikacji jako procesu podrzędnego jest najprostszym sposobem na szybkie śledzenie go od jego uruchomienia.
+
+Jeśli jednak chcesz uzyskać dokładniejszą kontrolę nad okresem istnienia śledzonej aplikacji (na przykład monitorować aplikację tylko przez pierwsze 10 minut i kontynuować) lub jeśli chcesz korzystać z aplikacji przy użyciu interfejsu wiersza polecenia, użycie `--diagnostic-port` opcji pozwala kontrolować zarówno monitorowaną aplikację docelową, jak i `dotnet-trace` .
+
+1. Poniższe polecenie tworzy `dotnet-trace` gniazdo diagnostyczne o nazwie `myport.sock` i poczekaj na połączenie.
+
+    > ```dotnet-cli
+    > dotnet-trace collect --diagnostic-port myport.sock
+    > ```
+
+    Dane wyjściowe:
+
+    > ```bash
+    > Waiting for connection on myport.sock
+    > Start an application with the following environment variable: DOTNET_DiagnosticPorts=/home/user/myport.sock
+    > ```
+
+2. W osobnej konsoli Uruchom aplikację docelową ze zmienną środowiskową `DOTNET_DiagnosticPorts` ustawioną na wartość w `dotnet-trace` danych wyjściowych.
+
+    > ```bash
+    > export DOTNET_DiagnosticPorts=/home/user/myport.sock
+    > ./my-dotnet-app arg1 arg2
+    > ```
+
+    Powinno to następnie umożliwić `dotnet-trace` rozpoczęcie śledzenia `my-dotnet-app` :
+
+    > ```bash
+    > Waiting for connection on myport.sock
+    > Start an application with the following environment variable: DOTNET_DiagnosticPorts=myport.sock
+    > Starting a counter session. Press Q to quit.
+    > ```
+
+    > [!IMPORTANT]
+    > Uruchamianie aplikacji w programie `dotnet run` może być problematyczne, ponieważ interfejs wiersza polecenia dotnet może mieć wiele procesów podrzędnych, które nie są używane przez aplikację, i mogą nawiązywać połączenie `dotnet-trace` przed aplikacją, pozostawiając, że aplikacja zostanie zawieszona w czasie wykonywania. Zaleca się, aby bezpośrednio korzystać z samodzielnej wersji aplikacji lub użyć `dotnet exec` do uruchomienia aplikacji.
 
 ## <a name="view-the-trace-captured-from-dotnet-trace"></a>Wyświetl śledzenie przechwycone przez śledzenie dotnet
 

@@ -1,19 +1,19 @@
 ---
-title: Samouczki dotyczące platformy .NET Core
-description: Postępuj zgodnie z samouczkami dotyczącymi uczenia się platformy .NET Core, aby tworzyć aplikacje i biblioteki na komputerach Mac, Linux i Windows.
-author: richlander
-ms.date: 09/09/2020
+title: Samouczki platformy .NET
+description: Postępuj zgodnie z samouczkami dotyczącymi uczenia się platformy .NET, aby tworzyć aplikacje i biblioteki na komputerach Mac, Linux i Windows.
+author: tdykstra
+ms.date: 12/07/2020
 titleSuffix: ''
-ms.openlocfilehash: 84c8daa735df0255b0e383244f1abd8db4fe21fe
-ms.sourcegitcommit: 1e8382d0ce8b5515864f8fbb178b9fd692a7503f
+ms.openlocfilehash: cf466f7ea004199052c1f02f5860668f2bb2ff28
+ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89656161"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97009322"
 ---
-# <a name="learn-net-core-and-the-net-core-sdk-tools-by-exploring-these-tutorials"></a>Poznaj narzędzia platformy .NET Core i zestaw .NET Core SDK, korzystając z tych samouczków
+# <a name="learn-net-and-the-net-sdk-tools-by-exploring-these-tutorials"></a>Poznaj platformę .NET i narzędzia zestawu .NET SDK, korzystając z tych samouczków
 
-Poniższe samouczki są dostępne do uczenia się w programie .NET Core.
+W poniższych samouczkach pokazano, jak opracowywać aplikacje konsolowe i biblioteki dla platformy .NET Core, .NET 5 i nowszych. W przypadku innych typów aplikacji zapoznaj [się z samouczkami dotyczącymi rozpoczynania pracy z platformą .NET](../../standard/get-started.md).
 
 ## <a name="use-visual-studio"></a>Korzystanie z programu Visual Studio
 
@@ -58,7 +58,3 @@ Wybierz te samouczki, jeśli chcesz użyć Visual Studio Code lub innego edytora
 - [Tworzenie szablonów dla interfejsu wiersza polecenia](cli-templates-create-item-template.md)
 - [Tworzenie i używanie narzędzi dla interfejsu wiersza polecenia](../tools/global-tools-how-to-create.md)
 - [Tworzenie aplikacji z wtyczkami](creating-app-with-plugin-support.md)
-
-## <a name="create-web-apps"></a>Tworzenie aplikacji sieci Web
-
-Samouczki dotyczące projektowania ASP.NET Core aplikacji sieci Web znajdują się w [dokumentacji ASP.NET Core](/aspnet/core/).

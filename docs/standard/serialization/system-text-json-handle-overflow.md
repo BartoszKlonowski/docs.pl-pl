@@ -10,12 +10,12 @@ helpviewer_keywords:
 - serializing objects
 - serialization
 - objects, serializing
-ms.openlocfilehash: 2c40d42b26bc5bd05f592cc51c6b5b9b4c6bbd9e
-ms.sourcegitcommit: 721c3e4bdbb1ea0bb420818ec944c538fe5c513a
+ms.openlocfilehash: 265ce4f77d353720419122d17c36e508a377b68f
+ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96439982"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008919"
 ---
 # <a name="how-to-handle-overflow-json-with-no-locsystemtextjson"></a>Jak obsłużyć przepełnienie kodu JSON przy użyciu System.Text.Json
 
@@ -83,15 +83,22 @@ Gdy obiekt docelowy jest serializowany, pary wartości klucza danych rozszerzeni
 
 Zauważ, że `ExtensionData` Nazwa właściwości nie pojawia się w formacie JSON. Takie zachowanie umożliwia wykonywanie operacji okrężnych przez kod JSON bez utraty jakichkolwiek dodatkowych danych, które w przeciwnym razie nie zostały odszeregowane.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [System.Text.Json Podsumowanie](system-text-json-overview.md)
-* [Tworzenie wystąpienia JsonSerializerOptions](system-text-json-configure-options.md)
-* [Włącz dopasowywanie bez uwzględniania wielkości liter](system-text-json-character-casing.md)
+* [Jak serializować i deserializować dane JSON](system-text-json-how-to.md)
+* [Tworzenie wystąpienia JsonSerializerOptions wystąpień](system-text-json-configure-options.md)
+* [Włączanie dopasowywania bez uwzględniania wielkości liter](system-text-json-character-casing.md)
 * [Dostosowywanie nazw i wartości właściwości](system-text-json-customize-properties.md)
-* [Ignoruj właściwości](system-text-json-ignore-properties.md)
-* [Zezwalaj na nieprawidłowy kod JSON](system-text-json-invalid-json.md)
-* [Zachowaj odwołania cykliczne](system-text-json-preserve-references.md)
+* [Ignorowanie właściwości](system-text-json-ignore-properties.md)
+* [Zezwalanie na nieprawidłowy kod JSON](system-text-json-invalid-json.md)
+* [Zachowywanie odwołań](system-text-json-preserve-references.md)
 * [Niemodyfikowalne typy i niepubliczne metody dostępu](system-text-json-immutability.md)
 * [Serializacja polimorficzna](system-text-json-polymorphism.md)
+* [Migruj z Newtonsoft.Json do System.Text.Json](system-text-json-migrate-from-newtonsoft-how-to.md)
+* [Dostosowywanie kodowania znaków](system-text-json-character-encoding.md)
+* [Napisz niestandardowe serializatory i deserializatory](write-custom-serializer-deserializer.md)
+* [Zapisz konwertery niestandardowe na potrzeby serializacji JSON](system-text-json-converters-how-to.md)
+* [Obsługa wartości DateTime i DateTimeOffset](../datetime/system-text-json-support.md)
 * [System.Text.Json Dokumentacja interfejsu API](xref:System.Text.Json)
+* [System.Text.Json. Dokumentacja interfejsu API serializacji](xref:System.Text.Json.Serialization)
