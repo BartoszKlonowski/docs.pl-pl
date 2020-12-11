@@ -1,13 +1,13 @@
 ---
 title: Typy wartości dopuszczające wartość null
-description: 'Dowiedz się, jak używać typów wartości null, aby reprezentować typ wartości, który może być również wartością null w języku F #.'
+description: 'Dowiedz się, jak używać typów wartości null, aby reprezentować typy wartości, które mogą również mieć wartość null, w języku F #.'
 ms.date: 11/19/2020
-ms.openlocfilehash: da0cd85bd651db81ba98c02a9db31d92dc52a8c6
-ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
+ms.openlocfilehash: e28cbfc57c5631573f46ac36462517cf011e96d2
+ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96740407"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97009641"
 ---
 # <a name="nullable-value-types"></a>Typy wartości dopuszczające wartość null
 
@@ -62,7 +62,7 @@ Jest to spowodowane tym `Nullable<'T>` , że program nie ma `null` prawidłowej 
 
 ## <a name="pass-and-assign-to-members"></a>Przekaż i przypisz do członków
 
-Kluczowa różnica między pracą z elementami członkowskimi i F # polega na tym, że typy wartości null mogą być niejawnie wywnioskowane podczas pracy z członkami. Rozważmy metodę folling, która przyjmuje typ wartości null jako dane wejściowe:
+Kluczowa różnica między pracą z elementami członkowskimi i F # polega na tym, że typy wartości null mogą być niejawnie wywnioskowane podczas pracy z członkami. Rozważmy następującą metodę, która przyjmuje typ wartości null jako dane wejściowe:
 
 ```fsharp
 type C() =
@@ -74,7 +74,7 @@ c.M(12)
 c.NVT <- 12
 ```
 
-W poprzednim przykładzie można przekazać `12` do metody `M` . Można również przypisać `12` do właściwości `NVT` Auto. Kompilator F # niejawnie konwertuje wywołanie lub przypisanie podobne do tego, gdy typ docelowy jest zgodny z danymi wejściowymi, jeśli dane wejściowe można utworzyć jako typ wartości nullabel.
+W poprzednim przykładzie można przekazać `12` do metody `M` . Można również przypisać `12` do właściwości `NVT` Auto. Jeśli dane wejściowe mogą być skonstruowane jako typ wartości null i są zgodne z typem docelowym, kompilator języka F # niejawnie przekonwertuje takie wywołania lub przypisania.
 
 ## <a name="examine-a-nullable-value-type-instance"></a>Badanie wystąpienia typu wartości null
 
