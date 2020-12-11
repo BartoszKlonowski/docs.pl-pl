@@ -2,12 +2,12 @@
 title: Samouczki języka C#
 description: Poznaj te samouczki języka C#, aby dowiedzieć się, jak tworzyć programy w języku c# i uczyć się funkcji języka C#.
 ms.date: 10/25/2018
-ms.openlocfilehash: 9542f4919c9b1f0363fb8bc27136eb9a7e074913
-ms.sourcegitcommit: b1f4756120deaecb8b554477bb040620f69a4209
+ms.openlocfilehash: d6eeed2ed5fbf68120c789b7d8203e811fb8608d
+ms.sourcegitcommit: 9b877e160c326577e8aa5ead22a937110d80fa44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89414825"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97110172"
 ---
 # <a name="c-tutorials"></a>Samouczki języka C#
 
@@ -19,7 +19,7 @@ Jeśli chcesz rozpocząć Eksplorowanie w formacie wideo, [Seria filmów w języ
 
 Pierwsze lekcje objaśniają koncepcje języka C# przy użyciu małych fragmentów kodu. Poznasz podstawy składni języka C# i sposób pracy z typami danych, takimi jak ciągi, liczby i wartości logiczne. Jest to wszystko interaktywne, a ty będziesz pisać i uruchamiać kod w ciągu kilku minut. W tych pierwszej lekcji nie założono wcześniej znajomości programowania ani języka C#.
 
-## <a name="hello-world"></a>[Hello world](intro-to-csharp/hello-world.yml)
+## <a name="hello-world"></a>[Cześć ludzie](intro-to-csharp/hello-world.yml)
 
 W samouczku [Hello World](intro-to-csharp/hello-world.yml) utworzysz najbardziej podstawowy program w języku C#. Poznasz `string` Typ i sposób pracy z tekstem.
 
@@ -47,7 +47,6 @@ Wszystkie samouczki wprowadzające po lekcji Hello world są dostępne w Twoim l
 
 ## <a name="explore-new-features-in-c"></a>Eksploruj nowe funkcje w języku C\#
 
-* [Wypróbuj nowe funkcje w języku c# 6 interaktywnie](exploration/csharp-6.yml): Eksploruj funkcje dodane w [języku c# 6](../whats-new/csharp-6.md) w przeglądarce.
 * [Interpolacja ciągów](string-interpolation.md): pokazuje, jak używać interpolacji ciągów do tworzenia ciągów sformatowanych w języku C#.
 * [Typy odwołań do wartości null](nullable-reference-types.md): pokazuje, jak używać typów referencyjnych dopuszczających wartość null do wyrażania intencji dla odwołań o wartości null.
 * [Zaktualizuj projekt, aby korzystał z typów referencyjnych dopuszczających wartość null](upgrade-to-nullable-references.md): demonstruje metody uaktualniania istniejącego projektu w celu użycia typów referencyjnych dopuszczających wartość null.

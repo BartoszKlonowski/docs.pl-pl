@@ -1,7 +1,7 @@
 ---
 title: Szczegóły serializacji XML
 description: Serializacja Konwertuje obiekt na formularz, który można transportować. Ten artykuł zawiera omówienie serializacji XML i klasy XmlSerializer.
-ms.date: 03/30/2017
+ms.date: 12/09/2020
 dev_langs:
 - csharp
 - vb
@@ -13,12 +13,12 @@ helpviewer_keywords:
 - DataSet class, serializing
 - XML Schema, serializing
 ms.assetid: 8c63200d-db63-4a03-a93d-21641623df62
-ms.openlocfilehash: 2971f5bbd587dabb62d095da3fef0b428ea9f039
-ms.sourcegitcommit: 74d05613d6c57106f83f82ce8ee71176874ea3f0
+ms.openlocfilehash: b1b5a90acce55ac7f58c1bde02fee713991dde80
+ms.sourcegitcommit: 9b877e160c326577e8aa5ead22a937110d80fa44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93282290"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97110159"
 ---
 # <a name="xml-serialization"></a>Serializacja XML
 
@@ -48,17 +48,17 @@ Podczas tworzenia aplikacji korzystającej z **elementu XmlSerializer** należy 
 - **XmlSerializer** tworzy pliki C# (. cs) i kompiluje je do plików DLL w katalogu o nazwie przez zmienną środowiskową temp; Serializacja występuje z tymi bibliotekami DLL.
 
   > [!NOTE]
-  > Te zestawy serializacji można wygenerowane z góry i podpisane za pomocą narzędzia SGen.exe. Nie działa serwer usług sieci Web. Innymi słowy jest tylko do użytku klienta i ręczne serializacji.
+  > Te zestawy serializacji można wygenerowane z góry i podpisane za pomocą narzędzia SGen.exe. Nie działa to na serwerze usług sieci Web. Innymi słowy jest tylko do użytku klienta i ręczne serializacji.
 
   Kod i biblioteki DLL są podatne na złośliwego procesu w czasie tworzenia i kompilacji. Podczas używania na komputerze z systemem Microsoft Windows NT 4.0 lub nowszy, może być możliwe dla co najmniej dwa użytkownikom udostępnianie katalogu TEMP. Udostępnianie katalogu TEMP jest niebezpieczne, jeśli dwa konta mają różne uprawnienia zabezpieczeń, a konto wyższego uprawnienia uruchamia aplikację przy użyciu **elementu XmlSerializer**. W takim przypadku jeden użytkownik może naruszyć bezpieczeństwo komputera, zastępując plik. cs lub. dll, który jest kompilowany. Aby usunąć ten problem, zawsze upewnij się, że każde konto na komputerze ma własny profil. Domyślnie zmienna środowiskowa TEMP wskazuje inny folder dla każdego konta.
 
 - Jeśli złośliwy użytkownik wyśle ciągły strumień danych XML do serwera sieci Web (atak typu "odmowa usługi"), wówczas obiekt **XmlSerializer** kontynuuje przetwarzanie danych do momentu, gdy na komputerze nie będzie działać niska ilość zasobów.
 
-  Ten rodzaj ataku jest eliminowany, jeśli używasz komputera z systemem Internet Information Services (IIS), a aplikacja jest uruchomiona w ramach usług IIS. Program IIS zawiera bramę, która nie może przetwarzać strumieni dłużej niż pewną liczbę (wartość domyślna to 4 KB). Jeśli tworzysz aplikację, która nie korzysta z usług IIS i deserializacji z **XmlSerializer** , należy zaimplementować podobną bramę, która uniemożliwia atak typu "odmowa usługi".
+  Ten rodzaj ataku jest eliminowany, jeśli używasz komputera z systemem Internet Information Services (IIS), a aplikacja jest uruchomiona w ramach usług IIS. Program IIS zawiera bramę, która nie może przetwarzać strumieni dłużej niż pewną liczbę (wartość domyślna to 4 KB). Jeśli tworzysz aplikację, która nie korzysta z usług IIS i deserializacji z **XmlSerializer**, należy zaimplementować podobną bramę, która uniemożliwia atak typu "odmowa usługi".
 
 - **XmlSerializer** wykonuje serializacji danych i uruchamia dowolny kod przy użyciu dowolnego typu danego elementu.
 
-  Istnieją dwie metody, w których obiekt złośliwego przedstawia zagrożenia. Może uruchomić złośliwy kod lub może wstrzyknąć złośliwy kod do pliku C# utworzonego przez **XmlSerializer**. W przypadku pierwszego Jeśli obiekt złośliwego próbuje uruchomić destrukcyjne procedurę, zabezpieczenia dostępu do kodu uniemożliwia szkody wykonywana. W drugim przypadku istnieje teoretyczna możliwość, że złośliwy obiekt może w jakiś sposób wstrzyknąć kod do pliku C# utworzonego przez **XmlSerializer**. Mimo że ten problem zbadaniu dokładnie i takiego ataku jest uznawany za mało prawdopodobne, należy podjąć środki ostrożności nigdy nie szeregowania danych o typie nieznany i niezaufane.
+  Istnieją dwie metody, w których obiekt złośliwego przedstawia zagrożenia. Może uruchomić złośliwy kod lub może wstrzyknąć złośliwy kod do pliku C# utworzonego przez **XmlSerializer**. W drugim przypadku istnieje teoretyczna możliwość, że złośliwy obiekt może w jakiś sposób wstrzyknąć kod do pliku C# utworzonego przez **XmlSerializer**. Mimo że ten problem zbadaniu dokładnie i takiego ataku jest uznawany za mało prawdopodobne, należy podjąć środki ostrożności nigdy nie szeregowania danych o typie nieznany i niezaufane.
 
 - Zserializowany poufnych danych może być narażony.
 
@@ -142,13 +142,13 @@ Przy użyciu klasy **XmlSerializer** należy wziąć pod uwagę następujące kw
 
   Klasa implementująca **interfejs IEnumerable** musi implementować publiczną metodę **Add** , która przyjmuje jeden parametr. Parametr **Add** Method musi być spójny (polimorficzny) z typem zwracanym z właściwości **IEnumerator. Current** zwracanego z metody **GetEnumerator** .
 
-  Klasa implementująca **interfejs ICollection** oprócz **interfejsu IEnumerable** (na przykład **CollectionBase** ) musi mieć Właściwość indeksowaną **elementu** publicznego (indeksator w języku C#), która przyjmuje liczbę całkowitą i musi mieć publiczną właściwość **Count** typu **Integer**. Parametr przesłany do metody **Add** musi być tym samym typem, który został zwrócony z właściwości **Item** lub jednej z baz danych tego typu.
+  Klasa implementująca **interfejs ICollection** oprócz **interfejsu IEnumerable** (na przykład **CollectionBase**) musi mieć Właściwość indeksowaną **elementu** publicznego (indeksator w języku C#), która przyjmuje liczbę całkowitą i musi mieć publiczną właściwość **Count** typu **Integer**. Parametr przesłany do metody **Add** musi być tym samym typem, który został zwrócony z właściwości **Item** lub jednej z baz danych tego typu.
 
-  W przypadku klas implementujących **interfejs ICollection** wartości, które mają być serializowane, są pobierane z właściwości **element** indeksowany, a nie przez wywołanie metody **GetEnumerator**. Ponadto pola publiczne i właściwości nie są serializowane, z wyjątkiem pól publicznych, które zwracają inną klasę kolekcji (jedną implementującą **interfejs ICollection** ). Aby zapoznać się z przykładem, zobacz [przykłady serializacji XML](examples-of-xml-serialization.md).
+  W przypadku klas implementujących **interfejs ICollection** wartości, które mają być serializowane, są pobierane z właściwości **element** indeksowany, a nie przez wywołanie metody **GetEnumerator**. Ponadto pola publiczne i właściwości nie są serializowane, z wyjątkiem pól publicznych, które zwracają inną klasę kolekcji (jedną implementującą **interfejs ICollection**). Aby zapoznać się z przykładem, zobacz [przykłady serializacji XML](examples-of-xml-serialization.md).
 
 ## <a name="xsd-data-type-mapping"></a>Mapowania typów danych XSD
 
-Dokument W3C o tytule [schematu XML część 2:](https://www.w3.org/TR/xmlschema-2/) typy danych określa, że w schemacie języka definicji schematu XML (XSD) można używać prostych, które są dozwolone. Dla wielu z nich (na przykład **int** i **Decimal** ) istnieje odpowiedni typ danych w programie .NET. Jednak niektóre typy danych XML nie mają odpowiadającego im typu danych .NET, na przykład typ danych **NMTOKEN** . W takich przypadkach, jeśli używasz narzędzia definicji schematu XML ( [narzędzie definicji schematu XML (Xsd.exe)](xml-schema-definition-tool-xsd-exe.md)) do generowania klas ze schematu, odpowiedni atrybut jest stosowany do składowej typu String, a jej właściwość **DataType** jest ustawiona na nazwę typu danych XML. Na przykład, jeśli schemat zawiera element o nazwie "mój token" z obiektem typu danych XML, wygenerowana Klasa może zawierać element **członkowski, jak** pokazano w poniższym przykładzie.
+Dokument W3C o tytule [schematu XML część 2:](https://www.w3.org/TR/xmlschema-2/) typy danych określa, że w schemacie języka definicji schematu XML (XSD) można używać prostych, które są dozwolone. Dla wielu z nich (na przykład **int** i **Decimal**) istnieje odpowiedni typ danych w programie .NET. Jednak niektóre typy danych XML nie mają odpowiadającego im typu danych .NET, na przykład typ danych **NMTOKEN** . W takich przypadkach, jeśli używasz narzędzia definicji schematu XML ([narzędzie definicji schematu XML (Xsd.exe)](xml-schema-definition-tool-xsd-exe.md)) do generowania klas ze schematu, odpowiedni atrybut jest stosowany do składowej typu String, a jej właściwość **DataType** jest ustawiona na nazwę typu danych XML. Na przykład, jeśli schemat zawiera element o nazwie "mój token" z obiektem typu danych XML, wygenerowana Klasa może zawierać element **członkowski, jak** pokazano w poniższym przykładzie.
 
 ```vb
 <XmlElement(DataType:="NMTOKEN")> _
@@ -176,7 +176,7 @@ Aby uzyskać pełną listę mapowań typów, zobacz Właściwość **DataType** 
 
 - <xref:System.Xml.Serialization.XmlRootAttribute>
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - <xref:System.Xml.Serialization.XmlSerializer>
 - <xref:System.Runtime.Serialization.DataContractSerializer>

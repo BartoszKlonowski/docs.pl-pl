@@ -6,19 +6,19 @@ ms.author: tdykstra
 no-loc:
 - System.Text.Json
 - Newtonsoft.Json
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 zone_pivot_groups: dotnet-version
 helpviewer_keywords:
 - JSON serialization
 - serializing objects
 - serialization
 - objects, serializing
-ms.openlocfilehash: 418637639790199755803bf374ef99af949ae9b3
-ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
+ms.openlocfilehash: 4a33d9de96af805c3696ceed5cd30a3fa8547222
+ms.sourcegitcommit: 9b877e160c326577e8aa5ead22a937110d80fa44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97009901"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97110835"
 ---
 # <a name="how-to-migrate-from-no-locnewtonsoftjson-to-no-locsystemtextjson"></a>Jak przeprowadzić migrację z Newtonsoft.Json do programu System.Text.Json
 
@@ -369,6 +369,10 @@ Aby uzyskać więcej informacji, zobacz temat [zachowywanie odwołań i obsługa
 
 ::: zone pivot="dotnet-5-0"
 Obie `Newtonsoft.Json` i `System.Text.Json` obsługują kolekcje typu `Dictionary<TKey, TValue>` .
+
+> [!CAUTION]
+> Deserializacja do, `Dictionary<TKey, TValue>` gdzie `TKey` jest wpisana jako jakakolwiek inna, niż `string` może spowodować lukę w zabezpieczeniach aplikacji zużywanej. Aby uzyskać więcej informacji, zobacz [dotnet/Runtime # 4761](https://github.com/dotnet/runtime/issues/4761).
+
 ::: zone-end
 
 ::: zone pivot="dotnet-core-3-1"
@@ -625,7 +629,7 @@ public JsonElement LookAndLoad(JsonElement source)
 
 Poprzedzający kod oczekuje `JsonElement` , że zawiera `fileName` Właściwość. Plik JSON zostanie otwarty i zostanie utworzony `JsonDocument` . Metoda zakłada, że obiekt wywołujący chce współpracować z całym dokumentem, dlatego zwraca wartość `Clone` `RootElement` .
 
-Jeśli otrzymasz `JsonElement` i zwrócisz podrzędny element, nie trzeba zwracać `Clone` elementu podrzędnego. Obiekt wywołujący jest odpowiedzialny za utrzymanie aktywności, `JsonDocument` do której należy ten element `JsonElement` . Przykład:
+Jeśli otrzymasz `JsonElement` i zwrócisz podrzędny element, nie trzeba zwracać `Clone` elementu podrzędnego. Obiekt wywołujący jest odpowiedzialny za utrzymanie aktywności, `JsonDocument` do której należy ten element `JsonElement` . Na przykład:
 
 ```csharp
 public JsonElement ReturnFileName(JsonElement source)

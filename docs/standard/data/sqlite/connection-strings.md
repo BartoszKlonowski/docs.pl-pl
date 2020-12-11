@@ -1,13 +1,13 @@
 ---
 title: Parametry połączeń
-ms.date: 12/13/2019
+ms.date: 12/08/2020
 description: Obsługiwane słowa kluczowe i wartości parametrów połączenia.
-ms.openlocfilehash: 3c50b31689abf6d47aa8f83a6f6f755bcfec0ea3
-ms.sourcegitcommit: 27a15a55019f6b5f2733961738babe94aec0def3
+ms.openlocfilehash: 35283664c4ac3985d4f517fde77644ab2a891120
+ms.sourcegitcommit: 9b877e160c326577e8aa5ead22a937110d80fa44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90555396"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97110744"
 ---
 # <a name="connection-strings"></a>Parametry połączeń
 
@@ -40,7 +40,7 @@ Tryb połączenia.
 | ReadWriteCreate | Otwiera bazę danych do odczytu i zapisu, a następnie tworzy ją, jeśli nie istnieje. Jest to opcja domyślna. |
 | Odczyt/zapis       | Otwiera bazę danych do odczytu i zapisu.                                                        |
 | ReadOnly        | Otwiera bazę danych w trybie tylko do odczytu.                                                              |
-| Pamięć          | Otwiera bazę danych w pamięci.                                                                       |
+| Memory (Pamięć)          | Otwiera bazę danych w pamięci.                                                                       |
 
 ### <a name="cache"></a>Pamięć podręczna
 
@@ -49,8 +49,8 @@ Tryb buforowania używany przez połączenie.
 | Wartość   | Opis                                                                                    |
 | ------- | ---------------------------------------------------------------------------------------------- |
 | Domyślny | Używa domyślnego trybu podstawowej biblioteki programu SQLite. Jest to opcja domyślna.                   |
-| Private | Każde połączenie używa prywatnej pamięci podręcznej.                                                          |
-| Shared  | Połączenia korzystają z pamięci podręcznej. Ten tryb pozwala zmienić zachowanie blokowania transakcji i tabel. |
+| Prywatny | Każde połączenie używa prywatnej pamięci podręcznej.                                                          |
+| Udostępniona  | Połączenia korzystają z pamięci podręcznej. Ten tryb pozwala zmienić zachowanie blokowania transakcji i tabel. |
 
 ### <a name="password"></a>Hasło
 
@@ -59,9 +59,15 @@ Klucz szyfrowania. Gdy ta `PRAGMA key` wartość jest określona, jest wysyłana
 > [!WARNING]
 > Hasło nie ma znaczenia, jeśli szyfrowanie nie jest obsługiwane przez natywną bibliotekę oprogramowania SQLite.
 
+> [!NOTE]
+> Słowo kluczowe Password zostało dodane w wersji 3,0.
+
 ### <a name="foreign-keys"></a>Klucze obce
 
 Wartość wskazująca, czy należy włączyć ograniczenia klucza obcego.
+
+> [!NOTE]
+> Słowo kluczowe kluczy obcych zostało dodane w wersji 3,0.
 
 | Wartość   | Opis
 | ------- | --- |
@@ -74,6 +80,9 @@ Nie ma potrzeby włączania kluczy obcych, jeśli tak, jak w e_sqlite3, SQLITE_D
 ### <a name="recursive-triggers"></a>Wyzwalacze cykliczne
 
 Wartość wskazująca, czy włączyć Wyzwalacze cykliczne.
+
+> [!NOTE]
+> Słowo kluczowe wyzwalaczy cyklicznych zostało dodane w wersji 3,0.
 
 | Wartość | Opis                                                                 |
 | ----- | --------------------------------------------------------------------------- |
@@ -88,7 +97,7 @@ Można użyć <xref:Microsoft.Data.Sqlite.SqliteConnectionStringBuilder> jako je
 
 ## <a name="examples"></a>Przykłady
 
-### <a name="basic"></a>Podstawowy
+### <a name="basic"></a>Podstawowa
 
 Podstawowe parametry połączenia z udostępnioną pamięcią podręczną w celu zwiększenia współbieżności.
 
@@ -128,7 +137,7 @@ Współużytkowana baza danych w pamięci identyfikowana przy użyciu nazwy, kt�
 Data Source=Sharable;Mode=Memory;Cache=Shared
 ```
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Parametry połączenia w ADO.NET](../../../framework/data/adonet/connection-strings.md)
 * [Bazy danych w pamięci](in-memory-databases.md)

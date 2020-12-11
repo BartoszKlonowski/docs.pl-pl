@@ -1,13 +1,13 @@
 ---
 title: Rozszerzenia
-ms.date: 12/13/2019
+ms.date: 12/08/2020
 description: Dowiedz się, jak ładować rozszerzenia oprogramowania SQLite.
-ms.openlocfilehash: 51c705349c25240fe42e0edda8004a3e3b013ca3
-ms.sourcegitcommit: 7980a91f90ae5eca859db7e6bfa03e23e76a1a50
+ms.openlocfilehash: 68d31093662f373d6ebf4460d6a5d44029c27c5c
+ms.sourcegitcommit: 9b877e160c326577e8aa5ead22a937110d80fa44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81242962"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97110848"
 ---
 # <a name="extensions"></a>Rozszerzenia
 
@@ -18,6 +18,9 @@ Platforma .NET Core zawiera dodatkową logikę do lokalizowania bibliotek natywn
 Aby załadować rozszerzenie, wywołaj <xref:Microsoft.Data.Sqlite.SqliteConnection.LoadExtension%2A> metodę. Firma Microsoft. Data. sqlite zapewni załadowanie rozszerzenia, nawet jeśli połączenie zostanie zamknięte i ponownie otwarte.
 
 [!code-csharp[](../../../../samples/snippets/standard/data/sqlite/ExtensionsSample/Program.cs?name=snippet_LoadExtension)]
+
+> [!NOTE]
+> Metoda LoadExtension została dodana w wersji 3,0.
 
 ## <a name="see-also"></a>Zobacz też
 

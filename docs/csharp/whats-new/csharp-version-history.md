@@ -3,12 +3,12 @@ title: Historia języka C# — Przewodnik c#
 description: Jak wygląda ten język we wcześniejszych wersjach i jak został on rozwijający od?
 author: erikdietrich
 ms.date: 04/08/2020
-ms.openlocfilehash: 349f2cfbe0fc93060eb6927ee8c3528c16b99aca
-ms.sourcegitcommit: 636af37170ae75a11c4f7d1ecd770820e7dfe7bd
+ms.openlocfilehash: 7258dc8b8fcfbd6354b5ceee4183429bfee14038
+ms.sourcegitcommit: 9b877e160c326577e8aa5ead22a937110d80fa44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91805092"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97110731"
 ---
 # <a name="the-history-of-c"></a>Historia języka C\#
 
@@ -41,7 +41,7 @@ Główne funkcje języka C# 1,0:
 - [Interfejsy](../programming-guide/interfaces/index.md)
 - [Zdarzenia](../events-overview.md)
 - [Właściwości](../properties.md)
-- [Delegaty](../delegates-overview.md)
+- [Delegaci](../delegates-overview.md)
 - [Operatory i wyrażenia](../language-reference/operators/index.md)
 - [Instrukcje](../programming-guide/statements-expressions-operators/statements.md)
 - [Atrybuty](../programming-guide/concepts/attributes/index.md)
@@ -68,7 +68,7 @@ Inne funkcje języka C# 2,0 dodaliśmy możliwości do istniejących funkcji:
 - Klasy statyczne
 - Delegowanie wnioskowania
 
-Chociaż język C# mógł rozpocząć pracę jako ogólny OO (zorientowany obiektowo), w języku C# wersja 2,0 zmieniła się w pospiesz. Gdy miały swoje stopy w nich, zakończyły się po kilku poważnych punktach bólu deweloperów. I zostały one w znaczący sposób.
+Podczas gdy język C# mógł rozpocząć pracę jako generyczny Object-Oriented (OO), w języku C# wersja 2,0 zmieniła się w pospiesz. Gdy miały swoje stopy w nich, zakończyły się po kilku poważnych punktach bólu deweloperów. I zostały one w znaczący sposób.
 
 W przypadku typów ogólnych typy i metody mogą działać na dowolnym typie przy zachowaniu bezpieczeństwa typu. Na przykład, jeśli istnieje, <xref:System.Collections.Generic.List%601> a umożliwia `List<string>` `List<int>` wykonywanie operacji bezpiecznych typu na tych ciągach lub liczbach całkowitych w trakcie iteracji. Używanie typów ogólnych jest lepszym rozwiązaniem niż tworzenie `ListInt` , które wynika z `ArrayList`  lub rzutowanie z `Object` dla każdej operacji.
 
@@ -85,14 +85,14 @@ Język C# w wersji 3,0 znajduje się w późnej 2007, wraz z programem Visual St
 - [Wyrażenia zapytań](../linq/query-expression-basics.md)
 - [Wyrażenia lambda](../language-reference/operators/lambda-expressions.md)
 - [Drzewa wyrażeń](../expression-trees.md)
-- [Metody rozszerzeń](../programming-guide/classes-and-structs/extension-methods.md)
+- [Metody rozszerzające](../programming-guide/classes-and-structs/extension-methods.md)
 - [Niejawnie wpisane zmienne lokalne](../language-reference/keywords/var.md)
 - [Metody częściowe](../language-reference/keywords/partial-method.md)
 - [Inicjatory obiektów i kolekcji](../programming-guide/classes-and-structs/object-and-collection-initializers.md)
 
-W programie Spoglądając wstecz wiele z tych funkcji sprawia, że są one nieuniknione i nierozdzielne. Wszystkie te same pasują do siebie strategicznie. Ogólnie uważa się, że funkcja Killer wersji C# była wyrażeniem zapytania, znanym również jako zapytanie zintegrowane z językiem (LINQ).
+W programie Spoglądając wstecz wiele z tych funkcji sprawia, że są one nieuniknione i nierozdzielne. Wszystkie te same pasują do siebie strategicznie. Ogólnie uważa się, że funkcja Killer wersji C# była wyrażeniem zapytania, znanym również jako zapytanie Language-Integrated (LINQ).
 
-Dokładniejszy widok złożonych bada drzewa wyrażeń, wyrażenia lambda i typy anonimowe jako podstawę, na której jest konstruowany składnik LINQ. Jednak w obu przypadkach w języku C# 3,0 przedstawiono koncepcję Rewolucyjne. W języku c# 3,0 rozpoczęto tworzenie podstawę w celu przetworzenia języka C# w języku hybrydowym zorientowanym na obiekty/funkcjonalne.
+Dokładniejszy widok złożonych bada drzewa wyrażeń, wyrażenia lambda i typy anonimowe jako podstawę, na której jest konstruowany składnik LINQ. Jednak w obu przypadkach w języku C# 3,0 przedstawiono koncepcję Rewolucyjne. W języku c# 3,0 rozpoczęto tworzenie podstawę w celu przetworzenia języka C# w hybrydowej Object-Oriented/języku funkcjonalnym.
 
 W tym celu można teraz napisać w stylu SQL zapytania deklaracyjne, aby wykonywać operacje na kolekcjach, między innymi. Zamiast pisać `for` pętlę, aby obliczyć średnią z listy liczb całkowitych, można to zrobić tak samo jak w przypadku `list.Average()` . Kombinacja wyrażeń zapytania i metod rozszerzających wygląda tak, jakby ta lista liczb całkowitych uzyskała całą dużą liczbę.
 
@@ -134,17 +134,17 @@ Ale `async` i `await` są rzeczywiste gwiazdki tej wersji. Gdy te funkcje zosta�
 
 W wersjach 3,0 i 5,0 język C# dodał nowe funkcje w języku zorientowanym obiektowo. W wersji 6,0 wydanej w programie Visual Studio 2015 nie można przeprowadzić dominującej funkcji Killer i zamiast tego wydać wiele mniejszych funkcji, które zwiększają produktywność programowania w języku C#. Oto niektóre z nich:
 
-- [Importy statyczne](./csharp-6.md#using-static)
-- [Filtry wyjątków](./csharp-6.md#exception-filters)
-- [Inicjatory właściwości autoproperty](./csharp-6.md#auto-property-initializers)
-- [Wyrażenie składowych składowanych](./csharp-6.md#expression-bodied-function-members)
-- [Propagator o wartości null](./csharp-6.md#null-conditional-operators)
-- [Interpolacja ciągów](./csharp-6.md#string-interpolation)
-- [operator nameof](./csharp-6.md#the-nameof-expression)
-- [Inicjatory indeksów](csharp-6.md#extension-add-methods-in-collection-initializers)
+- [Importy statyczne](../language-reference/keywords/using-static.md)
+- [Filtry wyjątków](../language-reference/keywords/when.md)
+- [Inicjatory właściwości autoproperty](../properties.md)
+- [Wyrażenie składowych składowanych](../language-reference/operators/lambda-operator.md#expression-body-definition)
+- [Propagator o wartości null](../language-reference/operators/member-access-operators.md#null-conditional-operators--and-)
+- [Interpolacja ciągów](../language-reference/tokens/interpolated.md)
+- [operator nameof](../language-reference/operators/nameof.md)
 
 Inne nowe funkcje obejmują:
 
+- Inicjatory indeksów
 - Await w blokach catch/finally
 - Wartości domyślne właściwości metody pobierającej
 
@@ -158,7 +158,7 @@ Język C# w wersji 7,0 został opublikowany z Visual Studio 2017. Ta wersja ma p
 
 - [Zmienne out](./csharp-7.md#out-variables)
 - [Krotki i dekonstrukcja](./csharp-7.md#tuples-and-discards)
-- [Dopasowanie wzorca](./csharp-7.md#pattern-matching)
+- [Dopasowanie do wzorca](./csharp-7.md#pattern-matching)
 - [Funkcje lokalne](./csharp-7.md#local-functions)
 - [Rozwinięte składowe wyrażeń](./csharp-7.md#more-expression-bodied-members)
 - [Ref locales i Returns](./csharp-7.md#ref-locals-and-returns)
