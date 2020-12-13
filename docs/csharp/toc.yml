@@ -52,8 +52,6 @@
       href: tutorials/exploration/top-level-statements.md
     - name: Eksplorowanie wzorców w obiektach
       href: tutorials/exploration/patterns-objects.md
-    - name: Eksplorowanie języka C# 6
-      href: tutorials/exploration/csharp-6.yml
     - name: Eksplorowanie interpolacji ciągów — interakcyjne
       href: tutorials/exploration/interpolated-strings.yml
     - name: Eksplorowanie interpolacji ciągów — w Twoim środowisku
@@ -93,8 +91,6 @@
       href: whats-new/csharp-8.md
     - name: C# 7.0–7.3
       href: whats-new/csharp-7.md
-    - name: C# 6
-      href: whats-new/csharp-6.md
     - name: Fundamentalne zmiany w kompilatorze
       href: whats-new/breaking-changes.md
     - name: Historia wersji języka C#
