@@ -5,12 +5,12 @@ ms.date: 04/02/2020
 author: natke
 ms.author: nakersha
 ms.custom: how-to
-ms.openlocfilehash: c744b42b4b95681de7b0cbeaef338cc890708fd8
-ms.sourcegitcommit: 03fec33630b46e78d5e81e91b40518f32c4bd7b5
+ms.openlocfilehash: 75d29c6bafdce5c9bb104229ddc8d7b847f57e29
+ms.sourcegitcommit: fcbe432482464b1639decad78cc4dc8387c6269e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84008433"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366802"
 ---
 # <a name="install-extra-mlnet-dependencies"></a>Instalowanie dodatkowych zależności ML.NET
 
@@ -24,7 +24,7 @@ W niektórych przypadkach istnieją dodatkowe wymagania dotyczące instalacji, z
 
 ## <a name="microsoftmltimeseries-microsoftmlautoml"></a>Microsoft. ML. szeregów czasowych, Microsoft. ML. AutoML
 
-Oba te pakiety mają zależność od `Microsoft.ML.MKL.Redist` , która ma zależność od `libiomp` .
+Oba te pakiety mają zależność od `Microsoft.ML.MKL.Redist` , która ma zależność od `libomp` .
 
 ### <a name="windows"></a>Windows
 
@@ -66,19 +66,19 @@ Nie są wymagane żadne dodatkowe kroki instalacji. Biblioteka jest instalowana,
     sudo apt-get install <COMPONENT>-<VERSION>.<UPDATE>-<BUILD_NUMBER>
     ```
 
-    Przykład:
+    Na przykład:
 
     ```bash
     sudo apt-get install intel-mkl-64bit-2020.0-088
     ```
 
-    Określ lokalizację`libiomp.so`
+    Określ lokalizację `libiomp.so`
 
     ```bash
     find /opt -name "libiomp5.so"
     ```
 
-    Przykład:
+    Na przykład:
 
     ```output
     /opt/intel/compilers_and_libraries_2020.0.166/linux/compiler/lib/intel64_lin/libiomp5.so
@@ -92,7 +92,7 @@ Nie są wymagane żadne dodatkowe kroki instalacji. Biblioteka jest instalowana,
 
 ### <a name="mac"></a>Mac
 
-1. Zainstaluj bibliotekę z`Homebrew`
+1. Zainstaluj bibliotekę z `Homebrew`
 
     ```bash
     brew update && brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/f5b1ac99a7fba27c19cee0bc4f036775c889b359/Formula/libomp.rb && brew link libomp --force

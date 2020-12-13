@@ -2,12 +2,12 @@
 title: Wprowadzenie do programowania funkcyjnego w F#
 description: 'Poznaj podstawy programowania funkcjonalnego w języku F #.'
 ms.date: 10/29/2018
-ms.openlocfilehash: fc2aebe80de16b92942c3557c0e03c198883dde1
-ms.sourcegitcommit: ecd9e9bb2225eb76f819722ea8b24988fe46f34c
+ms.openlocfilehash: 44242a4319a331312a003a555d1483f2a3f1a90d
+ms.sourcegitcommit: 9b877e160c326577e8aa5ead22a937110d80fa44
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96740331"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97110588"
 ---
 # <a name="introduction-to-functional-programming-in-f"></a>Wprowadzenie do programowania funkcjonalnego w języku F\#
 
@@ -54,7 +54,7 @@ Dlatego dlaczego sygnatura jest ważna? W przypadku programowania w określonym 
 
 ### <a name="expressions"></a>Wyrażenia
 
-Wyrażenia są konstrukcjami, które są szacowane do wartości. W przeciwieństwie do instrukcji, które wykonują akcję, wyrażenia mogą być uważane za wykonywanie akcji, która zwraca wartość. Wyrażenia są prawie zawsze używane na korzyść instrukcji w programowaniu funkcjonalnym.
+Wyrażenia są konstrukcjami, które są szacowane do wartości. W przeciwieństwie do instrukcji, które wykonują akcję, wyrażenia mogą być uważane za wykonywanie akcji, która zwraca wartość. Wyrażenia są prawie zawsze używane w programowaniu funkcjonalnym zamiast instrukcji.
 
 Weź pod uwagę poprzednią funkcję, `addOne` . Treść `addOne` jest wyrażeniem:
 
