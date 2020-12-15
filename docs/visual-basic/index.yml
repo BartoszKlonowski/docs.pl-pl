@@ -6,13 +6,13 @@ metadata:
   description: Uczenie się Visual Basic programowanie w programie .NET — w przypadku deweloperów, deweloperów nowych do Visual Basic i doświadczonych Visual Basic deweloperów
   ms.topic: landing-page
   ms.date: 08/13/2020
-  ms.custom: contperfq1
-  ms.openlocfilehash: 5c393052a1782b64af18d32727f6df5bbd9d1415
-  ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
+  ms.custom: contperf-fy21q1
+  ms.openlocfilehash: 559b97e9c6b3a6b48eb05643ad3221a36b5b5a23
+  ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 12/04/2020
-  ms.locfileid: "96599684"
+  ms.lasthandoff: 12/15/2020
+  ms.locfileid: "97512622"
 landingContent:
 - title: Rozpoczęcie pracy
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
       url: ../core/tutorials/library-with-visual-studio.md
     - text: Wskazówki
       url: walkthroughs.md
-    - text: Dodatkowe zasoby
+    - text: Zasoby dodatkowe
       url: getting-started/additional-resources.md
 - title: Podstawy
   linkLists:
