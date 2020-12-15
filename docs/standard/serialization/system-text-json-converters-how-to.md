@@ -1,7 +1,7 @@
 ---
 title: Jak pisać konwertery niestandardowe na potrzeby serializacji JSON — .NET
 description: Dowiedz się, jak utworzyć niestandardowe konwertery dla klas serializacji JSON, które są dostępne w System.Text.Json przestrzeni nazw.
-ms.date: 12/09/2020
+ms.date: 12/14/2020
 no-loc:
 - System.Text.Json
 - Newtonsoft.Json
@@ -12,12 +12,12 @@ helpviewer_keywords:
 - serialization
 - objects, serializing
 - converters
-ms.openlocfilehash: 33334ccd8bad4ac5a9f5dccde79ff3ae09ca8f89
-ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
+ms.openlocfilehash: 390438e3dca7a5d40dd9957090f498b495996e05
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008867"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97513201"
 ---
 # <a name="how-to-write-custom-converters-for-json-serialization-marshalling-in-net"></a>Jak pisać konwertery niestandardowe na potrzeby serializacji JSON (kierowanie) w programie .NET
 
@@ -84,7 +84,7 @@ Poprzedni kod jest taki sam jak w [słowniku pomocy technicznej z kluczem innym 
 Poniższe kroki wyjaśniają, jak utworzyć konwerter, wykonując następujące czynności:
 
 * Utwórz klasę, która pochodzi od elementu WHERE, który <xref:System.Text.Json.Serialization.JsonConverter%601> `T` ma być serializowany i deserializowany.
-* Zastąp `Read` metodę w celu deserializacji przychodzącego pliku JSON i przekonwertuj go na typ `T` . Użyj <xref:System.Text.Json.Utf8JsonReader> , która jest przenoszona do metody odczytu JSON.
+* Zastąp `Read` metodę w celu deserializacji przychodzącego pliku JSON i przekonwertuj go na typ `T` . Użyj <xref:System.Text.Json.Utf8JsonReader> , która jest przenoszona do metody odczytu JSON. Nie musisz martwić się o obsługę częściowych danych, ponieważ serializator przekazuje wszystkie dane dla bieżącego zakresu JSON. Dlatego nie jest konieczne Wywołaj <xref:System.Text.Json.Utf8JsonReader.Skip%2A> lub <xref:System.Text.Json.Utf8JsonReader.TrySkip%2A> lub, aby potwierdzić, że <xref:System.Text.Json.Utf8JsonReader.Read%2A> zwraca `true` .
 * Zastąp `Write` metodę, aby serializować obiekt przychodzący typu `T` . Użyj <xref:System.Text.Json.Utf8JsonWriter> , która jest przenoszona do metody, aby zapisać kod JSON.
 * Zastąp `CanConvert` metodę tylko w razie potrzeby. Domyślna implementacja zwraca, `true` gdy typ do konwersji jest typem `T` . W związku z tym konwertery obsługujące tylko typ `T` nie muszą przesłaniać tej metody. Aby zapoznać się z przykładem konwertera, który musi przesłonić tę metodę, zobacz sekcję [deserializacji polimorficzną](#support-polymorphic-deserialization) w dalszej części tego artykułu.
 
@@ -377,7 +377,7 @@ To zachowanie obsługi wartości null polega głównie na optymalizowaniu wydajn
 ::: zone pivot="dotnet-5-0"
 Aby włączyć obsługę niestandardowego konwertera `null` dla typu odwołania lub wartości, Przesłoń <xref:System.Text.Json.Serialization.JsonConverter%601.HandleNull%2A?displayProperty=nameWithType> to Return `true` , jak pokazano w następującym przykładzie:
 
-:::code language="csharp" source="snippets/system-text-json-how-to-5-0/csharp/CustomConverterHandleNull.cs" highlight="19":::
+:::code language="csharp" source="snippets/system-text-json-how-to-5-0/csharp/CustomConverterHandleNull.cs" highlight="18":::
 ::: zone-end
 
 ## <a name="other-custom-converter-samples"></a>Inne przykłady konwerterów niestandardowych
@@ -394,7 +394,7 @@ Aby włączyć obsługę niestandardowego konwertera `null` dla typu odwołania 
 
 Jeśli musisz utworzyć konwerter, który modyfikuje zachowanie istniejącego wbudowanego konwertera, możesz uzyskać [kod źródłowy istniejącego konwertera](https://github.com/dotnet/runtime/tree/81bf79fd9aa75305e55abe2f7e9ef3f60624a3a1/src/libraries/System.Text.Json/src/System/Text/Json/Serialization/Converters) , który będzie używany jako punkt wyjścia do dostosowania.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Kod źródłowy wbudowanych konwerterów](https://github.com/dotnet/runtime/tree/81bf79fd9aa75305e55abe2f7e9ef3f60624a3a1/src/libraries/System.Text.Json/src/System/Text/Json/Serialization/Converters)
 * [System.Text.Json Podsumowanie](system-text-json-overview.md)

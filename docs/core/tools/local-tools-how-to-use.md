@@ -2,13 +2,13 @@
 title: 'Samouczek: Instalowanie i używanie lokalnych narzędzi .NET'
 description: Dowiedz się, jak zainstalować narzędzie .NET i korzystać z niego jako narzędzia lokalnego.
 ms.topic: tutorial
-ms.date: 02/12/2020
-ms.openlocfilehash: 2cb25443706293b66325d43136afcd3fd886294d
-ms.sourcegitcommit: b201d177e01480a139622f3bf8facd367657a472
+ms.date: 12/11/2020
+ms.openlocfilehash: f32a5c4091ff63c7c50cf339dddd89b78e543c4c
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94633884"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512466"
 ---
 # <a name="tutorial-install-and-use-a-net-local-tool-using-the-net-cli"></a>Samouczek: Instalowanie i używanie lokalnego narzędzia .NET przy użyciu interfejsu wiersza polecenia platformy .NET
 
@@ -172,7 +172,7 @@ Zazwyczaj instalowane jest narzędzie lokalne w katalogu głównym repozytorium.
 
 ## <a name="update-a-local-tool"></a>Aktualizowanie narzędzia lokalnego
 
-Zainstalowana wersja narzędzia lokalnego `dotnetsay` to 2.1.3.  Najnowsza wersja to 2.1.4. Aby zaktualizować narzędzie do najnowszej wersji, użyj polecenia [aktualizacji narzędzia dotnet](dotnet-tool-update.md) .
+Zainstalowana wersja narzędzia lokalnego `dotnetsay` to 2.1.3.  Aby zaktualizować narzędzie do najnowszej wersji, użyj polecenia [aktualizacji narzędzia dotnet](dotnet-tool-update.md) .
 
 ```dotnetcli
 dotnet tool update dotnetsay
@@ -181,7 +181,7 @@ dotnet tool update dotnetsay
 Dane wyjściowe wskazują nowy numer wersji:
 
 ```console
-Tool 'dotnetsay' was successfully updated from version '2.1.3' to version '2.1.4'
+Tool 'dotnetsay' was successfully updated from version '2.1.3' to version '2.1.7'
 (manifest file /home/name/repository/.config/dotnet-tools.json).
 ```
 
@@ -199,10 +199,10 @@ dotnet tool uninstall microsoft.botsay
 dotnet tool uninstall dotnetsay
 ```
 
-## <a name="troubleshoot"></a>Rozwiązywanie problemów
+## <a name="troubleshoot"></a>Rozwiąż problemy
 
 Jeśli podczas wykonywania samouczka zostanie wyświetlony komunikat o błędzie, zobacz [Rozwiązywanie problemów z użyciem narzędzia platformy .NET](troubleshoot-usage-issues.md).
 
 ## <a name="see-also"></a>Zobacz też
 
-Aby uzyskać więcej informacji, zobacz [Narzędzia platformy .NET Core](global-tools.md)
+Aby uzyskać więcej informacji, zobacz [Narzędzia .NET Tools](global-tools.md)

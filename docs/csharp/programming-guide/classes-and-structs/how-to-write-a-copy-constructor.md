@@ -6,14 +6,14 @@ helpviewer_keywords:
 - C# Language, copy constructor
 - copy constructor [C#]
 ms.topic: how-to
-ms.custom: contperfq2
+ms.custom: contperf-fy21q2
 ms.assetid: fba899b5-fc41-428e-a745-3ebdbf37990a
-ms.openlocfilehash: 85899d2de05312be921199387cc1155fa8e9d2f1
-ms.sourcegitcommit: 30e9e11dfd90112b8eec6406186ba3533f21eba1
+ms.openlocfilehash: dfc702bfe183b3712b20c64f9e82d2d3c3edd6d5
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95098986"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512375"
 ---
 # <a name="how-to-write-a-copy-constructor-c-programming-guide"></a>Jak napisać Konstruktor kopiujący (Przewodnik programowania w języku C#)
 
@@ -25,10 +25,10 @@ Język C# nie udostępnia konstruktora kopiującego dla obiektów, ale można na
   
  [!code-csharp[csProgGuideObjects#16](~/samples/snippets/csharp/VS_Snippets_VBCSharp/csProgGuideObjects/CS/Objects.cs#16)]  
   
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - <xref:System.ICloneable>
 - [Przewodnik programowania w języku C#](../index.md)
 - [Klasy i struktury](./index.md)
-- [Konstruktorów](./constructors.md)
+- [Konstruktory](./constructors.md)
 - [Finalizatory](./destructors.md)

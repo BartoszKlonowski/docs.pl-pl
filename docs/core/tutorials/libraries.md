@@ -1,23 +1,23 @@
 ---
-title: Tworzenie bibliotek przy użyciu interfejs wiersza polecenia platformy .NET Core
-description: Dowiedz się, jak tworzyć biblioteki platformy .NET Core przy użyciu interfejs wiersza polecenia platformy .NET Core. Utworzysz bibliotekę, która obsługuje wiele platform.
+title: Tworzenie bibliotek przy użyciu interfejsu wiersza polecenia platformy .NET
+description: Dowiedz się, jak tworzyć biblioteki .NET przy użyciu interfejsu wiersza polecenia platformy .NET. Utworzysz bibliotekę, która obsługuje wiele platform.
 author: cartermp
 ms.topic: how-to
-ms.date: 05/01/2017
-ms.openlocfilehash: 8a0b1c5645f41a256bfb9d0e5dac74f8706d84e6
-ms.sourcegitcommit: d8020797a6657d0fbbdff362b80300815f682f94
+ms.date: 12/14/2020
+ms.openlocfilehash: 5a70cec4a991f673f4d5d3e7b00cd704c6799f47
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95725082"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512414"
 ---
-# <a name="develop-libraries-with-the-net-core-cli"></a>Tworzenie bibliotek przy użyciu interfejs wiersza polecenia platformy .NET Core
+# <a name="develop-libraries-with-the-net-cli"></a>Tworzenie bibliotek przy użyciu interfejsu wiersza polecenia platformy .NET
 
-W tym artykule opisano sposób pisania bibliotek dla platformy .NET przy użyciu interfejs wiersza polecenia platformy .NET Core. Interfejs wiersza polecenia zapewnia wydajne i niskie środowisko, które działa w ramach dowolnego obsługiwanego systemu operacyjnego. Nadal możesz tworzyć biblioteki za pomocą programu Visual Studio, a jeśli jest to preferowane środowisko, [zapoznaj się z przewodnikiem programu Visual Studio](library-with-visual-studio.md).
+W tym artykule opisano sposób pisania bibliotek dla platformy .NET przy użyciu interfejsu wiersza polecenia platformy .NET. Interfejs wiersza polecenia zapewnia wydajne i niskie środowisko, które działa w ramach dowolnego obsługiwanego systemu operacyjnego. Nadal możesz tworzyć biblioteki za pomocą programu Visual Studio, a jeśli jest to preferowane środowisko, [zapoznaj się z przewodnikiem programu Visual Studio](library-with-visual-studio.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Na maszynie [jest wymagane zestaw .NET Core SDK i interfejs wiersza polecenia](https://dotnet.microsoft.com/download) .
+Na komputerze musi być zainstalowany [zestaw SDK dla platformy .NET i interfejs wiersza polecenia](https://dotnet.microsoft.com/download) .
 
 W przypadku sekcji tego dokumentu, w których znajdują się .NET Framework wersje, potrzebne są [.NET Framework](https://dotnet.microsoft.com) zainstalowane na komputerze z systemem Windows.
 
@@ -33,35 +33,27 @@ Ponadto, jeśli chcesz obsługiwać starsze elementy docelowe .NET Framework, mu
 | 4,0                    | Windows SDK dla systemów Windows 7 i .NET Framework 4         |
 | 2,0, 3,0 i 3,5      | Środowisko uruchomieniowe .NET Framework 3,5 z dodatkiem SP1 (lub Windows 8 + wersja) |
 
-## <a name="how-to-target-net-standard"></a>Jak kierować .NET Standard
+## <a name="how-to-target-net-50-or-net-standard"></a>Jak kierować platformą .NET 5,0 lub .NET Standard
 
-Jeśli nie znasz .NET Standard, zapoznaj się z [.NET Standard](../../standard/net-standard.md) , aby dowiedzieć się więcej.
+Możesz sterować platformą docelową projektu, dodając ją do pliku projektu (*. csproj* lub *. fsproj*). Aby uzyskać wskazówki dotyczące wyboru między elementem docelowym .NET 5,0 lub .NET Standard [, zobacz .NET 5 i .NET Standard](../../standard/net-standard.md#net-5-and-net-standard).
 
-W tym artykule znajduje się tabela, która mapuje wersje .NET Standard na różne implementacje:
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+</Project>
+```
 
-[!INCLUDE [net-standard-table](../../../includes/net-standard-table.md)]
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+</Project>
+```
 
-W tej tabeli przedstawiono informacje na temat celów tworzenia biblioteki:
-
-Wybrana wersja .NET Standard będzie stanowić kompromis między dostępem do najnowszych interfejsów API i możliwością docelową do większej liczby implementacji platformy .NET i wersji .NET Standard. Możesz kontrolować zakres docelowych platform i wersji, wybierając wersję `netstandardX.X` (gdzie `X.X` jest numerem wersji) i dodając ją do pliku projektu ( `.csproj` lub `.fsproj` ).
-
-W przypadku .NET Standard, w zależności od potrzeb, są dostępne trzy podstawowe opcje.
-
-1. Możesz użyć domyślnej wersji .NET Standard dostarczonej przez szablony, `netstandard1.4` która zapewnia dostęp do większości interfejsów API na .NET Standard i nadal jest zgodny z platformy UWP, .NET Framework 4.6.1 i .NET Standard 2,0.
-
-    ```xml
-    <Project Sdk="Microsoft.NET.Sdk">
-      <PropertyGroup>
-        <TargetFramework>netstandard1.4</TargetFramework>
-      </PropertyGroup>
-    </Project>
-    ```
-
-2. Możesz użyć mniejszej lub wyższej wersji .NET Standard, modyfikując wartość w `TargetFramework` węźle pliku projektu.
-
-    Wersje .NET Standard są zgodne z poprzednimi wersjami. Oznacza to, że `netstandard1.0` biblioteki są uruchamiane na `netstandard1.1` platformach i wyższych. Nie ma jednak żadnych zgodności do przodu. Niższe .NET Standard platformy nie mogą odwoływać się do wyższych. Oznacza to, że `netstandard1.0` biblioteki nie mogą odwoływać się do bibliotek docelowych `netstandard1.1` ani wyższych. Wybierz wersję standardową, która ma odpowiednie kombinacje interfejsów API i obsługi platformy dla Twoich potrzeb. Zalecamy `netstandard1.4` teraz.
-
-3. Jeśli chcesz dowiedzieć się, .NET Framework wersji 4,0 lub niższej, lub chcesz użyć interfejsu API dostępnego w .NET Framework, ale nie w .NET Standard (na przykład `System.Drawing` ), przeczytaj następujące sekcje i Dowiedz się, jak utworzyć element.
+Jeśli chcesz dowiedzieć się, .NET Framework wersji 4,0 lub niższej, lub chcesz użyć interfejsu API dostępnego w .NET Framework, ale nie w .NET Standard (na przykład `System.Drawing` ), przeczytaj następujące sekcje i Dowiedz się, jak utworzyć element.
 
 ## <a name="how-to-target-net-framework"></a>Jak kierować .NET Framework
 
@@ -104,7 +96,7 @@ I to wszystko. Chociaż jest to kompilowane tylko dla .NET Framework 4, można u
 > [!NOTE]
 > W poniższych instrukcjach przyjęto założenie, że na komputerze zainstalowano .NET Framework. Zapoznaj się z sekcją [wymagania wstępne](#prerequisites) , aby dowiedzieć się, które zależności należy zainstalować i skąd mają być pobierane.
 
-Może być konieczne określenie starszych wersji .NET Framework, gdy projekt obsługuje zarówno .NET Framework, jak i .NET Core. W tym scenariuszu, jeśli chcesz użyć nowszych interfejsów API i konstrukcji językowych dla nowszych elementów docelowych, użyj `#if` dyrektyw w kodzie. Może być również konieczne dodanie różnych pakietów i zależności dla każdej platformy docelowej, która obejmuje różne interfejsy API potrzebne do każdego przypadku.
+Może być konieczne określenie starszych wersji .NET Framework, gdy projekt obsługuje zarówno .NET Framework, jak i .NET. W tym scenariuszu, jeśli chcesz użyć nowszych interfejsów API i konstrukcji językowych dla nowszych elementów docelowych, użyj `#if` dyrektyw w kodzie. Może być również konieczne dodanie różnych pakietów i zależności dla każdej platformy docelowej, która obejmuje różne interfejsy API potrzebne do każdego przypadku.
 
 Załóżmy na przykład, że masz bibliotekę, która wykonuje operacje sieciowe za pośrednictwem protokołu HTTP. W przypadku .NET Standard i .NET Framework wersji 4,5 lub nowszej można użyć `HttpClient` klasy z `System.Net.Http` przestrzeni nazw. Jednak wcześniejsze wersje .NET Framework nie posiadają `HttpClient` klasy, więc `WebClient` zamiast tego można użyć klasy z `System.Net` przestrzeni nazw.
 
@@ -113,7 +105,7 @@ Plik projektu może wyglądać następująco:
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.4;net40;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net40;net45</TargetFrameworks>
   </PropertyGroup>
 
   <!-- Need to conditionally bring in references for the .NET Framework 4.0 target -->
@@ -207,17 +199,17 @@ W przypadku skompilowania projektu za pomocą programu `dotnet build` zauważysz
 ```
 net40/
 net45/
-netstandard1.4/
+netstandard2.0/
 ```
 
-Każdy z nich zawiera `.dll` pliki dla każdego obiektu docelowego.
+Każdy z tych elementów zawiera `.dll` pliki dla każdego obiektu docelowego.
 
-## <a name="how-to-test-libraries-on-net-core"></a>Testowanie bibliotek w programie .NET Core
+## <a name="how-to-test-libraries-on-net"></a>Jak przetestować biblioteki na platformie .NET
 
-Ważne jest, aby móc testować między platformami. Możesz użyć [xUnit](https://xunit.github.io/) lub MSTest z pola. Oba są doskonale odpowiednie do testowania jednostkowego biblioteki w programie .NET Core. Sposób konfigurowania rozwiązania przy użyciu projektów testowych będzie zależeć od [struktury rozwiązania](#structuring-a-solution). W poniższym przykładzie przyjęto założenie, że katalogi testowe i źródłowe znajdują się w tym samym katalogu najwyższego poziomu.
+Ważne jest, aby móc testować między platformami. Możesz użyć [xUnit](https://xunit.github.io/) lub MSTest z pola. Oba są doskonale odpowiednie do testowania jednostkowego biblioteki na platformie .NET. Sposób konfigurowania rozwiązania przy użyciu projektów testowych będzie zależeć od [struktury rozwiązania](#structuring-a-solution). W poniższym przykładzie przyjęto założenie, że katalogi testowe i źródłowe znajdują się w tym samym katalogu najwyższego poziomu.
 
 > [!NOTE]
-> Spowoduje to użycie niektórych poleceń [interfejs wiersza polecenia platformy .NET Core](../tools/index.md) . Aby uzyskać więcej informacji, zobacz temat [dotnet New](../tools/dotnet-new.md) i [dotnet sln](../tools/dotnet-sln.md) .
+> Spowoduje to użycie niektórych poleceń [interfejsu wiersza polecenia platformy .NET](../tools/index.md) . Aby uzyskać więcej informacji, zobacz temat [dotnet New](../tools/dotnet-new.md) i [dotnet sln](../tools/dotnet-sln.md) .
 
 1. Skonfiguruj rozwiązanie. Można to zrobić za pomocą następujących poleceń:
 
@@ -253,8 +245,6 @@ Ważne jest, aby móc testować między platformami. Możesz użyć [xUnit](http
    dotnet restore
    dotnet build
    ```
-
-   [!INCLUDE[DotNet Restore Note](../../../includes/dotnet-restore-note.md)]
 
 1. Sprawdź, czy xUnit jest uruchamiana przez wykonanie `dotnet test` polecenia. W przypadku wybrania opcji używania MSTest, zamiast tego należy uruchomić moduł uruchamiający konsolę programu MSTest.
 
@@ -319,7 +309,7 @@ Spowoduje to dodanie trzech projektów powyżej i pliku rozwiązania, który ł�
 
 ### <a name="project-to-project-referencing"></a>Odwołanie projektu do projektu
 
-Najlepszym sposobem odwoływania się do projektu jest użycie interfejs wiersza polecenia platformy .NET Core, aby dodać odwołanie do projektu. Z katalogów projektów **AwesomeLibrary. CSharp** i **AwesomeLibrary. FSharp** można uruchomić następujące polecenie:
+Najlepszym sposobem odwoływania się do projektu jest użycie interfejsu wiersza polecenia platformy .NET do dodania odwołania do projektu. Z katalogów projektów **AwesomeLibrary. CSharp** i **AwesomeLibrary. FSharp** można uruchomić następujące polecenie:
 
 ```dotnetcli
 dotnet add reference ../AwesomeLibrary.Core/AwesomeLibrary.Core.csproj
@@ -333,7 +323,7 @@ Pliki projektu dla obu **AwesomeLibrary. CSharp** i **AwesomeLibrary. FSharp** b
 </ItemGroup>
 ```
 
-Tę sekcję można dodać do każdego pliku projektu ręcznie, jeśli wolisz nie używać interfejs wiersza polecenia platformy .NET Core.
+Tę sekcję można dodać do każdego pliku projektu ręcznie, jeśli wolisz nie używać interfejsu wiersza polecenia platformy .NET.
 
 ### <a name="structuring-a-solution"></a>Tworzenie struktury rozwiązania
 

@@ -14,13 +14,13 @@ helpviewer_keywords:
 - formatting [.NET], time
 - date and time strings
 ms.topic: reference
-ms.custom: contperfq2
-ms.openlocfilehash: 688aaf7a1814e132f3bffa48394873653bf314e8
-ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: a7a981562ed2410f2118d8d15b53f0ce8d751399
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96851135"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512440"
 ---
 # <a name="standard-date-and-time-format-strings"></a>Standardowe ciągi formatujące datę i godzinę
 

@@ -6,12 +6,12 @@ ms.author: daroth
 no-loc:
 - Blazor
 ms.date: 09/18/2019
-ms.openlocfilehash: 4fdf062fb719e62b53e47f79db1e93d0bf079350
-ms.sourcegitcommit: 0100be20fcf23f61dab672deced70059ed71bb2e
+ms.openlocfilehash: fd560c84c095dffc3718a7709af904d9ba722a18
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88267688"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512772"
 ---
 # <a name="build-reusable-ui-components-with-no-locblazor"></a>Kompiluj składniki interfejsu użytkownika wielokrotnego użytku z Blazor
 
@@ -550,7 +550,9 @@ Składnik nadrzędny może następnie dostarczyć zawartość podrzędną przy u
 
 ```razor
 <ChildContentComponent>
-    <p>The time is @DateTime.Now</p>
+    <ChildContent>
+        <p>The time is @DateTime.Now</p>
+    </ChildContent>
 </ChildContentComponent>
 ```
 

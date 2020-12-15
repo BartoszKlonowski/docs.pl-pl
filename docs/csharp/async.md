@@ -5,12 +5,12 @@ author: cartermp
 ms.date: 05/20/2020
 ms.technology: csharp-async
 ms.assetid: b878c34c-a78f-419e-a594-a2b44fa521a4
-ms.openlocfilehash: 35ba90f978b1993f80451a28a4cd08129afddd85
-ms.sourcegitcommit: 3d84eac0818099c9949035feb96bbe0346358504
+ms.openlocfilehash: 58f650e7932d4f5862d545429376b3e417bb433c
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/21/2020
-ms.locfileid: "86864504"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512245"
 ---
 # <a name="asynchronous-programming"></a>Programowanie asynchroniczne
 
@@ -71,7 +71,7 @@ calculateButton.Clicked += async (o, e) =>
 };
 ```
 
-Ten kod czyści przeznaczenie zdarzenia kliknięcia przycisku, nie wymaga ręcznego zarządzania wątkiem w tle i robi to w sposób nieblokowany.
+Ten kod jasno oznacza intencję zdarzenia kliknięcia przycisku, nie wymaga ręcznego zarządzania wątkiem w tle i robi to w sposób nieblokowany.
 
 ### <a name="what-happens-under-the-covers"></a>Co się dzieje w obszarze okładek
 
@@ -87,11 +87,11 @@ Dla teoretycznie nachylonego elementu jest to implementacja [modelu Promise asyn
 * Kod asynchroniczny używa `Task<T>` i `Task` , które są konstrukcjami używanymi do modelowania pracy wykonywanej w tle.
 * `async`Słowo kluczowe zamienia metodę na metodę asynchroniczną, która umożliwia użycie `await` słowa kluczowego w treści.
 * Gdy `await` słowo kluczowe jest stosowane, wstrzymuje metodę wywołującą i zwraca kontrolę do jej obiektu wywołującego do momentu ukończenia zadania.
-* `await`można go używać tylko wewnątrz metody asynchronicznej.
+* `await` można go używać tylko wewnątrz metody asynchronicznej.
 
 ## <a name="recognize-cpu-bound-and-io-bound-work"></a>Rozpoznawanie pracy powiązanej z PROCESORem i operacji we/wy
 
-Pierwsze dwa przykłady tego przewodnika pokazują, jak można korzystać z `async` `await` programu oraz w przypadku pracy związanej we/wy i związanej z procesorem. Jest to klucz, który można określić, gdy zadanie, które należy wykonać, jest powiązane z elementem we/wy lub PROCESORem, ponieważ może znacznie wpływać na wydajność kodu i potencjalnie spowodować błędne użycie niektórych konstrukcji.
+Pierwsze dwa przykłady tego przewodnika pokazują, jak można korzystać z `async` i `await` dla pracy związanej z obsługą procesora i przez nią. Jest to klucz, który można określić, gdy zadanie, które należy wykonać, jest powiązane z elementem we/wy lub przez procesor, ponieważ może znacznie wpływać na wydajność kodu i potencjalnie spowodować błędne użycie niektórych konstrukcji.
 
 Poniżej przedstawiono dwa pytania, które należy zadać przed pisaniem dowolnego kodu:
 
@@ -211,7 +211,7 @@ Chociaż nie jest to mniejsze, należy zachować ostrożność podczas mieszania
 
 ## <a name="important-info-and-advice"></a>Ważne informacje i porady
 
-Z programowaniem asynchronicznym istnieją pewne informacje, które należy wziąć pod uwagę, aby zapobiec nieoczekiwanemu zachowaniu.
+W przypadku programowania asynchronicznego istnieje kilka szczegółów, które należy wziąć pod uwagę, co może uniemożliwić nieoczekiwane zachowanie.
 
 * `async`**metody muszą mieć** `await` **słowo kluczowe w swojej treści lub nigdy nie da!**
 
@@ -223,11 +223,11 @@ Jest to Konwencja używana w programie .NET do łatwiejszego odróżnienia metod
 
 * `async void`**powinien być używany tylko dla programów obsługi zdarzeń.**
 
-`async void`jest jedynym sposobem zezwalania na działanie programów obsługi zdarzeń asynchronicznych, ponieważ zdarzenia nie mają zwracanych typów (w związku z czym nie mogą korzystać z `Task` i `Task<T>` ). Inne użycie nie jest `async void` zgodne z modelem TAP i może być trudne do użycia, takie jak:
+`async void` jest jedynym sposobem zezwalania na działanie programów obsługi zdarzeń asynchronicznych, ponieważ zdarzenia nie mają zwracanych typów (w związku z czym nie mogą korzystać z `Task` i `Task<T>` ). Inne użycie nie jest `async void` zgodne z modelem TAP i może być trudne do użycia, takie jak:
 
 * Wyjątki zgłoszone w `async void` metodzie nie mogą być przechwytywane poza tą metodą.
-* `async void`metody są trudne do przetestowania.
-* `async void`metody mogą spowodować złe skutki uboczne, jeśli obiekt wywołujący nie oczekuje, że będzie on asynchroniczny.
+* `async void` metody są trudne do przetestowania.
+* `async void` metody mogą spowodować złe skutki uboczne, jeśli obiekt wywołujący nie oczekuje, że będzie on asynchroniczny.
 
 * **Dokładne użycie asynchronicznych wyrażeń lambda w wyrażeniach LINQ**
 
@@ -246,7 +246,7 @@ Zablokowanie bieżącego wątku jako środka do oczekiwania na `Task` zakończen
 
 * **Rozważ użycie** `ValueTask` **tam, gdzie to możliwe**
 
-Zwrócenie `Task` obiektu z metod asynchronicznych może spowodować wąskie gardła wydajności w określonych ścieżkach. `Task`to typ referencyjny, dlatego użycie go oznacza przydzielenie obiektu. W przypadkach, gdy metoda zadeklarowana za pomocą `async` modyfikatora zwraca zbuforowany wynik lub wykonuje synchronicznie, dodatkowe alokacje mogą stać się znaczącym kosztem w przypadku krytycznych sekcji kodu. Może być kosztowna, jeśli te przydziały występują w ścisłych pętlach. Aby uzyskać więcej informacji, zobacz [uogólnione asynchroniczne typy zwracane](whats-new/csharp-7.md#generalized-async-return-types).
+Zwrócenie `Task` obiektu z metod asynchronicznych może spowodować wąskie gardła wydajności w określonych ścieżkach. `Task` to typ referencyjny, dlatego użycie go oznacza przydzielenie obiektu. W przypadkach, gdy metoda zadeklarowana za pomocą `async` modyfikatora zwraca zbuforowany wynik lub wykonuje synchronicznie, dodatkowe alokacje mogą stać się znaczącym kosztem w przypadku krytycznych sekcji kodu. Może być kosztowna, jeśli te przydziały występują w ścisłych pętlach. Aby uzyskać więcej informacji, zobacz [uogólnione asynchroniczne typy zwracane](whats-new/csharp-7.md#generalized-async-return-types).
 
 * **Rozważ użycie**`ConfigureAwait(false)`
 

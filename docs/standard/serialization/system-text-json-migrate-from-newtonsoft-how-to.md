@@ -6,19 +6,19 @@ ms.author: tdykstra
 no-loc:
 - System.Text.Json
 - Newtonsoft.Json
-ms.date: 12/09/2020
+ms.date: 12/14/2020
 zone_pivot_groups: dotnet-version
 helpviewer_keywords:
 - JSON serialization
 - serializing objects
 - serialization
 - objects, serializing
-ms.openlocfilehash: 4a33d9de96af805c3696ceed5cd30a3fa8547222
-ms.sourcegitcommit: 9b877e160c326577e8aa5ead22a937110d80fa44
+ms.openlocfilehash: 8c2d4baa9b9a3b19b8f1bde09bea0ab718092e24
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97110835"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512648"
 ---
 # <a name="how-to-migrate-from-no-locnewtonsoftjson-to-no-locsystemtextjson"></a>Jak przeprowadzić migrację z Newtonsoft.Json do programu System.Text.Json
 
@@ -81,6 +81,7 @@ W poniższej tabeli wymieniono `Newtonsoft.Json` funkcje i `System.Text.Json` od
 | Zezwalaj na nazwy właściwości bez cudzysłowów                   | ❌ [Nieobsługiwane](#json-strings-property-names-and-string-values) |
 | Zezwalaj na pojedyncze cudzysłowy wokół wartości ciągu              | ❌ [Nieobsługiwane](#json-strings-property-names-and-string-values) |
 | Zezwalaj na wartości niebędące ciągami JSON dla właściwości ciągu    | ❌ [Nieobsługiwane](#non-string-values-for-string-properties) |
+| `TypeNameHandling.All` ustawienie globalne                 | ❌ [Nieobsługiwane](#typenamehandlingall-not-supported) |
 ::: zone-end
 
 ::: zone pivot="dotnet-core-3-1"
@@ -122,6 +123,7 @@ W poniższej tabeli wymieniono `Newtonsoft.Json` funkcje i `System.Text.Json` od
 | Zezwalaj na nazwy właściwości bez cudzysłowów                   | ❌ [Nieobsługiwane](#json-strings-property-names-and-string-values) |
 | Zezwalaj na pojedyncze cudzysłowy wokół wartości ciągu              | ❌ [Nieobsługiwane](#json-strings-property-names-and-string-values) |
 | Zezwalaj na wartości niebędące ciągami JSON dla właściwości ciągu    | ❌ [Nieobsługiwane](#non-string-values-for-string-properties) |
+| `TypeNameHandling.All` ustawienie globalne                 | ❌ [Nieobsługiwane](#typenamehandlingall-not-supported) |
 ::: zone-end
 
 Nie jest to pełna lista `Newtonsoft.Json` funkcji. Lista zawiera wiele scenariuszy, które zostały zażądane w przypadku problemów z usługą [GitHub](https://github.com/dotnet/runtime/issues?q=is%3Aopen+is%3Aissue+label%3Aarea-System.Text.Json) lub wpisów [StackOverflow](https://stackoverflow.com/questions/tagged/system.text.json) . Jeśli zaimplementowano obejście dla jednego z wymienionych poniżej scenariuszy, które nie ma obecnie przykładowego kodu, a jeśli chcesz udostępnić swoje rozwiązanie, wybierz **Tę stronę** w sekcji **opinia** w dolnej części tej strony. Spowoduje to utworzenie problemu w repozytorium GitHub tej dokumentacji i wyświetlenie go w sekcji **opinii** na tej stronie.
@@ -808,7 +810,11 @@ Jeśli chcesz nadal używać `Newtonsoft.Json` dla określonych platform docelow
 * [UnifiedJsonWriter.JsonTextWriter.cs](https://github.com/dotnet/runtime/blob/81bf79fd9aa75305e55abe2f7e9ef3f60624a3a1/src/installer/managed/Microsoft.Extensions.DependencyModel/UnifiedJsonWriter.JsonTextWriter.cs)
 * [UnifiedJsonWriter.Utf8JsonWriter.cs](https://github.com/dotnet/runtime/blob/81bf79fd9aa75305e55abe2f7e9ef3f60624a3a1/src/installer/managed/Microsoft.Extensions.DependencyModel/UnifiedJsonWriter.Utf8JsonWriter.cs)
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="typenamehandlingall-not-supported"></a>TypeNameHandling. All nie jest obsługiwane
+
+Decyzja o wykluczeniu `TypeNameHandling.All` równorzędnych funkcji z programu `System.Text.Json` była zamierzone. Umożliwienie ładunku JSON określania własnych informacji o typie jest typowym źródłem luk w zabezpieczeniach aplikacji sieci Web. W szczególności Konfigurowanie `Newtonsoft.Json` za pomocą `TypeNameHandling.All` umożliwia klientowi zdalnemu osadzenie w samym ładunku JSON całej aplikacji wykonywalnej, tak aby podczas deserializacji aplikacji sieci Web wyodrębniał i uruchomił osadzony kod. Aby uzyskać więcej informacji, zobacz [piątek trzynaste ataki JSON PowerPoint](https://www.blackhat.com/docs/us-17/thursday/us-17-Munoz-Friday-The-13th-Json-Attacks.pdf) i [piątek — szczegóły dotyczące ataków na kod JSON](https://www.blackhat.com/docs/us-17/thursday/us-17-Munoz-Friday-The-13th-JSON-Attacks-wp.pdf).
+
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [System.Text.Json Podsumowanie](system-text-json-overview.md)
 * [Jak serializować i deserializować dane JSON](system-text-json-how-to.md)

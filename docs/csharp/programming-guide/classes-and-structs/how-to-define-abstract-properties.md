@@ -6,14 +6,14 @@ helpviewer_keywords:
 - properties [C#], abstract
 - abstract properties [C#]
 ms.topic: how-to
-ms.custom: contperfq2
+ms.custom: contperf-fy21q2
 ms.assetid: 672a90eb-47b9-4ae0-9914-af53852fddcb
-ms.openlocfilehash: 46941c811b42891b38ab6f0c4a9b428d368cf4a4
-ms.sourcegitcommit: 30e9e11dfd90112b8eec6406186ba3533f21eba1
+ms.openlocfilehash: e114e9349db9d6bcb18e15eb62532f48aa063339
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95099429"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97513032"
 ---
 # <a name="how-to-define-abstract-properties-c-programming-guide"></a>Jak definiować właściwości abstrakcyjne (Przewodnik programowania w języku C#)
 
@@ -39,7 +39,7 @@ Poniższy przykład pokazuje, jak definiować właściwości [abstrakcyjne](../.
   
  [!code-csharp[csProgGuideInheritance#1](~/samples/snippets/csharp/VS_Snippets_VBCSharp/csProgGuideInheritance/CS/Inheritance.cs#1)]  
   
-- Modyfikatory we właściwości są umieszczane na samej deklaracji właściwości. Przykład:  
+- Modyfikatory we właściwości są umieszczane na samej deklaracji właściwości. Na przykład:  
   
     ```csharp  
     public abstract double Area  
@@ -59,7 +59,7 @@ Poniższy przykład pokazuje, jak definiować właściwości [abstrakcyjne](../.
   
  [!code-csharp[csProgGuideInheritance#3](~/samples/snippets/csharp/VS_Snippets_VBCSharp/csProgGuideInheritance/CS/Inheritance.cs#3)]  
   
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Przewodnik programowania w języku C#](../index.md)
 - [Klasy i struktury](./index.md)

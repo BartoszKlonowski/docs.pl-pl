@@ -2,7 +2,7 @@
 title: Jak serializować i deserializować kod JSON przy użyciu języka C# — .NET
 description: Dowiedz się, jak używać System.Text.Json przestrzeni nazw do serializacji i deserializacji z JSON w programie .NET. Zawiera przykładowy kod.
 ms.date: 12/02/2020
-ms.custom: contperfq2
+ms.custom: contperf-fy21q2
 no-loc:
 - System.Text.Json
 - Newtonsoft.Json
@@ -12,12 +12,12 @@ helpviewer_keywords:
 - serializing objects
 - serialization
 - objects, serializing
-ms.openlocfilehash: 1ea4ff71b9e21bd7c5b12598581b33e1e96ebb19
-ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
+ms.openlocfilehash: 46203aa1b4daa4281c7c26191f7df947967fa1c0
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008841"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97513266"
 ---
 # <a name="how-to-serialize-and-deserialize-marshal-and-unmarshal-json-in-net"></a>Jak serializować i deserializować (Marshaling and unmarshaling) JSON w programie .NET
 
@@ -282,7 +282,7 @@ Istnieją również metody rozszerzające dla System.Text.Json [HttpContent](xre
 Metody rozszerzające w systemach `HttpClient` i `HttpContent` nie są dostępne w System.Text.Json programie .NET Core 3,1.
 ::: zone-end
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [System.Text.Json Podsumowanie](system-text-json-overview.md)
 * [Tworzenie wystąpienia JsonSerializerOptions wystąpień](system-text-json-configure-options.md)

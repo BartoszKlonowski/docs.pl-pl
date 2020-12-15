@@ -1,20 +1,20 @@
 ---
-title: Utwórz szablon elementu dla nowego interfejs wiersza polecenia platformy .NET Core dotnet
+title: Tworzenie szablonu elementu dla nowego interfejsu wiersza polecenia platformy .NET
 description: Dowiedz się, jak utworzyć szablon elementu dla nowego polecenia dotnet. Szablony elementów mogą zawierać dowolną liczbę plików.
 author: adegeo
-ms.date: 06/25/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.author: adegeo
-ms.openlocfilehash: 0b804d26b2f33d4d600c17de2f7f71101a0f9c98
-ms.sourcegitcommit: dc2feef0794cf41dbac1451a13b8183258566c0e
+ms.openlocfilehash: b148870480584cff37f3fd395e0594344001f247
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85324369"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512427"
 ---
 # <a name="tutorial-create-an-item-template"></a>Samouczek: Tworzenie szablonu elementu
 
-Za pomocą platformy .NET Core można tworzyć i wdrażać szablony generujące projekty, pliki, nawet zasoby. Ten samouczek jest częścią jednej z serii, która uczy się, jak tworzyć, instalować i odinstalowywać szablony do użycia z `dotnet new` poleceniem.
+Za pomocą platformy .NET można tworzyć i wdrażać szablony generujące projekty, pliki, nawet zasoby. Ten samouczek jest częścią jednej z serii, która uczy się, jak tworzyć, instalować i odinstalowywać szablony do użycia z `dotnet new` poleceniem.
 
 W tej części serii dowiesz się, jak:
 
@@ -28,7 +28,7 @@ W tej części serii dowiesz się, jak:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Zestaw .NET Core 2,2 SDK](https://dotnet.microsoft.com/download) lub jego nowsze wersje.
+* [.Net 5,0 SDK](https://dotnet.microsoft.com/download) lub nowsza wersja.
 * Przeczytaj artykuł referencyjny [Szablony niestandardowe dla usługi dotnet New](../tools/custom-templates.md).
 
   W artykule referencyjnym objaśniono podstawowe informacje dotyczące szablonów i sposobu ich umieszczania. Niektóre z tych informacji zostaną ponownie powtórzone w tym miejscu.
@@ -85,7 +85,7 @@ Teraz, gdy masz już utworzoną zawartość szablonu, musisz utworzyć konfigura
 
 ## <a name="create-the-template-config"></a>Utwórz konfigurację szablonu
 
-Szablony są rozpoznawane w programie .NET Core za pomocą specjalnego folderu i pliku konfiguracji, który istnieje w katalogu głównym szablonu. W tym samouczku folder szablonu znajduje się w lokalizacji _working\templates\extensions_.
+Szablony są rozpoznawane przez specjalny plik folderów i konfiguracji, który istnieje w katalogu głównym szablonu. W tym samouczku folder szablonu znajduje się w lokalizacji _working\templates\extensions_.
 
 Podczas tworzenia szablonu wszystkie pliki i foldery znajdujące się w folderze szablonów są uwzględniane jako część szablonu, z wyjątkiem folderu specjalnej konfiguracji. Ten folder konfiguracji ma nazwę _.template.config_.
 
@@ -116,14 +116,14 @@ Otwórz _template.jsw_ ulubionym edytorze tekstu i wklej go w poniższym kodzie 
 }
 ```
 
-Ten plik konfiguracji zawiera wszystkie ustawienia szablonu. Można wyświetlić ustawienia podstawowe, takie jak `name` i `shortName` , ale istnieje również `tags/type` wartość, która jest ustawiona na `item` . Spowoduje to kategoryzację szablonu jako szablonu elementu. Nie ma ograniczeń dotyczących typu tworzonego szablonu. `item`Wartości i `project` są wspólnymi nazwami zalecanymi przez platformę .NET Core, dzięki czemu użytkownicy mogą łatwo filtrować typ szukanego szablonu.
+Ten plik konfiguracji zawiera wszystkie ustawienia szablonu. Można wyświetlić ustawienia podstawowe, takie jak `name` i `shortName` , ale istnieje również `tags/type` wartość, która jest ustawiona na `item` . Spowoduje to kategoryzację szablonu jako szablonu elementu. Nie ma ograniczeń dotyczących typu tworzonego szablonu. `item`Wartości i `project` są wspólnymi nazwami zalecanymi przez platformę .NET, aby umożliwić użytkownikom łatwe filtrowanie typu szukanego szablonu.
 
 `classifications`Element reprezentuje kolumnę **Tagi** , która pojawia się po uruchomieniu `dotnet new` i wyświetleniu listy szablonów. Użytkownicy mogą również wyszukiwać w oparciu o znaczniki klasyfikacji. Nie należy mylić `tags` właściwości w \* pliku JSON z `classifications` listą tagów. Te dwa różne rzeczy są uważane za podobne. Pełny schemat *template.jsw* pliku znajduje się w [magazynie schematów JSON](http://json.schemastore.org/template). Aby uzyskać więcej informacji na temat *template.jsw* pliku, zobacz stronę [typu "dotnet tworzenia szablonów wiki](https://github.com/dotnet/templating/wiki)".
 
-Teraz, gdy masz prawidłowy _.template.config/template.jsdla_ pliku, szablon jest gotowy do zainstalowania. W terminalu przejdź do folderu _Extensions_ i uruchom następujące polecenie, aby zainstalować szablon znajdujący się w bieżącym folderze:
+Teraz, gdy masz prawidłowy _.template.config/template.jsdla_ pliku, szablon jest gotowy do zainstalowania. W terminalu przejdź do folderu  _Extensions_ i uruchom następujące polecenie, aby zainstalować szablon znajdujący się w bieżącym folderze:
 
-* **W systemie Windows**:`dotnet new -i .\`
-* **W systemie Linux lub macOS**:`dotnet new -i ./`
+* **W systemie Windows**: `dotnet new -i .\`
+* **W systemie Linux lub macOS**: `dotnet new -i ./`
 
 To polecenie wyświetla listę zainstalowanych szablonów, które powinny obejmować użytkownika.
 
@@ -137,14 +137,12 @@ Options:
 
 ... cut to save space ...
 
-Templates                                         Short Name            Language          Tags
--------------------------------------------------------------------------------------------------------------------------------
-Example templates: string extensions              stringext             [C#]              Common/Code
-Console Application                               console               [C#], F#, VB      Common/Console
-Class library                                     classlib              [C#], F#, VB      Common/Library
-WPF Application                                   wpf                   [C#], VB          Common/WPF
-Windows Forms (WinForms) Application              winforms              [C#], VB          Common/WinForms
-Worker Service                                    worker                [C#]              Common/Worker/Web
+Templates                                         Short Name               Language          Tags
+--------------------------------------------      -------------------      ------------      ----------------------
+Example templates: string extensions              stringext                [C#]              Common/Code
+Console Application                               console                  [C#], F#, VB      Common/Console
+Class library                                     classlib                 [C#], F#, VB      Common/Library
+WPF Application                                   wpf                      [C#], VB          Common/WPF
 ```
 
 ## <a name="test-the-item-template"></a>Testowanie szablonu elementu
@@ -209,11 +207,11 @@ Otrzymujesz następujące dane wyjściowe.
 !dlroW olleH
 ```
 
-Gratulacje! Utworzono i wdrożono szablon elementu z platformą .NET Core. W ramach przygotowania do następnej części tej serii samouczków należy odinstalować utworzony szablon. Pamiętaj, aby usunąć wszystkie pliki z folderu _testowego_ . Spowoduje to powrót do stanu czystego gotowego do następnej głównej sekcji tego samouczka.
+Gratulacje! Utworzono i wdrożono szablon elementu przy użyciu platformy .NET. W ramach przygotowania do następnej części tej serii samouczków należy odinstalować utworzony szablon. Pamiętaj, aby usunąć wszystkie pliki z folderu _testowego_ . Spowoduje to powrót do stanu czystego gotowego do następnej głównej sekcji tego samouczka.
 
 ## <a name="uninstall-the-template"></a>Odinstaluj szablon
 
-Ponieważ szablon został zainstalowany według ścieżki pliku, należy go odinstalować z **bezwzględną** ścieżką pliku. Listę zainstalowanych szablonów można wyświetlić, uruchamiając `dotnet new -u` polecenie. Szablon powinien zostać wyświetlony jako ostatni. Użyj podanej ścieżki, aby odinstalować szablon przy użyciu `dotnet new -u <ABSOLUTE PATH TO TEMPLATE DIRECTORY>` polecenia.
+Ponieważ szablon został zainstalowany według ścieżki pliku, należy go odinstalować z **bezwzględną** ścieżką pliku. Listę zainstalowanych szablonów można wyświetlić, uruchamiając `dotnet new -u` polecenie. Szablon powinien zostać wyświetlony jako ostatni. Użyj `Uninstall Command` listy, aby odinstalować szablon.
 
 ```dotnetcli
 dotnet new -u
@@ -225,31 +223,31 @@ Dane wyjściowe są podobne do poniższych.
 Template Instantiation Commands for .NET Core CLI
 
 Currently installed items:
-  Microsoft.DotNet.Common.ItemTemplates
+  Microsoft.DotNet.Common.ProjectTemplates.2.2
+    Details:
+      NuGetPackageId: Microsoft.DotNet.Common.ProjectTemplates.2.2
+      Version: 1.0.2-beta4
+      Author: Microsoft
     Templates:
-      dotnet gitignore file (gitignore)
-      global.json file (globaljson)
-      NuGet Config (nugetconfig)
-      Solution File (sln)
-      Dotnet local tool manifest file (tool-manifest)
-      Web Config (webconfig)
+      Class library (classlib) C#
+      Class library (classlib) F#
+      Class library (classlib) VB
+      Console Application (console) C#
+      Console Application (console) F#
+      Console Application (console) VB
+    Uninstall Command:
+      dotnet new -u Microsoft.DotNet.Common.ProjectTemplates.2.2
 
 ... cut to save space ...
 
-  NUnit3.DotNetNew.Template
-    Templates:
-      NUnit 3 Test Project (nunit) C#
-      NUnit 3 Test Item (nunit-test) C#
-      NUnit 3 Test Project (nunit) F#
-      NUnit 3 Test Item (nunit-test) F#
-      NUnit 3 Test Project (nunit) VB
-      NUnit 3 Test Item (nunit-test) VB
-  C:\working\templates\extensions
+C:\Test\templatetutorial\working\templates\extensions
     Templates:
       Example templates: string extensions (stringext) C#
+    Uninstall Command:
+      dotnet new -u C:\working\templates\extensions
 ```
 
-Aby odinstalować szablon, uruchom następujące polecenie.
+Aby odinstalować utworzony szablon, uruchom polecenie `Uninstall Command` , które jest wyświetlane w danych wyjściowych.
 
 ```dotnetcli
 dotnet new -u C:\working\templates\extensions

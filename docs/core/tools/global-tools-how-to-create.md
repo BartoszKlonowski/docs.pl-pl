@@ -3,12 +3,12 @@ title: 'Samouczek: Tworzenie narzędzia platformy .NET'
 description: Dowiedz się, jak utworzyć narzędzie platformy .NET. Narzędzie jest aplikacją konsolową, która jest instalowana przy użyciu interfejsu wiersza polecenia platformy .NET.
 ms.topic: tutorial
 ms.date: 02/12/2020
-ms.openlocfilehash: 93d0567f3d73707f828f84fad6128804debf6579
-ms.sourcegitcommit: b201d177e01480a139622f3bf8facd367657a472
+ms.openlocfilehash: 8f2dd15982aff9fe2d9db9ce2cff8ac1b22e440e
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94633781"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512635"
 ---
 # <a name="tutorial-create-a-net-tool-using-the-net-cli"></a>Samouczek: Tworzenie narzędzia platformy .NET przy użyciu interfejsu wiersza polecenia platformy .NET
 
@@ -18,13 +18,13 @@ W tym samouczku przedstawiono sposób tworzenia i pakowania narzędzia platformy
 
 Tworzone narzędzie jest aplikacją konsolową, która przyjmuje komunikat jako dane wejściowe i wyświetla komunikat wraz z wierszami tekstu, które tworzą obraz robota.
 
-Jest to pierwsza z serii trzech samouczków. Ten samouczek obejmuje tworzenie i pakowanie narzędzi. W następnych dwóch samouczkach [użyjesz narzędzia jako narzędzia globalnego](global-tools-how-to-use.md) i [Użyj tego narzędzia jako narzędzia lokalnego](local-tools-how-to-use.md).
+Jest to pierwsza z serii trzech samouczków. Ten samouczek obejmuje tworzenie i pakowanie narzędzi. W następnych dwóch samouczkach [użyjesz narzędzia jako narzędzia globalnego](global-tools-how-to-use.md) i [Użyj tego narzędzia jako narzędzia lokalnego](local-tools-how-to-use.md). Procedury tworzenia narzędzia są takie same, niezależnie od tego, czy są używane jako narzędzie globalne, czy jako narzędzie lokalne.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Zestaw .NET Core SDK 3,1](https://dotnet.microsoft.com/download) lub nowsza wersja.
+- [Zestaw .NET SDK 5,0](https://dotnet.microsoft.com/download) lub nowsza wersja.
 
-  Ten samouczek i Poniższy samouczek dotyczący [narzędzi globalnych](global-tools-how-to-use.md) mają zastosowanie do zestaw .NET Core SDK 2,1 i nowszych wersji, ponieważ narzędzia globalne są dostępne w tej wersji. Jednak w tym samouczku założono, że zainstalowano program 3,1 lub nowszy, aby można było kontynuować korzystanie z [samouczka narzędzi lokalnych](local-tools-how-to-use.md). Narzędzia lokalne są dostępne począwszy od zestaw .NET Core SDK 3,0. Procedury tworzenia narzędzia są takie same, niezależnie od tego, czy są używane jako narzędzie globalne, czy jako narzędzie lokalne.
+  W tym samouczku jest używany zestaw SDK programu .NET 5,0, ale narzędzia globalne są dostępne począwszy od zestaw .NET Core SDK 2,1. Narzędzia lokalne są dostępne począwszy od zestaw .NET Core SDK 3,0.
   
 - Wybrany edytor tekstu lub edytor kodu.
 
@@ -158,7 +158,7 @@ Przed spakowaniem i dystrybucją aplikacji jako narzędzia należy zmodyfikować
 
    `<ToolCommandName>` to opcjonalny element określający polecenie, które spowoduje wywołanie narzędzia po jego zainstalowaniu. Jeśli ten element nie zostanie podany, nazwa polecenia dla narzędzia jest nazwą pliku projektu bez rozszerzenia *. csproj* .
 
-   `<PackageOutputPath>` to opcjonalny element określający, gdzie zostanie utworzony pakiet NuGet. Pakiet NuGet jest używany przez interfejs wiersza polecenia platformy .NET Core do instalowania narzędzia.
+   `<PackageOutputPath>` to opcjonalny element określający, gdzie zostanie utworzony pakiet NuGet. Pakiet NuGet jest używany przez interfejs wiersza polecenia platformy .NET do instalowania narzędzia.
 
    Plik projektu wygląda teraz tak, jak w poniższym przykładzie:
 
@@ -168,7 +168,7 @@ Przed spakowaniem i dystrybucją aplikacji jako narzędzia należy zmodyfikować
      <PropertyGroup>
 
        <OutputType>Exe</OutputType>
-       <TargetFramework>netcoreapp3.1</TargetFramework>
+       <TargetFramework>net5.0</TargetFramework>
   
        <PackAsTool>true</PackAsTool>
        <ToolCommandName>botsay</ToolCommandName>
@@ -189,7 +189,7 @@ Przed spakowaniem i dystrybucją aplikacji jako narzędzia należy zmodyfikować
   
    Po udostępnieniu narzędzia publicznie można przekazać je do programu `https://www.nuget.org` . Po udostępnieniu narzędzia w narzędziu NuGet deweloperzy mogą zainstalować narzędzie za pomocą polecenia [Install narzędzia dotnet](dotnet-tool-install.md) . Na potrzeby tego samouczka zainstalujesz pakiet bezpośrednio z lokalnego folderu *NUPKG* , więc nie ma potrzeby przekazywania pakietu do narzędzia NuGet.
 
-## <a name="troubleshoot"></a>Rozwiązywanie problemów
+## <a name="troubleshoot"></a>Rozwiąż problemy
 
 Jeśli podczas wykonywania samouczka zostanie wyświetlony komunikat o błędzie, zobacz [Rozwiązywanie problemów z użyciem narzędzia platformy .NET](troubleshoot-usage-issues.md).
 

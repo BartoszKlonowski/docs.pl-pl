@@ -2,7 +2,7 @@
 title: Argumenty nazwane i opcjonalne — Przewodnik programowania w języku C#
 description: Nazwane argumenty w języku C# określają argumenty według nazwy, a nie do położenia. Opcjonalne argumenty można pominąć.
 ms.date: 09/25/2020
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 f1_keywords:
 - namedParameter_CSharpKeyword
 - cs_namedParameter
@@ -15,12 +15,12 @@ helpviewer_keywords:
 - parameters [C#], optional
 - named and optional arguments [C#]
 ms.assetid: 839c960c-c2dc-4d05-af4d-ca5428e54008
-ms.openlocfilehash: a0606d6acccb47347c663a9fe3ffb8ab65b0ecec
-ms.sourcegitcommit: b4a46f6d7ebf44c0035627d00924164bcae2db30
+ms.openlocfilehash: bb79d956124a610bac0de6825c1f42655789e98d
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91438015"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97513110"
 ---
 # <a name="named-and-optional-arguments-c-programming-guide"></a>Argumenty nazwane i opcjonalne (Przewodnik programowania w języku C#)
 

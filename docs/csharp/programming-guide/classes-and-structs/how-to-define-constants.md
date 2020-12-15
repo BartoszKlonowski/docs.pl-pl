@@ -6,14 +6,14 @@ helpviewer_keywords:
 - C# language, constants
 - constants [C#]
 ms.topic: how-to
-ms.custom: contperfq2
+ms.custom: contperf-fy21q2
 ms.assetid: 43f511be-346c-4b8a-995e-aded94542ece
-ms.openlocfilehash: 42ea67e9012fd55fbceb8a7bad4c8df8bf6bf6da
-ms.sourcegitcommit: 30e9e11dfd90112b8eec6406186ba3533f21eba1
+ms.openlocfilehash: 972deaa4616c15c00e83e26891c4473eae7bfcf8
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95099390"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97513058"
 ---
 # <a name="how-to-define-constants-in-c"></a>Jak definiować stałe w języku C\#
 
@@ -32,6 +32,6 @@ Stałe są polami, których wartości są ustawiane w czasie kompilacji i nigdy 
   
  Użycie kwalifikatora nazwy klasy pomaga upewnić się, że i inne osoby, które używają stałej, wiedzą, że jest stała i nie mogą być modyfikowane.  
   
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Klasy i struktury](./index.md)

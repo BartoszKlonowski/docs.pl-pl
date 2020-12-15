@@ -3,13 +3,13 @@ title: 'Samouczek: kompilowanie algorytmów z dopasowaniem do wzorca'
 description: W tym zaawansowanym samouczku pokazano, jak używać technik dopasowywania wzorców do tworzenia funkcji przy użyciu danych i algorytmów, które są tworzone osobno.
 ms.date: 10/06/2020
 ms.technology: csharp-whats-new
-ms.custom: contperfq1
-ms.openlocfilehash: ee8b3a90a06fabd4e9d73d7682efecda6cbfd23e
-ms.sourcegitcommit: b59237ca4ec763969a0dd775a3f8f39f8c59fe24
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 730098bf599dfc855676c86ab7a6e7f3ef7658f1
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91955632"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97513227"
 ---
 # <a name="tutorial-use-pattern-matching-to-build-type-driven-and-data-driven-algorithms"></a>Samouczek: używanie dopasowania wzorców do tworzenia algorytmów opartych na typach i danych.
 
@@ -345,7 +345,7 @@ Następnie Dodaj podobną funkcję, aby przydzielić czas do bloków:
 
 [!code-csharp[GetTimeBand](~/samples/snippets/csharp/tutorials/patterns/finished/toll-calculator/TollCalculator.cs#GetTimeBand)]
 
-Należy dodać prywatny, `enum` Aby przekonwertować każdy zakres czasu na wartość dyskretną. Następnie `GetTimeBand` Metoda używa *wzorców relacyjnych*i *conjunctive lub wzorców*, które zostały dodane w języku C# 9,0. Wzorzec relacyjny umożliwia przetestowanie wartości liczbowej przy użyciu `<` , `>` , `<=` , lub `>=` . `or`Wzorzec testuje, czy wyrażenie pasuje do jednego lub większej liczby wzorców. Można również użyć `and` wzorca, aby upewnić się, że wyrażenie dopasowuje dwa odrębne wzorce, oraz `not` wzorzec, aby sprawdzić, czy wyrażenie nie jest zgodne ze wzorcem.
+Należy dodać prywatny, `enum` Aby przekonwertować każdy zakres czasu na wartość dyskretną. Następnie `GetTimeBand` Metoda używa *wzorców relacyjnych* i *conjunctive lub wzorców*, które zostały dodane w języku C# 9,0. Wzorzec relacyjny umożliwia przetestowanie wartości liczbowej przy użyciu `<` , `>` , `<=` , lub `>=` . `or`Wzorzec testuje, czy wyrażenie pasuje do jednego lub większej liczby wzorców. Można również użyć `and` wzorca, aby upewnić się, że wyrażenie dopasowuje dwa odrębne wzorce, oraz `not` wzorzec, aby sprawdzić, czy wyrażenie nie jest zgodne ze wzorcem.
 
 Po utworzeniu tych metod można użyć innego `switch` wyrażenia z **wzorcem spójności** , aby obliczyć cenę Premium. Można utworzyć `switch` wyrażenie ze wszystkimi 16 bronią:
 

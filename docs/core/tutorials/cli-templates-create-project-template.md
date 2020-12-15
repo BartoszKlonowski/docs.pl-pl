@@ -2,19 +2,19 @@
 title: Utwórz szablon projektu dla nowego dotnet
 description: Dowiedz się, jak utworzyć szablon projektu dla nowego polecenia dotnet.
 author: adegeo
-ms.date: 06/25/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.author: adegeo
-ms.openlocfilehash: 75fedb2333a4ef9e16a27126055b6cacaf37c1c5
-ms.sourcegitcommit: dc2feef0794cf41dbac1451a13b8183258566c0e
+ms.openlocfilehash: ed40cfd303c70c7b8f198a0f5b593bf1e1ebeaf8
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85324330"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97513136"
 ---
 # <a name="tutorial-create-a-project-template"></a>Samouczek: Tworzenie szablonu projektu
 
-Za pomocą platformy .NET Core można tworzyć i wdrażać szablony generujące projekty, pliki, nawet zasoby. Ten samouczek jest drugą częścią serii, która zawiera informacje na temat tworzenia, instalowania i odinstalowywania szablonów do użycia z `dotnet new` poleceniem.
+Za pomocą platformy .NET można tworzyć i wdrażać szablony generujące projekty, pliki, nawet zasoby. Ten samouczek jest drugą częścią serii, która zawiera informacje na temat tworzenia, instalowania i odinstalowywania szablonów do użycia z `dotnet new` poleceniem.
 
 W tej części serii dowiesz się, jak:
 
@@ -33,7 +33,7 @@ W tej części serii dowiesz się, jak:
 
 ## <a name="create-a-project-template"></a>Utwórz szablon projektu
 
-Szablony projektów tworzą gotowe do uruchomienia projekty, które ułatwiają użytkownikom rozpoczęcie pracy z zestawem roboczym kodu. Platforma .NET Core zawiera kilka szablonów projektu, takich jak Aplikacja konsolowa lub Biblioteka klas. W tym przykładzie utworzysz nowy projekt konsoli, który umożliwia C# 8,0 i tworzy `async main` punkt wejścia.
+Szablony projektów tworzą gotowe do uruchomienia projekty, które ułatwiają użytkownikom rozpoczęcie pracy z zestawem roboczym kodu. Platforma .NET zawiera kilka szablonów projektu, takich jak Aplikacja konsolowa lub Biblioteka klas. W tym przykładzie utworzysz nowy projekt konsoli, który umożliwia C# 9,0 i tworzy `async main` punkt wejścia.
 
 W terminalu przejdź do folderu _working\templates_ i Utwórz nowy podfolder o nazwie _consoleasync_. Wprowadź podfolder i uruchom `dotnet new console` w celu wygenerowania standardowej aplikacji konsolowej. Będziesz edytować pliki utworzone przez ten szablon w celu utworzenia nowego szablonu.
 
@@ -59,7 +59,7 @@ namespace consoleasync
     {
         static async Task Main(string[] args)
         {
-            await Console.Out.WriteAsync("Hello World with C# 8.0!");
+            await Console.Out.WriteAsync("Hello World with C# 9.0!");
         }
     }
 }
@@ -67,16 +67,16 @@ namespace consoleasync
 
 ## <a name="modify-consoleasynccsproj"></a>Modyfikuj consoleasync. csproj
 
-Zaktualizujmy wersję języka C# używaną przez projekt do wersji 8,0. Edytuj plik _consoleasync. csproj_ i Dodaj `<LangVersion>` ustawienie do `<PropertyGroup>` węzła.
+Zaktualizujmy wersję języka C# używaną przez projekt do wersji 9,0. Edytuj plik _consoleasync. csproj_ i Dodaj `<LangVersion>` ustawienie do `<PropertyGroup>` węzła.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
 
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>9.0</LangVersion>
 
   </PropertyGroup>
   
@@ -96,16 +96,16 @@ dotnet run
 Otrzymujesz następujące dane wyjściowe.
 
 ```console
-Hello World with C# 8.0!
+Hello World with C# 9.0!
 ```
 
-Można usunąć foldery _obj_ i _bin_ utworzone przy użyciu `dotnet run` . Usunięcie tych plików gwarantuje, że szablon zawiera tylko pliki powiązane z szablonem, a nie wszystkie pliki, które powodują akcję kompilacji.
+Można usunąć foldery _obj_ i _bin_ utworzone przy użyciu `dotnet run` . Usunięcie tych plików gwarantuje, że szablon zawiera tylko pliki powiązane z szablonem, a nie wszystkie pliki, które wynikają z akcji kompilacji.
 
 Teraz, gdy masz już utworzoną zawartość szablonu, musisz utworzyć konfigurację szablonu w folderze głównym szablonu.
 
 ## <a name="create-the-template-config"></a>Utwórz konfigurację szablonu
 
-Szablony są rozpoznawane w programie .NET Core za pomocą specjalnego folderu i pliku konfiguracji, który istnieje w katalogu głównym szablonu. W tym samouczku folder szablonu znajduje się w lokalizacji _working\templates\consoleasync_.
+Szablony są rozpoznawane w programie .NET według specjalnego folderu i pliku konfiguracji, który istnieje w katalogu głównym szablonu. W tym samouczku folder szablonu znajduje się w lokalizacji _working\templates\consoleasync_.
 
 Podczas tworzenia szablonu wszystkie pliki i foldery znajdujące się w folderze szablonów są uwzględniane jako część szablonu, z wyjątkiem folderu specjalnej konfiguracji. Ten folder konfiguracji ma nazwę _.template.config_.
 
@@ -125,7 +125,7 @@ Otwórz _template.jsw_ ulubionym edytorze tekstu i wklej go w poniższym kodzie 
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "Me",
-  "classifications": [ "Common", "Console", "C#8" ],
+  "classifications": [ "Common", "Console", "C#9" ],
   "identity": "ExampleTemplate.AsyncProject",
   "name": "Example templates: async project",
   "shortName": "consoleasync",
@@ -136,7 +136,7 @@ Otwórz _template.jsw_ ulubionym edytorze tekstu i wklej go w poniższym kodzie 
 }
 ```
 
-Ten plik konfiguracji zawiera wszystkie ustawienia szablonu. Można zobaczyć ustawienia podstawowe, takie jak `name` i, `shortName` ale również `tags/type` wartość, która jest ustawiona na `project` . Spowoduje to wyznaczenie szablonu jako szablonu projektu. Nie ma ograniczeń dotyczących typu tworzonego szablonu. `item`Wartości i `project` są wspólnymi nazwami zalecanymi przez platformę .NET Core, dzięki czemu użytkownicy mogą łatwo filtrować typ szukanego szablonu.
+Ten plik konfiguracji zawiera wszystkie ustawienia szablonu. Można zobaczyć ustawienia podstawowe, takie jak `name` i, `shortName` ale również `tags/type` wartość, która jest ustawiona na `project` . Spowoduje to wyznaczenie szablonu jako szablonu projektu. Nie ma ograniczeń dotyczących typu tworzonego szablonu. `item`Wartości i `project` są wspólnymi nazwami zalecanymi przez platformę .NET, aby umożliwić użytkownikom łatwe filtrowanie typu szukanego szablonu.
 
 `classifications`Element reprezentuje kolumnę **Tagi** , która pojawia się po uruchomieniu `dotnet new` i wyświetleniu listy szablonów. Użytkownicy mogą również wyszukiwać w oparciu o znaczniki klasyfikacji. Nie należy mylić `tags` właściwości w pliku JSON z `classifications` listą tagów. Te dwa różne rzeczy są uważane za podobne. Pełny schemat *template.jsw* pliku znajduje się w [magazynie schematów JSON](http://json.schemastore.org/template). Aby uzyskać więcej informacji na temat *template.jsw* pliku, zobacz stronę [typu "dotnet tworzenia szablonów wiki](https://github.com/dotnet/templating/wiki)".
 
@@ -159,19 +159,17 @@ Options:
 
 ... cut to save space ...
 
-Templates                                         Short Name            Language          Tags
--------------------------------------------------------------------------------------------------------------------------------
-Console Application                               console               [C#], F#, VB      Common/Console
-Example templates: async project                  consoleasync          [C#]              Common/Console/C#8
-Class library                                     classlib              [C#], F#, VB      Common/Library
-WPF Application                                   wpf                   [C#], VB          Common/WPF
-Windows Forms (WinForms) Application              winforms              [C#], VB          Common/WinForms
-Worker Service                                    worker                [C#]              Common/Worker/Web
+Templates                                         Short Name               Language          Tags
+--------------------------------------------      -------------------      ------------      ----------------------
+Console Application                               console                  [C#], F#, VB      Common/Console
+Example templates: async project                  consoleasync             [C#]              Common/Console/C#9
+Class library                                     classlib                 [C#], F#, VB      Common/Library
+WPF Application                                   wpf                      [C#], VB          Common/WPF
 ```
 
 ### <a name="test-the-project-template"></a>Testowanie szablonu projektu
 
-Teraz, gdy masz zainstalowany szablon elementu, przetestuj go.
+Teraz, gdy masz zainstalowany szablon projektu, przetestuj go.
 
 1. Przejdź do folderu _testowego_
 
@@ -196,14 +194,14 @@ Teraz, gdy masz zainstalowany szablon elementu, przetestuj go.
     Otrzymujesz następujące dane wyjściowe.
 
     ```console
-    Hello World with C# 8.0!
+    Hello World with C# 9.0!
     ```
 
-Gratulacje! Szablon projektu został utworzony i wdrożony za pomocą platformy .NET Core. W ramach przygotowania do następnej części tej serii samouczków należy odinstalować utworzony szablon. Pamiętaj, aby usunąć wszystkie pliki z folderu _testowego_ . Spowoduje to powrót do stanu czystego gotowego do następnej głównej sekcji tego samouczka.
+Gratulacje! Szablon projektu został utworzony i wdrożony przy użyciu platformy .NET. W ramach przygotowania do następnej części tej serii samouczków należy odinstalować utworzony szablon. Pamiętaj, aby usunąć wszystkie pliki z folderu _testowego_ . Spowoduje to powrót do stanu czystego gotowego do następnej głównej sekcji tego samouczka.
 
 ### <a name="uninstall-the-template"></a>Odinstaluj szablon
 
-Ponieważ szablon został zainstalowany przy użyciu ścieżki pliku, należy go odinstalować z **bezwzględną** ścieżką pliku. Listę zainstalowanych szablonów można wyświetlić, uruchamiając `dotnet new -u` polecenie. Szablon powinien zostać wyświetlony jako ostatni. Użyj podanej ścieżki, aby odinstalować szablon przy użyciu `dotnet new -u <ABSOLUTE PATH TO TEMPLATE DIRECTORY>` polecenia.
+Ponieważ szablon został zainstalowany przy użyciu ścieżki pliku, należy go odinstalować z **bezwzględną** ścieżką pliku. Listę zainstalowanych szablonów można wyświetlić, uruchamiając `dotnet new -u` polecenie. Szablon powinien zostać wyświetlony jako ostatni. Użyj `Uninstall Command` listy, aby odinstalować szablon.
 
 ```dotnetcli
 dotnet new -u
@@ -215,31 +213,31 @@ Dane wyjściowe są podobne do poniższych.
 Template Instantiation Commands for .NET Core CLI
 
 Currently installed items:
-  Microsoft.DotNet.Common.ItemTemplates
+  Microsoft.DotNet.Common.ProjectTemplates.2.2
+    Details:
+      NuGetPackageId: Microsoft.DotNet.Common.ProjectTemplates.2.2
+      Version: 1.0.2-beta4
+      Author: Microsoft
     Templates:
-      dotnet gitignore file (gitignore)
-      global.json file (globaljson)
-      NuGet Config (nugetconfig)
-      Solution File (sln)
-      Dotnet local tool manifest file (tool-manifest)
-      Web Config (webconfig)
+      Class library (classlib) C#
+      Class library (classlib) F#
+      Class library (classlib) VB
+      Console Application (console) C#
+      Console Application (console) F#
+      Console Application (console) VB
+    Uninstall Command:
+      dotnet new -u Microsoft.DotNet.Common.ProjectTemplates.2.2
 
 ... cut to save space ...
 
-  NUnit3.DotNetNew.Template
-    Templates:
-      NUnit 3 Test Project (nunit) C#
-      NUnit 3 Test Item (nunit-test) C#
-      NUnit 3 Test Project (nunit) F#
-      NUnit 3 Test Item (nunit-test) F#
-      NUnit 3 Test Project (nunit) VB
-      NUnit 3 Test Item (nunit-test) VB
-  C:\working\templates\consoleasync
+  C:\Test\templatetutorial\working\templates\consoleasync
     Templates:
       Example templates: async project (consoleasync) C#
+    Uninstall Command:
+      dotnet new -u C:\working\templates\consoleasync
 ```
 
-Aby odinstalować szablon, uruchom następujące polecenie.
+Aby odinstalować utworzony szablon, uruchom polecenie `Uninstall Command` , które jest wyświetlane w danych wyjściowych.
 
 ```dotnetcli
 dotnet new -u C:\working\templates\consoleasync

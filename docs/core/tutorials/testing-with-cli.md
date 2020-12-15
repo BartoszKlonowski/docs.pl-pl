@@ -1,18 +1,18 @@
 ---
-title: Organizowanie i testowanie projektów przy użyciu interfejs wiersza polecenia platformy .NET Core
-description: W tym samouczku wyjaśniono sposób organizowania i testowania projektów programu .NET Core z poziomu wiersza polecenia.
+title: Organizowanie i testowanie projektów przy użyciu interfejsu wiersza polecenia platformy .NET
+description: W tym samouczku wyjaśniono, jak organizować i testować projekty .NET z wiersza polecenia.
 author: cartermp
 ms.date: 09/10/2018
-ms.openlocfilehash: 58c78c0f11ab1b275e4e4d05bf1da32562333c91
-ms.sourcegitcommit: 0a798a7e9680e2d0a5a81a3eaa203870ea782883
+ms.openlocfilehash: 93e8a6b8afd9f9405bf21488998a61c2e761bf1e
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325948"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512258"
 ---
-# <a name="organizing-and-testing-projects-with-the-net-core-cli"></a>Organizowanie i testowanie projektów przy użyciu interfejs wiersza polecenia platformy .NET Core
+# <a name="organizing-and-testing-projects-with-the-net-cli"></a>Organizowanie i testowanie projektów przy użyciu interfejsu wiersza polecenia platformy .NET
 
-Ten samouczek znajduje [się w samouczku: Tworzenie aplikacji konsolowej przy użyciu platformy .NET Core z użyciem Visual Studio Code, dzięki](with-visual-studio-code.md)czemu nie utworzysz prostej aplikacji konsolowej do tworzenia zaawansowanych i dobrze zorganizowanych aplikacji. Po podaniu, jak używać folderów do organizowania kodu, w tym samouczku pokazano, jak zwiększyć aplikację konsolową za pomocą platformy testowania [xUnit](https://xunit.github.io/) .
+Ten samouczek znajduje [się w samouczku: Tworzenie aplikacji konsolowej za pomocą platformy .NET przy użyciu Visual Studio Code, dzięki](with-visual-studio-code.md)czemu nie utworzysz prostej aplikacji konsolowej do tworzenia zaawansowanych i dobrze zorganizowanych aplikacji. Po podaniu, jak używać folderów do organizowania kodu, w tym samouczku pokazano, jak zwiększyć aplikację konsolową za pomocą platformy testowania [xUnit](https://xunit.github.io/) .
 
 ## <a name="using-folders-to-organize-code"></a>Organizowanie kodu przy użyciu folderów
 
@@ -42,6 +42,10 @@ Aby zorganizować projekt, Utwórz nowy folder i nadaj mu nazwę *modele* , aby 
 Projekty, które logicznie grupują pliki do folderów, są łatwe do przechodzenia i konserwowania. W następnej sekcji utworzysz bardziej skomplikowany przykład z użyciem folderów i testów jednostkowych.
 
 ## <a name="organizing-and-testing-using-the-newtypes-pets-sample"></a>Organizowanie i testowanie przy użyciu przykładu NewTypes zwierząt domowych
+
+### <a name="prerequisites"></a>Wymagania wstępne
+
+* [.Net 5,0 SDK](https://dotnet.microsoft.com/download) lub nowsza wersja.
 
 ### <a name="building-the-sample"></a>Kompilowanie przykładu
 
@@ -83,7 +87,7 @@ Utwórz następującą strukturę folderów z wyróżnioną zawartością pliku:
 
 [!code-xml[NewTypes csproj](../../../samples/snippets/core/tutorials/testing-with-cli/csharp/src/NewTypes/NewTypes.csproj)]
 
-Wykonaj następujące polecenie:
+Uruchom następujące polecenie:
 
 ```dotnetcli
 dotnet run
@@ -96,7 +100,7 @@ Woof!
 Meow!
 ```
 
-Ćwiczenie opcjonalne: można dodać nowy typ PET, taki jak `Bird` , rozszerzając ten projekt. `TalkToOwner`Nadaj metodu ptakowi wartość `Tweet!` Owner. Ponownie uruchom aplikację. Dane wyjściowe będą zawierać`Tweet!`
+Ćwiczenie opcjonalne: można dodać nowy typ PET, taki jak `Bird` , rozszerzając ten projekt. `TalkToOwner`Nadaj metodu ptakowi wartość `Tweet!` Owner. Ponownie uruchom aplikację. Dane wyjściowe będą zawierać `Tweet!`
 
 ### <a name="testing-the-sample"></a>Testowanie przykładu
 
@@ -181,38 +185,27 @@ Poniżej przedstawiono kompletną strukturę projektu:
       |__NewTypesTests.csproj
 ```
 
-Uruchom w katalogu *test/NewTypesTests* . Przywróć projekt testowy za pomocą [`dotnet restore`](../tools/dotnet-restore.md) polecenia. Uruchom testy za pomocą [`dotnet test`](../tools/dotnet-test.md) polecenia. To polecenie uruchamia program Test Runner określony w pliku projektu.
-
-[!INCLUDE[DotNet Restore Note](~/includes/dotnet-restore-note.md)]
+Uruchom w katalogu *test/NewTypesTests* . Uruchom testy za pomocą [`dotnet test`](../tools/dotnet-test.md) polecenia. To polecenie uruchamia program Test Runner określony w pliku projektu.
 
 Zgodnie z oczekiwaniami testowanie nie powiedzie się, a w konsoli programu zostaną wyświetlone następujące dane wyjściowe:
 
 ```output
-Test run for c:\Users\ronpet\repos\samples\core\console-apps\NewTypesMsBuild\test\NewTypesTests\bin\Debug\netcoreapp2.1\NewTypesTests.dll(.NETCoreApp,Version=v2.1)
-Microsoft (R) Test Execution Command Line Tool Version 15.8.0
+Test run for C:\Source\dotnet\docs\samples\snippets\core\tutorials\testing-with-cli\csharp\test\NewTypesTests\bin\Debug\net5.0\NewTypesTests.dll (.NETCoreApp,Version=v5.0)
+Microsoft (R) Test Execution Command Line Tool Version 16.8.1
 Copyright (c) Microsoft Corporation.  All rights reserved.
 
 Starting test execution, please wait...
-[xUnit.net 00:00:00.77]     PetTests.DogTalkToOwnerReturnsWoof [FAIL]
-[xUnit.net 00:00:00.78]     PetTests.CatTalkToOwnerReturnsMeow [FAIL]
-Failed   PetTests.DogTalkToOwnerReturnsWoof
-Error Message:
- Assert.NotEqual() Failure
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.50]     PetTests.DogTalkToOwnerReturnsWoof [FAIL]
+  Failed PetTests.DogTalkToOwnerReturnsWoof [6 ms]
+  Error Message:
+   Assert.NotEqual() Failure
 Expected: Not "Woof!"
 Actual:   "Woof!"
-Stack Trace:
-   at PetTests.DogTalkToOwnerReturnsWoof() in c:\Users\ronpet\repos\samples\core\console-apps\NewTypesMsBuild\test\NewTypesTests\PetTests.cs:line 13
-Failed   PetTests.CatTalkToOwnerReturnsMeow
-Error Message:
- Assert.NotEqual() Failure
-Expected: Not "Meow!"
-Actual:   "Meow!"
-Stack Trace:
-   at PetTests.CatTalkToOwnerReturnsMeow() in c:\Users\ronpet\repos\samples\core\console-apps\NewTypesMsBuild\test\NewTypesTests\PetTests.cs:line 22
+  Stack Trace:
+     at PetTests.DogTalkToOwnerReturnsWoof() in C:\Source\dotnet\docs\samples\snippets\core\tutorials\testing-with-cli\csharp\test\NewTypesTests\PetTests.cs:line 13
 
-Total tests: 2. Passed: 0. Failed: 2. Skipped: 0.
-Test Run Failed.
-Test execution time: 1.7000 Seconds
+Failed!  - Failed:     1, Passed:     1, Skipped:     0, Total:     2, Duration: 8 ms - NewTypesTests.dll (net5.0)
 ```
 
 Zmień potwierdzenia testów z `Assert.NotEqual` na `Assert.Equal` :
@@ -222,15 +215,14 @@ Zmień potwierdzenia testów z `Assert.NotEqual` na `Assert.Equal` :
 Uruchom testy przy użyciu `dotnet test` polecenia i uzyskaj następujące dane wyjściowe:
 
 ```output
-Test run for c:\Users\ronpet\repos\samples\core\console-apps\NewTypesMsBuild\test\NewTypesTests\bin\Debug\netcoreapp2.1\NewTypesTests.dll(.NETCoreApp,Version=v2.1)
-Microsoft (R) Test Execution Command Line Tool Version 15.8.0
+Test run for C:\Source\dotnet\docs\samples\snippets\core\tutorials\testing-with-cli\csharp\test\NewTypesTests\bin\Debug\net5.0\NewTypesTests.dll (.NETCoreApp,Version=v5.0)
+Microsoft (R) Test Execution Command Line Tool Version 16.8.1
 Copyright (c) Microsoft Corporation.  All rights reserved.
 
 Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
 
-Total tests: 2. Passed: 2. Failed: 0. Skipped: 0.
-Test Run Successful.
-Test execution time: 1.6029 Seconds
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 2 ms - NewTypesTests.dll (net5.0)
 ```
 
 Testowanie przebiega. Metody typów PET zwracają poprawne wartości podczas rozmowy z właścicielem.

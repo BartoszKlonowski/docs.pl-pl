@@ -8,14 +8,14 @@ helpviewer_keywords:
 - converting strings to int [C#]
 - strings [C#], converting to int
 ms.topic: how-to
-ms.custom: contperfq2
+ms.custom: contperf-fy21q2
 ms.assetid: 467b9979-86ee-4afd-b734-30299cda91e3
-ms.openlocfilehash: 0a9585d05a817d09308e06558352f78a5347a8f1
-ms.sourcegitcommit: 30e9e11dfd90112b8eec6406186ba3533f21eba1
+ms.openlocfilehash: 430887ebb16570439a89f3625ac12a1fbb368227
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95099175"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97513162"
 ---
 # <a name="how-to-convert-a-string-to-a-number-c-programming-guide"></a>Konwertowanie ciągu na liczbę (Przewodnik programowania w języku C#)
 
@@ -57,8 +57,8 @@ Poniższa tabela zawiera listę metod z <xref:System.Convert> klasy, których mo
   
 [!code-csharp[Parsing with Convert methods](~/samples/snippets/csharp/programming-guide/string-to-number/convert/program.cs)]  
   
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
-- [Types](./index.md)
+- [Typy](./index.md)
 - [Określanie, czy ciąg reprezentuje wartość numeryczną](../strings/how-to-determine-whether-a-string-represents-a-numeric-value.md)
 - [Przykład: Narzędzie formatowania programu .NET Core WinForms (C#)](/samples/dotnet/samples/windowsforms-formatting-utility-cs)

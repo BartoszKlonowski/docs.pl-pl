@@ -5,14 +5,14 @@ ms.date: 07/20/2015
 helpviewer_keywords:
 - anonymous types [C#], for subsets of element properties
 ms.topic: how-to
-ms.custom: contperfq2
+ms.custom: contperf-fy21q2
 ms.assetid: fabdf349-f443-4e3f-8368-6c471be1dd7b
-ms.openlocfilehash: 3e30793ed16204943e2398984ed200b93db7f86f
-ms.sourcegitcommit: 30e9e11dfd90112b8eec6406186ba3533f21eba1
+ms.openlocfilehash: 5784d6a288af374d357346e32535ebe9c1877bcc
+ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95098857"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512798"
 ---
 # <a name="how-to-return-subsets-of-element-properties-in-a-query-c-programming-guide"></a>Jak zwrócić podzbiory właściwości elementu w zapytaniu (Przewodnik programowania w języku C#)
 
@@ -50,7 +50,7 @@ Console.WriteLine(student.First + " " + student.Last);
   
 Aby uruchomić ten kod, skopiuj i wklej klasę do aplikacji konsolowej C# z `using` dyrektywą dla System. LINQ.
   
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Przewodnik programowania w języku C#](../index.md)
 - [Typy anonimowe](./anonymous-types.md)
