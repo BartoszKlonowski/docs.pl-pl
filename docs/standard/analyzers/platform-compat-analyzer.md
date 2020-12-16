@@ -3,12 +3,12 @@ title: Analizator zgodności platformy
 description: Analizator Roslyn, który może pomóc w wykrywaniu problemów ze zgodnością platformy w aplikacjach i bibliotekach dla wielu platform.
 author: buyaa-n
 ms.date: 09/17/2020
-ms.openlocfilehash: 808e89df49a82e091862a052e62a367e6860fe47
-ms.sourcegitcommit: 965a5af7918acb0a3fd3baf342e15d511ef75188
+ms.openlocfilehash: 427a2d8ae61a82699e5cf0987fcd1c5a45152cac
+ms.sourcegitcommit: e301979e3049ce412d19b094c60ed95b316a8f8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94819490"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97594920"
 ---
 # <a name="platform-compatibility-analyzer"></a>Analizator zgodności platformy
 
@@ -26,7 +26,7 @@ Nowe interfejsy API obejmują:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Analizator zgodności platformy jest jednym z Roslynjących analiz jakości kodu. Począwszy od wersji .NET 5.0 te analizatory są [uwzględnione w zestawie .NET SDK](../../fundamentals/code-analysis/overview.md). Analizator zgodności platformy jest domyślnie włączony tylko w przypadku projektów docelowych `net5.0` lub nowszych. Można [go jednak włączyć](../../fundamentals/code-analysis/quality-rules/ca1416.md#configurability) dla projektów przeznaczonych dla innych platform.
+Analizator zgodności platformy jest jednym z Roslynjących analiz jakości kodu. Począwszy od wersji .NET 5.0 te analizatory są [uwzględnione w zestawie .NET SDK](../../fundamentals/code-analysis/overview.md). Analizator zgodności platformy jest domyślnie włączony tylko w przypadku projektów docelowych `net5.0` lub nowszych. Można [go jednak włączyć](../../fundamentals/code-analysis/quality-rules/ca1416.md#configure-code-to-analyze) dla projektów przeznaczonych dla innych platform.
 
 ## <a name="how-the-analyzer-determines-platform-dependency"></a>Jak Analizator określa zależność platformy
 

@@ -3,12 +3,12 @@ title: Śledzenie aplikacji .NET za pomocą PerfCollect.
 description: Samouczek, który przeprowadzi Cię przez zbieranie śladów z perfcollect na platformie .NET.
 ms.topic: tutorial
 ms.date: 10/23/2020
-ms.openlocfilehash: 376c957833924a9991e574557671ea3c8503d7c2
-ms.sourcegitcommit: bc9c63541c3dc756d48a7ce9d22b5583a18cf7fd
+ms.openlocfilehash: 53e4584953d2af4e766daadfa757cca752ae7329
+ms.sourcegitcommit: e301979e3049ce412d19b094c60ed95b316a8f8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507244"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97593223"
 ---
 # <a name="trace-net-applications-with-perfcollect"></a>Śledzenie aplikacji .NET za pomocą PerfCollect
 
@@ -55,7 +55,7 @@ W przypadku rozpoznawania nazw metod natywnych bibliotek DLL środowiska uruchom
 
 ## <a name="collect-a-trace"></a>Zbieranie śladu
 
-1. Dostępne są dwie powłoki — jeden do sterowania śledzeniem, zwany jako **[Trace]** , i jeden do uruchamiania aplikacji, zwany jako **[app]**.
+1. Dostępne są dwie powłoki — jeden do sterowania śledzeniem, zwany jako **[Trace]**, i jeden do uruchamiania aplikacji, zwany jako **[app]**.
 
 2. **[Trace]** Rozpocznij zbieranie danych.
 
@@ -250,3 +250,31 @@ Następnie należy uzyskać nazwy symboliczne natywnych bibliotek DLL podczas ur
 ## <a name="collect-in-a-docker-container"></a>Zbieranie danych w kontenerze platformy Docker
 
 Aby uzyskać więcej informacji na temat używania `perfcollect` w środowiskach kontenerów, zobacz [zbieranie danych diagnostycznych w kontenerach](./diagnostics-in-containers.md).
+
+## <a name="learn-more-about-collection-options"></a>Dowiedz się więcej na temat opcji kolekcji
+
+Możesz określić następujące opcjonalne flagi, `perfcollect` Aby lepiej odpowiadały potrzebom diagnostycznym.
+
+### <a name="collect-for-a-specific-duration"></a>Zbieraj przez określony czas trwania
+
+Gdy chcesz zbierać ślady dla określonego czasu trwania, możesz użyć `-collectsec` opcji, a po niej liczby określającej łączną liczbę sekund do zebrania śladu.
+
+### <a name="collect-threadtime-traces"></a>Zbierz ślady threadtime
+
+Określenie `-threadtime` `perfcollect` opcji with umożliwia zbieranie danych użycia procesora CPU dla wątków. Dzięki temu można analizować, gdzie każdy wątek spędza czas procesora CPU.
+
+### <a name="collect-traces-for-managed-memory-and-garbage-collector-performance"></a>Zbieranie śladów wydajności pamięci zarządzanej i modułu wyrzucania elementów bezużytecznych
+
+Poniższe opcje pozwalają na zbieranie zdarzeń GC z środowiska uruchomieniowego.
+
+* `perfcollect collect -gccollectonly`
+
+Zbiera tylko minimalny zestaw zdarzeń zbierania danych GC. Jest to najmniej pełny profil kolekcji zdarzeń GC o najniższym wpływie na wydajność aplikacji docelowej. To polecenie jest analogiczne do `PerfView.exe /GCCollectOnly collect` polecenia w narzędzia PerfView.
+
+* `perfcollect collect -gconly`
+
+Zbieraj więcej szczegółowych zdarzeń zbierania danych GC z zdarzeniami JIT, Loader i Exception. Powoduje to zażądanie więcej zdarzeń pełnych (takich jak informacje o alokacji i informacje o przyłączeniu GC) i ma większy wpływ na wydajność aplikacji docelowej niż `-gccollectonly` opcja. To polecenie jest analogiczne do `PerfView.exe /GCOnly collect` polecenia w narzędzia PerfView.
+
+* `perfcollect collect -gcwithheap`
+
+Zbierz najbardziej szczegółowe zdarzenia zbierania danych GC, które śledzą przeżycie sterty i przesunięcia. Zapewnia to szczegółową analizę zachowania GC, ale powiąże się z dużym kosztem wydajności, ponieważ każda GLOBALna wydajność może trwać dłużej niż dwa razy. Zaleca się zrozumienie implikacji wydajności korzystania z tej opcji śledzenia podczas śledzenia w środowiskach produkcyjnych.

@@ -2,12 +2,12 @@
 title: dotnet-Trace — narzędzie diagnostyczne — interfejs wiersza polecenia platformy .NET
 description: Dowiedz się, jak zainstalować i użyć narzędzia interfejsu wiersza polecenia śledzenia dotnet, aby zebrać ślady środowiska .NET działającego procesu bez natywnego profilera przy użyciu programu .NET EventPipe.
 ms.date: 11/17/2020
-ms.openlocfilehash: 868ce7828eee6bd7f2101d5d6a65c7f7bf87fe24
-ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
+ms.openlocfilehash: a2925ac0a0815fe48ca9b36b643ff896aa3c0ff6
+ms.sourcegitcommit: e301979e3049ce412d19b094c60ed95b316a8f8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97009537"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97593210"
 ---
 # <a name="dotnet-trace-performance-analysis-utility"></a>Narzędzie do analizy wydajności śledzenia dotnet
 
@@ -144,6 +144,9 @@ dotnet-trace collect [--buffersize <size>] [--clreventlevel <clreventlevel>] [--
   > [!NOTE]
   > Użycie tej opcji monitoruje pierwszy proces programu .NET 5,0, który komunikuje się z powrotem z narzędziem, co oznacza, że polecenie uruchamia wiele aplikacji .NET będzie zbierać tylko pierwszą aplikację. W związku z tym zaleca się używanie tej opcji w aplikacjach samodzielnych lub przy użyciu `dotnet exec <app.dll>` opcji.
 
+> [!NOTE]
+> Zatrzymanie śledzenia może zająć dużo czasu (do minut) w przypadku dużych aplikacji. Środowisko uruchomieniowe musi wysyłać za pośrednictwem pamięci podręcznej typów dla całego kodu zarządzanego, który został przechwycony w śladzie.
+
 ## <a name="dotnet-trace-convert"></a>Konwersja dotnet-Trace
 
 Konwertuje `nettrace` ślady na formaty alternatywne do użycia z alternatywnymi narzędziami do analizy śledzenia.
@@ -169,6 +172,9 @@ dotnet-trace convert [<input-filename>] [--format <Chromium|NetTrace|Speedscope>
 - **`-o|--output <output-filename>`**
 
   Nazwa pliku wyjściowego. Rozszerzenie formatu docelowego zostanie dodane.
+
+> [!NOTE]
+> Konwertowanie `nettrace` plików na `chromium` `speedscope` pliki lub plików jest nieodwracalne. `speedscope``chromium`pliki i nie zawierają wszystkich informacji niezbędnych do odtworzenia `nettrace` plików. Jednak `convert` polecenie zachowuje oryginalny `nettrace` plik, dlatego nie należy go usuwać, jeśli planujesz otworzyć go w przyszłości.
 
 ## <a name="dotnet-trace-ps"></a>dotnet-Trace — śledzenie
 

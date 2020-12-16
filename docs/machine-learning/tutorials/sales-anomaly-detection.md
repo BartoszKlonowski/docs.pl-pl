@@ -4,18 +4,18 @@ description: Dowiedz się, jak utworzyć aplikację wykrywania anomalii dla dany
 ms.date: 06/30/2020
 ms.topic: tutorial
 ms.custom: mvc, title-hack-0612
-ms.openlocfilehash: cf61f197e4befebdbb1fbf2ca4cbcdc61c48780a
-ms.sourcegitcommit: 97ce5363efa88179dd76e09de0103a500ca9b659
+ms.openlocfilehash: 48a8b26409b20e2a01aa97425153336b34c9b5b7
+ms.sourcegitcommit: e301979e3049ce412d19b094c60ed95b316a8f8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2020
-ms.locfileid: "86281670"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97594179"
 ---
 # <a name="tutorial-detect-anomalies-in-product-sales-with-mlnet"></a>Samouczek: wykrywanie anomalii w sprzedaży produktów za pomocą ML.NET
 
 Dowiedz się, jak utworzyć aplikację wykrywania anomalii dla danych sprzedaży produktu. W tym samouczku przedstawiono tworzenie aplikacji konsolowej .NET Core przy użyciu języka C# w programie Visual Studio.
 
-Z tego samouczka dowiesz się, jak wykonywać następujące czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 >
 > * Ładowanie danych
@@ -60,11 +60,11 @@ Kod źródłowy dla tego samouczka można znaleźć w repozytorium [dotnet/Sampl
 
      Upewnij się, że plik CSV został zapisany w \* folderze *dane* lub po jego zapisaniu w innym miejscu Przenieś \* plik CSV do folderu *dane* .
 
-2. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy \* plik CSV i wybierz polecenie **Właściwości**. W obszarze **Zaawansowane**Zmień wartość opcji **Kopiuj do katalogu wyjściowego** na Kopiuj, **jeśli nowszy**.
+2. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy \* plik CSV i wybierz polecenie **Właściwości**. W obszarze **Zaawansowane** Zmień wartość opcji **Kopiuj do katalogu wyjściowego** na Kopiuj, **jeśli nowszy**.
 
 Poniższa tabela zawiera podgląd danych z \* pliku CSV:
 
-|Miesiąc  |ProductSales |
+|Month (Miesiąc)  |ProductSales |
 |-------|-------------|
 |1 stycznia  |    271      |
 |2-sty  |    150,9    |
@@ -78,9 +78,9 @@ Następnie zdefiniuj struktury danych dla klas wejściowych i prognoz.
 
 Dodaj nową klasę do projektu:
 
-1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Dodaj > nowy element**.
+1. W **Eksplorator rozwiązań** kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Dodaj > nowy element**.
 
-2. W **oknie dialogowym Dodaj nowy element**wybierz pozycję **Klasa** i zmień wartość pola **Nazwa** na *ProductSalesData.cs*. Następnie wybierz przycisk **Dodaj** .
+2. W **oknie dialogowym Dodaj nowy element** wybierz pozycję **Klasa** i zmień wartość pola **Nazwa** na *ProductSalesData.cs*. Następnie wybierz przycisk **Dodaj** .
 
    Plik *ProductSalesData.cs* zostanie otwarty w edytorze kodu.
 
@@ -94,14 +94,14 @@ Dodaj nową klasę do projektu:
 
     [!code-csharp[DeclareTypes](./snippets/sales-anomaly-detection/csharp/ProductSalesData.cs#DeclareTypes "Declare data record types")]
 
-    `ProductSalesData`Określa klasę danych wejściowych. Atrybut [LoadColumn](xref:Microsoft.ML.Data.LoadColumnAttribute.%23ctor%28System.Int32%29) określa, które kolumny (według indeksu kolumn) w zestawie danych powinny zostać załadowane.
+    `ProductSalesData` Określa klasę danych wejściowych. Atrybut [LoadColumn](xref:Microsoft.ML.Data.LoadColumnAttribute.%23ctor%28System.Int32%29) określa, które kolumny (według indeksu kolumn) w zestawie danych powinny zostać załadowane.
 
-    `ProductSalesPrediction`Określa klasę danych przewidywania. W przypadku wykrywania anomalii Funkcja prognozowania składa się z alertu, aby wskazać, czy występuje anomalia, nieprzetworzony wynik i wartość p. Bliżej wartości p jest równa 0, tym bardziej prawdopodobnie wystąpił anomalia.
+    `ProductSalesPrediction` Określa klasę danych przewidywania. W przypadku wykrywania anomalii Funkcja prognozowania składa się z alertu, aby wskazać, czy występuje anomalia, nieprzetworzony wynik i wartość p. Bliżej wartości p jest równa 0, tym bardziej prawdopodobnie wystąpił anomalia.
 
 5. Utwórz dwa pola globalne do przechowywania ostatnio pobranej ścieżki pliku zestawu danych i zapisanej ścieżki pliku modelu:
 
-    * `_dataPath`ma ścieżkę do zestawu danych używanego do uczenia modelu.
-    * `_docsize`zawiera liczbę rekordów w pliku DataSet. Użyjesz `_docSize` do obliczenia `pvalueHistoryLength` .
+    * `_dataPath` ma ścieżkę do zestawu danych używanego do uczenia modelu.
+    * `_docsize` zawiera liczbę rekordów w pliku DataSet. Użyjesz `_docSize` do obliczenia `pvalueHistoryLength` .
 
 6. Dodaj następujący kod do wiersza bezpośrednio powyżej `Main` metody, aby określić te ścieżki:
 
@@ -117,7 +117,7 @@ Dodaj nową klasę do projektu:
 
 ### <a name="load-the-data"></a>Ładowanie danych
 
-Dane w ML.NET są reprezentowane jako [Klasa IDataView](xref:Microsoft.ML.IDataView). `IDataView`to elastyczny i wydajny sposób opisywania danych tabelarycznych (liczbowych i tekstowych). Dane można ładować z pliku tekstowego lub z innych źródeł (na przykład bazy danych SQL lub plików dziennika) do `IDataView` obiektu.
+Dane w ML.NET są reprezentowane jako [Klasa IDataView](xref:Microsoft.ML.IDataView). `IDataView` to elastyczny i wydajny sposób opisywania danych tabelarycznych (liczbowych i tekstowych). Dane można ładować z pliku tekstowego lub z innych źródeł (na przykład bazy danych SQL lub plików dziennika) do `IDataView` obiektu.
 
 1. Dodaj następujący kod w następnym wierszu `Main()` metody:
 
@@ -205,9 +205,9 @@ Dodaj następującą metodę do `Program.cs` :
 
     Następujące informacje zostaną wyświetlone w wynikach wykrywania:
 
-    * `Alert`wskazuje alert dla danego punktu danych.
-    * `Score`jest `ProductSales` wartością dla danego punktu danych w zestawie danych.
-    * `P-Value`"P" oznacza prawdopodobieństwo. Im bliżej wartości p jest to 0, tym bardziej prawdopodobnie punkt danych jest anomalią.
+    * `Alert` wskazuje alert dla danego punktu danych.
+    * `Score` jest `ProductSales` wartością dla danego punktu danych w zestawie danych.
+    * `P-Value` "P" oznacza prawdopodobieństwo. Im bliżej wartości p jest to 0, tym bardziej prawdopodobnie punkt danych jest anomalią.
 
 1. Użyj poniższego kodu, aby wykonać iterację `predictions` `IEnumerable` i wyświetlić wyniki:
 
@@ -266,7 +266,7 @@ Alert   Score   P-Value
 
 ## <a name="change-point-detection"></a>Wykrywanie punktu zmiany
 
-`Change points`są trwałymi zmianami w czasie dystrybucji strumienia zdarzeń szeregów czasowych, takich jak zmiany poziomów i trendy. Te trwałe zmiany są ostatnie znacznie dłużej niż `spikes` i mogą wskazywać na katastrofalne zdarzenia. `Change points`nie są zwykle widoczne dla gołym okiem, ale mogą być wykrywane w danych przy użyciu podejścia, takiego jak w poniższej metodzie.  Na poniższej ilustracji przedstawiono przykład wykrywania punktu zmiany:
+`Change points` są trwałymi zmianami w czasie dystrybucji strumienia zdarzeń szeregów czasowych, takich jak zmiany poziomów i trendy. Te trwałe zmiany są ostatnie znacznie dłużej niż `spikes` i mogą wskazywać na katastrofalne zdarzenia. `Change points` nie są zwykle widoczne dla gołym okiem, ale mogą być wykrywane w danych przy użyciu podejścia, takiego jak w poniższej metodzie.  Na poniższej ilustracji przedstawiono przykład wykrywania punktu zmiany:
 
 ![Zrzut ekranu pokazujący wykrywanie punktu zmiany.](./media/sales-anomaly-detection/change-point-detection.png)
 
@@ -309,10 +309,10 @@ Alert   Score   P-Value
 
     W wynikach wykrywania punktu zmiany zostaną wyświetlone następujące informacje:
 
-    * `Alert`wskazuje alert punktu zmiany dla danego punktu danych.
-    * `Score`jest `ProductSales` wartością dla danego punktu danych w zestawie danych.
-    * `P-Value`"P" oznacza prawdopodobieństwo. Im bliżej wartości P jest to 0, tym bardziej prawdopodobnie punkt danych jest anomalią.
-    * `Martingale value`służy do identyfikowania, jak "brzmienia" punkt danych jest oparty na sekwencji wartości P.
+    * `Alert` wskazuje alert punktu zmiany dla danego punktu danych.
+    * `Score` jest `ProductSales` wartością dla danego punktu danych w zestawie danych.
+    * `P-Value` "P" oznacza prawdopodobieństwo. Im bliżej wartości P jest to 0, tym bardziej prawdopodobnie punkt danych jest anomalią.
+    * `Martingale value` służy do identyfikowania, jak "brzmienia" punkt danych jest oparty na sekwencji wartości P.
 
 1. Wykonaj iterację `predictions` `IEnumerable` i Wyświetl wyniki przy użyciu następującego kodu:
 
@@ -384,6 +384,6 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z repozytorium Machine Learning przykłady w witrynie GitHub, aby poznać przykład wykrywania anomalii dotyczącego zużycia mocy.
+Zapoznaj się z repozytorium Machine Learning Samples w witrynie GitHub, aby poznać przykład wykrywania anomalii danych sezonowości.
 > [!div class="nextstepaction"]
-> [dotnet/machinelearning — przykłady repozytorium GitHub](https://github.com/dotnet/machinelearning-samples/tree/master/samples/csharp/getting-started/AnomalyDetection_PowerMeterReadings)
+> [dotnet/machinelearning — przykłady repozytorium GitHub](https://github.com/dotnet/machinelearning-samples/tree/master/samples/csharp/getting-started/AnomalyDetection_PhoneCalls)

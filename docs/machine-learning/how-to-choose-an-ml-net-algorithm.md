@@ -3,12 +3,12 @@ title: Jak wybrać algorytm ML.NET
 description: Dowiedz się, jak wybrać algorytm ML.NET dla modelu uczenia maszynowego
 ms.topic: overview
 ms.date: 06/05/2019
-ms.openlocfilehash: 8af89800485f8f8ac35ee17df10a5e3c039da42d
-ms.sourcegitcommit: aa6d8a90a4f5d8fe0f6e967980b8c98433f05a44
+ms.openlocfilehash: 04cf191401c7c25f1fa341acaf9312dc19752260
+ms.sourcegitcommit: e301979e3049ce412d19b094c60ed95b316a8f8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90679641"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97593093"
 ---
 # <a name="how-to-choose-an-mlnet-algorithm"></a>Jak wybrać algorytm ML.NET
 
@@ -20,7 +20,7 @@ Algorytmy operują na **funkcjach**. Funkcje to wartości liczbowe obliczane na 
 
 Algorytm to zapis matematyczny wykonywany w celu utworzenia **modelu**. Różne algorytmy tworzą modele o różnej charakterystyce.
 
-W przypadku ML.NET tego samego algorytmu można zastosować do różnych zadań. Na przykład w przypadku klasyfikacji binarnej, klasyfikacji wieloklasowej i regresji można używać stochastycznego podwójnego wzniesienie. Różnica polega na tym, jak dane wyjściowe algorytmu są interpretowane w celu dopasowania do zadania.
+W przypadku ML.NET tego samego algorytmu można zastosować do różnych zadań. Na przykład do klasyfikacji binarnej, klasyfikacji wieloklasowej i regresji można używać stochastycznego podwójnej współrzędnej. Różnica polega na tym, jak dane wyjściowe algorytmu są interpretowane w celu dopasowania do zadania.
 
 Dla każdej kombinacji algorytmu/zadania ML.NET zapewnia składnik, który wykonuje algorytm szkolenia i wykonuje interpretację. Te składniki są nazywane instruktorami. Na przykład <xref:Microsoft.ML.Trainers.SdcaRegressionTrainer> używa algorytmu **StochasticDualCoordinatedAscent** stosowanego do zadania **regresji** .
 
@@ -30,11 +30,11 @@ Algorytmy liniowe tworzą model, który oblicza **wyniki** z liniowej kombinacji
 
 Algorytmy liniowe działają dobrze w przypadku funkcji, które są [rozdzielone liniowo](https://en.wikipedia.org/wiki/Linear_separability).
 
-Przed rozpoczęciem szkolenia przy użyciu algorytmu liniowego należy znormalizować funkcje. Zapobiega to, że jedna funkcja ma większy wpływ na wynik niż inne.
+Przed rozpoczęciem szkolenia przy użyciu algorytmu liniowego należy znormalizować funkcje. Dzięki temu jedna funkcja nie ma więcej wpływu na wynik niż inne.
 
-Ogólnie skalowalne algorytmy liniowe są skalowane i szybkie, Tanie do uczenia się. Są one skalowane przez liczbę funkcji i przybliżone według rozmiaru zestawu danych szkoleniowych.
+Ogólnie rzecz biorąc, algorytmy liniowe są skalowalne, szybkie, Tanie do uczenia się i tanie do przewidywania. Są one skalowane przez liczbę funkcji i przybliżone według rozmiaru zestawu danych szkoleniowych.
 
-Algorytmy liniowe czynią wiele przebiegów przez dane szkoleniowe. Jeśli zestaw danych mieści się w pamięci, a następnie dodasz [punkt kontrolny pamięci podręcznej](xref:Microsoft.ML.LearningPipelineExtensions.AppendCacheCheckpoint%2A) do potoku ml.NET przed dołączeniem Trainer, nastąpi szybsze działanie szkolenia.
+Algorytmy liniowe czynią wiele przebiegów przez dane szkoleniowe. Jeśli zestaw danych mieści się w pamięci, dodanie [punktu kontrolnego pamięci podręcznej](xref:Microsoft.ML.LearningPipelineExtensions.AppendCacheCheckpoint%2A) do potoku ml.NET przed dołączeniem Trainer spowoduje szybsze działanie szkolenia.
 
 **Instruktorzy liniowi**
 

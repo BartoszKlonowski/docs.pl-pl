@@ -2,12 +2,12 @@
 title: dotnet-liczniki narzędzia diagnostyczne — interfejs wiersza polecenia platformy .NET
 description: Dowiedz się, jak zainstalować i używać narzędzia interfejsu wiersza polecenia dotnet-Counter do monitorowania kondycji ad hoc i badania wydajności pierwszego poziomu.
 ms.date: 11/17/2020
-ms.openlocfilehash: 48e3b038ddb5c9421367612a592c5ba6b9459791
-ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
+ms.openlocfilehash: 9787b4a78c5b49b839232c0bb5ffbd87d9f95556
+ms.sourcegitcommit: e301979e3049ce412d19b094c60ed95b316a8f8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97009550"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97593438"
 ---
 # <a name="investigate-performance-counters-dotnet-counters"></a>Badanie liczników wydajności (dotnet-Counters)
 
@@ -153,9 +153,9 @@ System.Runtime
     cpu-usage                                    Amount of time the process has utilized the CPU (ms)
     working-set                                  Amount of working set used by the process (MB)
     gc-heap-size                                 Total heap size reported by the GC (MB)
-    gen-0-gc-count                               Number of Gen 0 GCs / min
-    gen-1-gc-count                               Number of Gen 1 GCs / min
-    gen-2-gc-count                               Number of Gen 2 GCs / min
+    gen-0-gc-count                               Number of Gen 0 GCs per interval
+    gen-1-gc-count                               Number of Gen 1 GCs per interval
+    gen-2-gc-count                               Number of Gen 2 GCs per interval
     time-in-gc                                   % time in GC since the last GC
     gen-0-size                                   Gen 0 Heap Size
     gen-1-size                                   Gen 1 Heap Size
@@ -163,7 +163,7 @@ System.Runtime
     loh-size                                     LOH Heap Size
     alloc-rate                                   Allocation Rate
     assembly-count                               Number of Assemblies Loaded
-    exception-count                              Number of Exceptions / sec
+    exception-count                              Number of Exceptions per interval
     threadpool-thread-count                      Number of ThreadPool Threads
     monitor-lock-contention-count                Monitor Lock Contention Count
     threadpool-queue-length                      ThreadPool Work Items Queue Length

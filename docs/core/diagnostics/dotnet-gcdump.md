@@ -2,12 +2,12 @@
 title: Narzędzie diagnostyczne dotnet-gcdump — interfejs wiersza polecenia platformy .NET
 description: Dowiedz się, jak zainstalować i użyć narzędzia interfejsu wiersza polecenia dotnet-gcdump w celu zebrania zrzutów pamięci podręcznej na żywo procesów .NET przy użyciu programu .NET EventPipe.
 ms.date: 11/17/2020
-ms.openlocfilehash: 59de1845ada9e5bdd0b24bf4312517283324ce94
-ms.sourcegitcommit: 965a5af7918acb0a3fd3baf342e15d511ef75188
+ms.openlocfilehash: 02e1a7c5d86b582289672a027464aefd67a6f490
+ms.sourcegitcommit: e301979e3049ce412d19b094c60ed95b316a8f8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94826043"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97593373"
 ---
 # <a name="heap-analysis-tool-dotnet-gcdump"></a>Narzędzie do analizy sterty (dotnet-gcdump)
 
@@ -68,6 +68,9 @@ Można zbierać wiele `.gcdump` i otwierać je jednocześnie w programie Visual 
 ## `dotnet-gcdump collect`
 
 Zbiera zrzut GC z aktualnie uruchomionego procesu.
+
+> [!WARNING]
+> W celu przeanalizowania sterty GC to polecenie wyzwala wyrzucanie elementów bezużytecznych generacji 2 (pełne), które mogą wstrzymywać środowisko uruchomieniowe przez długi czas, szczególnie gdy sterta GC jest duża. Nie używaj tego polecenia w środowiskach z uwzględnieniem wydajności, gdy sterta GC jest duża.
 
 ### <a name="synopsis"></a>Streszczenie
 
