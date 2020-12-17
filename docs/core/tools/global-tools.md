@@ -4,12 +4,12 @@ description: Jak instalować, używać, aktualizować i usuwać narzędzia platf
 author: KathleenDollard
 ms.topic: how-to
 ms.date: 02/12/2020
-ms.openlocfilehash: 3669ed17d58542aab0435ccea22700c82ba8ea26
-ms.sourcegitcommit: f99115e12a5eb75638abe45072e023a3ce3351ac
+ms.openlocfilehash: 8839fd4fba72c9f973d906eabb72919306a847dd
+ms.sourcegitcommit: 635a0ff775d2447a81ef7233a599b8f88b162e5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556904"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97633887"
 ---
 # <a name="how-to-manage-net-tools"></a>Jak zarządzać narzędziami .NET
 
@@ -40,8 +40,6 @@ Oto kilka sposobów znajdowania narzędzi:
 
 * Użyj polecenia [Search narzędzia dotnet](dotnet-tool-search.md) , aby znaleźć narzędzie, które jest publikowane w usłudze NuGet.org.
 * Przeszukaj witrynę sieci Web [NuGet](https://www.nuget.org) przy użyciu filtru typu pakietu "narzędzie .NET". Aby uzyskać więcej informacji, zobacz [Znajdowanie i wybieranie pakietów](/nuget/consume-packages/finding-and-choosing-packages).
-* Zobacz listę narzędzi w repozytorium GitHub [natemcmaster/dotnet-Tools](https://github.com/natemcmaster/dotnet-tools) .
-* Użyj [ToolGet](https://www.toolget.net/) , aby wyszukać narzędzia platformy .NET.
 * Zobacz kod źródłowy narzędzi utworzonych przez zespół ASP.NET Core w [katalogu Tools w repozytorium GitHub/aspnetcore](https://github.com/dotnet/aspnetcore/tree/master/src/Tools).
 * Informacje o narzędziach diagnostycznych w [narzędziach diagnostycznych platformy .NET](../diagnostics/index.md#net-core-diagnostic-global-tools).
 
@@ -276,7 +274,7 @@ dotnet <command> --help
 
 Jeśli instalacja lub uruchomienie narzędzia nie powiedzie się, zobacz [Rozwiązywanie problemów z użyciem narzędzia platformy .NET](troubleshoot-usage-issues.md).
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Samouczek: Tworzenie narzędzia platformy .NET przy użyciu interfejsu wiersza polecenia platformy .NET](global-tools-how-to-create.md)
 - [Samouczek: Instalowanie i używanie narzędzia globalnego platformy .NET przy użyciu interfejsu wiersza polecenia platformy .NET](global-tools-how-to-use.md)

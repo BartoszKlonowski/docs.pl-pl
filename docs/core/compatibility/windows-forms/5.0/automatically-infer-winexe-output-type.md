@@ -1,13 +1,13 @@
 ---
 title: 'Zmiana podziału: wartość OutputType ustawiona na WinExe dla aplikacji WPF i WinForms'
-description: Dowiedz się więcej na temat istotnej zmiany w programie .NET 5,0, gdzie wartość OutputType jest automatycznie ustawiana na WinExe dla aplikacji Windows Forms.
+description: Dowiedz się więcej o istotnej zmianie w zestawie .NET SDK 5.0.100, gdzie wartość OutputType jest automatycznie ustawiana na WinExe dla aplikacji Windows Forms.
 ms.date: 09/18/2020
-ms.openlocfilehash: 7b2c7a76983c9e7958808e3cc4716be7792841c6
-ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
+ms.openlocfilehash: 0b56db57d5242f2fb001c4de339a7f696c088dfc
+ms.sourcegitcommit: 635a0ff775d2447a81ef7233a599b8f88b162e5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97513188"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97633860"
 ---
 # <a name="outputtype-set-to-winexe-for-wpf-and-winforms-apps"></a>OutputType ustawiony na WinExe dla aplikacji WPF i WinForms
 
@@ -23,7 +23,7 @@ W poprzednich wersjach zestawu .NET SDK wartość określona dla `OutputType` pl
 </PropertyGroup>
 ```
 
-Począwszy od wersji 5.0.1 zestawu .NET SDK, `OutputType` jest automatycznie ustawiany na `WinExe` dla WPF i Windows Forms aplikacji przeznaczonych dla dowolnej wersji platformy, w tym .NET Framework. Na przykład:
+Począwszy od wersji 5.0.100 zestawu .NET SDK, `OutputType` jest automatycznie ustawiany na `WinExe` dla WPF i Windows Forms aplikacji przeznaczonych dla dowolnej wersji platformy, w tym .NET Framework. Na przykład:
 
 ```xml
 <PropertyGroup>
@@ -37,7 +37,7 @@ Zakłada się, że większość użytkowników nie chce, aby okno konsoli było 
 
 ## <a name="version-introduced"></a>Wprowadzona wersja
 
-5.0.1 .NET
+5.0.100 .NET
 
 ## <a name="recommended-action"></a>Zalecana akcja
 

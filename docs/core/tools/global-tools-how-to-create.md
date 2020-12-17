@@ -2,13 +2,13 @@
 title: 'Samouczek: Tworzenie narzędzia platformy .NET'
 description: Dowiedz się, jak utworzyć narzędzie platformy .NET. Narzędzie jest aplikacją konsolową, która jest instalowana przy użyciu interfejsu wiersza polecenia platformy .NET.
 ms.topic: tutorial
-ms.date: 02/12/2020
-ms.openlocfilehash: 8f2dd15982aff9fe2d9db9ce2cff8ac1b22e440e
-ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
+ms.date: 12/14/2020
+ms.openlocfilehash: dc5cf014336848ff1a3035647a386419653a083b
+ms.sourcegitcommit: 635a0ff775d2447a81ef7233a599b8f88b162e5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512635"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97633900"
 ---
 # <a name="tutorial-create-a-net-tool-using-the-net-cli"></a>Samouczek: Tworzenie narzędzia platformy .NET przy użyciu interfejsu wiersza polecenia platformy .NET
 
@@ -22,10 +22,10 @@ Jest to pierwsza z serii trzech samouczków. Ten samouczek obejmuje tworzenie i 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Zestaw .NET SDK 5,0](https://dotnet.microsoft.com/download) lub nowsza wersja.
+- [5.0.100 .NET SDK](https://dotnet.microsoft.com/download) lub nowszą wersję.
 
   W tym samouczku jest używany zestaw SDK programu .NET 5,0, ale narzędzia globalne są dostępne począwszy od zestaw .NET Core SDK 2,1. Narzędzia lokalne są dostępne począwszy od zestaw .NET Core SDK 3,0.
-  
+
 - Wybrany edytor tekstu lub edytor kodu.
 
 ## <a name="create-a-project"></a>Tworzenie projektu
@@ -35,10 +35,22 @@ Jest to pierwsza z serii trzech samouczków. Ten samouczek obejmuje tworzenie i 
 1. Przejdź do folderu *repozytorium* i wprowadź następujące polecenie:
 
    ```dotnetcli
-   dotnet new console -n microsoft.botsay
+   dotnet new console -n microsoft.botsay -f net5.0
    ```
 
    Polecenie tworzy nowy folder o nazwie *Microsoft. botsay* w folderze *repozytorium* .
+
+   > [!NOTE]
+   > W tym samouczku utworzysz narzędzie, które jest przeznaczone dla platformy .NET 5,0. Aby wskazać inną strukturę, należy zmienić `-f|--framework` opcję. Aby docelowa była wiele struktur, Zmień `TargetFramework` element na `TargetFrameworks` element w pliku projektu, jak pokazano w następującym przykładzie:
+   >
+   > ```xml
+   > <Project Sdk="Microsoft.NET.Sdk">
+   >   <PropertyGroup>
+   >     <OutputType>Exe</OutputType>
+   >     <TargetFrameworks>netcoreapp3.1;net5.0</TargetFrameworks>
+   >   </PropertyGroup>
+   > </Project>
+   > ```
 
 1. Przejdź do folderu *Microsoft. botsay* .
 
@@ -164,16 +176,16 @@ Przed spakowaniem i dystrybucją aplikacji jako narzędzia należy zmodyfikować
 
    ```xml
    <Project Sdk="Microsoft.NET.Sdk">
-  
+
      <PropertyGroup>
 
        <OutputType>Exe</OutputType>
        <TargetFramework>net5.0</TargetFramework>
-  
+
        <PackAsTool>true</PackAsTool>
        <ToolCommandName>botsay</ToolCommandName>
        <PackageOutputPath>./nupkg</PackageOutputPath>
-  
+
      </PropertyGroup>
 
    </Project>
@@ -186,10 +198,10 @@ Przed spakowaniem i dystrybucją aplikacji jako narzędzia należy zmodyfikować
    ```
 
    Plik *Microsoft. botsay. 1.0.0. nupkg* jest tworzony w folderze identyfikowanym przez `<PackageOutputPath>` wartość z pliku *Microsoft. botsay. csproj* , który w tym przykładzie jest folderem *./nupkg* .
-  
+
    Po udostępnieniu narzędzia publicznie można przekazać je do programu `https://www.nuget.org` . Po udostępnieniu narzędzia w narzędziu NuGet deweloperzy mogą zainstalować narzędzie za pomocą polecenia [Install narzędzia dotnet](dotnet-tool-install.md) . Na potrzeby tego samouczka zainstalujesz pakiet bezpośrednio z lokalnego folderu *NUPKG* , więc nie ma potrzeby przekazywania pakietu do narzędzia NuGet.
 
-## <a name="troubleshoot"></a>Rozwiąż problemy
+## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
 Jeśli podczas wykonywania samouczka zostanie wyświetlony komunikat o błędzie, zobacz [Rozwiązywanie problemów z użyciem narzędzia platformy .NET](troubleshoot-usage-issues.md).
 

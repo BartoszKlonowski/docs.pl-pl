@@ -3,12 +3,12 @@ title: Korzystanie z usługi Azure Key Vault w celu ochrony kluczy tajnych w cza
 description: Zabezpieczenia w mikrousługach .NET i aplikacjach sieci Web — Azure Key Vault jest doskonałym sposobem obsługi wpisów tajnych aplikacji, które są w pełni kontrolowane przez administratorów. Administratorzy mogą nawet przypisywać i odwoływać wartości deweloperskie bez deweloperów, którzy muszą je obsłużyć.
 author: mjrousos
 ms.date: 01/30/2020
-ms.openlocfilehash: d2d3690c0c8787ace6bcdfacbdb612f9ef957b98
-ms.sourcegitcommit: 5114e7847e0ff8ddb8c266802d47af78567949cf
+ms.openlocfilehash: 5d024894fe1540df04514031bf0b6e0754ddc75c
+ms.sourcegitcommit: 635a0ff775d2447a81ef7233a599b8f88b162e5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916245"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97633926"
 ---
 # <a name="use-azure-key-vault-to-protect-secrets-at-production-time"></a>Użyj Azure Key Vault, aby chronić wpisy tajne w czasie produkcji
 
@@ -37,7 +37,7 @@ Należy zauważyć, że wywołanie `AddAzureKeyVault` wymaga identyfikatora apli
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - **Ochrona wpisów tajnych aplikacji przy użyciu Azure Key Vault** \
-  [https://docs.microsoft.com/azure/architecture/multitenant-identity](/azure/architecture/multitenant-identity-keyvault)
+  [https://docs.microsoft.com/azure/architecture/multitenant-identity](/azure/architecture/multitenant-identity)
 
 - **Bezpieczne przechowywanie wpisów tajnych aplikacji podczas opracowywania** \
   [https://docs.microsoft.com/aspnet/core/security/app-secrets](/aspnet/core/security/app-secrets)

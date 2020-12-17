@@ -2,12 +2,12 @@
 title: DevOps
 description: DevOps uwagi dotyczące aplikacji natywnych w chmurze
 ms.date: 05/13/2020
-ms.openlocfilehash: e6e093a1847d3aec37ac5d4ca56f64e0091a9b6b
-ms.sourcegitcommit: 5b475c1855b32cf78d2d1bbb4295e4c236f39464
+ms.openlocfilehash: 1a04f5178877f3fdde707753e94718ce0f0bb49d
+ms.sourcegitcommit: 635a0ff775d2447a81ef7233a599b8f88b162e5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91164002"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97633718"
 ---
 # <a name="devops"></a>DevOps
 
@@ -118,11 +118,11 @@ Istnieje wiele narzędzi, które mogą wykonywać statyczne analizy kodu w celu 
 
 Istnieje również wiele wad podejścia do jednego repozytorium. Jedną z najbardziej martwych się rzeczy jest to, że posiadanie jednego repozytorium stwarza problemy związane z bezpieczeństwem. Jeśli zawartość repozytorium jest wycieka w repozytorium na model usługi, ilość utraconych kodu jest minimalna. W przypadku jednego repozytorium wszystkie elementy należące do firmy mogą zostać utracone. Istniało wiele przykładów w przeszłości i wycofanie całego wysiłku związanego z programowaniem gier. Posiadanie wielu repozytoriów jest mniej powierzchniowe, co jest pożądanymi cechami w większości praktyk dotyczących zabezpieczeń.
 
-Rozmiar pojedynczego repozytorium może być niemożliwy do szybkiego zarządzania. Przedstawia to pewne interesujące konsekwencje związane z wydajnością. Może być konieczne użycie wyspecjalizowanych narzędzi, takich jak [wirtualny system plików dla usługi git](https://vfsforgit.org/), który pierwotnie został zaprojektowany w celu poprawy środowiska dla deweloperów w zespole systemu Windows.
+Rozmiar pojedynczego repozytorium może być niemożliwy do szybkiego zarządzania. Przedstawia to pewne interesujące konsekwencje związane z wydajnością. Może być konieczne użycie wyspecjalizowanych narzędzi, takich jak [wirtualny system plików dla usługi git](https://github.com/Microsoft/VFSForGit), który pierwotnie został zaprojektowany w celu poprawy środowiska dla deweloperów w zespole systemu Windows.
 
 Często argument służący do korzystania z jednego repozytorium jest przebiegać do argumentu, który w serwisie Facebook lub Google używa tej metody do rozmieszczenia kodu źródłowego. Jeśli takie podejście jest wystarczające dla tych firm, należy upewnić się, że jest to poprawne podejście dla wszystkich firm. Prawdziwość sprawy polega na tym, że kilka firm działa w taki sam sposób jak w przypadku skali serwisu Facebook lub Google. Problemy występujące w tych skalach różnią się od tych, które są używane dla większości deweloperów. To, co jest dobre dla gęsi, może nie być dobre dla Gander.
 
-Na końcu można użyć dowolnego rozwiązania do hostowania kodu źródłowego dla mikrousług. Jednak w większości przypadków koszty związane z zarządzaniem i pracą inżynieryjną w ramach jednego repozytorium nie są takie same jak zalety meager. Dzielenie kodu przez wiele repozytoriów zachęca do lepszego rozdzielenia problemów i zachęca do autonomii wśród zespołów programistycznych.  
+Na końcu można użyć dowolnego rozwiązania do hostowania kodu źródłowego dla mikrousług. Jednak w większości przypadków koszty związane z zarządzaniem i pracą inżynieryjną w ramach jednego repozytorium nie są takie same jak zalety meager. Dzielenie kodu przez wiele repozytoriów zachęca do lepszego rozdzielenia problemów i zachęca do autonomii wśród zespołów programistycznych.
 
 ### <a name="standard-directory-structure"></a>Standardowa struktura katalogów
 
@@ -199,7 +199,7 @@ variables:
   artifactName: drop
   buildPlatform: any cpu
   buildConfiguration: release
-  
+
 pool:
   name: Hosted VS2017
   demands:

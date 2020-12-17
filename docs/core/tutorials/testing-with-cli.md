@@ -3,16 +3,16 @@ title: Organizowanie i testowanie projektów przy użyciu interfejsu wiersza pol
 description: W tym samouczku wyjaśniono, jak organizować i testować projekty .NET z wiersza polecenia.
 author: cartermp
 ms.date: 09/10/2018
-ms.openlocfilehash: 93e8a6b8afd9f9405bf21488998a61c2e761bf1e
-ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
+ms.openlocfilehash: 263eaf15beac008de8bb353a385b8f3588a7fefc
+ms.sourcegitcommit: 635a0ff775d2447a81ef7233a599b8f88b162e5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512258"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97633640"
 ---
 # <a name="organizing-and-testing-projects-with-the-net-cli"></a>Organizowanie i testowanie projektów przy użyciu interfejsu wiersza polecenia platformy .NET
 
-Ten samouczek znajduje [się w samouczku: Tworzenie aplikacji konsolowej za pomocą platformy .NET przy użyciu Visual Studio Code, dzięki](with-visual-studio-code.md)czemu nie utworzysz prostej aplikacji konsolowej do tworzenia zaawansowanych i dobrze zorganizowanych aplikacji. Po podaniu, jak używać folderów do organizowania kodu, w tym samouczku pokazano, jak zwiększyć aplikację konsolową za pomocą platformy testowania [xUnit](https://xunit.github.io/) .
+Ten samouczek znajduje [się w samouczku: Tworzenie aplikacji konsolowej za pomocą platformy .NET przy użyciu Visual Studio Code, dzięki](with-visual-studio-code.md)czemu nie utworzysz prostej aplikacji konsolowej do tworzenia zaawansowanych i dobrze zorganizowanych aplikacji. Po podaniu, jak używać folderów do organizowania kodu, w tym samouczku pokazano, jak zwiększyć aplikację konsolową za pomocą platformy testowania [xUnit](https://xunit.net/) .
 
 ## <a name="using-folders-to-organize-code"></a>Organizowanie kodu przy użyciu folderów
 
@@ -104,7 +104,7 @@ Meow!
 
 ### <a name="testing-the-sample"></a>Testowanie przykładu
 
-`NewTypes`Projekt jest na miejscu i został zorganizowany przez utrzymywanie typów związanych ze zwierzętami ze zwierząt domowych w folderze. Następnie utwórz projekt testowy i zacznij pisać testy za pomocą platformy testów [xUnit](https://xunit.github.io/) . Testy jednostkowe umożliwiają automatyczne sprawdzanie zachowania typów PET w celu potwierdzenia, że działają prawidłowo.
+`NewTypes`Projekt jest na miejscu i został zorganizowany przez utrzymywanie typów związanych ze zwierzętami ze zwierząt domowych w folderze. Następnie utwórz projekt testowy i zacznij pisać testy za pomocą platformy testów [xUnit](https://xunit.net/) . Testy jednostkowe umożliwiają automatyczne sprawdzanie zachowania typów PET w celu potwierdzenia, że działają prawidłowo.
 
 Przejdź z powrotem do folderu *src* i Utwórz folder *testowy* z folderem *NewTypesTests* w nim. W wierszu polecenia w folderze *NewTypesTests* wykonaj polecenie `dotnet new xunit` . Spowoduje to utworzenie dwóch plików: *NewTypesTests. csproj* i *UnitTest1.cs*.
 

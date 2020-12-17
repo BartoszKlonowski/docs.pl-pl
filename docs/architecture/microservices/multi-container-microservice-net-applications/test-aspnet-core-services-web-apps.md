@@ -2,12 +2,12 @@
 title: Testowanie aplikacji internetowych i usług ASP.NET Core
 description: Architektura mikrousług platformy .NET dla aplikacji platformy .NET w kontenerze | Poznaj architekturę testowania ASP.NET Core usług i aplikacji sieci Web w kontenerach.
 ms.date: 08/07/2020
-ms.openlocfilehash: af1187fb1e2afbb9fa953db5a280c9cc317ab6a8
-ms.sourcegitcommit: 636af37170ae75a11c4f7d1ecd770820e7dfe7bd
+ms.openlocfilehash: 67872668781d8ae5d79bf360aee73f744cf4404b
+ms.sourcegitcommit: 635a0ff775d2447a81ef7233a599b8f88b162e5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804773"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97633952"
 ---
 # <a name="testing-aspnet-core-services-and-web-apps"></a>Testowanie aplikacji internetowych i usług ASP.NET Core
 
@@ -31,7 +31,7 @@ Podczas testowania jednostek akcji kontrolera Pamiętaj, aby skoncentrować się
 
 Testy jednostkowe są implementowane na podstawie platform testowych, takich jak xUnit.net, MSTest, MOQ lub NUnit. W przypadku przykładowej aplikacji eShopOnContainers korzystamy z xUnit.
 
-Podczas pisania testu jednostkowego dla kontrolera interfejsu API sieci Web, można utworzyć wystąpienie klasy kontrolera bezpośrednio przy użyciu słowa kluczowego New w języku C \# , aby test działał tak szybko, jak to możliwe. Poniższy przykład pokazuje, jak to zrobić przy użyciu [xUnit](https://xunit.github.io/) jako środowiska testowego.
+Podczas pisania testu jednostkowego dla kontrolera interfejsu API sieci Web, można utworzyć wystąpienie klasy kontrolera bezpośrednio przy użyciu słowa kluczowego New w języku C \# , aby test działał tak szybko, jak to możliwe. Poniższy przykład pokazuje, jak to zrobić przy użyciu [xUnit](https://xunit.net/) jako środowiska testowego.
 
 ```csharp
 [Fact]
@@ -99,7 +99,7 @@ public class PrimeWebDefaultRequestShould
 }
 ```
 
-#### <a name="additional-resources"></a>Dodatkowe zasoby
+#### <a name="additional-resources"></a>Zasoby dodatkowe
 
 - **Steve Smith. Kontrolery testowania** (ASP.NET Core) \
     [https://docs.microsoft.com/aspnet/core/mvc/controllers/testing](/aspnet/core/mvc/controllers/testing)
@@ -111,7 +111,7 @@ public class PrimeWebDefaultRequestShould
     [https://docs.microsoft.com/dotnet/core/testing/unit-testing-with-dotnet-test](../../../core/testing/unit-testing-with-dotnet-test.md)
 
 - **xUnit.NET**. Oficjalna lokacja. \
-    <https://xunit.github.io/>
+    <https://xunit.net/>
 
 - **Podstawowe informacje o teście jednostkowym.** \
     [https://docs.microsoft.com/visualstudio/test/unit-test-basics](/visualstudio/test/unit-test-basics)
@@ -136,7 +136,7 @@ Testy aplikacji referencyjnych (eShopOnContainers) zostały niedawno rozbudowane
 
 1. Testy **jednostkowe** , tylko zwykłe testy jednostkowe, zawarte w elemencie **{mikroservicename}. UnitTests** projekty
 
-2. **Wielousługowe testy funkcjonalne/integracji**z przypadkami testowymi dotyczącymi infrastruktury dla każdej mikrousług, ale odizolowane od innych i zawarte w usłudze **{mikroservicename}. FunctionalTests** projekty.
+2. **Wielousługowe testy funkcjonalne/integracji** z przypadkami testowymi dotyczącymi infrastruktury dla każdej mikrousług, ale odizolowane od innych i zawarte w usłudze **{mikroservicename}. FunctionalTests** projekty.
 
 3. **Testy funkcjonalne/integracji aplikacji**, które koncentrują się na integracji mikrousług, z przypadkami testowymi, które wywierają kilka mikrousług. Te testy znajdują się w projekcie **Application. FunctionalTests**.
 
@@ -196,7 +196,7 @@ docker-compose -f docker-compose-test.yml -f docker-compose-test.override.yml up
 
 Jak widać, te pliki tworzące platformę Docker umożliwiają uruchamianie tylko mikrousług Redis, RabbitMQ, SQL Server i MongoDB.
 
-### <a name="additional-resources"></a>Dodatkowe zasoby
+### <a name="additional-resources"></a>Zasoby dodatkowe
 
 - **Testowanie integracji jednostek &** na eShopOnContainers \
     <https://github.com/dotnet-architecture/eShopOnContainers/wiki/Unit-and-integration-testing>

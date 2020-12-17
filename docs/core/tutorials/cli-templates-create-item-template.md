@@ -1,16 +1,17 @@
 ---
 title: Tworzenie szablonu elementu dla nowego interfejsu wiersza polecenia platformy .NET
+titleSuffix: ''
 description: Dowiedz się, jak utworzyć szablon elementu dla nowego polecenia dotnet. Szablony elementów mogą zawierać dowolną liczbę plików.
 author: adegeo
 ms.date: 12/11/2020
 ms.topic: tutorial
 ms.author: adegeo
-ms.openlocfilehash: b148870480584cff37f3fd395e0594344001f247
-ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
+ms.openlocfilehash: d213646a933c77bd0d9a3f1aa9b6b4948b66439b
+ms.sourcegitcommit: 635a0ff775d2447a81ef7233a599b8f88b162e5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512427"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97633666"
 ---
 # <a name="tutorial-create-an-item-template"></a>Samouczek: Tworzenie szablonu elementu
 

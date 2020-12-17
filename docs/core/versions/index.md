@@ -2,12 +2,12 @@
 title: Jak są używane wersje środowiska uruchomieniowego .NET i zestawu SDK
 description: W tym artykule wyjaśniono, jak są używane wersje zestawu .NET SDK i środowiska uruchomieniowego (podobnie jak w przypadku wersji semantycznej).
 ms.date: 12/07/2020
-ms.openlocfilehash: 2fe0b162b52f1e4500ec87f7d5d92054cd569552
-ms.sourcegitcommit: 81f1bba2c97a67b5ca76bcc57b37333ffca60c7b
+ms.openlocfilehash: 2fbc2775f31b4eab1c9883282c58accd9bb2b9f5
+ms.sourcegitcommit: 635a0ff775d2447a81ef7233a599b8f88b162e5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97009309"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97633627"
 ---
 # <a name="overview-of-how-net-is-versioned"></a>Omówienie wersji platformy .NET
 
@@ -19,9 +19,9 @@ ms.locfileid: "97009309"
 
 Zestaw SDK platformy .NET nie jest zgodny z wersją semantyczną. Zestaw SDK platformy .NET jest szybszy, a jego numery wersji muszą komunikować się z wyrównanym środowiskiem uruchomieniowym i wersjami pomocniczymi i poprawkami zestawu SDK.
 
-Pierwsze dwa pozycje numeru wersji zestawu .NET SDK są blokowane dla środowiska uruchomieniowego .NET wydanego za pomocą programu. Każda wersja zestawu SDK może tworzyć aplikacje dla tego środowiska uruchomieniowego lub dowolnej niższej wersji.
+Pierwsze dwa pozycje numeru wersji zestawu .NET SDK są blokowane w wersji środowiska uruchomieniowego .NET wydanej w programie. Każda wersja zestawu SDK może tworzyć aplikacje dla tego środowiska uruchomieniowego lub dowolnej niższej wersji.
 
-Trzecia pozycja numeru wersji zestawu SDK komunikuje się zarówno z literą, jak i numerem poprawki. Wersja pomocnicza jest mnożona przez 100. Wersja pomocnicza 1, Poprawka wersja 2 byłaby reprezentowana jako 102. Ostatnie dwie cyfry reprezentują numer poprawki. Na przykład Oto możliwa sekwencja numerów wersji środowiska uruchomieniowego i zestawu SDK:
+Trzecia pozycja numeru wersji zestawu SDK komunikuje się zarówno z literą, jak i numerem poprawki. Wersja pomocnicza jest mnożona przez 100. Ostatnie dwie cyfry reprezentują numer poprawki. Wersja pomocnicza 1, Poprawka wersja 2 byłaby reprezentowana jako 102. Na przykład Oto możliwa sekwencja numerów wersji środowiska uruchomieniowego i zestawu SDK:
 
 | Zmiana                | Środowisko uruchomieniowe platformy .NET      | zestaw SDK platformy .NET ( \* )     |
 |-----------------------|-------------------|-------------------|

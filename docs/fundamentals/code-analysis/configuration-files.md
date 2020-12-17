@@ -5,12 +5,12 @@ ms.date: 09/24/2020
 ms.topic: conceptual
 no-loc:
 - EditorConfig
-ms.openlocfilehash: cf9b8f4033e6774684b2b7e3b788ef3c157d95df
-ms.sourcegitcommit: bc293b14af795e0e999e3304dd40c0222cf2ffe4
+ms.openlocfilehash: 0d64df42ffb1763afed3e883c4f043755e158489
+ms.sourcegitcommit: 635a0ff775d2447a81ef7233a599b8f88b162e5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96590040"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97633991"
 ---
 # <a name="configuration-files-for-code-analysis-rules"></a>Pliki konfiguracji dla reguł analizy kodu
 
@@ -68,7 +68,7 @@ dotnet_diagnostic.CA1000.severity = warning
 
 ## <a name="global-analyzerconfig"></a>AnalyzerConfig globalne
 
-Począwszy od zestawu SDK programu .NET 5,0 (który jest obsługiwany w programie Visual Studio 2019 w wersji 16,8 i nowszych), można również skonfigurować opcje analizatora przy użyciu globalnych plików _AnalyzerConfig_ . Te pliki są używane do udostępniania **opcji, które mają zastosowanie do wszystkich plików źródłowych w projekcie**, niezależnie od ich nazw plików lub ścieżek plików.
+Począwszy od zestawu SDK programu .NET 5 (który jest obsługiwany w programie Visual Studio 2019 w wersji 16,8 lub nowszej), można również skonfigurować opcje analizatora przy użyciu globalnych plików _AnalyzerConfig_ . Te pliki są używane do udostępniania **opcji, które mają zastosowanie do wszystkich plików źródłowych w projekcie**, niezależnie od ich nazw plików lub ścieżek plików.
 
 W przeciwieństwie [EditorConfig](#editorconfig) do plików, globalne pliki konfiguracyjne nie mogą być używane do konfigurowania ustawień stylu edytora dla środowisk IDE, takie jak rozmiar wcięcia lub odstęp końcowy. Zamiast tego są one przeznaczone wyłącznie do określania opcji konfiguracji analizatora poziomu projektu.
 

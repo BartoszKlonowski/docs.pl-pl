@@ -2,12 +2,12 @@
 title: dotnet sln — polecenie
 description: Polecenie dotnet-sln udostępnia wygodną opcję dodawania, usuwania i wyświetlania listy projektów w pliku rozwiązania.
 ms.date: 12/07/2020
-ms.openlocfilehash: 480634550f6fa1983bb46f51b439dc8a686ead3c
-ms.sourcegitcommit: 45c7148f2483db2501c1aa696ab6ed2ed8cb71b2
+ms.openlocfilehash: af502efe842e9c9610137738d86c05e00a3b37df
+ms.sourcegitcommit: 635a0ff775d2447a81ef7233a599b8f88b162e5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96851704"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97633653"
 ---
 # <a name="dotnet-sln"></a>dotnet sln
 
@@ -104,7 +104,7 @@ dotnet sln add [-h|--help]
 
 - **`-s|--solution-folder <PATH>`**
 
-  Ścieżka folderu rozwiązania docelowego, do którego mają zostać dodane projekty. Dostępne od wersji .NET Core 3,0 SDK.
+  Ścieżka [folderu rozwiązania](/visualstudio/ide/solutions-and-projects-in-visual-studio#solution-folder) docelowego, do którego mają zostać dodane projekty. Dostępne od wersji .NET Core 3,0 SDK.
 
 ### `remove`
 

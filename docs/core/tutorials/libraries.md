@@ -4,12 +4,12 @@ description: Dowiedz się, jak tworzyć biblioteki .NET przy użyciu interfejsu 
 author: cartermp
 ms.topic: how-to
 ms.date: 12/14/2020
-ms.openlocfilehash: 5a70cec4a991f673f4d5d3e7b00cd704c6799f47
-ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
+ms.openlocfilehash: 6f4c1feac7630a6a0250e4b0b39ef01152f5a400
+ms.sourcegitcommit: 635a0ff775d2447a81ef7233a599b8f88b162e5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512414"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97633679"
 ---
 # <a name="develop-libraries-with-the-net-cli"></a>Tworzenie bibliotek przy użyciu interfejsu wiersza polecenia platformy .NET
 
@@ -206,7 +206,7 @@ Każdy z tych elementów zawiera `.dll` pliki dla każdego obiektu docelowego.
 
 ## <a name="how-to-test-libraries-on-net"></a>Jak przetestować biblioteki na platformie .NET
 
-Ważne jest, aby móc testować między platformami. Możesz użyć [xUnit](https://xunit.github.io/) lub MSTest z pola. Oba są doskonale odpowiednie do testowania jednostkowego biblioteki na platformie .NET. Sposób konfigurowania rozwiązania przy użyciu projektów testowych będzie zależeć od [struktury rozwiązania](#structuring-a-solution). W poniższym przykładzie przyjęto założenie, że katalogi testowe i źródłowe znajdują się w tym samym katalogu najwyższego poziomu.
+Ważne jest, aby móc testować między platformami. Możesz użyć [xUnit](https://xunit.net/) lub MSTest z pola. Oba są doskonale odpowiednie do testowania jednostkowego biblioteki na platformie .NET. Sposób konfigurowania rozwiązania przy użyciu projektów testowych będzie zależeć od [struktury rozwiązania](#structuring-a-solution). W poniższym przykładzie przyjęto założenie, że katalogi testowe i źródłowe znajdują się w tym samym katalogu najwyższego poziomu.
 
 > [!NOTE]
 > Spowoduje to użycie niektórych poleceń [interfejsu wiersza polecenia platformy .NET](../tools/index.md) . Aby uzyskać więcej informacji, zobacz temat [dotnet New](../tools/dotnet-new.md) i [dotnet sln](../tools/dotnet-sln.md) .

@@ -3,12 +3,12 @@ title: Biblioteki portów do programu .NET Core
 description: Dowiedz się, jak przenieść projekty biblioteki z .NET Framework do programu .NET Core.
 author: cartermp
 ms.date: 12/07/2018
-ms.openlocfilehash: dcacf4d59964e0ef2009b4e9694d7f562e3a1547
-ms.sourcegitcommit: 67ebdb695fd017d79d9f1f7f35d145042d5a37f7
+ms.openlocfilehash: 25c53cdc71f4269b058953ef1903dc72d222f65f
+ms.sourcegitcommit: 635a0ff775d2447a81ef7233a599b8f88b162e5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92223563"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97633913"
 ---
 # <a name="port-net-framework-libraries-to-net-core"></a>Porty .NET Framework biblioteki do programu .NET Core
 
@@ -107,8 +107,8 @@ Istnieje duże podejście do powyższego podejścia dla poszczególnych projekt�
 
 Najlepszym sposobem, aby upewnić się, że wszystko działa, gdy Port został przetestowany w celu przetestowania kodu podczas jego portów do .NET Core. W tym celu należy użyć platformy testowania, która kompiluje i uruchamia testy dla platformy .NET Core. Obecnie są dostępne trzy opcje:
 
-- [xUnit](https://xunit.github.io/)
-  - [Wprowadzenie](https://xunit.github.io/docs/getting-started-dotnet-core.html)
+- [xUnit](https://xunit.net/)
+  - [Wprowadzenie](https://xunit.net/docs/getting-started/netcore/cmdline)
   - [Narzędzie do konwersji projektu MSTest na xUnit](https://github.com/dotnet/codeformatter/tree/master/src/XUnitConverter)
 - [NUnit](https://nunit.org/)
   - [Wprowadzenie](https://github.com/nunit/docs/wiki/Installation)

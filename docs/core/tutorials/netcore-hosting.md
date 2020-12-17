@@ -4,12 +4,12 @@ description: Dowiedz się, jak hostować środowisko uruchomieniowe platformy .N
 author: mjrousos
 ms.topic: how-to
 ms.date: 12/21/2018
-ms.openlocfilehash: 79336396de3058e40cf7328e6d92e7e9e54296e9
-ms.sourcegitcommit: bc293b14af795e0e999e3304dd40c0222cf2ffe4
+ms.openlocfilehash: 358cbff1ded3bd4ee9a3f78965eac1e1b1883ede
+ms.sourcegitcommit: 635a0ff775d2447a81ef7233a599b8f88b162e5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96242919"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97633849"
 ---
 # <a name="write-a-custom-net-core-host-to-control-the-net-runtime-from-your-native-code"></a>Napisz niestandardowego hosta .NET Core, aby kontrolować środowisko uruchomieniowe platformy .NET z kodu natywnego
 
@@ -30,7 +30,7 @@ Ponadto potrzebna jest prosta aplikacja .NET Core do testowania hosta za pomocą
 Istnieją dwa różne interfejsy API, których można używać do hostowania programu .NET Core. Ten artykuł (wraz ze skojarzonymi z nim [przykłady](https://github.com/dotnet/samples/tree/master/core/hosting)) obejmuje te dwie opcje.
 
 * Preferowaną metodą hostowania środowiska uruchomieniowego .NET Core w programie .NET Core 3,0 i nowszym jest `nethost` `hostfxr` interfejs API bibliotek i. Te punkty wejścia obsługują złożoność znajdowania i konfigurowania środowiska uruchomieniowego na potrzeby inicjowania oraz umożliwiają uruchamianie aplikacji zarządzanej i wywoływanie jej w statycznej metodzie zarządzanej.
-* Preferowaną metodą hostowania środowiska uruchomieniowego .NET Core przed programem .NET Core 3,0 jest [`coreclrhost.h`](https://github.com/dotnet/runtime/blob/master/src/coreclr/src/hosts/inc/coreclrhost.h) interfejs API. Ten interfejs API udostępnia funkcje ułatwiające uruchamianie i zatrzymywanie środowiska uruchomieniowego oraz Wywoływanie kodu zarządzanego (przez uruchomienie zarządzanego pliku exe lub poprzez wywoływanie statycznych metod zarządzanych).
+* Preferowaną metodą hostowania środowiska uruchomieniowego .NET Core przed programem .NET Core 3,0 jest [`coreclrhost.h`](https://github.com/dotnet/runtime/blob/master/src/coreclr/hosts/inc/coreclrhost.h) interfejs API. Ten interfejs API udostępnia funkcje ułatwiające uruchamianie i zatrzymywanie środowiska uruchomieniowego oraz Wywoływanie kodu zarządzanego (przez uruchomienie zarządzanego pliku exe lub poprzez wywoływanie statycznych metod zarządzanych).
 
 ## <a name="sample-hosts"></a>Przykładowe hosty
 
@@ -84,7 +84,7 @@ Host macierzysty może teraz wywołać metodę zarządzaną i przekazać do niej
 
 Poniższe kroki szczegółowo opisują sposób użycia `coreclrhost.h` interfejsu API w celu uruchomienia środowiska uruchomieniowego .NET Core w aplikacji natywnej i wywołania do zarządzanej metody statycznej. Fragmenty kodu w tym dokumencie używają niektórych interfejsów API specyficznych dla systemu Windows, ale [pełny przykładowy Host](https://github.com/dotnet/samples/tree/master/core/hosting/HostWithCoreClrHost) pokazuje ścieżki kodu systemu Windows i Linux.
 
-Host współdziałający w [systemie UNIX](https://github.com/dotnet/runtime/tree/master/src/coreclr/src/hosts/unixcorerun) przedstawia bardziej skomplikowany, rzeczywisty przykład hostingu przy użyciu `coreclrhost.h` .
+Host współdziałający w [systemie UNIX](https://github.com/dotnet/runtime/tree/master/src/coreclr/hosts/unixcorerun) przedstawia bardziej skomplikowany, rzeczywisty przykład hostingu przy użyciu `coreclrhost.h` .
 
 ### <a name="step-1---find-and-load-coreclr"></a>Krok 1 — Znajdowanie i ładowanie CoreCLR
 
@@ -162,7 +162,7 @@ Na koniec, gdy host wykonuje kod zarządzany, środowisko uruchomieniowe program
 
 CoreCLR nie obsługuje ponownego inicjowania ani zwalniania. Nie wywołuj `coreclr_initialize` ponownie ani nie zwalniaj biblioteki CoreCLR.
 
-## <a name="conclusion"></a>Wniosek
+## <a name="conclusion"></a>Podsumowanie
 
 Po skompilowaniu hosta może on być testowany przez uruchomienie go z wiersza polecenia i przekazanie wszelkich argumentów oczekiwanych przez hosta. Podczas określania aplikacji .NET Core do uruchomienia hosta upewnij się, że korzystasz z biblioteki DLL, która jest generowana przez `dotnet build` . Pliki wykonywalne (. exe) utworzone przez `dotnet publish` dla aplikacji samodzielnych są domyślnym hostem platformy .NET Core (aby można było uruchomić aplikację bezpośrednio z wiersza polecenia w scenariuszach linii głównej); kod użytkownika jest kompilowany do biblioteki DLL o tej samej nazwie.
 

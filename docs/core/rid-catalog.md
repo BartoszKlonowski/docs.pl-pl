@@ -1,13 +1,13 @@
 ---
 title: Wykaz identyfikatorów środowiska uruchomieniowego platformy .NET Core (RID)
 description: Dowiedz się więcej o identyfikatorze środowiska uruchomieniowego (RID) i sposobie używania identyfikatorów RID w programie .NET Core.
-ms.date: 02/22/2019
-ms.openlocfilehash: 096ce8e33a82df3b9de682ed16e10fbe9f07fd03
-ms.sourcegitcommit: 0802ac583585110022beb6af8ea0b39188b77c43
+ms.date: 12/15/2020
+ms.openlocfilehash: f818ab2d503be7960d9eb8450a7dd749766637a6
+ms.sourcegitcommit: 635a0ff775d2447a81ef7233a599b8f88b162e5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "90538227"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97633614"
 ---
 # <a name="net-core-rid-catalog"></a>Katalog programu .NET Core RID
 
@@ -35,7 +35,7 @@ Identyfikatory RID reprezentujące konkretne systemy operacyjne zwykle są zgodn
 
 - `[architecture]` jest architekturą procesora. Na przykład: `x86` , `x64` , `arm` lub `arm64` .
 
-- `[additional qualifiers]` dalsze odróżnienie różnych platform. Przykład: `aot`.
+- `[additional qualifiers]` dalsze odróżnienie różnych platform. Na przykład: `aot`.
 
 ## <a name="rid-graph"></a>Wykres RID
 
@@ -114,15 +114,15 @@ Aby uzyskać więcej informacji, zobacz [zależności i wymagania dotyczące pla
 
 Wyświetlane są tylko typowe wartości. Aby uzyskać najnowszą i pełną wersję, zobacz [runtime.jsw](https://github.com/dotnet/runtime/blob/master/src/libraries/pkg/Microsoft.NETCore.Platforms/runtime.json) pliku w `dotnet/runtime` repozytorium. Urządzenia korzystające z dystrybucji niewymienionej poniżej mogą działać z jednym z przenośnych identyfikatorów RID. Na przykład urządzenia Raspberry Pi z dystrybucją systemu Linux, których nie ma na liście, mogą być wskazywane przez `linux-arm` .
 
-- Przenośne (.NET Core 2,0 lub nowsze wersje)
+- Przenośny
   - `linux-x64` (Większość dystrybucji komputerów, takich jak CentOS, Debian, Fedora, Ubuntu i pochodne)
   - `linux-musl-x64` (Lekkie dystrybucje korzystające z [MUSL](https://wiki.musl-libc.org/projects-using-musl.html) , na przykład Alpine Linux)
   - `linux-arm` (Dystrybucje systemu Linux działające na ARM, takie jak raspbian na Raspberry Pi Model 2 +)
   - `linux-arm64` (Dystrybucje systemu Linux uruchomione na 64-bitowych ARM, takich jak Ubuntu Server 64-bit in Raspberry Pi Model 3 +)
 - Red Hat Enterprise Linux
   - `rhel-x64` (Zastąpione przez `linux-x64` dla RHEL powyżej wersji 6)
-  - `rhel.6-x64` (.NET Core 2,0 lub nowsze wersje)
-- Tizen (.NET Core 2,0 lub nowszy)
+  - `rhel.6-x64`
+- Tizen
   - `tizen`
   - `tizen.4.0.0`
   - `tizen.5.0.0`
@@ -133,21 +133,26 @@ Aby uzyskać więcej informacji, zobacz [zależności i wymagania dotyczące pla
 
 macOS RID używają starszej marki "OSX". Wyświetlane są tylko typowe wartości. Aby uzyskać najnowszą i pełną wersję, zobacz [runtime.jsw](https://github.com/dotnet/runtime/blob/master/src/libraries/pkg/Microsoft.NETCore.Platforms/runtime.json) pliku w `dotnet/runtime` repozytorium.
 
-- Przenośne (.NET Core 2,0 lub nowsze wersje)
+- Przenośny
   - `osx-x64` (Minimalna wersja systemu operacyjnego to macOS 10,12 Sierra)
 - macOS 10,10, Yosemite
   - `osx.10.10-x64`
 - macOS 10,11 El Capitan
   - `osx.10.11-x64`
-- macOS 10,12 Sierra (wersja .NET Core 1,1 lub nowsza)
+- macOS 10,12 Sierra
   - `osx.10.12-x64`
-- macOS 10,13 wysoka Sierra (.NET Core 1,1 lub nowsze wersje)
+- macOS 10,13, wysoka firma Sierra
   - `osx.10.13-x64`
-- macOS 10,14 Mojave (wersja .NET Core 1,1 lub nowsza)
+- macOS 10,14 Mojave
   - `osx.10.14-x64`
+- macOS 10,15 Catalina
+  - `osx.10.15-x64`
+- macOS 11,01 Big Sur
+  - `osx.11.0-x64`
+  - `osx.11.0-arm64`
 
 Aby uzyskać więcej informacji, zobacz [zależności i wymagania dotyczące platformy .NET Core](./install/macos.md#dependencies).
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Identyfikatory środowiska uruchomieniowego](https://github.com/dotnet/runtime/blob/master/src/libraries/pkg/Microsoft.NETCore.Platforms/readme.md)

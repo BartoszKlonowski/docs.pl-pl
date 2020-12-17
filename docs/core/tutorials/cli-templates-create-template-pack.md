@@ -5,12 +5,12 @@ author: adegeo
 ms.date: 12/11/2020
 ms.topic: tutorial
 ms.author: adegeo
-ms.openlocfilehash: 0d8ef9c158920ec49948215afb505a3753503286
-ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
+ms.openlocfilehash: 2aea143f1e41d580de41a9cc9e924d70b55695db
+ms.sourcegitcommit: 635a0ff775d2447a81ef7233a599b8f88b162e5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512453"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97633601"
 ---
 # <a name="tutorial-create-a-template-pack"></a>Samouczek: Tworzenie pakietu szablonów
 
@@ -50,10 +50,6 @@ dotnet new console -n templatepack -o .
 ```
 
 `-n`Parametr ustawia nazwę pliku _. csproj_ na _templatepack. csproj_. `-o`Parametr tworzy pliki w bieżącym katalogu. Powinien zostać wyświetlony wynik podobny do następującego: dane wyjściowe.
-
-```dotnetcli
-dotnet new console -n templatepack -o .
-```
 
 ```console
 The template "Console Application" was created successfully.

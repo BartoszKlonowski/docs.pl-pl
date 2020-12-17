@@ -2,12 +2,12 @@
 title: 'Nieprzerwana zmiana: aplikacje WinForms i WPF korzystają z Microsoft. NET. Sdk'
 description: Dowiedz się więcej na temat istotnej zmiany w programie .NET 5,0, w której aplikacje Windows Forms i Windows Presentation Framework używają teraz zestawu .NET SDK zamiast narzędzi .NET Core WinForms i WPF SDK.
 ms.date: 09/18/2020
-ms.openlocfilehash: 5f25be44c390abc173f155351d8cb007a6b370b0
-ms.sourcegitcommit: d8020797a6657d0fbbdff362b80300815f682f94
+ms.openlocfilehash: 5eafed03fbf034f6a6457217a8527a877214e239
+ms.sourcegitcommit: 635a0ff775d2447a81ef7233a599b8f88b162e5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95761584"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97633822"
 ---
 # <a name="winforms-and-wpf-apps-use-microsoftnetsdk"></a>WinForms i aplikacje WPF używają Microsoft. NET. Sdk
 
@@ -47,7 +47,7 @@ W programie .NET 5,0 i jego nowszych wersjach:
 
 ## <a name="version-introduced"></a>Wprowadzona wersja
 
-.NET 5,0
+5.0.100 ZESTAWU .NET SDK
 
 ## <a name="recommended-action"></a>Zalecana akcja
 
