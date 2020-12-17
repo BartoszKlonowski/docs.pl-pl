@@ -1,27 +1,27 @@
 ---
 title: Pełna składnia
-description: Poznaj różnicę między składnią pełnej i lekkiej w języku programowania F#.
+description: 'Zapoznaj się z różnicą między pełną i uproszczoną składnią w języku programowania F #.'
 ms.date: 05/16/2016
-ms.openlocfilehash: 722807695c56beb0d681b95a78ed8cb8c1df3ddf
-ms.sourcegitcommit: 927b7ea6b2ea5a440c8f23e3e66503152eb85591
+ms.openlocfilehash: 4e1725b58c8cb67c074ba12fd4ca25ce0c000a1e
+ms.sourcegitcommit: e301979e3049ce412d19b094c60ed95b316a8f8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81463905"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97595180"
 ---
 # <a name="verbose-syntax"></a>Pełna składnia
 
-Istnieją dwie formy składni dostępne dla wielu konstrukcji w języku F#: *składnia pełnej* i *uproszczona składnia*. Składnia pełnej nie jest tak często używana, ale ma tę zaletę, że jest mniej wrażliwa na wcięcie. Uproszczona składnia jest krótsza i używa wcięci do sygnalizowania początku i końca `begin` `end`konstrukcji, a nie dodatkowych słów kluczowych, takich jak , `in`i tak dalej. Domyślną składnią jest uproszczona składnia. W tym temacie opisano składnię konstrukcji języka F#, gdy nie jest włączona składnia lightweight. Składnia pełnej jest zawsze włączona, więc nawet jeśli włączysz lekką składnię, nadal można użyć składni pełnej dla niektórych konstrukcji. Można wyłączyć uproszczoną składnię `#light "off"` przy użyciu dyrektywy.
+Istnieją dwie formy składni dostępne dla wielu konstrukcji w języku F #: *Pełna składnia* i *składnia uproszczona*. Składnia verbose nie jest zgodna z powszechnie używanymi, ale ma zalety mniejszej czułości do wcięcia. Uproszczona składnia jest krótsza i używa wcięć do sygnalizowania początku i końca konstrukcji, zamiast dodatkowych słów kluczowych, takich jak `begin` ,, `end` `in` i tak dalej. Domyślną składnią jest składnia uproszczona. W tym temacie opisano składnię konstrukcji języka F #, gdy nie jest włączona składnia uproszczona. Pełna składnia jest zawsze włączona, więc nawet w przypadku włączenia uproszczonej składni można nadal używać składni pełnej dla niektórych konstrukcji. Można wyłączyć składnię uproszczoną za pomocą `#light "off"` dyrektywy.
 
 ## <a name="table-of-constructs"></a>Tabela konstrukcji
 
-W poniższej tabeli przedstawiono składnię odciążania i pełnej dla konstrukcji języka F# w kontekstach, w których istnieje różnica między tymi dwoma formularzami. W tej tabeli nawiasy kątowe (&lt;&gt;) zawierają elementy składni dostarczane przez użytkownika. Zapoznaj się z dokumentacją dla każdej konstrukcji języka, aby uzyskać bardziej szczegółowe informacje na temat składni używanej w tych konstrukcjach.
+W poniższej tabeli przedstawiono składnię uproszczoną i pełną dla konstrukcji języka F # w kontekstach, w których istnieje różnica między dwoma formularzami. W tej tabeli, nawiasy kątowe ( &lt; &gt; ) otaczają elementy składni dostarczone przez użytkownika. Zapoznaj się z dokumentacją dla każdej konstrukcji języka, aby uzyskać bardziej szczegółowe informacje na temat składni używanej w ramach tych konstrukcji.
 
 <table>
 <tr>
 <th>Konstrukcja języka</th>
-<th>Uproszczona składnia</th>
-<th>Składnia pełnej</th>
+<th>Składnia uproszczona</th>
+<th>Verbose — składnia</th>
 </tr>
 <tr>
 <td>
@@ -29,9 +29,9 @@ wyrażenia złożone
 </td>
 <td>
 
-```xml
-<expression1 />
-<expression2 />
+```fsharp
+<expression1>
+<expression2>
 ```
 
 </td><td>
@@ -44,7 +44,7 @@ wyrażenia złożone
 </tr>
 <tr><td>
 
-zagnieżdżone `let` powiązania
+`let`powiązania zagnieżdżone
 
 </td><td>
 
@@ -227,7 +227,7 @@ type <structure-name> =
 
 </td>
 </tr>
-<tr><td>dyskryminowany związek</td><td>
+<tr><td>Unia rozłączna</td><td>
 
 ```fsharp
 type <union-name> =
@@ -350,8 +350,8 @@ module <module-name> =
 </tr>
 </table>
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
-- [Odwołanie do języka F#](index.md)
+- [Dokumentacja języka F #](index.md)
 - [Dyrektywy kompilatora](compiler-directives.md)
 - [Wskazówki dotyczące formatowania kodu](../style-guide/formatting.md)

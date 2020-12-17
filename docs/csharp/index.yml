@@ -6,12 +6,12 @@ metadata:
   description: Naucz się programowania w języku C# — dla początkujących deweloperów, nowych deweloperów w języku C# i doświadczonych deweloperów w języku C#/.NET
   ms.topic: landing-page
   ms.date: 11/19/2019
-  ms.openlocfilehash: bc75503b565020fb9966fd756d87890263f63533
-  ms.sourcegitcommit: 9d525bb8109216ca1dc9e39c149d4902f4b43da5
+  ms.openlocfilehash: 584db55455af54bcf7e91771e3598a7349091bee
+  ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 12/04/2020
-  ms.locfileid: "96599450"
+  ms.lasthandoff: 12/15/2020
+  ms.locfileid: "97512154"
 landingContent:
 - title: Naucz się programowania w języku C#
   linkLists:
@@ -71,38 +71,20 @@ landingContent:
     links:
     - text: Co nowego w języku C# 9.0
       url: whats-new/csharp-9.md
-- title: Nowe funkcje w języku C# 8.0
+- title: Nowe funkcje w języku C# 9.0
   linkLists:
   - linkListType: whats-new
     links:
-    - text: Co nowego w języku C# 8.0
-      url: whats-new/csharp-8.md
-  - linkListType: overview
-    links:
-    - text: Dopasowanie do wzorca
-      url: pattern-matching.md
-    - text: Typy referencyjne dopuszczające wartość null
-      url: nullable-references.md
-  - linkListType: concept
-    links:
-    - text: Wybieranie strategii migracji dopuszczającej wartość null
-      url: nullable-migration-strategies.md
+    - text: Co nowego w języku C# 9.0
+      url: whats-new/csharp-9.md
   - linkListType: tutorial
     links:
-    - text: Używanie i generowanie strumieni asynchronicznych
-      url: tutorials/generate-consume-asynchronous-stream.md
-    - text: Programowanie przy użyciu typów referencyjnych dopuszczających wartość null
-      url: tutorials/nullable-reference-types.md
-    - text: Uaktualnianie istniejącego kodu w celu używania typów referencyjnych dopuszczających wartość null
-      url: tutorials/upgrade-to-nullable-references.md
-    - text: Używanie dopasowywania wzorców dla bardziej ekspresyjnych algorytmów
-      url: tutorials/pattern-matching.md
-    - text: Bezpieczne tworzenie wersji interfejsów przy użyciu domyślnych elementów członkowskich interfejsu
-      url: tutorials/default-interface-methods-versions.md
-    - text: Mieszanie funkcji przy użyciu domyślnych elementów członkowskich interfejsu
-      url: tutorials/mixins-with-default-interface-methods.md
-    - text: Praca z podzestawami przy użyciu zakresów i indeksów
-      url: tutorials/ranges-indexes.md
+    - text: Eksplorowanie typów rekordów
+      url: tutorials/exploration/records.md
+    - text: Eksplorowanie instrukcji najwyższego poziomu
+      url: tutorials/exploration/top-level-statements.md
+    - text: Eksplorowanie nowych wzorców
+      url: tutorials/exploration/patterns-objects.md
   - linkListType: reference
     links:
     - text: Zmiany powodujące niezgodność w kompilatorze języka C#

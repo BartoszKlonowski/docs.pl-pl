@@ -2,7 +2,7 @@
   href: index.md
 - name: Typy zgodności
   href: categories.md
-- name: Odwołanie
+- name: Dokumentacja
   expanded: true
   items:
     - name: Omówienie
@@ -34,6 +34,8 @@
                   href: aspnet-core/5.0/authorization-resource-in-endpoint-routing.md
                 - name: Pakiety integracji platformy Azure z prefiksem „Microsoft” są usunięte
                   href: aspnet-core/5.0/azure-integration-packages-removed.md
+                - name: 'Blazor: Logika pierwszeństwa trasy została zmieniona w aplikacjach Blazor'
+                  href: aspnet-core/5.0/blazor-routing-logic-changed.md
                 - name: 'Blazor: Zaktualizowana obsługa przeglądarki'
                   href: aspnet-core/5.0/blazor-browser-support-updated.md
                 - name: 'Blazor: Nieznaczące odstępy są przycinane przez kompilator'
@@ -292,6 +294,8 @@
                   href: aspnet-core/5.0/authorization-resource-in-endpoint-routing.md
                 - name: Pakiety integracji platformy Azure z prefiksem „Microsoft” są usunięte
                   href: aspnet-core/5.0/azure-integration-packages-removed.md
+                - name: 'Blazor: Logika pierwszeństwa trasy została zmieniona w aplikacjach Blazor'
+                  href: aspnet-core/5.0/blazor-routing-logic-changed.md
                 - name: 'Blazor: Zaktualizowana obsługa przeglądarki'
                   href: aspnet-core/5.0/blazor-browser-support-updated.md
                 - name: 'Blazor: Nieznaczące odstępy są przycinane przez kompilator'
