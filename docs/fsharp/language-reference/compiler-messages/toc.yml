@@ -15,3 +15,5 @@
       href: ./fs0009.md
     - name: FS0025 — Niepełne dopasowanie wzorca
       href: ./fs0025.md
+    - name: FS0052 — Kopia obronna
+      href: ./fs0052.md
