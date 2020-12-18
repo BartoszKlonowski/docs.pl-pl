@@ -4,12 +4,12 @@ description: Zapoznaj się z najlepszymi rozwiązaniami dotyczącymi pisania tes
 author: jpreese
 ms.author: wiwagn
 ms.date: 07/28/2018
-ms.openlocfilehash: 6c1e9a665ad541bf6109634a6df857880ee47042
-ms.sourcegitcommit: 74d05613d6c57106f83f82ce8ee71176874ea3f0
+ms.openlocfilehash: 56f51cde0e52a9e6a38e5291c81470beee61adef
+ms.sourcegitcommit: 4b79862c5b41fbd86cf38f926f6a49516059f6f2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93281652"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678107"
 ---
 # <a name="unit-testing-best-practices-with-net-core-and-net-standard"></a>Najlepsze rozwiązania dotyczące testów jednostkowych przy użyciu platformy .NET Core i .NET Standard
 
@@ -48,7 +48,7 @@ Pisanie testów dla kodu spowoduje naturalnie oddzielenie kodu, ponieważ byłob
 ## <a name="characteristics-of-a-good-unit-test"></a>Cechy dobrego testu jednostkowego
 
 - **Szybko**. Niespotykane projekty mają tysiące testów jednostkowych. Testy jednostkowe powinny trwać bardzo mało czasu. ).
-- **Izolowany**. Testy jednostkowe są autonomiczne, mogą być uruchamiane w izolacji i nie mogą być zależne od jakichkolwiek czynników zewnętrznych, takich jak system plików czy baza danych.
+- **Izolowane**. Testy jednostkowe są autonomiczne, mogą być uruchamiane w izolacji i nie mogą być zależne od jakichkolwiek czynników zewnętrznych, takich jak system plików czy baza danych.
 - **Powtarzalne**. Uruchamianie testu jednostkowego powinno być zgodne z jego wynikami, to oznacza, że zawsze zwraca ten sam wynik, jeśli nie zmieni się niczego między przebiegami.
 - **Sprawdzanie samoobsługowe**. Test powinien być w stanie automatycznie wykryć, czy zakończył się powodzeniem, bez ingerencji człowieka.
 - **Czasowo**. Test jednostkowy nie powinien trwać bardzo proporcjonalnie do zapisu w porównaniu z testowanym kodem. Jeśli okaże się, że test kodu zajmuje dużo czasu w porównaniu do pisania kodu, weź pod uwagę projekt, który jest bardziej weryfikowalne.
@@ -67,7 +67,7 @@ W przypadku korzystania z testów *często występuje* niedziałający sposób. 
 
 *Makieta* — obiekt obiektu jest obiektem nieprawidłowym w systemie, który decyduje o tym, czy test jednostkowy zakończył się powodzeniem, czy nie. Makieta jest uruchamiana jako fałszywa, dopóki nie zostanie potwierdzona.
 
-*Szczątkowy* — zastępczy to przeprowadzona zmiana dla istniejącej zależności (lub współpracownika) w systemie. Za pomocą klasy zastępczej można testować kod bez bezpośredniej kontroli nad zależnością. Domyślnie, fałszywe jest uruchamiany jako element zastępczy.
+*Szczątkowy* — zastępczy to przeprowadzona zmiana dla istniejącej zależności (lub współpracownika) w systemie. Za pomocą klasy zastępczej można testować kod bez bezpośredniej kontroli nad zależnością. Domyślnie element zastępczy jest uruchamiany jako sfałszowany.
 
 Rozważmy następujący fragment kodu:
 

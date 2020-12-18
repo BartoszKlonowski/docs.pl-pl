@@ -3,12 +3,12 @@ title: Omówienie narzędzi diagnostycznych — .NET Core
 description: Przegląd narzędzi i technik dostępnych do diagnozowania aplikacji .NET Core.
 ms.date: 07/16/2020
 ms.topic: overview
-ms.openlocfilehash: c43e661ad8c9f665151e0240bf6b54e61b9acfef
-ms.sourcegitcommit: 0802ac583585110022beb6af8ea0b39188b77c43
+ms.openlocfilehash: 0aa404497cb7d6a488fb51e1df8f7f45d4f213fd
+ms.sourcegitcommit: 4b79862c5b41fbd86cf38f926f6a49516059f6f2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031920"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678103"
 ---
 # <a name="what-diagnostic-tools-are-available-in-net-core"></a>Jakie narzędzia diagnostyczne są dostępne w środowisku .NET Core?
 
@@ -24,6 +24,10 @@ Ten artykuł ułatwia znalezienie różnych potrzebnych narzędzi.
 
 [Rejestrowanie i śledzenie](logging-tracing.md) to powiązane techniki. Odnoszą się one do kodu instrumentacji do tworzenia plików dziennika. Pliki rejestrują szczegóły działania programu. Te szczegółowe informacje mogą służyć do diagnozowania najbardziej złożonych problemów. W połączeniu z sygnaturami czasowymi te techniki są również przydatne w badaniach wydajności.
 
+## <a name="metrics"></a>Metryki
+
+[EventCounters](event-counters.md) umożliwia pisanie metryk w celu identyfikowania i monitorowania problemów z wydajnością. Metryki wiążą się z mniejszym obciążeniem wydajności w porównaniu z śledzeniem, dzięki czemu jest bardziej odpowiednie do monitorowania wydajności. Środowisko uruchomieniowe i biblioteki platformy .NET publikuje kilka [dobrze znanych EventCounters](available-counters.md) , które można monitorować.
+
 ## <a name="unit-testing"></a>Testowanie jednostek
 
 [Testowanie jednostkowe](../testing/index.md) to kluczowy składnik ciągłej integracji i wdrażania wysokiej jakości oprogramowania. Testy jednostkowe zostały zaprojektowane w celu zapewnienia wczesnego ostrzegania w przypadku wystąpienia elementu.
@@ -35,10 +39,6 @@ Ten artykuł ułatwia znalezienie różnych potrzebnych narzędzi.
 ## <a name="collect-diagnostics-in-containers"></a>Zbieranie danych diagnostycznych w kontenerach
 
 Te same narzędzia diagnostyczne, które są używane w środowiskach z systemem Linux, mogą również służyć do [zbierania danych diagnostycznych w kontenerach](diagnostics-in-containers.md). Istnieje tylko kilka zmian użycia wymaganych do upewnienia się, że narzędzia działają w kontenerze platformy Docker.
-
-## <a name="debug-linux-dumps"></a>Debugowanie zrzutów systemu Linux
-
-[Debugowanie zrzutów systemu Linux](debug-linux-dumps.md) wyjaśnia, jak zbierać i analizować zrzuty w systemie Linux.
 
 ## <a name="net-core-diagnostic-global-tools"></a>Narzędzia diagnostyczne programu .NET Core
 
@@ -83,6 +83,10 @@ polecenie [dotnet-symbol](dotnet-symbol.md) umożliwia pobieranie plików (symbo
 ### <a name="debug-deadlock"></a>Debugowanie zakleszczenia
 
 [Samouczek: zakleszczenie debugowania](debug-deadlock.md) pokazuje, w jaki sposób używać narzędzia [dotnet-dump](dotnet-dump.md) do badania wątków i blokad.
+
+### <a name="debug-linux-dumps"></a>Debugowanie zrzutów systemu Linux
+
+[Debugowanie zrzutów systemu Linux](debug-linux-dumps.md) wyjaśnia, jak zbierać i analizować zrzuty w systemie Linux.
 
 ### <a name="measure-performance-using-eventcounters"></a>Mierzenie wydajności przy użyciu EventCounters
 

@@ -2,12 +2,12 @@
 title: Wdrażanie bram interfejsu API za pomocą rozwiązania Ocelot
 description: Dowiedz się, jak zaimplementować bramy interfejsu API za pomocą Ocelot oraz jak używać Ocelot w środowisku opartym na kontenerach.
 ms.date: 03/02/2020
-ms.openlocfilehash: 6d9229228e228b664a602ce9a682d435505a8107
-ms.sourcegitcommit: d8020797a6657d0fbbdff362b80300815f682f94
+ms.openlocfilehash: 5da8533eff394b587d123970742727484a7236ad
+ms.sourcegitcommit: 4b79862c5b41fbd86cf38f926f6a49516059f6f2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95718101"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678120"
 ---
 # <a name="implement-api-gateways-with-ocelot"></a>Implementowanie bram interfejsu API za pomocą Ocelot
 
@@ -39,7 +39,7 @@ Na przykład, szczegółowy stopień szczegółowości warstwy bramy API może b
 
 W poprzedniej sekcji omówiono [Tworzenie złożonych interfejsów użytkownika opartych na mikrousługach](../architect-microservice-container-applications/microservice-based-composite-ui-shape-layout.md).
 
-Jako usługa Key wnioskiem w przypadku wielu aplikacji o średniej i dużej wielkości przy użyciu produktu bramy interfejsu API opracowanego przez niestandardowy jest zwykle dobrym podejściem, ale nie jako pojedynczym agregatorem monolitycznym lub unikatowym centralną bramą interfejsu API, chyba że brama interfejsu API zezwala na wiele niezależnych obszarów konfiguracji dla kilku zespołów programistycznych tworzących autonomiczne mikrousługi.
+W ramach usługi Key wnioskiem w przypadku wielu aplikacji średniej i o dużej wielkości korzystanie z niestandardowo przygotowanego produktu bramy API jest zwykle dobrym rozwiązaniem, ale nie jako jednym agregatorem monolitycznym lub unikatowym centralną bramą interfejsu API, chyba że brama interfejsu API zezwala na wiele niezależnych obszarów konfiguracji dla kilku zespołów programistycznych tworzących autonomiczne mikrousługi.
 
 ### <a name="sample-microservicescontainers-to-reroute-through-the-api-gateways"></a>Przykładowe mikrousługi/kontenery do przekierowania przez bramy interfejsu API
 
@@ -97,7 +97,7 @@ Port 80 wyświetlany w kodzie jest wewnętrzny w ramach hosta platformy Docker, 
 
 Aplikacje klienckie mogą uzyskiwać dostęp tylko do portów zewnętrznych (jeśli istnieją) opublikowanych podczas wdrażania w programie `docker-compose` .
 
-Tych portów zewnętrznych nie należy publikować podczas wdrażania w środowisku produkcyjnym. Jest to dokładnie dlatego, że chcesz użyć bramy interfejsu API, aby uniknąć bezpośredniej komunikacji między aplikacjami klienckimi i mikrousługami.
+Tych portów zewnętrznych nie należy publikować podczas wdrażania w środowisku produkcyjnym. Z tego względu, dlaczego chcesz użyć bramy interfejsu API, aby uniknąć bezpośredniej komunikacji między aplikacjami klienckimi i mikrousługami.
 
 Jednak podczas tworzenia programu chcesz bezpośrednio uzyskać dostęp do mikrousługi/kontenera i uruchomić go za pomocą struktury Swagger. Dlatego w eShopOnContainers, porty zewnętrzne są nadal określone nawet wtedy, gdy nie będą używane przez bramę interfejsu API ani aplikacje klienckie.
 
@@ -155,7 +155,7 @@ W eShopOnContainers, jej implementacja bramy interfejsu API to ASP.NET Core pros
 
 **Rysunek 6-32**. Projekt podstawowy OcelotApiGw w eShopOnContainers
 
-Ten ASP.NET Core Project WebHost jest zasadniczo zbudowany przy użyciu dwóch prostych plików:  `Program.cs` i `Startup.cs` .
+Ten ASP.NET Core Project WebHost został skompilowany przy użyciu dwóch prostych plików:  `Program.cs` i `Startup.cs` .
 
 Program.cs musi utworzyć i skonfigurować typowe ASP.NET Core BuildWebHost.
 
@@ -267,7 +267,7 @@ Port jest portem wewnętrznym używanym przez usługę. W przypadku korzystania 
 
 `Host`Jest nazwą usługi, która zależy od używanego rozwiązania nazwy usługi. W przypadku korzystania z platformy Docker — Tworzenie nazw usług są udostępniane przez hosta platformy Docker, który korzysta z nazw usług udostępnianych w plikach tworzenia platformy Docker. W przypadku korzystania z programu Orchestrator, takiego jak Kubernetes lub Service Fabric, ta nazwa powinna być rozpoznawana przez system DNS lub rozpoznawanie nazw dostarczone przez każdego koordynatora.
 
-DownstreamHostAndPorts to tablica zawierająca hosta i port wszystkich usług podrzędnych, do których mają być przekazywane żądania. Zwykle zawiera on tylko jeden wpis, ale czasami może zajść potrzeba zrównoważenia obciążenia żądaniami do usług podrzędnych i Ocelot umożliwia dodanie więcej niż jednego wpisu, a następnie wybranie modułu równoważenia obciążenia. Ale jeśli korzystasz z platformy Azure i dowolnego programu Orchestrator, prawdopodobnie lepszym rozwiązaniem jest zrównoważenie równoważenia obciążenia za pomocą infrastruktury chmury i programu Orchestrator.
+DownstreamHostAndPorts to tablica zawierająca hosta i port wszystkich usług podrzędnych, do których mają być przekazywane żądania. Zwykle ta konfiguracja będzie zawierać jeden wpis, ale czasami może zajść potrzeba zrównoważenia obciążenia żądaniami do usług podrzędnych i Ocelot umożliwia dodanie więcej niż jednego wpisu, a następnie wybranie modułu równoważenia obciążenia. Ale jeśli korzystasz z platformy Azure i dowolnego programu Orchestrator, prawdopodobnie lepszym rozwiązaniem jest zrównoważenie równoważenia obciążenia za pomocą infrastruktury chmury i programu Orchestrator.
 
 UpstreamPathTemplate to adres URL, który będzie używany przez Ocelot do identyfikowania DownstreamPathTemplate do użycia dla danego żądania od klienta. Na koniec UpstreamHttpMethod jest używany, więc Ocelot może rozróżnić różne żądania (GET, POST, PUT) na ten sam adres URL.
 
@@ -393,7 +393,7 @@ Dalsze powiększanie, w obszarze roboczym "zakupy" na poniższej ilustracji wida
 
 **Rysunek 6-38**. Powiększ zalety usług agregatora
 
-Można zauważyć, jak gdy diagram pokazuje możliwe żądania pochodzące z bram interfejsu API, które mogą być złożone. Mimo że można zobaczyć, jak strzałki w kolorze niebieskim byłyby uproszczone, z perspektywy aplikacji klienckich przy użyciu wzorca agregatora poprzez zmniejszenie chattiness i opóźnień komunikacji, ostatecznie znacząco ulepszanie środowiska użytkownika dla aplikacji zdalnych (aplikacji mobilnych i SPA), szczególnie.
+Można zauważyć, jak gdy diagram pokazuje możliwe żądania pochodzące z bram interfejsu API, które mogą być złożone. Z drugiej strony, gdy używasz wzorca agregatora, zobaczysz, jak strzałki w kolorze niebieskim upraszczają komunikację z perspektywy aplikacji klienckiej. Ten wzorzec nie tylko pomaga ograniczyć chattiness i opóźnień w komunikacji, ale również znacznie poprawia środowisko użytkownika dla aplikacji zdalnych (aplikacji mobilnych i SPA).
 
 W przypadku obszaru biznesowego "Marketing" i mikrousług jest to prosty przypadek użycia, dlatego nie ma potrzeby korzystania z agregatorów, ale może również być możliwe, jeśli jest to konieczne.
 
@@ -527,7 +527,7 @@ W Kubernetes, jeśli nie korzystasz z metody transferu danych przychodzących, u
 
 Jeśli jednak korzystasz z metody transferu danych przychodzących, będziesz mieć warstwę środkową między Internetem a usługami (w tym bramami interfejsu API) działającą jako zwrotny serwer proxy.
 
-Jako definicja, ruch przychodzący jest kolekcją reguł, które zezwalają na połączenia przychodzące do usług klastra. Ruch przychodzący jest zwykle konfigurowany pod kątem zapewniania usług adresów URL, które są dostępne z zewnątrz, równoważenia obciążenia, zakończenia protokołu SSL i nie tylko. Użytkownicy żądają transferu danych przychodzących, publikując zasób transferu danych przychodzących na serwerze interfejsu API.
+Jako definicja, ruch przychodzący jest kolekcją reguł, które zezwalają na połączenia przychodzące do usług klastra. Usługa transferu danych przychodzących jest skonfigurowana w celu świadczenia usług, które są dostępne z zewnątrz, ruchu równoważenia obciążenia, zakończenia protokołu SSL i nie tylko. Użytkownicy żądają transferu danych przychodzących, publikując zasób transferu danych przychodzących na serwerze interfejsu API.
 
 W eShopOnContainers, podczas tworzenia lokalnie i korzystania tylko z komputera deweloperskiego jako hosta platformy Docker, nie są używane żadne przychodzące, ale tylko bramy interfejsu API.
 
@@ -543,7 +543,7 @@ Posiadanie warstwy Nginx w Kubernetes przed aplikacjami sieci Web, a kilka bram 
 
 **Rysunek 6-41**. Warstwa transferu danych przychodzących w eShopOnContainers po wdrożeniu w Kubernetes
 
-Ruch przychodzący Kubernetes działa jako zwrotny serwer proxy dla całego ruchu do aplikacji, w tym aplikacji sieci Web, które zwykle znajdują się poza zakresem bramy interfejsu API. Gdy wdrażasz eShopOnContainers w usłudze _Kubernetes,_ uwidaczniamy tylko kilka usług lub punktów końcowych za pośrednictwem transferu danych przychodzących, zasadniczo Poniższa lista przyrostów adresów URL:
+Ruch przychodzący Kubernetes działa jako zwrotny serwer proxy dla całego ruchu do aplikacji, w tym aplikacji sieci Web, które znajdują się poza zakresem bramy interfejsu API. Gdy wdrażasz eShopOnContainers w usłudze _Kubernetes,_ uwidaczniamy tylko kilka usług lub punktów końcowych za pośrednictwem transferu danych przychodzących, zasadniczo Poniższa lista przyrostów adresów URL:
 
 - `/` dla aplikacji sieci Web SPA klienta
 - `/webmvc` dla aplikacji sieci Web Client MVC

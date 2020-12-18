@@ -3,13 +3,13 @@ title: Aplikacja pojedynczego pliku
 description: Dowiedz się, co to jest aplikacja z pojedynczym plikiem i dlaczego należy rozważyć użycie tego modelu wdrażania aplikacji.
 author: lakshanf
 ms.author: lakshanf
-ms.date: 08/28/2020
-ms.openlocfilehash: 16e9586cfc29072fa2ca70dc482272a5a0e7306a
-ms.sourcegitcommit: 39b1d5f2978be15409c189a66ab30781d9082cd8
+ms.date: 12/17/2020
+ms.openlocfilehash: e2d2c9ed4c28d11a77e4f840602982a36cf1c80c
+ms.sourcegitcommit: 4b79862c5b41fbd86cf38f926f6a49516059f6f2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92050419"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678146"
 ---
 # <a name="single-file-deployment-and-executable"></a>Wdrażanie i wykonywanie przy użyciu jednego pliku
 
@@ -96,6 +96,39 @@ Na przykład Dodaj następującą właściwość do pliku projektu zestawu, aby 
 </PropertyGroup>
 ```
 
+## <a name="publish-a-single-file-app---sample-project-file"></a>Publikowanie pojedynczego pliku aplikacji — przykładowego pliku projektu
+
+Oto przykładowy plik projektu, który określa publikację pojedynczego pliku:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishTrimmed>true</PublishTrimmed>
+    <PublishReadyToRun>true</PublishReadyToRun>
+  </PropertyGroup>
+
+</Project>
+```
+
+Te właściwości mają następujące funkcje:
+
+* `PublishSingleFile` -Włącza publikowanie Jednoplikowe.
+* `SelfContained` -Określa, czy aplikacja będzie samodzielna lub zależna od struktury.
+* `RuntimeIdentifier` -Określa docelowy [Typ systemu operacyjnego i procesora CPU](../rid-catalog.md) .
+* `PublishTrimmed` -Umożliwia użycie [przycinania zestawu](trim-self-contained.md), który jest obsługiwany tylko w przypadku aplikacji samodzielnych.
+* `PublishReadyToRun` -Włącza [kompilację w czasie (AOT)](ready-to-run.md).
+
+**Uwagi:**
+
+* Aplikacje są zależne od systemu operacyjnego i architektury. Należy opublikować dla każdej konfiguracji, na przykład Linux x64, Linux ARM64, Windows x64 i tak dalej.
+* Pliki konfiguracji, takie jak *\*.runtimeconfig.json*, są zawarte w pojedynczym pliku. Jeśli jest wymagany dodatkowy plik konfiguracji, możesz go umieścić obok pojedynczego pliku.
+
 ## <a name="publish-a-single-file-app---cli"></a>Publikowanie pojedynczego pliku aplikacji — interfejs wiersza polecenia
 
 Opublikuj aplikację pojedynczego pliku przy użyciu polecenia [dotnet Publish](../tools/dotnet-publish.md) . Po opublikowaniu aplikacji ustaw następujące właściwości:
@@ -121,7 +154,7 @@ Aby uzyskać więcej informacji, zobacz [publikowanie aplikacji .NET Core za pom
 
 Program Visual Studio tworzy Profile publikowania wielokrotnego użytku, które kontrolują sposób publikowania aplikacji.
 
-01. W okienku **Eksplorator rozwiązań** kliknij prawym przyciskiem myszy projekt, który chcesz opublikować. Kliknij pozycję **Opublikuj**.
+01. W okienku **Eksplorator rozwiązań** kliknij prawym przyciskiem myszy projekt, który chcesz opublikować. Kliknij opcję **Opublikuj**.
 
     :::image type="content" source="media/single-file/visual-studio-solution-explorer.png" alt-text="Eksplorator rozwiązań z menu po kliknięciu prawym przyciskiem myszy wyróżnianie opcji Publikuj.":::
 
@@ -129,7 +162,7 @@ Program Visual Studio tworzy Profile publikowania wielokrotnego użytku, które 
 
 01. Wybierz pozycję **Edytuj**.
 
-    :::image type="content" source="media/single-file/visual-studio-publish-edit-settings.png" alt-text="Eksplorator rozwiązań z menu po kliknięciu prawym przyciskiem myszy wyróżnianie opcji Publikuj.":::
+    :::image type="content" source="media/single-file/visual-studio-publish-edit-settings.png" alt-text="Profil publikacji programu Visual Studio za pomocą przycisku Edytuj.":::
 
 01. W oknie dialogowym **Ustawienia profilu** ustaw następujące opcje:
 
@@ -139,7 +172,7 @@ Program Visual Studio tworzy Profile publikowania wielokrotnego użytku, które 
 
     Wybierz pozycję **Zapisz** , aby zapisać ustawienia i powrócić do okna dialogowego **Publikowanie** .
 
-    :::image type="content" source="media/single-file/visual-studio-publish-single-file-properties.png" alt-text="Eksplorator rozwiązań z menu po kliknięciu prawym przyciskiem myszy wyróżnianie opcji Publikuj.":::
+    :::image type="content" source="media/single-file/visual-studio-publish-single-file-properties.png" alt-text="Okno dialogowe ustawień profilu z trybem wdrożenia, docelowym środowiskiem uruchomieniowym i opcją pojedynczego pliku.":::
 
 01. Wybierz pozycję **Publikuj** , aby opublikować aplikację jako pojedynczy plik.
 
@@ -149,7 +182,7 @@ Aby uzyskać więcej informacji, zobacz [publikowanie aplikacji .NET Core za pom
 
 Visual Studio dla komputerów Mac nie udostępnia opcji publikowania aplikacji jako pojedynczego pliku. Należy opublikować ręcznie, postępując zgodnie z instrukcjami zawartymi w sekcji [Publikowanie pojedynczego pliku App-CLI](#publish-a-single-file-app---cli) . Aby uzyskać więcej informacji, zobacz [publikowanie aplikacji .NET Core za pomocą interfejs wiersza polecenia platformy .NET Core](deploy-with-cli.md).
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Wdrażanie aplikacji .NET Core](index.md).
 - [Publikowanie aplikacji platformy .NET Core za pomocą interfejs wiersza polecenia platformy .NET Core](deploy-with-cli.md).

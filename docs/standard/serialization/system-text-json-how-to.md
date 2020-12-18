@@ -1,7 +1,7 @@
 ---
 title: Jak serializować i deserializować kod JSON przy użyciu języka C# — .NET
 description: Dowiedz się, jak używać System.Text.Json przestrzeni nazw do serializacji i deserializacji z JSON w programie .NET. Zawiera przykładowy kod.
-ms.date: 12/02/2020
+ms.date: 12/16/2020
 ms.custom: contperf-fy21q2
 no-loc:
 - System.Text.Json
@@ -12,12 +12,12 @@ helpviewer_keywords:
 - serializing objects
 - serialization
 - objects, serializing
-ms.openlocfilehash: 46203aa1b4daa4281c7c26191f7df947967fa1c0
-ms.sourcegitcommit: d0990c1c1ab2f81908360f47eafa8db9aa165137
+ms.openlocfilehash: b69dfd6238f529c3b315d63a93a82da0f316f459
+ms.sourcegitcommit: 4b79862c5b41fbd86cf38f926f6a49516059f6f2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97513266"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678255"
 ---
 # <a name="how-to-serialize-and-deserialize-marshal-and-unmarshal-json-in-net"></a>Jak serializować i deserializować (Marshaling and unmarshaling) JSON w programie .NET
 
@@ -189,6 +189,15 @@ Aby zdeserializować z pliku przy użyciu kodu asynchronicznego, wywołaj <xref:
 
 :::code language="csharp" source="snippets/system-text-json-how-to/csharp/RoundtripToFileAsync.cs" id="Deserialize":::
 
+> [!TIP]
+> Jeśli masz kod JSON, który chcesz zdeserializować i nie masz klasy do deserializacji, w programie Visual Studio 2019 można automatycznie wygenerować klasę, której potrzebujesz:
+>
+> 1. Skopiuj kod JSON, który ma być niezbędny do deserializacji.
+> 1. Utwórz plik klasy i Usuń kod szablonu.
+> 1. Wybierz pozycję **Edytuj**  >  **Wklej specjalne**  >  **Wklej dane JSON jako klasy**.
+>
+> Wynik jest klasą, której można użyć dla celu deserializacji.
+
 ## <a name="deserialize-from-utf-8"></a>Deserializacja z UTF-8
 
 Aby zdeserializować z UTF-8, wywołaj <xref:System.Text.Json.JsonSerializer.Deserialize%2A?displayProperty=nameWithType> Przeciążenie, które pobiera `ReadOnlySpan<byte>` lub a `Utf8JsonReader` , jak pokazano w poniższych przykładach. W przykładach założono, że kod JSON znajduje się w tablicy bajtów o nazwie jsonUtf8Bytes.
@@ -282,7 +291,7 @@ Istnieją również metody rozszerzające dla System.Text.Json [HttpContent](xre
 Metody rozszerzające w systemach `HttpClient` i `HttpContent` nie są dostępne w System.Text.Json programie .NET Core 3,1.
 ::: zone-end
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [System.Text.Json Podsumowanie](system-text-json-overview.md)
 * [Tworzenie wystąpienia JsonSerializerOptions wystąpień](system-text-json-configure-options.md)

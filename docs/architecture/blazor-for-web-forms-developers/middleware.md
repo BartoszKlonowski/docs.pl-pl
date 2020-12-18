@@ -6,16 +6,16 @@ ms.author: daroth
 no-loc:
 - Blazor
 ms.date: 10/11/2019
-ms.openlocfilehash: 639755dd78892df1b70ea5245a9584e575fbf691
-ms.sourcegitcommit: 0100be20fcf23f61dab672deced70059ed71bb2e
+ms.openlocfilehash: dbb0a94b0401d58139c024fd8ca3e00353a19efa
+ms.sourcegitcommit: 4b79862c5b41fbd86cf38f926f6a49516059f6f2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88267883"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678034"
 ---
 # <a name="modules-handlers-and-middleware"></a>Moduły, programy obsługi i oprogramowanie pośredniczące
 
-Aplikacja ASP.NET Core jest oparta na serii *oprogramowania pośredniczącego*. Oprogramowanie pośredniczące to programy obsługi, które są rozmieszczone w potoku, aby obsługiwać żądania i odpowiedzi. W aplikacji formularzy sieci Web programy obsługi HTTP i moduły rozwiązują podobne problemy. W ASP.NET Core, moduły, programy obsługi, *Global.asax.cs*i cykl życia aplikacji są zastępowane przez oprogramowanie pośredniczące. W tym rozdziale opisano, co to jest oprogramowanie pośredniczące w kontekście Blazor aplikacji.
+Aplikacja ASP.NET Core jest oparta na serii *oprogramowania pośredniczącego*. Oprogramowanie pośredniczące to programy obsługi, które są rozmieszczone w potoku, aby obsługiwać żądania i odpowiedzi. W aplikacji formularzy sieci Web programy obsługi HTTP i moduły rozwiązują podobne problemy. W ASP.NET Core, moduły, programy obsługi, *Global.asax.cs* i cykl życia aplikacji są zastępowane przez oprogramowanie pośredniczące. W tym rozdziale przedstawiono informacje na temat oprogramowania pośredniczącego w kontekście Blazor aplikacji.
 
 ## <a name="overview"></a>Omówienie
 

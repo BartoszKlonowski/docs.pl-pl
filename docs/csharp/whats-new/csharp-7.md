@@ -3,12 +3,12 @@ title: Co nowego w języku C# 7,0 — przewodnik w języku C#
 description: Zapoznaj się z omówieniem nowych funkcji w wersji 7,0 języka C#.
 ms.date: 10/02/2020
 ms.assetid: fd41596d-d0c2-4816-b94d-c4d00a5d0243
-ms.openlocfilehash: 84f5961d573b99438320a75d7f89bc7fd94f6266
-ms.sourcegitcommit: b59237ca4ec763969a0dd775a3f8f39f8c59fe24
+ms.openlocfilehash: c238439b0f435e579d932b3b1eb13e9b0061fa5f
+ms.sourcegitcommit: 4b79862c5b41fbd86cf38f926f6a49516059f6f2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91955216"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678227"
 ---
 # <a name="whats-new-in-c-70-through-c-73"></a>Co nowego w języku C# 7,0 za poorednictwem języka C# 7,3
 
@@ -235,7 +235,7 @@ Ten atrybut `SomeThingAboutFieldAttribute` jest stosowany do pola zapasowego wyg
 
 ## <a name="more-expression-bodied-members"></a>Więcej składowych wyrażeń
 
-W języku C# 6 wprowadzono [składowe z wyrażeniami](csharp-6.md#expression-bodied-function-members) dla funkcji Członkowskich i właściwości tylko do odczytu. C# 7,0 rozwija dozwolone elementy członkowskie, które mogą być zaimplementowane jako wyrażenia. W języku C# 7,0 można zaimplementować *konstruktory*, *finalizatory*i metody `get` `set` dostępu do *Właściwości* i *indeksatorów*. Poniższy kod przedstawia przykłady każdego z nich:
+W języku C# 6 wprowadzono składowe z wyrażeniami dla funkcji Członkowskich i właściwości tylko do odczytu. C# 7,0 rozwija dozwolone elementy członkowskie, które mogą być zaimplementowane jako wyrażenia. W języku C# 7,0 można zaimplementować *konstruktory*, *finalizatory* i metody `get` `set` dostępu do *Właściwości* i *indeksatorów*. Poniższy kod przedstawia przykłady każdego z nich:
 
 [!code-csharp[ExpressionBodiedMembers](~/samples/snippets/csharp/new-in-7/expressionmembers.cs#ExpressionBodiedEverything "new expression-bodied members")]
 
@@ -270,7 +270,7 @@ Aby uzyskać więcej informacji, zobacz sekcję [domyślny literał](../language
 
 ## <a name="numeric-literal-syntax-improvements"></a>Udoskonalenia składni literału liczbowego
 
-Nieodczytanie stałych numerycznych może utrudnić zrozumienie kodu podczas odczytywania go po raz pierwszy. Maski bitowe lub inne wartości symboliczne są podatne na nieporozumienia. Język C# 7,0 zawiera dwie nowe funkcje do zapisu liczb w najbardziej czytelny sposób dla zamierzonego użycia: *literały binarne*oraz *separatory cyfr*.
+Nieodczytanie stałych numerycznych może utrudnić zrozumienie kodu podczas odczytywania go po raz pierwszy. Maski bitowe lub inne wartości symboliczne są podatne na nieporozumienia. Język C# 7,0 zawiera dwie nowe funkcje do zapisu liczb w najbardziej czytelny sposób dla zamierzonego użycia: *literały binarne* oraz *separatory cyfr*.
 
 Dla tych czasów podczas tworzenia masek bitowych lub za każdym razem, gdy binarna reprezentacja liczby sprawia, że jest to najbardziej czytelny kod, Zapisz ten numer w postaci binarnej:
 
