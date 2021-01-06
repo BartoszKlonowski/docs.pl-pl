@@ -90,7 +90,7 @@ Polecenie wypycha istniejący pakiet. Nie tworzy pakietu. Aby utworzyć pakiet, 
 
 - **`-t|--timeout <TIMEOUT>`**
 
-  Określa limit czasu wypychania do serwera w sekundach. Wartość domyślna to 300 sekund (5 minut). Wartość domyślna to 0 (zero sekund).
+  Określa limit czasu wypychania do serwera w sekundach. Wartość domyślna to 300 sekund (5 minut). Podanie wartości 0 (zero sekund) powoduje ustawienie wartości domyślnej.
 
 ## <a name="examples"></a>Przykłady
 
